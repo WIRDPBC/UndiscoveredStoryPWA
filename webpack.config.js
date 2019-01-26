@@ -42,7 +42,10 @@ module.exports = ({prod = false, sw = false, prefix = ''} = {}) => {
 			loaders: [{
 				test: /\.(js|jsx)$/,
 				include: path.resolve(__dirname, './src'),
-				loaders: 'babel-loader'
+				loaders: 'babel-loader',
+				query: {
+                    presets: ['es2015', 'react']
+                }
 			}, {
 				test: /\.css$/,
 				loader: 'style-loader!css-loader'
