@@ -35,7 +35,7 @@ module.exports = ({prod = false, sw = false, prefix = ''} = {}) => {
 		output: {
 			path: path.resolve(__dirname, './build'),
 			pathinfo: true,
-			publicPath: ``,
+			publicPath: `/`,
 			filename: '[name].[hash:8].js'
 		},
 		module: {
@@ -81,6 +81,7 @@ module.exports = ({prod = false, sw = false, prefix = ''} = {}) => {
 		devServer: {
 			contentBase: 'public',
 			inline: true,
+			historyApiFallback: true,
 			host: process.env.HOST || 'localhost',
 			port: Number.parseInt(process.env.PORT || 8080, 10)
 		}
@@ -94,14 +95,14 @@ module.exports = ({prod = false, sw = false, prefix = ''} = {}) => {
 		// Enable service worker while app running on dev server
 		if (sw) {
 			// Add service worker register script into html
-			webpackConfig.entry.sw = './src/sw-register.js';
+			webpackConfig.entry.sw = './src/server/sw-register.js';
 
 			// Add service worker precache generator
 			webpackConfig.plugins.push(new SWPrecacheWebpackDevPlugin(serviceWorkerConfig));
 		}
 	} else if (makemode === 'build') {
 		// Add service worker register script into html
-		webpackConfig.entry.sw = './src/sw-register.js';
+		webpackConfig.entry.sw = './src/server/sw-register.js';
 
 		// Add plugins for build
 		webpackConfig.plugins.push(new SWPrecacheWebpackPlugin(serviceWorkerConfig));
