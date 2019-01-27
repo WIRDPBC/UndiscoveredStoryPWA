@@ -1,6 +1,5 @@
 import React from 'react';
-import {Card, CardHeader, CardText, CardMedia, CardActions} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import {Card, CardHeader, CardText, CardMedia, CardActions, FlatButton} from '@material-ui/core';
 
 class Contact extends React.Component {
 	render() {

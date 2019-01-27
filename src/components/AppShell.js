@@ -1,11 +1,8 @@
 import React from 'react';
-import Link from 'react-router/lib/Link';
+import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom';
 // import {Layout, Header, Navigation, Content, Textfield, Drawer} from 'react-mdl';
-import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
-import ContentLink from 'material-ui/svg-icons/content/link';
-
+import {AppBar, Drawer, MenuItem, ContentLink} from '@material-ui/core'
 export default class AppShell extends React.Component {
 	constructor(props) {
 		super(props);
@@ -61,6 +58,6 @@ export default class AppShell extends React.Component {
 }
 
 AppShell.propTypes = {
-	title: React.PropTypes.string,
-	children: React.PropTypes.node
+	title: PropTypes.string,
+	children: PropTypes.node
 };

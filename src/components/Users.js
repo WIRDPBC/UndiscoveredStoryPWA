@@ -1,6 +1,7 @@
 import React from 'react';
-import Link from 'react-router/lib/Link';
-import {Card, CardHeader, CardText} from 'material-ui/Card';
+import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom';
+import {Card, CardHeader, CardText} from '@material-ui/core';
 
 const dummyUsers = {
 	jimmy: {
@@ -31,8 +32,8 @@ class User extends React.Component {
 }
 
 User.propTypes = {
-	id: React.PropTypes.string,
-	fullName: React.PropTypes.string
+	id: PropTypes.string,
+	fullName: PropTypes.string
 };
 
 class Users extends React.Component {
@@ -64,7 +65,7 @@ class Users extends React.Component {
 }
 
 Users.propTypes = {
-	params: React.PropTypes.object
+	params: PropTypes.object
 };
 
 export default Users;

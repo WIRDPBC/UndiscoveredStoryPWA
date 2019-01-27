@@ -29,7 +29,7 @@ module.exports = ({prod = false, sw = false, prefix = ''} = {}) => {
 
 	const webpackConfig = {
 		entry: {
-			main: ['./src/index.js'],
+			main: ['./src/client/index.js'],
 			vendor: ['react', 'react-dom']
 		},
 		output: {
