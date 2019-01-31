@@ -1,7 +1,8 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import {App} from '../components/App';
-import {Main} from '../components/Main';
+import Route from 'react-router/lib/Route';
+import IndexRoute from 'react-router/lib/IndexRoute';
+import App from '../components/App';
+import Main from '../components/Main';
 
 function routeUsers(s, cb) {
 	System.import('../components/Users').then(component => {
@@ -15,30 +16,11 @@ function routeContact(s, cb) {
 	});
 }
 
-
-function Routes(props) {
-	return (
-		<div>
-			<App>
-
-			
-			<Switch>
-
-			{/* <Route path="/" component={App}> */}
-				<Route exact path="/" render={routerProps => (
-					<Main/>
-				)
-				} />
-				<Route path="users" getComponent={routeUsers} />
-				<Route path="users/:id" getComponent={routeUsers} />
-				<Route path="contact" getComponent={routeContact} />
-			{/* </Route> */}
-			</Switch>
-			</App>
-		</div>
-
-	)
-}
-
-export default Routes
-
+export default (
+	<Route path="/" component={App}>
+		<IndexRoute component={Main}/>
+		<Route path="users" getComponent={routeUsers}/>
+		<Route path="users/:id" getComponent={routeUsers}/>
+		<Route path="contact" getComponent={routeContact}/>
+	</Route>
+);

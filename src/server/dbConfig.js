@@ -1,4 +1,4 @@
-export default function getConnectionString ()
+ function getConnectionString ()
 {
     return "0.0.0.0:27017";
 }
