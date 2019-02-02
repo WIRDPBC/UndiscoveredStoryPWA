@@ -30,8 +30,11 @@ let _Firebase = {
 				username: params.username
 			};
 
-
-
+			var assets = {
+				privateKey: "",
+				publicKey: "",
+				userid: userid
+			};
 			usersRef.once("value").then(function (snapshot) {
 				if (!snapshot.exists()) {
 					usersRef.set(userData, function (error) {
@@ -49,7 +52,8 @@ let _Firebase = {
 				else {
 					usersRef.limitToLast(4).on("child_added", function (snapshot) {
 						if (snapshot.key == "userid") {
-							dataFromFirebase = (snapshot.val() === 'undefined') ? 1 : snapshot.val();
+							userData.userid = snapshot.val();
+
 						}
 						usersRef.set(userData, function (error) {
 							if (error) {
