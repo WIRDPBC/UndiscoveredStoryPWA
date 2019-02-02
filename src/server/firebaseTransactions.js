@@ -9,9 +9,7 @@ var config = {
 	storageBucket: "",
 	messagingSenderId: "358978607943"
 };
-
-// For storing last max userid
-
+const userid = 1;
 
 let _Firebase = {
 	firebaseAuth: function () {
@@ -25,16 +23,18 @@ let _Firebase = {
 		var dataFromFirebase = null;
 		if (usersRef !== null) {
 
-			var data = {
+			var userData = {
 				email: params.email,
 				password: params.password,
-				userid: 1,
+				userid: userid,
 				username: params.username
 			};
 
+
+
 			usersRef.once("value").then(function (snapshot) {
 				if (!snapshot.exists()) {
-					usersRef.set(data, function (error) {
+					usersRef.set(userData, function (error) {
 						if (error) {
 							console.log('writing failed!');
 							return false;
@@ -51,7 +51,7 @@ let _Firebase = {
 						if (snapshot.key == "userid") {
 							dataFromFirebase = (snapshot.val() === 'undefined') ? 1 : snapshot.val();
 						}
-						usersRef.set(data, function (error) {
+						usersRef.set(userData, function (error) {
 							if (error) {
 								console.log('writing failed!');
 								return false;
@@ -67,22 +67,6 @@ let _Firebase = {
 				}
 			});
 		}
-
-
-		// usersRef.on("child_removed", function(snapshot){
-		// 	console.log(snapshot.val());
-		// });
-
-		// usersRef.on("child_changed", function(snapshot){
-		// 	console.log(snapshot.val());
-		// });
-
-		// usersRef.on("child_moved", function(snapshot){
-		// 	console.log(snapshot.val());
-		// });
-
-
-
 	}
 }
 
