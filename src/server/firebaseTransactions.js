@@ -3,14 +3,22 @@ const bigchainDB = require('./bigchandbTransactionExample');
 
 const bigchainDBTransaction= bigchainDB.Transactions.BigchainDBTransaction;
 
+// var config = {
+// 	apiKey: "AIzaSyAeNSO4Kh9cr4Gwhx0b9Vpsfv8Cwuh3YAs",
+// 	authDomain: "ecroom-6c0c6.firebaseapp.com",
+// 	databaseURL: "https://ecroom-6c0c6.firebaseio.com",
+// 	projectId: "ecroom-6c0c6",
+// 	storageBucket: "",
+// 	messagingSenderId: "358978607943"
+// };
 var config = {
-	apiKey: "AIzaSyAeNSO4Kh9cr4Gwhx0b9Vpsfv8Cwuh3YAs",
-	authDomain: "ecroom-6c0c6.firebaseapp.com",
-	databaseURL: "https://ecroom-6c0c6.firebaseio.com",
-	projectId: "ecroom-6c0c6",
-	storageBucket: "",
-	messagingSenderId: "358978607943"
-};
+    apiKey: "AIzaSyCKfSefhgtukqGPZAslH3-GYovrXNTVtYY",
+    authDomain: "udgt-7790b.firebaseapp.com",
+    databaseURL: "https://udgt-7790b.firebaseio.com",
+    projectId: "udgt-7790b",
+    storageBucket: "udgt-7790b.appspot.com",
+    messagingSenderId: "386121684282"
+  };
 
 const userid = 1;
 let _Firebase = {
