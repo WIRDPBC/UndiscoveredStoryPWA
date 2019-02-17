@@ -1,4 +1,3 @@
-# pwa-react-boilerplate
 
 
 
