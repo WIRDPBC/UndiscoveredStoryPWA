@@ -53,10 +53,6 @@ let _Firebase = {
 			let documentId = result.value.id;
 			db.collection("users").doc(documentId).update({ password: params.password });
 
-			// console.log(
-			// 	`${doc.id} => 'Email: ' ${doc.data().email},'Username: ' ${doc.data().username},'Password: ' ${doc.data().password},
-			// 	'LastLogin: '${date}`
-			// );
 		})
 	},
 
@@ -65,13 +61,7 @@ let _Firebase = {
 		let db = firebase.firestore();
 		var _doc = null;
 		db.collection("users").where(`email`, `==`, params.email).get().then((querySnapshot) => {
-			// querySnapshot.forEach((doc) => {
-			// 	let isPassword = bcrypt.compareSync(params.password, doc.data().password);
-			// 	let isEmail = (doc.data().email === params.email ? true : false);
-			// 	if (isPassword && isEmail) {
-			// 		return doc;
-			// 	}
-			// })
+			
 			let result = querySnapshot.docs.values().next();
 			let documentId = result.value.id;
 			var token = jwt.sign({ id: 'aiman' }, secretKey.secretKey, {
@@ -83,41 +73,6 @@ let _Firebase = {
 
 		})
 	},
-
-
-	//Original Code
-	// let _firebase = firebase.initializeApp(config);
-	// let ref = _firebase.database().ref();
-
-	// var usersRef = ref.child('users');
-	// var usersAssetRef = ref.child('assets');
-
-
-	// usersRef.on("value", function (snapshot) {
-	// 	snapshot.forEach(function (childSnapshot) {
-	// 		var childKey = childSnapshot.key;
-	// 		var childData = childSnapshot.val();
-
-	// 		if (childData.email === params.email) {
-	// 			console.log('params.email: ' + params.email);
-	// 			console.log('data.email: ' + childData.email);
-	// 			console.log('password: ' + bcrypt.compareSync(params.password, childData.password));
-
-	// 			if (bcrypt.compareSync(params.password, childData.password)) {
-	// 				console.log('params.email: ' + params.email);
-	// 				console.log('data.email: ' + childData.email);
-	// 				console.log('password: ' + bcrypt.compareSync(params.password, childData.password));
-	// 				console.log('logged in');
-	// 				return true;
-	// 			}
-	// 		}
-	// 	});
-
-	// }, function (errorObject) {
-	// 	console.log("The read failed: " + errorObject.code);
-	// });
-
-
 
 	createNewUser: function (params) {
 
@@ -145,70 +100,6 @@ let _Firebase = {
 			console.log(`Record Added with Doc ID: ${docID.id}`);
 
 		});
-
-
-
-
-		// Original Code
-		// let _firebase = firebase.initializeApp(config);
-		// let ref = _firebase.database().ref();
-
-		// var usersRef = ref.child('users');
-		// var usersAssetRef = ref.child('assets');
-
-		// if (usersRef !== null) {
-		// 	var transaction = bigchainDBTransaction.creatingTransaction();
-		// 	var userData = {
-		// 		email: params.email,
-		// 		password: passwordHash,
-		// 		username: params.username
-		// 	};
-
-		// 	var assets = {
-		// 		privateKey: transaction.privateKey,
-		// 		publicKey: transaction.publicKey,
-		// 		email: params.email,
-		// 		username: params.username
-		// 	};
-		// 	usersRef.once("value").then(function (snapshot) {
-		// 		if (!snapshot.exists()) {
-		// 			usersRef.push(userData, function (error) {
-		// 				if (error == null)
-		// 					console.log("Data Written");
-		// 				else
-		// 					console.log("Data writing failed");
-		// 			});
-		// 			usersAssetRef.push(assets, function (error) {
-		// 				if (error == null)
-		// 					console.log("Asset Created");
-		// 				else
-		// 					console.log("Asset Creation failed");
-		// 			});
-		// 		}
-
-		// 		else {
-		// 			usersRef.limitToLast(4).on("child_added", function (snapshot) {
-		// 				if (snapshot.key == "userid") {
-		// 					userData.userid = snapshot.val();
-		// 				}
-		// 				usersRef.push(userData, function (error) {
-		// 					if (error == null)
-		// 						console.log("Data Written");
-		// 					else
-		// 						console.log("Data writing failed");
-		// 				});
-		// 				usersAssetRef.push(assets, function (error) {
-		// 					if (error == null)
-		// 						console.log("Asset Created");
-		// 					else
-		// 						console.log("Asset Creation failed");
-		// 				});
-		// 			}, function (errorObject) {
-		// 				console.log('Failed: ' + errorObject.code);
-		// 			});
-		// 		}
-		// 	});
-		// }
 	},
 	SignupGoogle: function (params) {
 
@@ -224,24 +115,6 @@ let _Firebase = {
 
 	},
 	sendVerificationEmail: function (email, link) {
-
-		// var smtpConfig = {
-		// 	host: 'smtp.gmail.com',
-		// 	port: 465,
-		// 	secure: true, // use SSL
-		// 	auth: {
-		// 		user: 'udg@wirdwrld.com',
-		// 		pass: '!amstillstruggling'
-		// 	}
-		// };
-		// var smtpConfig = {
-		// 	service: 'gmail',
-		// 	auth: {
-		// 		user: 'aiman@wirdwrld.com',
-		// 		pass: '!amstillstruggling'
-		// 	}
-		// };
-
 
 		let transporter = nodemailer.createTransport({
 			host: 'smtp.gmail.com',
