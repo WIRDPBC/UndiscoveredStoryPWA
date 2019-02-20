@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/udg/', (req, res) => {
-	//	Firebase_CreateNewUser.sendVerificationEmail("ayman.afzal@gmail.com","https://udgt-7790b.firebaseapp.com/__/auth/action?mode=<action>&oobCode=<code>");
+	//Firebase_CreateNewUser.sendVerificationEmail("ayman.afzal@gmail.com","https://udgt-7790b.firebaseapp.com/__/auth/action?mode=<action>&oobCode=<code>");
 	Firebase_CreateNewUser.updateEmailAddress();
 	return;
 });
@@ -38,7 +38,7 @@ app.get('/udg/', (req, res) => {
 
 app.get('/udg/signup/:email/:password/', (req, res) => {
 	//console.log('GET');
-	// var returnedData = BigchainDBTransactions.creatingTransaction();
+	
 	// res.send({ express: returnedData });
 	Firebase_CreateNewUser.createNewUser(req.params);
 
@@ -58,33 +58,6 @@ app.get('/udg/signupGoogle/:email/:password/:username', (req, res) => {
 app.get('/udg/login/:email/:password', (req, res) => {
 	//console.log('GET');
 	Firebase_CreateNewUser.login(req.params);
-
-	// let dataFromLogin = login(req.params)
-	// 	.then((querySnapshot) => {
-	// 		querySnapshot.forEach((doc) => {
-	// 			let isPassword = bcrypt.compareSync(req.params.password, doc.data().password);
-	// 			let isEmail = (doc.data().email === req.params.email ? true : false);
-	// 			if (isPassword && isEmail) {
-
-	// 				return new Promise((resolve, reject) => {
-
-	// 					resolve(doc.data());
-	// 				});
-
-
-	// 			}
-	// 		})
-	// 	});
-	// dataFromLogin.then((resolved) => {
-	// 	console.log('resolved: ');
-	// 	console.log(resolved);
-	// }, (rejected) => {
-	// 	console.log('rejected: ');
-	// 	console.log(rejected);
-	// })
-
-
-
 });
 
 
@@ -93,15 +66,9 @@ app.post('/udg/', (req, res) => {
 	console.log(req.body);
 	console.log('POST');
 
-	res.send(
-		'I received your POST request. This is what you sent me: ${req.body.post}',
-	);
+	res.send('',	);
 });
 
-
-
-
-//app.listen(port, () => console.log('Listening on port ' + port));
 
 var server = http.createServer(app);
 reload(app);
