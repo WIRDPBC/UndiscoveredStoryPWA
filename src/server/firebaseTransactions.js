@@ -1,89 +1,176 @@
 const firebase = require('firebase');
 
+const bigchainDB = require('./bigchandbTransactionExample');
+const bcrypt = require('bcryptjs');
+const Firestore = require('@google-cloud/firestore');
 
+//mailer
+const nodemailer = require('nodemailer');
+
+
+//Token Creation
+const jwt = require('jsonwebtoken');
+const secretKey = require('./secretKey');
+
+const saltRounds = 10;
+
+const bigchainDBTransaction = bigchainDB.Transactions.BigchainDBTransaction;
+
+// var config = {
+// 	apiKey: "AIzaSyAeNSO4Kh9cr4Gwhx0b9Vpsfv8Cwuh3YAs",
+// 	authDomain: "ecroom-6c0c6.firebaseapp.com",
+// 	databaseURL: "https://ecroom-6c0c6.firebaseio.com",
+// 	projectId: "ecroom-6c0c6",
+// 	storageBucket: "",
+// 	messagingSenderId: "358978607943"
+// };
 var config = {
-	apiKey: "AIzaSyAeNSO4Kh9cr4Gwhx0b9Vpsfv8Cwuh3YAs",
-	authDomain: "ecroom-6c0c6.firebaseapp.com",
-	databaseURL: "https://ecroom-6c0c6.firebaseio.com",
-	projectId: "ecroom-6c0c6",
-	storageBucket: "",
-	messagingSenderId: "358978607943"
+	apiKey: "AIzaSyCKfSefhgtukqGPZAslH3-GYovrXNTVtYY",
+	authDomain: "udgt-7790b.firebaseapp.com",
+	databaseURL: "https://udgt-7790b.firebaseio.com",
+	projectId: "udgt-7790b",
+	storageBucket: "udgt-7790b.appspot.com",
+	messagingSenderId: "386121684282"
 };
 
-// For storing last max userid
 
+const userid = 1;
 
 let _Firebase = {
 	firebaseAuth: function () {
 		return firebase.initializeApp(config);
 	},
+	updatePassword: function (params) {
+		firebase.initializeApp(config);
+		let db = firebase.firestore();
+
+
+
+		db.collection("users").where(`email`, `==`, params.email).get().then((querySnapshot) => {
+
+			//let lastLogin= firebase.firestore.Timestamp.fromMillis(doc.data().lastLogin.seconds).toDate();
+			let result = querySnapshot.docs.values().next();
+			let documentId = result.value.id;
+			db.collection("users").doc(documentId).update({ password: params.password });
+
+		})
+	},
+
+	login: function (params) {
+		firebase.initializeApp(config);
+		let db = firebase.firestore();
+		var _doc = null;
+		db.collection("users").where(`email`, `==`, params.email).get().then((querySnapshot) => {
+			
+			let result = querySnapshot.docs.values().next();
+			let documentId = result.value.id;
+			var token = jwt.sign({ id: 'aiman' }, secretKey.secretKey, {
+				expiresIn: 86400 // expires in 24 hours
+			});
+
+			db.collection("users").doc(documentId).update({ lastLogin: firebase.firestore.Timestamp.now(),
+				authenticationToken: token })
+
+		})
+	},
+
 	createNewUser: function (params) {
 
-		let _firebase = firebase.initializeApp(config);
-		let ref = _firebase.database().ref();
-		var usersRef = ref.child('users');
-		var dataFromFirebase = null;
-		if (usersRef !== null) {
+		firebase.initializeApp(config);
+		let db = firebase.firestore();
 
-			var data = {
-				email: params.email,
-				password: params.password,
-				userid: 1,
-				username: params.username
-			};
+		var salt = bcrypt.genSaltSync(saltRounds);
+		var passwordHash = bcrypt.hashSync(params.password, salt);
+		//Bigchain DB
+		//Once stellar is configured then remove it
+		var transaction = bigchainDBTransaction.creatingTransaction();
 
-			usersRef.once("value").then(function (snapshot) {
-				if (!snapshot.exists()) {
-					usersRef.set(data, function (error) {
-						if (error) {
-							console.log('writing failed!');
-							return false;
-						}
-						else {
-							console.log('data written');
-							return true;
-						}
-					});
-				}
+		var userData = {
+			email: params.email,
+			password: passwordHash
+		};
 
-				else {
-					usersRef.limitToLast(4).on("child_added", function (snapshot) {
-						if (snapshot.key == "userid") {
-							dataFromFirebase = (snapshot.val() === 'undefined') ? 1 : snapshot.val();
-						}
-						usersRef.set(data, function (error) {
-							if (error) {
-								console.log('writing failed!');
-								return false;
-							}
-							else {
-								console.log('data written');
-								return true;
-							}
-						});
-					}, function (errorObject) {
-						console.log('Failed: ' + errorObject.code);
-					});
-				}
-			});
-		}
+		var assets = {
+			privateKey: transaction.privateKey,
+			publicKey: transaction.publicKey,
+			email: params.email
 
+		};
+		db.collection("users").add(userData).then((docID) => {
+			console.log(`Record Added with Doc ID: ${docID.id}`);
 
-		// usersRef.on("child_removed", function(snapshot){
-		// 	console.log(snapshot.val());
-		// });
+		});
+	},
+	SignupGoogle: function (params) {
 
-		// usersRef.on("child_changed", function(snapshot){
-		// 	console.log(snapshot.val());
-		// });
+		firebase.initializeApp(config);
+		var baseProvider = new firebase.auth.GoogleAuthProvider();
+		firebase.auth().signInWithPopup(baseProvider).then(function (result) {
+			console.log(result);
+			console.log("success... Google account linked");
+		}).catch(function (err) {
+			console.log(err);
+			console.log('Failed to connect!!!');
+		});
 
-		// usersRef.on("child_moved", function(snapshot){
-		// 	console.log(snapshot.val());
-		// });
+	},
+	sendVerificationEmail: function (email, link) {
 
+		let transporter = nodemailer.createTransport({
+			host: 'smtp.gmail.com',
+			port: 587,
+			secure: false,
+			requireTLS: true,
+			auth: {
+				user: 'udg@wirdwrld.com',
+				pass: '!amstillstruggling'
+			}
+		});
 
+		let mailOptions = {
+			from: 'udg@wirdwrld.com',
+			to: 'ayman.afzal@gmail.com',
+			subject: 'Test',
+			text: 'Hello World!'
+		};
 
+		transporter.sendMail(mailOptions, (error, info) => {
+			if (error) {
+				return console.log(error.message);
+			}
+			console.log('success');
+		});
 	}
+}
+
+
+module.exports.login = function login(params) {
+
+	firebase.initializeApp(config);
+	let db = firebase.firestore();
+	var _doc = null;
+
+	// db.collection("users").where(`email`, `==`, params.email).get().then((querySnapshot) => {
+	// 	// querySnapshot.forEach((doc) => {
+	// 	// 	let isPassword = bcrypt.compareSync(params.password, doc.data().password);
+	// 	// 	let isEmail = (doc.data().email === params.email ? true : false);
+	// 	// 	if (isPassword && isEmail) {
+	// 	// 		return doc;
+	// 	// 	}
+	// 	// })
+	// 	//let result = querySnapshot.docs.values().next();
+	// 	//return result.value;
+	// })
+
+	var token = jwt.sign({ id: 'aiman' }, secretKey.secretKey, {
+		expiresIn: 86400 // expires in 24 hours
+	});
+
+
+
+	console.log(token);
+	return db.collection("users").where(`email`, `==`, params.email).get();
+
 }
 
 
