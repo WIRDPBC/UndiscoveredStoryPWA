@@ -44,7 +44,7 @@ module.exports = ({prod = false, sw = false, prefix = ''} = {}) => {
 				include: path.resolve(__dirname, './src'),
 				loaders: 'babel-loader',
 				query: {
-                    presets: ['es2015', 'react']
+                    presets: ["@babel/preset-env", "@babel/preset-react"]
                 }
 			}, {
 				test: /\.css$/,

@@ -5,11 +5,22 @@
     "node": ">=6.0"
   },
   "dependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/plugin-proposal-class-properties": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
     "@material-ui/core": "^3.9.1",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "eslint": "^5.14.1",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-react": "^7.12.4",
     "history": "^3.0.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-router-dom": "^4.2.2"
+    "react-responsive-carousel": "^3.1.47",
+    "react-router-dom": "^4.2.2",
+    "semantic-ui-react": "^0.84.0"
   },
   "scripts": {
     "start": "webpack-dev-server",
@@ -20,15 +31,11 @@
   },
   "devDependencies": {
     "ava": "^0.17.0",
-    "babel-core": "^6.22.1",
-    "babel-loader": "^6.2.10",
-    "babel-preset-react-app": "^2.0.1",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.26.1",
     "enzyme": "^2.7.1",
     "eslint-config-xo": "^0.17.0",
     "eslint-config-xo-react": "^0.10.0",
-    "eslint-plugin-react": "^6.9.0",
     "file-loader": "0.9.0",
     "gh-pages": "^0.12.0",
     "html-webpack-plugin": "^2.26.0",

@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { createHashHistory } from 'history'
 import { BrowserRouter} from 'react-router-dom'
 import MainApp from '../components/MainApp'
 import '../index.css';

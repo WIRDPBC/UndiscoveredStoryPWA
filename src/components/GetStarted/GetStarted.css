@@ -1,0 +1,53 @@
+.get-started-container{
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+
+.get-started-heading-container{
+    height: 86px;
+    line-height: 86px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #707070;
+    font-family: HelveticaNeue;
+    display: table-row;
+}
+
+.get-started-carousel-container{
+    min-height: 515px;
+    background-color: #f2f2f2;
+    margin-left: 40px;
+    margin-right: 40px;
+    /* display: table-row; */
+}
+
+.get-started-login-container{
+    text-align: center;
+    display: table-row;
+}
+
+.get-started-already-account-container{
+    margin-top: 15px;
+}
+
+.get-started-already-account-text{
+    color: #707070;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: HelveticaNeue;
+}
+
+.get-started-login-text{
+    font-size: 14px;
+    font-weight: normal;
+    color: #3787d6;
+    font-family: HelveticaNeue;
+    cursor: pointer;
+}
+
+.get-started-login-text:hover{
+    color: #5F9FDE
+}
+
