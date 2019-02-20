@@ -16,10 +16,11 @@
 }
 
 .get-started-carousel-container{
-    min-height: 515px;
+    height: 515px;
     background-color: #f2f2f2;
     margin-left: 40px;
     margin-right: 40px;
+
     /* display: table-row; */
 }
 
@@ -49,5 +50,17 @@
 
 .get-started-login-text:hover{
     color: #5F9FDE
+}
+
+/******************************************* Carousel ********************************************/
+.carousel .control-dots{
+    position: absolute;
+    bottom: 0;
+    margin: 10px 0;
+    text-align: center;
+    width: 100%;
+    margin-block-start: 0px !important;
+    padding-inline-start: 0px !important;
+
 }
 
