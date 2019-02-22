@@ -1,5 +1,5 @@
 
-# Undiscovered Story Game Screen and (Stellar) Blockchain Architechture
+# Undiscovered Story PWA "Learn and Earn" Cryptocurrency Game.  Architechture built using the Stellar Blockchain 
 <p align="center">
 <!-- <img src="https://cloud.githubusercontent.com/assets/124117/22330270/bb6b2728-e408-11e6-9488-d041b317e1e4.png" height="400px"/> -->
 
