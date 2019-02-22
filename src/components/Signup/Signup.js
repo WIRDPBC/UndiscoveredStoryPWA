@@ -1,12 +1,18 @@
-import React, {PureComponent} from 'react'
+import React, {PureComponent, Fragment} from 'react'
 import PropTypes from 'prop-types'
+
+//import components..
+import AuthContainer from '../AuthContainer'
 
 
 
 class Signup extends PureComponent{
     render(){
         return (
-            <div>Signup Page..</div>
+            <Fragment>
+                <AuthContainer/>
+            </Fragment>
+            
         )
     }
 }
