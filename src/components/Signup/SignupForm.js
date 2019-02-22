@@ -1,0 +1,57 @@
+/**
+ * Created By Nikita Mittal
+ * 22nd Feb 2019
+ */
+
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+import { Input, Button, Checkbox } from 'semantic-ui-react'
+
+
+class SignupForm extends PureComponent {
+    static propTypes = {
+
+    }
+
+    static propTypes = {
+
+    }
+
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        return (
+            <div className="signup-form-container">
+                <div className="signup-form-heading-container">Sign Up</div>
+                <div className="signup-form-main-container">
+                    <div>
+                        <Input fluid />
+                    </div>
+                    <div className="signup-form-passowrd-container">
+                        <Input fluid />
+                    </div>
+                    <div className="signup-form-first-condition-container">
+                        <Checkbox style={{float: "left"}}/>
+                        <span className="signup-form-condition-text-container">I agree to the Terms & services and Privacy Policy of <br/>undiscovered story</span>
+                    </div>
+                    <div className="signup-form-second-condition-container">
+                        <Checkbox  style={{float: "left"}}/>
+                        <span className="signup-form-condition-text-container">I have read the above eligibility guidelines and certify <br/>
+                        that I am at least 16 years old and I am not a citizen of <br/>
+                        a restricted or banned country.    
+                        </span>
+                    </div>
+
+                    <div className="signup-form-button-container">
+                        <Button size="medium" style={{ width: "200px", height: "40px" }} primary>Sign Up</Button>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+
+export default SignupForm;
