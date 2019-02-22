@@ -6,6 +6,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Input, Button, Checkbox } from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
 
 
 class SignupForm extends PureComponent {
@@ -45,7 +46,9 @@ class SignupForm extends PureComponent {
                     </div>
 
                     <div className="signup-form-button-container">
+                    <Link to={'/home'}>
                         <Button size="medium" style={{ width: "200px", height: "40px" }} primary>Sign Up</Button>
+                    </Link>
                     </div>
                 </div>
             </div>

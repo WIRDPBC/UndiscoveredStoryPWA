@@ -45,7 +45,9 @@ class LoginForm extends PureComponent{
                 </div>
 
                 <div className="login-form-button-container">
+                    <Link to={'/home'}>
                     <Button size="medium" style={{width: "150px", height: "40px"}} primary>Login</Button>
+                    </Link>
                 </div>
                 <div className="login-form-login-with-container">Or login with</div>
 
