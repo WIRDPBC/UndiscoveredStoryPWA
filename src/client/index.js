@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter} from 'react-router-dom'
-import MainApp from '../components/MainApp'
+import MainApp from '../shared/components/MainApp'
 import '../index.css';
 
 //FIXME: Deprecated No need for the current browsers..
