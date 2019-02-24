@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/pwa-react-boilerplate/chrome-splashscreen-icon-384x384.png","278e8e66828770445f154633ef833971"],["/pwa-react-boilerplate/chrome-touch-icon-192x192.png","93ab3cc2a5b9cd3b8869e35b3b0a3d79"],["/pwa-react-boilerplate/commons.chunk.js.5a5678eb.js","e16e28916af3c594d665f7e4a04bb4a9"],["/pwa-react-boilerplate/favicon.ico","fd73a6eb26a08ee46e7fd3cc34e7f6bf"],["/pwa-react-boilerplate/index.html","da46afe2c61e376585a6c0bf3e2a29e8"],["/pwa-react-boilerplate/main.5a5678eb.js","b927e5dd2bef1a2c7a033e003a39f8a6"],["/pwa-react-boilerplate/manifest.json","98eb14c92e50a736e451383882d94175"],["/pwa-react-boilerplate/sw.5a5678eb.js","bc4aa743b92a25599c66b8c2f216ba1a"],["/pwa-react-boilerplate/vendor.5a5678eb.js","6c61d7c8d840675a05565b170f6cf384"]];
+var precacheConfig = [["/chrome-splashscreen-icon-384x384.png","278e8e66828770445f154633ef833971"],["/chrome-touch-icon-192x192.png","93ab3cc2a5b9cd3b8869e35b3b0a3d79"],["/commons.chunk.js.5a5678eb.js","e16e28916af3c594d665f7e4a04bb4a9"],["/favicon.ico","fd73a6eb26a08ee46e7fd3cc34e7f6bf"],["/index.html","da46afe2c61e376585a6c0bf3e2a29e8"],["/main.5a5678eb.js","b927e5dd2bef1a2c7a033e003a39f8a6"],["/manifest.json","98eb14c92e50a736e451383882d94175"],["/sw.5a5678eb.js","bc4aa743b92a25599c66b8c2f216ba1a"],["/vendor.5a5678eb.js","6c61d7c8d840675a05565b170f6cf384"]];
 var cacheName = 'sw-precache-v2-pwa-react-boilerplate-' + (self.registration ? self.registration.scope : '');
 
 

@@ -31,21 +31,21 @@
                     <div className="home-tab-badges-flex-container">
                         <div className="home-tab-newbie-badge-container">
                             <StarCircle size="super-massive"/>
-                            <div>Newbie</div>
+                            <div className="home-tab-badges-text-container">Newbie</div>
                         </div>
                        
                     </div>
                     <div className="home-tab-badges-flex-container">
                         <div className="home-tab-socialite-badge-container">
                             <StarCircle size="super-massive"/>
-                            <div>Socialite</div>
+                            <div className="home-tab-badges-text-container">Socialite</div>
                         </div>
                        
                     </div>
                     <div className="home-tab-badges-flex-container">
                         <div className="home-tab-king-at-last-container">
                             <StarCircle size="super-massive"/>
-                            <div>King at last</div>
+                            <div className="home-tab-badges-text-container">King at last</div>
                         </div>
                        
                     </div>
@@ -60,21 +60,21 @@
                     <div className="home-tab-badges-flex-container">
                         <div className="home-tab-newbie-badge-container">
                             <StarCircle size="super-massive"/>
-                            <div>Newbie</div>
+                            <div className="home-tab-badges-text-container">Newbie</div>
                         </div>
                        
                     </div>
                     <div className="home-tab-badges-flex-container">
                         <div className="home-tab-socialite-badge-container">
                             <StarCircle size="super-massive"/>
-                            <div>Socialite</div>
+                            <div className="home-tab-badges-text-container">Socialite</div>
                         </div>
                        
                     </div>
                     <div className="home-tab-badges-flex-container">
                         <div className="home-tab-king-at-last-container">
                             <StarCircle size="super-massive"/>
-                            <div>King at last</div>
+                            <div className="home-tab-badges-text-container">King at last</div>
                         </div>
                        
                     </div>
