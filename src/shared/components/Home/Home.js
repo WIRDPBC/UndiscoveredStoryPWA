@@ -12,6 +12,7 @@ import './Home.css'
 
 //import components
 import Navigation from '../../icons/Navigation'
+import HomeTab from './HomeTab';
 
 class Home extends PureComponent {
     static propTypes = {
@@ -51,6 +52,7 @@ class Home extends PureComponent {
                     </div>
 
                 </div>
+                <HomeTab />
             </div>
         )
     }
