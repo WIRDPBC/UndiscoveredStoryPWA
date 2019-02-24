@@ -168,4 +168,68 @@
 }
 
 
+.home-tab-donation-badge-container{
+    padding-top: 17px;
+    padding-bottom: 17px;
+    padding-left: 20px;
+    /* padding-right: 20px; */
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.home-tab-donation-text-container{
+    font-family: HelveticaNeue;
+    font-size: 13px;
+    color: #707070;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.home-tab-donation-star-badges-container{
+    display: flex;
+    display: -webkit-flex;
+}
+
+.home-tab-badges-flex-container{
+    flex: 1 1 auto;
+}
+
+.home-tab-newbie-badge-container{
+    width: 60px;
+    text-align: center;
+}
+
+.home-tab-socialite-badge-container{
+    min-width: 60px;
+    text-align: center;
+}
+
+.home-tab-king-at-last-container{
+    min-width: 60px;
+    text-align: center;
+    float: right;
+    margin-right: 5px;
+}
+
+
+.home-tab-refer-badge-container{
+    padding-top: 17px;
+    padding-bottom: 17px;
+    padding-left: 20px;
+    /* padding-right: 20px; */
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.home-tab-refer-text-container{
+    font-family: HelveticaNeue;
+    font-size: 13px;
+    color: #707070;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
 

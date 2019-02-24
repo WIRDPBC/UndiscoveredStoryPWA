@@ -30,6 +30,9 @@ export const getSizeDimension = (size) => {
     }else if(size === "massive"){
       style.width = "30px"
       style.height = "30px"
+    } else if(size === "super-massive"){
+        style.width = "35px"
+        style.height = "35px"
     }
   
     return style
