@@ -233,6 +233,10 @@
     color: #707070;
 }
 
+.home-container .ui.thin.left.sidebar, .ui.thin.right.sidebar{
+    width: auto !important;
+}
+
 
 
 
