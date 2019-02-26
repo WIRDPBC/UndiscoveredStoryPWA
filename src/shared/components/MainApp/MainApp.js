@@ -12,6 +12,7 @@ import Signup from '../Signup'
 import Home from '../Home'
 import StartGame from '../StartGame'
 import NotFound from '../NotFound'
+import Quiz from '../Quiz';
 
 
 function MainApp(props) {
@@ -23,6 +24,7 @@ function MainApp(props) {
                 <Route path="/signup" component={Signup} />
                 <Route path="/home" component={Home} />
                 <Route path="/start-game" component={StartGame} />
+                <Route path="/questions" component={Quiz}/>
                 <Route component={NotFound}/>
             </Switch>
         </div>
