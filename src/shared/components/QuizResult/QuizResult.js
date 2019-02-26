@@ -6,6 +6,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Grid, GridColumn, Button } from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
 
 //import css
 import './QuizResult.css'
@@ -82,7 +83,9 @@ class QuizResult extends PureComponent {
                             <Button content="Invite Friends" primary basic className="quiz-result-invite-friend-button" style={{width: "283px", height: "40px", background: "#ffffff !important"}}/>
                         </div>
                         <div className="quiz-result-leaderboard-container">
-                            <Button content="Leaderboard" primary style={{width: "283px", height: "40px"}}/>
+                            <Link to={'/leaderboard'}>
+                                <Button content="Leaderboard" primary style={{width: "283px", height: "40px"}}/>
+                            </Link>
                         </div>
                         
                        

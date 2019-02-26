@@ -14,6 +14,7 @@ import StartGame from '../StartGame'
 import NotFound from '../NotFound'
 import Quiz from '../Quiz';
 import QuizResult from '../QuizResult';
+import Leaderboard from '../Leaderboard'
 
 
 function MainApp(props) {
@@ -27,6 +28,7 @@ function MainApp(props) {
                 <Route path="/start-game" component={StartGame} />
                 <Route path="/questions" component={Quiz}/>
                 <Route path="/quiz-result" component={QuizResult}/>
+                <Route path="/leaderboard" component={Leaderboard} />
                 <Route component={NotFound}/>
             </Switch>
         </div>
