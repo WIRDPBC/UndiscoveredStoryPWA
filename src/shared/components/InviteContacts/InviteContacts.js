@@ -13,33 +13,45 @@ import './InviteContacts.css'
 import TopHeaderClose from '../TopHeaderClose'
 import InviteContactsItem from './InviteContactsItem'
 import InviteContactsEmpty from './InviteContactsEmpty';
+import SuccessDialog from '../SucessDialog';
 
 
 class InviteContacts extends PureComponent{
     constructor(props){
         super(props)
+        this.state = {
+            isDialogOpened: false
+        }
+    }
+
+    onOpenDialog = () => {
+        this.setState({
+            isDialogOpened : true
+        })
     }
 
     render(){
+        const {isDialogOpened} = this.state
         return (
             <Fragment>
                 <TopHeaderClose title="Invite Contacts"/>
                 <div className="invite-contact-container">
-                    <InviteContactsItem />
-                    <InviteContactsItem />
-                    <InviteContactsItem />
-                    <InviteContactsItem />
-                    <InviteContactsItem />
+                    <InviteContactsItem onClick={this.onOpenDialog}/>
+                    <InviteContactsItem onClick={this.onOpenDialog}/>
+                    <InviteContactsItem onClick={this.onOpenDialog}/>
+                    <InviteContactsItem onClick={this.onOpenDialog}/>
+                    <InviteContactsItem onClick={this.onOpenDialog}/>
 
                 </div>
                 <div className="invite-contact-container" style={{marginTop: "50px"}}>
-                    <InviteContactsItem />
-                    <InviteContactsItem />
-                    <InviteContactsItem />
+                    <InviteContactsItem onClick={this.onOpenDialog}/>
+                    <InviteContactsItem onClick={this.onOpenDialog}/>
+                    <InviteContactsItem onClick={this.onOpenDialog}/>
                     <InviteContactsEmpty />
                     <InviteContactsEmpty />
 
                 </div>
+                <SuccessDialog isDialogOpened={isDialogOpened}/>
             </Fragment>
         )
     }
