@@ -27,12 +27,12 @@ class AuthContainer extends PureComponent{
     render(){
         return (
             <Grid columns={2} style={{padding: 0}} className="auth-container">
-                <Grid.Column width={10} style={{padding: 0}}>
+                <Grid.Column width={10} style={{padding: 0}} className="auth-container-image-grid-container">
                     <div className="auth-container-image-container">
                         <div className="auth-container-image-placeholder"></div>
                     </div>
                 </Grid.Column>
-                <Grid.Column width={6} style={{padding: 0}}>
+                <Grid.Column width={6} style={{padding: 0}} className="auth-container-form-grid-container">
                     <div className="auth-container-form-container">
                         {this.props.children}
                     </div>

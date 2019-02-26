@@ -29,13 +29,15 @@
 }
 
 .signup-form-button-container{
-    margin-top: 50px;
+    margin-top: 70px;
     text-align: center;
 }
 
 .signup-form-first-condition-container{
     margin-top: 30px;
     height: 50px;
+    display: flex;
+    display: -webkit-flex;
 }
 
 .signup-form-condition-text-container{
@@ -52,6 +54,8 @@
 .signup-form-second-condition-container{
     margin-top: 10px;
     height: 50px;
+    display: flex;
+    display: -webkit-flex;
 }
 
 
