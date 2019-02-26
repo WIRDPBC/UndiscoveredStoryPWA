@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom'
 //import css
 import './StartGame.css'
 import BackIcon from '../../icons/BackIcon';
+import BackBtn from '../BackBtn/BackBtn';
 
 class StartGame extends PureComponent {
     static propTypes = {
@@ -29,8 +30,7 @@ class StartGame extends PureComponent {
         return (
             <div className="start-game-container">
                 <div className="start-game-header-container">
-                    <BackIcon size="tiny" style={{ position: "relative", top: "3px", cursor: "pointer" }} />
-                    <div className="start-game-back-container">Back</div>
+                    <BackBtn />
                     <div className="start-game-header-text-container">Game - 01</div>
                 </div>
                 <Grid className="start-game-data-container" style={{ padding: "0 0 0 55px" }}>

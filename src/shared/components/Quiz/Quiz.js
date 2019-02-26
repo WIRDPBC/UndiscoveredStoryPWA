@@ -6,6 +6,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types';
 import { Progress } from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
 
 //import css
 import './Quiz.css'
@@ -50,14 +51,17 @@ class Quiz extends PureComponent {
                     <div className="quiz-explaination-content-container">
                     Contrary to popular belief, Lorem Ipsum is not simply random text. 
 
-It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. 
+                    It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. 
 
-Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur
+                    Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur
                     </div>
                 </div>
-                <div className="quiz-question-header-container">
-                    <QuestionCenterIcon style={{ width: "130px", height: "130px" }} />
-                </div>
+                <Link to={'/quiz-result'}>
+                    <div className="quiz-question-header-container">
+                        <QuestionCenterIcon style={{ width: "130px", height: "130px" }} />
+                    </div>
+                </Link>
+               
                 <div className="quiz-question-text-container">
                     1. Who was the African American who sang “Cosi Fan Tutte” with George Shirley.
                 </div>

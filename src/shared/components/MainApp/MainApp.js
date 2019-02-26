@@ -13,6 +13,7 @@ import Home from '../Home'
 import StartGame from '../StartGame'
 import NotFound from '../NotFound'
 import Quiz from '../Quiz';
+import QuizResult from '../QuizResult';
 
 
 function MainApp(props) {
@@ -25,6 +26,7 @@ function MainApp(props) {
                 <Route path="/home" component={Home} />
                 <Route path="/start-game" component={StartGame} />
                 <Route path="/questions" component={Quiz}/>
+                <Route path="/quiz-result" component={QuizResult}/>
                 <Route component={NotFound}/>
             </Switch>
         </div>
