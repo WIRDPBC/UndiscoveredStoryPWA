@@ -248,6 +248,10 @@
         margin-right: 20px;
         /* display: table-row; */
     }
+
+    .home-container .ui.thin.left.sidebar, .ui.thin.right.sidebar {
+        width: 250px !important;
+    }
     
 } 
 
@@ -260,6 +264,10 @@
         margin-right: 40px;
         /* display: table-row; */
     }
+
+    .home-container .ui.thin.left.sidebar, .ui.thin.right.sidebar {
+        width: 350px !important;
+    }
     
 } 
 
@@ -271,6 +279,10 @@
         margin-left: 60px;
         margin-right: 60px;
         /* display: table-row; */
+    }
+
+    .home-container .ui.thin.left.sidebar, .ui.thin.right.sidebar {
+        width: 450px !important;
     }
 } 
 
