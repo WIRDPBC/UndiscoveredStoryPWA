@@ -5,6 +5,7 @@
 
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom'
 
 //import css
 import './EarnToken.css'
@@ -38,22 +39,24 @@ class EarnToken extends PureComponent {
     }
 
     render() {
-        const {visible} = this.state
+        const { visible } = this.state
         return (
             <Navigator visible={visible} onCloseSidebar={this.onCloseSidebar}>
                 <Fragment>
                     <TopHeader onOpenSidebar={this.onOpenSidebar} title="Earn Tokens" />
                     <div className="earn-token-container">
-                    <div className="earn-token-card-container">
-                        <img style={{width: "87.3px", height: "87.3px", position:"relative", top:"33px"}} src={InviteUserIcon} alt="Invite User Icon" />
-                        <div className="earn-token-card-title-container">Invite Friends</div>
-                        <div className="earn-token-card-description-container">Get 3 UDSG tokens for every friend who signs up and plays the game</div>
-                    </div>
-                    <div className="earn-token-card-container">
-                        <img style={{width: "87.3px", height: "87.3px", position:"relative", top:"33px"}} src={AdvertisingIcon} alt="Advertising Icon" />
-                        <div className="earn-token-card-title-container">Advertising OPT</div>
-                        <div className="earn-token-card-description-container">Get 3 UDSG tokens for every friend who signs up and plays the game</div>
-                    </div>
+                        <Link to="/invite-friends">
+                            <div className="earn-token-card-container">
+                                <img style={{ width: "87.3px", height: "87.3px", position: "relative", top: "33px" }} src={InviteUserIcon} alt="Invite User Icon" />
+                                <div className="earn-token-card-title-container">Invite Friends</div>
+                                <div className="earn-token-card-description-container">Get 3 UDSG tokens for every friend who signs up and plays the game</div>
+                            </div>
+                        </Link>
+                        <div className="earn-token-card-container">
+                            <img style={{ width: "87.3px", height: "87.3px", position: "relative", top: "33px" }} src={AdvertisingIcon} alt="Advertising Icon" />
+                            <div className="earn-token-card-title-container">Advertising OPT</div>
+                            <div className="earn-token-card-description-container">Get 3 UDSG tokens for every friend who signs up and plays the game</div>
+                        </div>
 
                     </div>
                 </Fragment>

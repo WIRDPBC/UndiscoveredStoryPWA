@@ -1,0 +1,89 @@
+.invite-friends-container{
+    height: calc(100% - 50px);
+    display: table;
+    width: 100%;
+}
+
+.invite-friends-grid-container{
+    height: 100%;
+}
+
+.invite-friends-invite-image-container{
+    height: 60%;
+}
+
+.invite-friends-invite-text-container{
+    height: 40%;
+}
+
+.invite-friends-invite-image-data-container{
+    text-align: center;
+    width: 100%;
+    padding-top: 33px;
+}
+
+.invite-friends-text-one-container{
+    font-family: HelveticaNeue;
+    font-size: 16px;
+    margin-top: 20px;
+    color: #707070;
+}
+
+.invite-friends-terms-and-conditions-container{
+    margin-top: 10px;
+    font-family: HelveticaNeue;
+    font-size: 12px;
+    color: #3787d6;
+}
+
+.invite-friends-button-container{
+    margin-top: 20px;
+}
+
+.invite-friends-referral-container{
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.invite-friends-or-text-container{
+    font-family: HelveticaNeue;
+    font-size: 14px;
+    color: #707070;
+}
+
+.invite-friends-share-your-text-container{
+    opacity: 0.5;
+    font-family: HelveticaNeue;
+    font-size: 13px;
+    color: #707070;
+    margin-top: 10px;
+}
+
+.invite-friends-referral-text-container{
+    height: 40px;
+    line-height: 40px;
+    margin-top: 20px;
+    /* width: 400px; */
+    display: flex;
+    justify-content: center;
+    /* text-align: center; */
+}
+
+.invite-friends-referral-text{
+    width: 400px;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+    color: #707070;
+    font-family: HelveticaNeue;
+}
+
+.invite-friends-referral-copy-text{
+    float: right;
+    padding-right: 10px;
+    color: #3787d6;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: bold
+}
+

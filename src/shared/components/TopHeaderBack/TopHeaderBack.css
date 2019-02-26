@@ -1,0 +1,18 @@
+.top-header-back-container{
+    display: flex;
+    display: -webkit-flex;
+    height: 50px;
+    line-height: 50px;
+    background-color: rgba(240, 240, 240, 0.38);
+    padding-left: 22px;
+    padding-right: 22px;
+}
+
+.top-header-back-text-container{
+    flex: 1 1 auto;
+    text-align: center;
+    color: #707070;
+    font-size: 15px;
+    font-family: HelveticaNeue;
+    padding-right: 63px;
+}
