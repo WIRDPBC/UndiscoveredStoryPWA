@@ -30,8 +30,15 @@ class InviteContacts extends PureComponent{
         })
     }
 
+    onCloseDialog = () => {
+        this.setState({
+            isDialogOpened: false
+        })
+    }
+
     render(){
         const {isDialogOpened} = this.state
+        
         return (
             <Fragment>
                 <TopHeaderClose title="Invite Contacts"/>
@@ -51,7 +58,7 @@ class InviteContacts extends PureComponent{
                     <InviteContactsEmpty />
 
                 </div>
-                <SuccessDialog isDialogOpened={isDialogOpened}/>
+                <SuccessDialog isDialogOpened={isDialogOpened} onClose={this.onCloseDialog}/>
             </Fragment>
         )
     }

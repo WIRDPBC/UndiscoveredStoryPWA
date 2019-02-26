@@ -64,3 +64,74 @@
 
 }
 
+.get-started-carousel-background-container{
+    height: 515px
+}
+
+
+
+
+/************************************************ Responsive Designs ******************************************/
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .get-started-carousel-container{
+        min-height: 350px;
+        max-height: 400px;
+        background-color: #f2f2f2;
+        margin-left: 40px;
+        margin-right: 40px;
+    
+        /* display: table-row; */
+    }
+    .get-started-carousel-background-container{
+        height: 350px;
+    }
+    
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .get-started-carousel-container{
+        min-height: 400px;
+        max-height: 500px;
+        background-color: #f2f2f2;
+        margin-left: 40px;
+        margin-right: 40px;
+    
+        /* display: table-row; */
+    }
+
+    .get-started-carousel-background-container{
+        min-height: 500px;
+        max-height: 515px;
+    }
+    
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .get-started-carousel-container{
+        height: 450px;
+        background-color: #f2f2f2;
+        margin-left: 40px;
+        margin-right: 40px;
+    
+        /* display: table-row; */
+    }
+
+    .get-started-carousel-background-container{
+        height: 450px;
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}
+

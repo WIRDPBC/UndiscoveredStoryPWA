@@ -20,11 +20,11 @@ class SuccessDialog extends PureComponent{
 
     render(){
 
-        const {isDialogOpened} = this.props
+        const {isDialogOpened, onClose} = this.props
         return (
             <Modal size="mini" open={isDialogOpened} className="success-dialog-container">
                 <div className="sucess-dialog-header-container">
-                <CloseIcon size="tiny" style={{position:"relative", top: "28px"}}/>
+                <CloseIcon size="tiny" style={{position:"relative", top: "28px", cursor:"pointer"}} onClick={onClose}/>
                 <div className="success-dialog-header-text-container">Success Message</div>
 
                 </div>
@@ -35,7 +35,7 @@ class SuccessDialog extends PureComponent{
                         You just earned 30 tokens for inviting 10 friends</div>
                 </div>
                 <div className="sucess-dialog-footer-container">
-                    <Button content="Got it" primary style={{width:"115px", height:"40px"}} />
+                    <Button content="Got it" primary style={{width:"115px", height:"40px"}} onClick={onClose}/>
                 </div>
 
             </Modal>

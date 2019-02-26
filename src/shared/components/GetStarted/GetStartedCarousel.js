@@ -41,16 +41,16 @@ class GetStartedCarousel extends PureComponent{
     render(){
         return (
             <Carousel style={{height: "inherit"}} showThumbs={false} showArrows={false} showThumbs={false} dynamicHeight showStatus={false} onClickItem={this.onClick} onChange={this.onChangePosition} centerMode emulateTouch>
-            <div style={{height: "515px", backgroundColor: "#f2f2f2"}}>
+            <div style={{backgroundColor: "#f2f2f2"}} className="get-started-carousel-background-container">
                
             </div>
-            <div  style={{height: "515px", backgroundColor: "#f2f2f2"}}>
+            <div  style={{backgroundColor: "#f2f2f2"}} className="get-started-carousel-background-container">
                
             </div>
-            <div  style={{height: "515px", backgroundColor: "#f2f2f2"}}>
+            <div  style={{ backgroundColor: "#f2f2f2"}} className="get-started-carousel-background-container">
              
             </div>
-            <div  style={{height: "515px", backgroundColor: "#f2f2f2"}}>
+            <div  style={{ backgroundColor: "#f2f2f2"}} className="get-started-carousel-background-container">
              
              </div>
         </Carousel>
