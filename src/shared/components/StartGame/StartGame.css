@@ -72,3 +72,53 @@
 .ui.grid{
     margin: 0 !important
 }
+
+
+/********************************************* Responsive Designs *************************************/
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 320px) {
+    .start-game-content-heading-container{
+        margin-top: 15px;
+        height: 30px;
+        line-height: 30px;
+        font-family: HelveticaNeue;
+        font-size: 20px;
+        /* font-weight: bold; */
+        color: #707070;
+    }
+
+    .start-game-content-text-container{
+        height: 30px;
+        line-height: 30px;
+        font-family: HelveticaNeue;
+        color: #707070
+    }
+} 
+
+
+@media only screen and (max-width: 600px) {
+
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    
+    
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+   
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}
