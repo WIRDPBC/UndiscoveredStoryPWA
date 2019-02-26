@@ -36,7 +36,7 @@ class QuizResult extends PureComponent {
                         <div className="quiz-result-score-text-container">Score</div>
                         <div className="quiz-result-score-point-text">19</div>
                         <Grid style={{ padding: 0 }}>
-                            <GridColumn style={{ padding: "0 100px 0 0" }} width={8}>
+                            <GridColumn  width={8} className="quiz-result-earned-grid-container">
                                 <div className="quiz-token-earned-container">
                                     <div className="quiz-token-text-container">Token Earned</div>
                                     <div className="quiz-token-amount-container">19</div>
@@ -44,7 +44,7 @@ class QuizResult extends PureComponent {
 
 
                             </GridColumn>
-                            <GridColumn style={{ padding: "0 0 0 100px" }} width={8}>
+                            <GridColumn  width={8} className="quiz-result-lost-grid-container">
                                 <div className="quiz-token-lost-container">
                                     <div className="quiz-token-text-container">Token Lost</div>
                                     <div className="quiz-token-amount-container">3</div>
@@ -54,7 +54,7 @@ class QuizResult extends PureComponent {
                         </Grid>
                         <div className="quiz-stats-container">
                         <Grid style={{ padding: 0 }}>
-                            <GridColumn style={{ padding: "0 100px 0 0" }} width={8}>
+                            <GridColumn  width={8} className="quiz-stats-header-grid-container">
                                 <div className="quiz-stats-header-container">
                                     <div className="quiz-stats-data-text-container">Correct Answer</div>
                                     <div className="quiz-stats-data-text-container">Incorrect</div>
@@ -64,7 +64,7 @@ class QuizResult extends PureComponent {
 
 
                             </GridColumn>
-                            <GridColumn style={{ padding: "0 0 0 100px" }} width={8}>
+                            <GridColumn  width={8} className="quiz-stats-game-data-grid-container">
                                 <div className="quiz-stats-game-data-container">
                                     <div className="quiz-stats-data-text-container">19</div>
                                     <div className="quiz-stats-data-text-container">3</div>
