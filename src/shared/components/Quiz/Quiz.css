@@ -49,6 +49,11 @@
     justify-content: center;
 }
 
+.quiz-question-center-icon-container{
+    width: 130px !important;
+    height: 130px !important;
+}
+
 .quiz-question-text-container{
     display: flex;
     justify-content: center;
@@ -73,6 +78,7 @@
 
 .quiz-last-option-container{
     margin-top: 30px;
+    height: 100%;
 }
 
 .quiz-initial-option-container{
@@ -95,15 +101,32 @@
     border-bottom: solid 0.5px rgba(112, 112, 112, 0.2);
 }
 
+.quiz-option-odd-image{
+    width: 134px !important; 
+    height: 90px !important;
+}
+
+.quiz-option-even-image{
+    width: 134px !important; 
+    height: 90px !important;
+    float: right !important;
+}
+
 .quiz-option-odd-text-container{
     height: 30px;
     line-height: 30px;
+    font-size: 14px;
+    color: #707070;
+    font-family: HelveticaNeue
 }
 
 .quiz-option-even-text-container{
     height: 30px;
     line-height: 30px;
     margin-top: 90px;
+    font-size: 14px;
+    color: #707070;
+    font-family: HelveticaNeue
 }
 
 .quiz-explaination-container{
@@ -127,3 +150,136 @@
 .quiz-explaination-content-container{
     color: #707070
 }
+
+.quiz-explaination-mobile-container{
+    /* background-color: #f0f0f0; */
+    padding: 20px;
+    margin-top: 20px;
+
+}
+
+.quiz-explaination-mobile-text-container{
+    color: #707070;
+    font-family: HelveticaNeue;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.quiz-explaination-mobile-content-container{
+    color: #707070
+}
+
+
+
+
+/************************************************ Responsive Design ********************************************/
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+ 
+    .quiz-question-center-icon-container{
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .quiz-question-text-container{
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+        text-align: center;
+        font-family: HelveticaNeue;
+        font-size: 15px;
+        font-weight: 500;
+        color: #707070;
+    }
+
+    .quiz-question-option-data{
+        width: 300px;
+    }
+
+    .quiz-initial-option-container{
+        height: 120px;
+    }
+
+    .quiz-last-option-container{
+        margin-top: 30px;
+        height: 120px;
+    }
+
+    .quiz-option-odd-text-container{
+        height: 20px;
+        line-height: 20px;
+        font-size: 12px;
+        color: #707070;
+        font-family: HelveticaNeue
+    }
+    
+    .quiz-option-even-text-container{
+        height: 20px;
+        line-height: 20px;
+        margin-top: 74px;
+        font-size: 12px;
+        color: #707070;
+        font-family: HelveticaNeue
+    }
+
+    .quiz-option-odd-image{
+        width: 100px !important; 
+        height: 70px !important;
+    }
+    
+    .quiz-option-even-image{
+        width: 100px !important; 
+        height: 70px !important;
+        float: right !important;
+    }
+
+    .quiz-explaination-container{
+        visibility: hidden;
+    }
+    
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+    .quiz-explaination-container{
+        visibility: hidden;
+    }
+    
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .quiz-explaination-mobile-container{
+        visibility: visible;
+        position: absolute;
+        bottom: 0;
+    }
+    .quiz-explaination-container{
+        visibility: hidden;
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .quiz-explaination-mobile-container{
+        visibility: visible;
+        position: absolute;
+        bottom: 0;
+    }
+    .quiz-explaination-container{
+        visibility: hidden;
+    }
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .quiz-explaination-mobile-container{
+        visibility: hidden;
+    }
+    .quiz-explaination-container{
+        visibility: visible;
+    }
+}
+

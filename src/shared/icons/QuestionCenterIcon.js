@@ -13,7 +13,7 @@ import { getSizeDimension } from './utils'
 const QuestionCenterIcon = ({ fill, size, style, className, circleClassName, onClick, id }) => {
     const sizeStyle = getSizeDimension(size)
     return (
-        <svg style={{ ...sizeStyle, ...style }} onClick={onClick} id="ART" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink" viewBox="0 0 48 48">
+        <svg style={{ ...sizeStyle, ...style }} onClick={onClick} className={className} id="ART" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink" viewBox="0 0 48 48">
             <defs>
                 <linearGradient id="linear-gradient" x1="-9.2" y1="57.2" x2="37.52" y2="10.48" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#273a9b" /><stop offset="0.56" stop-color="#202f65" /><stop offset="1" stop-color="#021e2f" />
                 </linearGradient>

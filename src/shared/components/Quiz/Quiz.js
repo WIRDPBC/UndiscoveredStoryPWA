@@ -58,7 +58,7 @@ class Quiz extends PureComponent {
                 </div>
                 <Link to={'/quiz-result'}>
                     <div className="quiz-question-header-container">
-                        <QuestionCenterIcon style={{ width: "130px", height: "130px" }} />
+                        <QuestionCenterIcon className="quiz-question-center-icon-container" />
                     </div>
                 </Link>
                
@@ -72,14 +72,14 @@ class Quiz extends PureComponent {
                         <IncorrectOption style={{position: "relative",bottom: "7px",right: "10px"}}/>
                             <div className="quiz-odd-option-container">
                               
-                                <OptionOne style={{ width: "134px", height: "90px"}} className="quiz-option-image-container" />
+                                <OptionOne className="quiz-option-image-container quiz-option-odd-image" />
                                 <div className="quiz-option-odd-text-container">Camilla Williams</div>
                               
                             </div>
                             {/* <CorrectOption style={{position: "relative",bottom: "7px",right: "10px", float:"right"}}/> */}
                             <IncorrectOption  style={{position: "relative",bottom: "7px",right: "10px", float:"right"}}/>
                             <div className="quiz-even-option-container">
-                                <OptionOne style={{ width: "134px", height: "90px", float: "right" }} className="quiz-option-image-container"/>
+                                <OptionOne className="quiz-option-image-container quiz-option-even-image"/>
                                 <div className="quiz-option-even-text-container">Camilla Williams</div>
                             </div>
                            
@@ -89,21 +89,29 @@ class Quiz extends PureComponent {
                         {/* <CorrectOption style={{position: "relative",bottom: "7px",right: "10px"}}/> */}
                         <IncorrectOption style={{position: "relative",bottom: "7px",right: "10px"}}/>
                             <div className="quiz-odd-option-container">
-                                <OptionOne style={{ width: "134px", height: "90px" }} className="quiz-option-image-container"/>
+                                <OptionOne className="quiz-option-image-container quiz-option-odd-image"/>
                                 <div className="quiz-option-odd-text-container">Camilla Williams</div>
                             </div>
                             {/* <CorrectOption style={{position: "relative",bottom: "7px",right: "10px", float:"right"}}/> */}
                             <IncorrectOption  style={{position: "relative",bottom: "7px",right: "10px", float:"right"}}/>
                             <div className="quiz-even-option-container">
-                                <OptionOne style={{ width: "134px", height: "90px", float: "right" }} className="quiz-option-image-container"/>
+                                <OptionOne className="quiz-option-image-container quiz-option-even-image"/>
                                 <div className="quiz-option-even-text-container">Camilla Williams</div>
                             </div>
                         </div>
 
 
                     </div>
-                    <div>
+                </div>
 
+               <div className="quiz-explaination-mobile-container">
+                    <div className="quiz-explaination-mobile-text-container">Explanation Text:</div>
+                    <div className="quiz-explaination-mobile-content-container">
+                    Contrary to popular belief, Lorem Ipsum is not simply random text. 
+
+                    It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. 
+
+                    Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur
                     </div>
                 </div>
 
