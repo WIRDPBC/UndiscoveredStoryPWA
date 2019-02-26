@@ -16,6 +16,7 @@ import Quiz from '../Quiz';
 import QuizResult from '../QuizResult';
 import Leaderboard from '../Leaderboard'
 import MyWallet from '../MyWallet';
+import EarnToken from '../EarnToken'
 
 
 function MainApp(props) {
@@ -31,6 +32,7 @@ function MainApp(props) {
                 <Route path="/quiz-result" component={QuizResult}/>
                 <Route path="/leaderboard" component={Leaderboard} />
                 <Route path="/wallet" component={MyWallet} />
+                <Route path="/earn-token" component={EarnToken} />
                 <Route component={NotFound}/>
             </Switch>
         </div>
