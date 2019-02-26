@@ -6,6 +6,7 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Grid, GridRow, Button } from 'semantic-ui-react';
+import {Link} from 'react-router-dom'
 
 //import css
 import './InviteFriends.css'
@@ -33,7 +34,9 @@ class InviteFriends extends PureComponent {
                                 <div className="invite-friends-text-one-container">Get 3 USDG tokens for every friend who signs up and plays the game</div>
                                 <div className="invite-friends-terms-and-conditions-container">Terms & conditions</div>
                                 <div className="invite-friends-button-container">
-                                    <Button primary content="Invite Contacts" style={{ width: "400px", height: "40px" }} />
+                                    <Link to={'/invite-contacts'}>
+                                        <Button primary content="Invite Contacts" style={{ width: "400px", height: "40px" }} />
+                                    </Link>
                                 </div>
 
                             </div>

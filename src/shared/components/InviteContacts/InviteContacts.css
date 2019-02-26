@@ -1,0 +1,45 @@
+
+.invite-contact-container{
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    /* padding-left: 350px; */
+    margin-top: 30px;
+}
+/****************************************** Invite Contacts Item ************************************/
+
+.invite-contacts-item-container{
+    width: 150px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.invite-contacts-item-text{
+    margin-top: 10px;
+    font-family: HelveticaNeue;
+  font-size: 13px;
+  color: #707070;
+}
+
+
+/***************************************** Invite Contacts Empty *************************************/
+
+.invite-contact-empty-circle{
+    height: 42px;
+    width: 42px;
+    background: #707070;
+    border-radius: 42px;
+    opacity: 0.4;
+    margin-left: 10px;
+}
+
+.invite-contact-empty-text{
+    opacity: 0.4;
+    width: 62px;
+    height: 10px;
+    border-radius: 47px;
+    background-color: #707070;
+    margin-top: 20px;
+
+}
+

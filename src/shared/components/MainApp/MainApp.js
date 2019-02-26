@@ -18,6 +18,7 @@ import Leaderboard from '../Leaderboard'
 import MyWallet from '../MyWallet';
 import EarnToken from '../EarnToken'
 import InviteFriends from '../InviteFriends/InviteFriends';
+import InviteContacts from '../InviteContacts'
 
 
 function MainApp(props) {
@@ -35,6 +36,7 @@ function MainApp(props) {
                 <Route path="/wallet" component={MyWallet} />
                 <Route path="/earn-token" component={EarnToken} />
                 <Route path="/invite-friends" component={InviteFriends}/>
+                <Route path="/invite-contacts" component={InviteContacts} />
                 <Route component={NotFound}/>
             </Switch>
         </div>

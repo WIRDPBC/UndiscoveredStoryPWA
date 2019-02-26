@@ -1,1 +1,1 @@
-export {default} from '../InviteFriends'
+export {default} from './InviteFriends'
