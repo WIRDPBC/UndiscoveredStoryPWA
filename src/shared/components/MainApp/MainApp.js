@@ -19,6 +19,9 @@ import MyWallet from '../MyWallet';
 import EarnToken from '../EarnToken'
 import InviteFriends from '../InviteFriends/InviteFriends';
 import InviteContacts from '../InviteContacts'
+import AdvertisingOPT from '../AdvertisingOPT'
+import NoAdvertisingOPT from '../NoAdvertisingOPT'
+import Settings from '../Settings'
 
 
 function MainApp(props) {
@@ -37,6 +40,9 @@ function MainApp(props) {
                 <Route path="/earn-token" component={EarnToken} />
                 <Route path="/invite-friends" component={InviteFriends}/>
                 <Route path="/invite-contacts" component={InviteContacts} />
+                <Route path="/advertising-opt" component={AdvertisingOPT} />
+                <Route path="/no-advertising-opt" component={NoAdvertisingOPT} />
+                <Route path="/settings" component={Settings} />
                 <Route component={NotFound}/>
             </Switch>
         </div>

@@ -1,0 +1,99 @@
+.no-advertising-opt-container{
+    margin-top: 50px;
+    text-align: center;
+    font-family: HelveticaNeue;
+    font-size: 16px;
+    line-height: 35px;
+    color: #707070;
+}
+
+
+
+
+
+
+/********************************************** Responsive Designs ***********************************************/
+
+
+@media only screen and (max-width: 600px) {
+    .no-advertising-opt-container{
+        margin-top: 50px;
+        text-align: center;
+        font-family: HelveticaNeue;
+        font-size: 14px;
+        line-height: 26px;
+        color: #707070;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    
+}
+
+@media only screen and (max-width: 320px) {
+    .no-advertising-opt-container{
+        margin-top: 50px;
+        text-align: center;
+        font-family: HelveticaNeue;
+        font-size: 14px;
+        line-height: 26px;
+        color: #707070;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .no-advertising-opt-container{
+        margin-top: 50px;
+        text-align: center;
+        font-family: HelveticaNeue;
+        font-size: 14px;
+        line-height: 26px;
+        color: #707070;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .no-advertising-opt-container{
+        margin-top: 50px;
+        text-align: center;
+        font-family: HelveticaNeue;
+        font-size: 16px;
+        line-height: 35px;
+        color: #707070;
+    }
+    
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .no-advertising-opt-container{
+        margin-top: 50px;
+        text-align: center;
+        font-family: HelveticaNeue;
+        font-size: 16px;
+        line-height: 35px;
+        color: #707070;
+    }
+    
+
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .no-advertising-opt-container{
+        margin-top: 50px;
+        text-align: center;
+        font-family: HelveticaNeue;
+        font-size: 16px;
+        line-height: 35px;
+        color: #707070;
+    }
+    
+}

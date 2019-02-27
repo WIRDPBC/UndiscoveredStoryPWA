@@ -52,11 +52,14 @@ class EarnToken extends PureComponent {
                                 <div className="earn-token-card-description-container">Get 3 UDSG tokens for every friend who signs up and plays the game</div>
                             </div>
                         </Link>
-                        <div className="earn-token-card-container">
-                            <img style={{ width: "87.3px", height: "87.3px", position: "relative", top: "33px" }} src={AdvertisingIcon} alt="Advertising Icon" />
-                            <div className="earn-token-card-title-container">Advertising OPT</div>
-                            <div className="earn-token-card-description-container">Get 3 UDSG tokens for every friend who signs up and plays the game</div>
-                        </div>
+                       <Link to="/no-advertising-opt">
+                            <div className="earn-token-card-container">
+                                <img style={{ width: "87.3px", height: "87.3px", position: "relative", top: "33px" }} src={AdvertisingIcon} alt="Advertising Icon" />
+                                <div className="earn-token-card-title-container">Advertising OPT</div>
+                                <div className="earn-token-card-description-container">Get 3 UDSG tokens for every friend who signs up and plays the game</div>
+                            </div>
+                       </Link>
+                        
 
                     </div>
                 </Fragment>

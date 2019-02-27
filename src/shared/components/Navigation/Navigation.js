@@ -77,9 +77,12 @@ class Navigation extends PureComponent {
                         <div className="navigation-data-item-text-container">Bonus Reward</div>
                     </div>
 
-                    <div className="navigation-data-item-container">
-                        <div className="navigation-data-item-text-container">Setting</div>
-                    </div>
+                    <Link to={'/settings'}>
+                        <div className="navigation-data-item-container">
+                            <div className="navigation-data-item-text-container">Setting</div>
+                        </div>
+                    </Link>
+
 
                 </div>
 
