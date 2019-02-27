@@ -9,9 +9,12 @@ import NavUser from '../../icons/NavUser';
 
 
 const BonusItem = (props) => {
-    const {title, tokens} = props
+    const {title, tokens, onSelect} = props
+    const onClick= () => {
+        onSelect(title)
+    }
     return(
-        <div className="bonus-item-container">
+        <div className="bonus-item-container" onClick={onClick}>
             <div className="bonus-item-header-text-container">{title}</div>
             <div className="bonus-item-tokens-amount-container">
                 <span>{tokens}</span>

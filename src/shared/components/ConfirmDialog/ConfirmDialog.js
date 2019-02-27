@@ -36,7 +36,7 @@ class ConfirmDialog extends PureComponent {
                     </div>
                 </div>
                 <div className="confirm-dialog-footer-container">
-                    <Button content="Got it" primary style={{ width: "115px", height: "40px" }} onClick={onOpenSuccessDialog} />
+                    <Button content="Confirm" primary style={{ width: "115px", height: "40px" }} onClick={onOpenSuccessDialog} />
                 </div>
 
             </Modal>
