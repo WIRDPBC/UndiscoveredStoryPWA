@@ -5,6 +5,7 @@
 
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom'
 
 //import css
 import './SelectContinent.css'
@@ -85,7 +86,9 @@ class SelectContinent extends PureComponent{
 
                     </div>
                     <div className="select-continent-button-container">
-                        <Button content="Next" primary disabled={disabled} className="select-continent-button"/>
+                        <Link to={'/select-initiative'} >
+                            <Button content="Next" primary disabled={disabled} className="select-continent-button"/>
+                        </Link>
                        
                     </div>
                 </div>
