@@ -23,6 +23,7 @@ import AdvertisingOPT from '../AdvertisingOPT'
 import NoAdvertisingOPT from '../NoAdvertisingOPT'
 import Settings from '../Settings'
 import DonateTokens from '../DonateTokens';
+import SelectContinent from '../SelectContinent'
 
 
 function MainApp(props) {
@@ -45,6 +46,7 @@ function MainApp(props) {
                 <Route path="/no-advertising-opt" component={NoAdvertisingOPT} />
                 <Route path="/settings" component={Settings} />
                 <Route path="/donate-tokens" component={DonateTokens} />
+                <Route path="/select-continent" component={SelectContinent} />
                 <Route component={NotFound}/>
             </Switch>
         </div>

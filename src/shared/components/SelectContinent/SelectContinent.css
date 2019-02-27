@@ -1,0 +1,139 @@
+
+.select-contient-parent-container{
+    height: 100%;
+    width: 100%;
+}
+.select-continent-container{
+    height: 100%;
+    width: 100%;
+}
+
+.select-continent-image-container{
+    text-align: center;
+    margin-top: 40px
+}
+
+.select-continent-list-container{
+    margin-top: 40px;
+    margin-left: 176px;
+    margin-right: 176px;
+}
+
+.select-continent-button-container{
+    text-align: center;
+    margin-top: 40px;
+}
+
+.select-continent-button{
+    height: 40px !important;
+    width: 171px !important;
+}
+
+
+
+/********************************************** Continent Element *********************************************/
+
+.continent-element-container{
+    width: 309.2px;
+  height: 54px;
+  line-height: 54px;
+  text-align: center;
+  font-family: HelveticaNeue;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+}
+
+/********************************************** Responsive Designs ***********************************************/
+
+
+@media only screen and (max-width: 600px) {
+    .continent-element-container{
+        width: 100px;
+      height: 54px;
+      line-height: 54px;
+      text-align: center;
+      font-family: HelveticaNeue;
+      font-size: 12px;
+      font-weight: 500;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    }
+
+    .select-continent-list-container{
+        margin-top: 40px;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+}
+
+@media only screen and (max-width: 320px) {
+    .continent-element-container {
+        width: 90px;
+        height: 54px;
+        line-height: 54px;
+        text-align: center;
+        font-family: HelveticaNeue;
+        font-size: 12px;
+        font-weight: 500;
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    }
+    .select-continent-list-container{
+        margin-top: 40px;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .continent-element-container{
+        width: 200px;
+      height: 54px;
+      line-height: 54px;
+      text-align: center;
+      font-family: HelveticaNeue;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    }
+
+    .select-continent-list-container{
+        margin-top: 40px;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .continent-element-container{
+        width: 300px;
+      height: 54px;
+      line-height: 54px;
+      text-align: center;
+      font-family: HelveticaNeue;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    }
+
+    .select-continent-list-container{
+        margin-top: 40px;
+        margin-left: 50px;
+        margin-right: 50px;
+        padding-left: 100px;
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}
+

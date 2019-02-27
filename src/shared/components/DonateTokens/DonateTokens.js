@@ -6,6 +6,7 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types';
 import {Button} from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
 
 //import css
 import './DonateTokens.css'
@@ -59,7 +60,9 @@ class DonateTokens extends PureComponent {
                         <DonationElement title="Donation from wallet:" amount="$0.00" tokens="0"/>
                     </div>
                     <div className="donate-token-button-container">
-                        <Button content="Donate Tokens" primary className="donate-token-button"/>
+                        <Link to={'/select-continent'}>
+                            <Button content="Donate Tokens" primary className="donate-token-button"/>
+                        </Link>
                     </div>
                 </div>
             </Fragment>
