@@ -31,11 +31,15 @@ class Quiz extends PureComponent {
         super(props)
     }
 
+    onBack = () => {
+        this.props.history.goBack()
+    }
+
     render() {
         return (
             <div className="quiz-container">
                 <div className="quiz-header-container">
-                    <CloseIcon size="small" style={{ position: "relative", top: "17px" }} />
+                    <CloseIcon size="small" style={{ position: "relative", top: "17px" }} onClick={this.onBack}/>
                     <div className="quiz-header-time-container">
                         <HourGlass style={{ position: "relative", top: "17px", marginRight: "5px" }} />
                         <div className="quiz-header-time-text">8 secs</div>

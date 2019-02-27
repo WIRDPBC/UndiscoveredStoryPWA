@@ -6,7 +6,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Grid, Button, GridColumn } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 //import css
 import './StartGame.css'
@@ -30,11 +30,15 @@ class StartGame extends PureComponent {
         super(props)
     }
 
+    onBack = () => {
+        this.props.history.goBack()
+    }
+
     render() {
         return (
             <div className="start-game-container">
                 <div className="start-game-header-container">
-                    <BackBtn />
+                    <BackBtn onClick={this.onBack}/>
                     <div className="start-game-header-text-container">Game - 01</div>
                 </div>
                 <Grid className="start-game-data-container" style={{ padding: "0 0 0 55px" }}>
@@ -61,4 +65,4 @@ class StartGame extends PureComponent {
     }
 }
 
-export default StartGame
+export default withRouter(StartGame)

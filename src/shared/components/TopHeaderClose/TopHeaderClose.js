@@ -5,6 +5,7 @@
 
  import React, {PureComponent} from 'react'
  import PropTypes from 'prop-types';
+ import {withRouter} from 'react-router-dom'
 
  //import css
  import './TopHeaderClose.css'
@@ -17,15 +18,21 @@
          super(props)
      }
 
+     onBack = () => {
+         console.log("On Close")
+        this.history.goBack()
+    }
+
+
      render(){
         const {title} = this.props
         return (
             <div className="top-header-close-container">
-             <CloseIcon size="small" style={{position: "relative",top: "18px", cursor:"pointer"}}/>
+             <CloseIcon size="small" style={{position: "relative",top: "18px", cursor:"pointer"}} onClick={this.onBack}/>
             <div className="top-header-close-text-container">{title}</div>
         </div>
         )
      }
  }
 
- export default TopHeaderClose
+ export default withRouter(TopHeaderClose)

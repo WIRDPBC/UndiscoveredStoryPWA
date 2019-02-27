@@ -5,6 +5,7 @@
 
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types';
+import {withRouter} from 'react-router-dom'
 
 //import css
 import './TopHeaderBack.css'
@@ -22,15 +23,19 @@ class TopHeaderBack extends PureComponent{
         super(props)
     }
 
+    onBack = () => {
+        this.props.history.goBack()
+    }
+
     render(){
         const {title} = this.props
         return (
             <div className="top-header-back-container">
-             <BackBtn iconStyle={{top: "18px"}}/>
+             <BackBtn iconStyle={{top: "18px"}} onClick={this.onBack}/>
             <div className="top-header-back-text-container">{title}</div>
         </div>
         )
     }
 }
 
-export default TopHeaderBack
+export default withRouter(TopHeaderBack)

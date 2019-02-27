@@ -19,11 +19,11 @@ class BackBtn extends PureComponent{
     }
 
     render(){
-        const {iconStyle} = this.props
+        const {iconStyle, onClick} = this.props
         return (
             <Fragment>
-                 <BackIcon size="tiny" style={{ position: "relative", top: "3px", cursor: "pointer", ...iconStyle }} />
-                <div className="back-container-text">Back</div>
+                 <BackIcon size="tiny" style={{ position: "relative", top: "3px", cursor: "pointer", ...iconStyle }} onClick={onClick}/>
+                <div className="back-container-text" onClick={onClick}>Back</div>
             </Fragment>
         )
     }
