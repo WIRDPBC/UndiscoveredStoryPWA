@@ -46,3 +46,187 @@
     font-size: 15px;
 }
 
+
+/********************************************** Responsive Designs ***********************************************/
+
+
+@media only screen and (max-width: 600px) {
+
+    .settings-user-data-container {
+        height: 88px;
+        opacity: 0.77;
+        background-color: #676767;
+        display: flex;
+        display: -webkit-flex;
+        padding-left: 50px;
+    }
+
+    .settings-advertising-container {
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-top: 30px;
+        display: flex;
+        display: -webkit-flex;
+        border-bottom: 1px solid #eeeeee;
+        padding-bottom: 10px;
+    }
+
+    .settings-advertising-text-container {
+        flex: 1 1 auto;
+        color: #707070;
+        font-family: HelveticaNeue;
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .settings-user-data-container {
+        height: 88px;
+        opacity: 0.77;
+        background-color: #676767;
+        display: flex;
+        display: -webkit-flex;
+        padding-left: 50px;
+    }
+
+    .settings-advertising-container {
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-top: 30px;
+        display: flex;
+        display: -webkit-flex;
+        border-bottom: 1px solid #eeeeee;
+        padding-bottom: 10px;
+    }
+
+    .settings-advertising-text-container {
+        flex: 1 1 auto;
+        color: #707070;
+        font-family: HelveticaNeue;
+        font-size: 12px;
+    }
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .settings-user-data-container {
+        height: 88px;
+        opacity: 0.77;
+        background-color: #676767;
+        display: flex;
+        display: -webkit-flex;
+        padding-left: 50px;
+    }
+
+    .settings-advertising-container {
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-top: 30px;
+        display: flex;
+        display: -webkit-flex;
+        border-bottom: 1px solid #eeeeee;
+        padding-bottom: 10px;
+    }
+
+    .settings-advertising-text-container {
+        flex: 1 1 auto;
+        color: #707070;
+        font-family: HelveticaNeue;
+        font-size: 12px;
+    }
+    
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .settings-user-data-container {
+        height: 88px;
+        opacity: 0.77;
+        background-color: #676767;
+        display: flex;
+        display: -webkit-flex;
+        padding-left: 50px;
+    }
+
+    .settings-advertising-container {
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-top: 30px;
+        display: flex;
+        display: -webkit-flex;
+        border-bottom: 1px solid #eeeeee;
+        padding-bottom: 10px;
+    }
+
+    .settings-advertising-text-container {
+        flex: 1 1 auto;
+        color: #707070;
+        font-family: HelveticaNeue;
+        font-size: 12px;
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+.settings-user-profile-container{
+    position: relative;
+    top: 15px;
+    margin-left: 30px;
+    font-family: HelveticaNeue;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.settings-advertising-container{
+    margin-left: 225px;
+    margin-right: 225px;
+    margin-top: 30px;
+    display: flex;
+    display: -webkit-flex;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 10px;
+}
+
+.settings-advertising-text-container{
+    flex: 1 1 auto;
+    color: #707070;
+    font-family: HelveticaNeue;
+    font-size: 15px;
+}
+
+
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+.settings-user-profile-container{
+    position: relative;
+    top: 15px;
+    margin-left: 30px;
+    font-family: HelveticaNeue;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.settings-advertising-container{
+    margin-left: 225px;
+    margin-right: 225px;
+    margin-top: 30px;
+    display: flex;
+    display: -webkit-flex;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 10px;
+}
+
+.settings-advertising-text-container{
+    flex: 1 1 auto;
+    color: #707070;
+    font-family: HelveticaNeue;
+    font-size: 15px;
+}
+
+}
+
+
