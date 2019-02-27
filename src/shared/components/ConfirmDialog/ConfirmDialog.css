@@ -1,9 +1,9 @@
-.success-dialog-container{
+.confirm-dialog-container{
     height: 342.3px;
     width: 514.5px !important;
 }
 
-.sucess-dialog-header-container{
+.confirm-dialog-header-container{
     height: 70px;
     line-height: 70px;
     display: flex;
@@ -12,7 +12,7 @@
     padding-left: 20px;
 }
 
-.success-dialog-header-text-container{
+.confirm-dialog-header-text-container{
     flex: 1 1 auto;
     text-align: center;
     font-family: HelveticaNeue;
@@ -22,19 +22,19 @@
     margin-right: 30px;
 }
 
-.success-dialog-data-container{
+.confirm-dialog-data-container{
     text-align: center;
 }
 
-.success-dialog-success-text{
-    margin-top: 20px;
+.confirm-dialog-success-text{
+    margin-top: 50px;
     line-height: 20px;
     font-family: HelveticaNeue;
     font-size: 14px;
     color:#707070
 }
 
-.sucess-dialog-footer-container{
+.confirm-dialog-footer-container{
     height: 70px;
     line-height: 70px;
     position: absolute;
@@ -44,18 +44,19 @@
     text-align: center;
 }
 
+
 /********************************************** Responsive Designs ***********************************************/
 
 
 @media only screen and (max-width: 600px) {
-    .success-dialog-container{
+    .confirm-dialog-container{
         height: 342.3px;
         width: 300px !important;
     }
 }
 
 @media only screen and (max-width: 320px) {
-    .success-dialog-container{
+    .confirm-dialog-container{
         height: 342.3px;
         width: 300px !important;
     }
@@ -63,7 +64,7 @@
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-    .success-dialog-container{
+    .confirm-dialog-container{
         height: 342.3px;
         width: 300px !important;
     }
@@ -71,7 +72,7 @@
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-    .success-dialog-container{
+    .confirm-dialog-container{
         height: 342.3px;
         width: 514.5px !important;
     }
@@ -88,7 +89,7 @@
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    .success-dialog-container{
+    .confirm-dialog-container{
         height: 342.3px;
         width: 514.5px !important;
     }

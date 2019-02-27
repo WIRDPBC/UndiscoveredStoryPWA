@@ -20,19 +20,21 @@ class SuccessDialog extends PureComponent{
 
     render(){
 
-        const {isDialogOpened, onClose} = this.props
+        const {isDialogOpened, onClose, title, successText1, successText2, successText3} = this.props
         return (
             <Modal size="mini" open={isDialogOpened} className="success-dialog-container">
                 <div className="sucess-dialog-header-container">
                 <CloseIcon size="tiny" style={{position:"relative", top: "28px", cursor:"pointer"}} onClick={onClose}/>
-                <div className="success-dialog-header-text-container">Success Message</div>
+                <div className="success-dialog-header-text-container">{title}</div>
 
                 </div>
                 <div className="success-dialog-data-container">
                     <SuccessIcon style={{width:"67px", height: "67px", marginTop:"10px"}}/>
-                    <div className="success-dialog-success-text">Hurray! <br/>
-                        Invitation Sent Successfully <br/>
-                        You just earned 30 tokens for inviting 10 friends</div>
+                    <div className="success-dialog-success-text">
+                        <div>{successText1}</div>
+                        <div>{successText2}</div>
+                        <div>{successText3}</div>
+                    </div>
                 </div>
                 <div className="sucess-dialog-footer-container">
                     <Button content="Got it" primary style={{width:"115px", height:"40px"}} onClick={onClose}/>

@@ -5,6 +5,7 @@
 
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types';
+import { Button } from 'semantic-ui-react';
 
 //import css
 import './SelectInitiative.css'
@@ -15,14 +16,17 @@ import InitiativeIcon1 from '../../icons/InitiativeIcon1.png'
 import InitiativeIcon2 from '../../icons/InitiativeIcon2.png'
 import InitiativeIcon3 from '../../icons/InitiativeIcon3.png'
 import InitiativeElement from './InitativeElement'
-import { Button } from 'semantic-ui-react';
+import SuccessDialog from '../SucessDialog'
+import ConfirmDialog from '../ConfirmDialog';
 
 
 class SelectInitiative extends PureComponent{
     constructor(props){
         super(props)
         this.state = {
-            selectedInitiative : ""
+            selectedInitiative : "",
+            isConfirmDialogOpened: false,
+            isSuccessDialogOpened: false
         }
     }
 
@@ -32,8 +36,34 @@ class SelectInitiative extends PureComponent{
         })
     }
 
+    onCloseConfirmDialog = () => {
+        this.setState({
+            isConfirmDialogOpened: false
+        })
+    }
+
+    onOpenConfirmDialog = () => {
+        this.setState({
+            isConfirmDialogOpened: true
+        })
+    }
+
+    onOpenSucessDialog = () => {
+        this.setState({
+            isConfirmDialogOpened: false,
+            isSuccessDialogOpened: true
+        })
+    }
+
+    onCloseSuccessDialog = () => {
+        this.setState({
+            isConfirmDialogOpened: false,
+            isSuccessDialogOpened: false
+        })
+    }
+
     render(){
-        const {selectedInitiative} = this.state
+        const {selectedInitiative, isConfirmDialogOpened, isSuccessDialogOpened} = this.state
         let disabled = true, isBlackCodeSelected = false, isMotherCodeSelected = false, isGirlCodeSelected = false
         if(selectedInitiative === "Black Girl Code"){
             isBlackCodeSelected = true
@@ -56,8 +86,25 @@ class SelectInitiative extends PureComponent{
 
                 </div>
                 <div className="select-initiative-button-container">
-                    <Button content="Next" primary disabled={disabled} className="select-initiative-button"/>
+                    <Button content="Next" primary disabled={disabled} className="select-initiative-button" onClick={this.onOpenConfirmDialog}/>
                 </div>
+                <ConfirmDialog 
+                isDialogOpened={isConfirmDialogOpened} 
+                onClose={this.onCloseConfirmDialog} 
+                onOpenSuccessDialog={this.onOpenSucessDialog}  
+                title="Confirm Donate"
+                confirmText1="Total Donation"
+                confirmText2="$1.50"
+                confirmText3="Donated to Mother Coder"
+                />
+                <SuccessDialog 
+                isDialogOpened={isSuccessDialogOpened} 
+                onClose={this.onCloseSuccessDialog} 
+                title="Success Message" 
+                successText1="Hurray!"
+                successText2="Donated Successfully"
+                successText3="You just donated 10 token for Mother Coder"
+                />
 
             </div>
         )
