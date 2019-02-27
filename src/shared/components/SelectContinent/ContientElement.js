@@ -10,9 +10,17 @@ import PropTypes from 'prop-types';
 
 const ContinentElement = (props) =>{
 
-    const {name, color} = props
+    const {name, color, onSelect, isSelected} = props
+    let className="continent-element-container"
+    if(isSelected){
+        className = `${className} selected`
+    }
+
+    const onClick = () => {
+        onSelect(name)
+    }
     return (
-        <div className="continent-element-container" style={{color: color}}>
+        <div className={className} style={{color: color}} onClick={onClick}>
             {name}
         </div>
     )

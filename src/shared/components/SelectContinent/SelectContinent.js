@@ -20,9 +20,35 @@ import { GridColumn, Grid, Button } from 'semantic-ui-react';
 class SelectContinent extends PureComponent{
     constructor(props){
         super(props)
+        this.state = {
+            selectedContinent : ""
+        }
+    }
+
+    onSelect = (tag) => {
+        this.setState({
+            selectedContinent : tag
+        })
     }
 
     render(){
+        const {selectedContinent} = this.state
+        let isNorthAmericaSelected = false, isSouthAmericaSelected = false, isAfricaSelected = false, isAsiaSelected = false, isOceaniaSelected = false 
+        if(selectedContinent === "N. AMERICA"){
+            isNorthAmericaSelected = true
+        } else if(selectedContinent === "S. AMERICA"){
+            isSouthAmericaSelected = true
+        } else if(selectedContinent === "AFRICA"){
+            isAfricaSelected = true
+        } else if(selectedContinent === "ASIA"){
+            isAsiaSelected = true
+        } else if(selectedContinent === "OCEANA"){
+            isOceaniaSelected = true
+        }
+        let disabled = true
+        if(selectedContinent){
+            disabled = false
+        }
         return (
             <div className="select-contient-parent-container">
                 <TopHeaderBack title="Select Continent" />
@@ -33,21 +59,21 @@ class SelectContinent extends PureComponent{
                     <div className="select-continent-list-container">
                         <Grid doubling columns={3}>
                             <GridColumn>
-                                <ContinentElement name="N. AMERICA" color="#00cc00"/>
+                                <ContinentElement name="N. AMERICA" color="#00cc00" onSelect={this.onSelect} isSelected={isNorthAmericaSelected}/>
                             </GridColumn>
                             <GridColumn>
-                                <ContinentElement name="S. AMERICA" color="#008000"/>
+                                <ContinentElement name="S. AMERICA" color="#008000" onSelect={this.onSelect} isSelected ={isSouthAmericaSelected}/>
                             </GridColumn>
                             <GridColumn>
-                                <ContinentElement color="#fed52e" name="AFRICA"/>
-                            </GridColumn>
-
-                            <GridColumn>
-                                <ContinentElement color="#f33e01" name="ASIA" />
+                                <ContinentElement color="#fed52e" name="AFRICA" onSelect={this.onSelect} isSelected={isAfricaSelected}/>
                             </GridColumn>
 
                             <GridColumn>
-                                <ContinentElement color="#c04080" name="OCEANA"/>
+                                <ContinentElement color="#f33e01" name="ASIA" onSelect={this.onSelect} isSelected={isAsiaSelected}/>
+                            </GridColumn>
+
+                            <GridColumn>
+                                <ContinentElement color="#c04080" name="OCEANA" onSelect={this.onSelect} isSelected={isOceaniaSelected}/>
                             </GridColumn>
                          
                            
@@ -59,7 +85,8 @@ class SelectContinent extends PureComponent{
 
                     </div>
                     <div className="select-continent-button-container">
-                        <Button content="Next" primary className="select-continent-button"/>
+                        <Button content="Next" primary disabled={disabled} className="select-continent-button"/>
+                       
                     </div>
                 </div>
             </div>
