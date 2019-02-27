@@ -6,6 +6,7 @@
  import React, { PureComponent, Fragment } from 'react'
  import PropTypes from 'prop-types'
  import {Checkbox} from 'semantic-ui-react'
+ import { withRouter } from "react-router-dom";
 
  //import css
 import './Settings.css'
@@ -23,7 +24,8 @@ class Settings extends PureComponent{
     constructor(props){
         super(props)
         this.state = {
-            visible: false
+            visible: false,
+            isAdvertisingActive : false
         }
     }
 
@@ -39,9 +41,19 @@ class Settings extends PureComponent{
         })
     }
 
+    onChangeAdvertising = () => {
+        const {isAdvertisingActive} = this.state
+        this.setState({
+            isAdvertisingActive : !isAdvertisingActive
+        })
+        if(!isAdvertisingActive){
+            this.props.history.push('/advertising-opt')
+        }
+    }
+
 
     render(){
-        const {visible} = this.state
+        const {visible, isAdvertisingActive} = this.state
         return (
             <Navigator visible={visible} onCloseSidebar={this.onCloseSidebar}>
                 <Fragment>
@@ -58,7 +70,7 @@ class Settings extends PureComponent{
                         <div className="settings-advertising-container">
                             <div className="settings-advertising-text-container">Advertising OPT</div>
                             <div>
-                                <Checkbox toggle></Checkbox>
+                                <Checkbox toggle onChange={this.onChangeAdvertising} checked={isAdvertisingActive}></Checkbox>
                             </div>
                             
                         </div>
@@ -70,4 +82,4 @@ class Settings extends PureComponent{
 }
 
 
-export default Settings
+export default withRouter(Settings)
