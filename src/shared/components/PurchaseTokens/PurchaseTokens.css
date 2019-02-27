@@ -1,0 +1,278 @@
+.purchase-tokens-container{
+    height: 100%;
+    width: 100%;
+    color: #707070;
+    font-family: HelveticaNeue;
+}
+
+.purchase-tokens-header-text{
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    margin-top: 30px;
+
+}
+
+.purcahse-tokens-select-payment-text{
+    margin-right: 50px;
+    font-family: HelveticaNeue;
+    font-size: 14px;
+    font-weight: bold;
+    color: #707070;
+}
+
+.purchase-tokens-add-container{
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+.purchase-tokens-card-container{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    display: -webkit-flex;
+}
+
+.purchase-tokens-data-container{
+    margin-left: 250px;
+    margin-right: 250px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #dddddd;
+}
+
+.purchase-earn-token-text{
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: HelveticaNeue;
+}
+
+.purchase-tokens-text{
+    height: 30px;
+    line-height: 30px;
+}
+
+.purchase-tokens-quantity-container{
+    display: flex;
+    display: -webkit-flex;
+    line-height: 40px;
+    height: 40px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.purchase-tokens-quantity{
+    flex: 1 1 auto;
+    line-height: 30px;
+    height: 30px;
+}
+
+
+
+
+.purchase-tokens-button-container{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.purchase-tokens-data-container {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #dddddd;
+}
+
+/********************************************** Responsive Designs ***********************************************/
+
+
+@media only screen and (max-width: 600px) {
+    .purchase-tokens-data-container {
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #dddddd;
+    }
+
+    .purchase-earn-token-text {
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: HelveticaNeue;
+    }
+
+    .purchase-tokens-text{
+        height: 30px;
+        line-height: 30px;
+        font-size: 10px;
+    }
+    .purchase-tokens-quantity{
+        flex: 1 1 auto;
+        line-height: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+    
+    
+}
+
+@media only screen and (max-width: 320px) {
+    .purchase-tokens-data-container {
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #dddddd;
+    }
+
+    .purchase-earn-token-text {
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: HelveticaNeue;
+    }
+
+    .purchase-tokens-text{
+        height: 30px;
+        line-height: 30px;
+        font-size: 9px;
+    }
+
+    .purchase-tokens-quantity{
+        flex: 1 1 auto;
+        line-height: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+    
+  
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .purchase-tokens-data-container {
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #dddddd;
+    }
+
+    .purchase-earn-token-text {
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: HelveticaNeue;
+    }
+    .purchase-tokens-text{
+        height: 30px;
+        line-height: 30px;
+        font-size: 10px;
+    }
+    .purchase-tokens-quantity{
+        flex: 1 1 auto;
+        line-height: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+  
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .purchase-tokens-data-container {
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #dddddd;
+    }
+
+    .purchase-earn-token-text {
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: HelveticaNeue;
+    }
+    .purchase-tokens-text{
+        height: 30px;
+        line-height: 30px;
+        font-size: 10px;
+    }
+    .purchase-tokens-quantity{
+        flex: 1 1 auto;
+        line-height: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .purchase-tokens-data-container{
+        margin-left: 250px;
+        margin-right: 250px;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #dddddd;
+    }
+    .purchase-tokens-text{
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+       
+    }
+    .purchase-tokens-quantity{
+        flex: 1 1 auto;
+        line-height: 30px;
+        height: 30px;
+        font-size: 14px;
+       
+    }
+    .purchase-earn-token-text{
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: HelveticaNeue;
+    }
+
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .purchase-tokens-data-container{
+        margin-left: 250px;
+        margin-right: 250px;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #dddddd;
+    }
+    .purchase-tokens-text{
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+       
+    }
+    .purchase-tokens-quantity{
+        flex: 1 1 auto;
+        line-height: 30px;
+        height: 30px;
+        font-size: 14px;
+     
+    }
+    .purchase-earn-token-text{
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: HelveticaNeue;
+    }
+}
+
