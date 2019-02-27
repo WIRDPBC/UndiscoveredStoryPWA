@@ -46,7 +46,7 @@ class Navigation extends PureComponent {
                             <div className="navigation-data-item-text-container">Home</div>
                         </div>
                     </Link>
-                    <Link to={"/purchase-tokens"}>
+                    <Link to={"/mini-bytes"}>
                         <div className="navigation-data-item-container">
                             <div className="navigation-data-item-text-container">Mini Bytes</div>
                         </div>

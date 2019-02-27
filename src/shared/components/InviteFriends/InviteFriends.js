@@ -26,22 +26,22 @@ class InviteFriends extends PureComponent {
             <Fragment>
                 <TopHeaderBack title="Invite Friends" />
                 <div className="invite-friends-container">
-                    <Grid className="invite-friends-grid-container" style={{ padding: 0 }}>
+                    <div className="invite-friends-grid-container" style={{ padding: 0 }}>
 
-                        <GridRow className="invite-friends-invite-image-container" style={{ padding: 0 }}>
+                        <div className="invite-friends-invite-image-container" style={{ padding: 0 }}>
                             <div className="invite-friends-invite-image-data-container">
                                 <img src={InviteFriendsIcon} alt="Invite Friends Icon" />
                                 <div className="invite-friends-text-one-container">Get 3 USDG tokens for every friend who signs up and plays the game</div>
                                 <div className="invite-friends-terms-and-conditions-container">Terms & conditions</div>
                                 <div className="invite-friends-button-container">
                                     <Link to={'/invite-contacts'}>
-                                        <Button primary content="Invite Contacts" style={{ width: "400px", height: "40px" }} />
+                                        <Button primary content="Invite Contacts" className="invite-contacts-button" style={{ height: "40px" }} />
                                     </Link>
                                 </div>
 
                             </div>
-                        </GridRow>
-                        <GridRow className="invite-friends-invite-text-container" style={{ padding: 0 }}>
+                        </div>
+                        <div className="invite-friends-invite-text-container" style={{ padding: 0 }}>
                             <div className="invite-friends-referral-container">
                                 <div className="invite-friends-or-text-container">
                                     Or
@@ -56,8 +56,8 @@ class InviteFriends extends PureComponent {
                                 </div>
                             </div>
 
-                        </GridRow>
-                    </Grid>
+                        </div>
+                    </div>
                 </div>
 
             </Fragment>

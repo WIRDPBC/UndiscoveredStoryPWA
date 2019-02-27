@@ -1,0 +1,195 @@
+.mini-bytes-container{
+    color: #707070;
+    font-family: HelveticaNeue;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.mini-bytes-image-container{
+    text-align: center;
+    margin-left: 350px;
+    margin-right: 350px;
+    border: 1px solid #dddddd;
+}
+
+/* .mini-bytes-data-container{
+    margin-left: 350px;
+    margin-right: 350px;
+    padding-top: 30px;
+    min-height: 400px;
+
+    padding-left: 20px;
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    background: #dddddd;
+} */
+
+
+.mini-bytes-quote-container{
+    margin-top: 20px;
+}
+
+.mini-bytes-image{
+    
+}
+
+
+/********************************************** Responsive Designs ***********************************************/
+
+
+@media only screen and (max-width: 600px) {
+
+    .mini-bytes-image-container {
+        text-align: center;
+        margin-left: 50px;
+        margin-right: 43px;
+        border: 1px solid #dddddd;
+    }
+    .mini-bytes-image{
+        width: 257px;
+    }
+
+    .mini-bytes-data-container {
+        margin-left: 50px;
+        margin-right: 43px;
+        padding-top: 30px;
+        min-height: 400px;
+        /* border: 1px solid; */
+        padding-left: 20px;
+        padding-right: 20px;
+        border-left: 1px solid #dddddd;
+        border-right: 1px solid #dddddd;
+        border-bottom: 1px solid #dddddd;
+        background: #dddddd;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .mini-bytes-image-container {
+        text-align: center;
+        margin-left: 50px;
+        margin-right: 43px;
+        border: 1px solid #dddddd;
+    }
+    .mini-bytes-image{
+        width: 257px;
+    }
+    
+    .mini-bytes-data-container {
+        margin-left: 50px;
+        margin-right: 43px;
+        padding-top: 30px;
+        min-height: 400px;
+        /* border: 1px solid; */
+        padding-left: 20px;
+        padding-right: 20px;
+        border-left: 1px solid #dddddd;
+        border-right: 1px solid #dddddd;
+        border-bottom: 1px solid #dddddd;
+        background: #dddddd;
+    }
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .mini-bytes-image-container {
+        text-align: center;
+        margin-left: 50px;
+        margin-right: 43px;
+        border: 1px solid #dddddd;
+    }
+    .mini-bytes-image{
+        width: 257px;
+    }
+    .mini-bytes-data-container {
+        margin-left: 50px;
+        margin-right: 43px;
+        padding-top: 30px;
+        min-height: 400px;
+        /* border: 1px solid; */
+        padding-left: 20px;
+        padding-right: 20px;
+        border-left: 1px solid #dddddd;
+        border-right: 1px solid #dddddd;
+        border-bottom: 1px solid #dddddd;
+        background: #dddddd;
+    }
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .mini-bytes-image-container {
+        text-align: center;
+        margin-left: 50px;
+        margin-right: 43px;
+        border: 1px solid #dddddd;
+    }
+    .mini-bytes-image{
+        width: 257px;
+    }
+    .mini-bytes-data-container {
+        margin-left: 50px;
+        margin-right: 43px;
+        padding-top: 30px;
+        min-height: 400px;
+        /* border: 1px solid; */
+        padding-left: 20px;
+        padding-right: 20px;
+        border-left: 1px solid #dddddd;
+        border-right: 1px solid #dddddd;
+        border-bottom: 1px solid #dddddd;
+        background: #dddddd;
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .mini-bytes-image-container{
+        text-align: center;
+        margin-left: 350px;
+        margin-right: 350px;
+        border: 1px solid #dddddd;
+    }
+
+    .mini-bytes-data-container{
+        margin-left: 350px;
+        margin-right: 350px;
+        padding-top: 30px;
+        min-height: 400px;
+        /* border: 1px solid; */
+        padding-left: 20px;
+        border-left: 1px solid #dddddd;
+        border-right: 1px solid #dddddd;
+        border-bottom: 1px solid #dddddd;
+        background: #dddddd;
+    }
+   
+    
+
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .mini-bytes-image-container{
+        text-align: center;
+        margin-left: 350px;
+        margin-right: 350px;
+        border: 1px solid #dddddd;
+    }
+
+    .mini-bytes-data-container{
+        margin-left: 350px;
+        margin-right: 350px;
+        padding-top: 30px;
+        min-height: 400px;
+        /* border: 1px solid; */
+        padding-left: 20px;
+        border-left: 1px solid #dddddd;
+        border-right: 1px solid #dddddd;
+        border-bottom: 1px solid #dddddd;
+        background: #dddddd;
+    }
+    
+}
+

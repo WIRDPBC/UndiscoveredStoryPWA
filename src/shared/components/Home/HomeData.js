@@ -11,6 +11,8 @@ import {Link} from 'react-router-dom'
 //import components..
 import HomeTab from './HomeTab'
 import NavIcon from '../../icons/NavIcon'
+import HomeIcon from '../../icons/HomeIcon.png'
+import UserProfileIcon from '../../icons/UserProfileIcon.png'
 
 
 class HomeData extends PureComponent{
@@ -40,7 +42,9 @@ class HomeData extends PureComponent{
                     <div className="home-header-text-container">Home</div>
                 </div>
                 <div className="home-image-container">
-                    <div className="home-image-circle-container"></div>
+                    <div className="home-image-circle-container">
+                        <img src={UserProfileIcon} style={{height: "103.7px", width: "103.7px"}}/>
+                    </div>
 
                 </div>
                 <div className="home-image-user-data-container">
@@ -54,8 +58,22 @@ class HomeData extends PureComponent{
                 </div>
 
                 <div className="home-earned-donated-container">
-                    <div className="home-earned-card-conatiner"></div>
-                    <div className="home-donated-card-container"></div>
+                    <div className="home-earned-card-conatiner">
+                        <div className="home-card-text">Earned</div>
+                        <div className="home-card-amount-container">
+                            <img src={HomeIcon} className="home-card-image"/>
+                            <div className="home-card-tokens-text">88 Tokens</div>
+                        </div>
+                        <div className="home-card-amount-text">$13.20</div>
+                    </div>
+                    <div className="home-donated-card-container">
+                    <div className="home-card-text">Donated</div>
+                        <div className="home-card-amount-container">
+                            <img src={HomeIcon} className="home-card-image"/>
+                            <div className="home-card-tokens-text">0 Tokens</div>
+                        </div>
+                        <div className="home-card-amount-text">$00.00</div>
+                    </div>
                 </div>
 
             </div>

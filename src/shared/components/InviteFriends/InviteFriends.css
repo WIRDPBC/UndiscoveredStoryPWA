@@ -9,11 +9,11 @@
 }
 
 .invite-friends-invite-image-container{
-    height: 60%;
+    /* height: 60%; */
 }
 
 .invite-friends-invite-text-container{
-    height: 40%;
+    /* height: 40%; */
 }
 
 .invite-friends-invite-image-data-container{
@@ -86,4 +86,107 @@
     cursor: pointer;
     font-weight: bold
 }
+
+.invite-contacts-button{
+    width: 400px !important;
+}
+
+
+/***************************************************** Responsive Designs ******************************************/
+
+/* Extra small devices (phones, 600px and down) */
+
+
+
+@media only screen and (max-width: 600px) {
+    .invite-friends-referral-text{
+        width: 200px;
+        border: 1px solid #eeeeee;
+        border-radius: 5px;
+        color: #707070;
+        font-family: HelveticaNeue;
+    }
+
+    .invite-contacts-button{
+        width: 200px !important;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+ 
+    .invite-friends-referral-text{
+        width: 200px;
+        border: 1px solid #eeeeee;
+        border-radius: 5px;
+        color: #707070;
+        font-family: HelveticaNeue;
+    }
+
+    .invite-contacts-button{
+        width: 200px !important;
+    }
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .invite-friends-referral-text{
+        width: 250px;
+        border: 1px solid #eeeeee;
+        border-radius: 5px;
+        color: #707070;
+        font-family: HelveticaNeue;
+    }
+
+    .invite-contacts-button{
+        width: 250px !important;
+    }
+    
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+    .invite-friends-referral-text{
+        width: 300px;
+        border: 1px solid #eeeeee;
+        border-radius: 5px;
+        color: #707070;
+        font-family: HelveticaNeue;
+    }
+
+    .invite-contacts-button{
+        width: 300px !important;
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .invite-friends-referral-text{
+        width: 400px;
+        border: 1px solid #eeeeee;
+        border-radius: 5px;
+        color: #707070;
+        font-family: HelveticaNeue;
+    }
+
+    .invite-contacts-button{
+        width: 400px !important;
+    }
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .invite-friends-referral-text{
+        width: 400px;
+        border: 1px solid #eeeeee;
+        border-radius: 5px;
+        color: #707070;
+        font-family: HelveticaNeue;
+    }
+
+    .invite-contacts-button{
+        width: 400px !important;
+    }
+}
+
 

@@ -6,16 +6,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-//import components
-import WhatsappIcon from '../../icons/WhatsappIcon.png'
 
 
 const InviteContactsItem = (props) => {
-    const {onClick} = props
+    const {onClick, name, image} = props
     return (
         <div className="invite-contacts-item-container" onClick={onClick}>
-            <img src={WhatsappIcon} alt="whatsapp-icon"/>
-            <div className="invite-contacts-item-text">Whatsapp</div>
+            <img src={image} alt="whatsapp-icon"/>
+            <div className="invite-contacts-item-text">{name}</div>
         </div>
     )
 }

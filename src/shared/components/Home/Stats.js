@@ -23,7 +23,10 @@ class Stats extends PureComponent{
 
     render(){
         return (
-            <div></div>
+            <div className="home-tab-no-game-history-text">
+                There is no Stats available
+            </div>
+            
         )
     }
 }

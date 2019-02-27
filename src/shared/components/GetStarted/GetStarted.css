@@ -26,7 +26,8 @@
 
 .get-started-login-container{
     text-align: center;
-    display: table-row;
+    margin-top:40px;
+    /* display: table-row; */
 }
 
 .get-started-already-account-container{
@@ -68,6 +69,19 @@
     height: 515px
 }
 
+.get-started-carousal-heading-container{
+    font-family: HelveticaNeue;
+    font-size: 20px;
+    font-weight: bold;
+    color: #707070;
+    margin-bottom: 20px;
+}
+
+.get-started-carousal-image{
+    height:400px !important;
+    /* width: 400px !important; */
+}
+
 
 
 
@@ -86,6 +100,16 @@
     }
     .get-started-carousel-background-container{
         height: 350px;
+        padding:20px;
+    }
+    .get-started-login-container{
+        text-align: center;
+        margin-top:30px;
+        /* display: table-row; */
+    }
+    .get-started-carousal-image{
+        height:235px !important;
+        /* width: 400px !important; */
     }
     
 } 
@@ -105,6 +129,17 @@
     .get-started-carousel-background-container{
         min-height: 500px;
         max-height: 515px;
+        padding:20px;
+    }
+    .get-started-login-container{
+        text-align: center;
+        margin-top:40px;
+        /* display: table-row; */
+    }
+
+    .get-started-carousal-image{
+        height:285px !important;
+        /* width: 400px !important; */
     }
     
 } 
@@ -122,16 +157,71 @@
 
     .get-started-carousel-background-container{
         height: 450px;
+        padding:20px;
+    }
+    .get-started-login-container{
+        text-align: center;
+        margin-top:40px;
+        /* display: table-row; */
+    }
+
+    .get-started-carousal-image{
+        height:335px !important;
+        /* width: 400px !important; */
     }
 } 
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+    .get-started-carousel-container{
+        height: 515px;
+        background-color: #f2f2f2;
+        margin-left: 40px;
+        margin-right: 40px;
+    
+        /* display: table-row; */
+    }
+    .get-started-carousel-background-container{
+        height: 515px;
+        padding:20px;
+    }
+    .get-started-login-container{
+        text-align: center;
+        margin-top:40px;
+        /* display: table-row; */
+    }
 
+    .get-started-carousal-image{
+        height:400px !important;
+        /* width: 400px !important; */
+    }
+    
 } 
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+    .get-started-carousel-container{
+        height: 515px;
+        background-color: #f2f2f2;
+        margin-left: 40px;
+        margin-right: 40px;
+    
+        /* display: table-row; */
+    }
+    .get-started-carousel-background-container{
+        height: 515px;
+        padding:20px;
+    }
+    .get-started-login-container{
+        text-align: center;
+        margin-top:40px;
+        /* display: table-row; */
+    }
 
+    .get-started-carousal-image{
+        height:400px !important;
+        /* width: 400px !important; */
+    }
+    
 }
 

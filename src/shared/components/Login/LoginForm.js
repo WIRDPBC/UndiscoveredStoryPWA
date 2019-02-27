@@ -11,6 +11,10 @@ import {Link} from 'react-router-dom'
 
 import {Grid} from 'semantic-ui-react'
 
+import FacebookLogin from '../../icons/FacebookLogin.png'
+import GoogleLogin from '../../icons/GoogleLogin.png'
+import TwitterLogin from '../../icons/TwitterLogin.png'
+
 
 class LoginForm extends PureComponent{
     static propTypes = {
@@ -31,10 +35,10 @@ class LoginForm extends PureComponent{
                 <div className="login-form-heading-container">Undiscovered Story</div>
                 <div className="login-form-main-container">
                 <div>
-                    <Input fluid/>
+                    <Input fluid placeholder="Enter Email"/>
                 </div>
                 <div className="login-form-passowrd-container">
-                    <Input fluid/>
+                    <Input fluid placeholder="Enter Password" type="password"/>
                 </div>
 
                 <div className="login-form-signup-forgot-container">
@@ -50,6 +54,12 @@ class LoginForm extends PureComponent{
                     </Link>
                 </div>
                 <div className="login-form-login-with-container">Or login with</div>
+
+                <div className="login-form-other-login-container">
+                    <img  src={FacebookLogin}/>
+                    <img style={{marginLeft: "10px"}} src={TwitterLogin}/>
+                    <img style={{marginLeft: "10px"}} src={GoogleLogin}/>
+                </div>
 
                
               

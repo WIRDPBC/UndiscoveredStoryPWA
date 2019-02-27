@@ -12,6 +12,7 @@
 .auth-container-image-placeholder{
     background-color: #f2f2f2;
     height: inherit;
+    text-align: center;
 }
 
 .auth-container-form-container{
@@ -26,6 +27,10 @@
 }
 
 .auth-container-form-grid-container{
+
+}
+
+.auth-container-image{
 
 }
 
@@ -51,6 +56,10 @@
     .auth-container-form-grid-container{
         width: 100% !important
     }
+
+    .auth-container-image{
+        visibility: hidden;
+    }
     
 } 
 
@@ -71,6 +80,9 @@
    
     .ui.column.grid>[class*="six wide"].column, .ui.grid>.column.row>[class*="six wide"].column, .ui.grid>.row>[class*="six wide"].column, .ui.grid>[class*="six wide"].column {
         width: 100%!important;
+    }
+    .auth-container-image{
+        visibility: hidden;
     }
     
 } 
@@ -93,6 +105,9 @@
     .ui.column.grid>[class*="six wide"].column, .ui.grid>.column.row>[class*="six wide"].column, .ui.grid>.row>[class*="six wide"].column, .ui.grid>[class*="six wide"].column {
         width: 100%!important;
     }
+    .auth-container-image{
+        visibility: hidden;
+    }
 } 
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -103,6 +118,9 @@
 
     .ui.column.grid>[class*="six wide"].column, .ui.grid>.column.row>[class*="six wide"].column, .ui.grid>.row>[class*="six wide"].column, .ui.grid>[class*="six wide"].column {
         width: 37.5%!important;
+    }
+    .auth-container-image{
+        visibility: visible;
     }
 
 } 
@@ -115,6 +133,10 @@
 
     .ui.column.grid>[class*="six wide"].column, .ui.grid>.column.row>[class*="six wide"].column, .ui.grid>.row>[class*="six wide"].column, .ui.grid>[class*="six wide"].column {
         width: 37.5%!important;
+        
+    }
+    .auth-container-image{
+        visibility: visible;
     }
 }
 

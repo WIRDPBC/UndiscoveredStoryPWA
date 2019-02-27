@@ -27,6 +27,7 @@ import SelectContinent from '../SelectContinent'
 import SelectInitative from '../SelectInitiative'
 import BonusReward from '../BonusReward'
 import PurchaseTokens from '../PurchaseTokens'
+import MiniBytes from '../MiniBytes'
 
 
 function MainApp(props) {
@@ -53,6 +54,7 @@ function MainApp(props) {
                 <Route path="/select-initiative" component={SelectInitative} />
                 <Route path="/bonus-reward" component={BonusReward} />
                 <Route path="/purchase-tokens" component={PurchaseTokens} />
+                <Route path="/mini-bytes" component={MiniBytes} />
                 <Route component={NotFound}/>
             </Switch>
         </div>

@@ -3,7 +3,8 @@
     display: flex;
     display: -webkit-flex;
     justify-content: center;
-    /* padding-left: 350px; */
+    padding-left: 350px;
+    padding-right: 350px;
     margin-top: 30px;
 }
 /****************************************** Invite Contacts Item ************************************/
@@ -42,4 +43,92 @@
     margin-top: 20px;
 
 }
+
+
+/***************************************************** Responsive Designs ******************************************/
+
+/* Extra small devices (phones, 600px and down) */
+
+
+
+@media only screen and (max-width: 600px) {
+    .invite-contact-container{
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-top: 30px;
+    }
+    
+}
+
+@media only screen and (max-width: 320px) {
+    .invite-contact-container{
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-top: 30px;
+    }
+    
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .invite-contact-container{
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-top: 30px;
+    }
+    
+    
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .invite-contact-container{
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-top: 30px;
+    }
+    
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .invite-contact-container{
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        padding-left: 350px;
+        padding-right: 350px;
+        margin-top: 30px;
+    }
+
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .invite-contact-container{
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        padding-left: 350px;
+        padding-right: 350px;
+        margin-top: 30px;
+    }
+
+}
+
+
+
+
 

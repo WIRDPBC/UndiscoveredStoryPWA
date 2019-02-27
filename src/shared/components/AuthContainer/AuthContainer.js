@@ -10,6 +10,9 @@ import {Grid} from 'semantic-ui-react'
 //import css
 import './AuthContainer.css'
 
+//import component
+import AuthIcon from '../../icons/AuthIcon.jpg'
+
 
 class AuthContainer extends PureComponent{
     static propTypes = {
@@ -29,7 +32,9 @@ class AuthContainer extends PureComponent{
             <Grid columns={2} style={{padding: 0}} className="auth-container">
                 <Grid.Column width={10} style={{padding: 0}} className="auth-container-image-grid-container">
                     <div className="auth-container-image-container">
-                        <div className="auth-container-image-placeholder"></div>
+                        <div className="auth-container-image-placeholder">
+                            <img src={AuthIcon} style={{position:"relative", top:"15%"}} className="auth-container-image"/>
+                        </div>
                     </div>
                 </Grid.Column>
                 <Grid.Column width={6} style={{padding: 0}} className="auth-container-form-grid-container">
