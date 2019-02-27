@@ -80,7 +80,10 @@ class QuizResult extends PureComponent {
                     </div>
                     <div className="quiz-result-invite-leaderboard-container">
                         <div className="quiz-result-invite-friend-container">
+                            <Link to={'/invite-friends'}>
                             <Button content="Invite Friends" primary basic className="quiz-result-invite-friend-button" style={{width: "283px", height: "40px", background: "#ffffff !important"}}/>
+                            </Link>
+                            
                         </div>
                         <div className="quiz-result-leaderboard-container">
                             <Link to={'/leaderboard'}>
