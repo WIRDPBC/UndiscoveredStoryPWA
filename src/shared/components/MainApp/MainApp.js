@@ -22,6 +22,7 @@ import InviteContacts from '../InviteContacts'
 import AdvertisingOPT from '../AdvertisingOPT'
 import NoAdvertisingOPT from '../NoAdvertisingOPT'
 import Settings from '../Settings'
+import DonateTokens from '../DonateTokens';
 
 
 function MainApp(props) {
@@ -43,6 +44,7 @@ function MainApp(props) {
                 <Route path="/advertising-opt" component={AdvertisingOPT} />
                 <Route path="/no-advertising-opt" component={NoAdvertisingOPT} />
                 <Route path="/settings" component={Settings} />
+                <Route path="/donate-tokens" component={DonateTokens} />
                 <Route component={NotFound}/>
             </Switch>
         </div>

@@ -76,22 +76,39 @@
 
 @media only screen and (max-width: 600px) {
 
-    
+    .navigation-container{
+        width: 250px;
+        background: #ffffff;
+        height: 100%;
+    }
 }
 
 @media only screen and (max-width: 320px) {
 
+    .navigation-container{
+        width: 250px;
+        background: #ffffff;
+        height: 100%;
+    }
 } 
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
 
-    
+    .navigation-container{
+        width: 350px;
+        background: #ffffff;
+        height: 100%;
+    }
 } 
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-
+    .navigation-container{
+        width: 450px;
+        background: #ffffff;
+        height: 100%;
+    }
 } 
 
 /* Large devices (laptops/desktops, 992px and up) */
