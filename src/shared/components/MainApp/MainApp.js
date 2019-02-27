@@ -25,6 +25,7 @@ import Settings from '../Settings'
 import DonateTokens from '../DonateTokens';
 import SelectContinent from '../SelectContinent'
 import SelectInitative from '../SelectInitiative'
+import BonusReward from '../BonusReward'
 
 
 function MainApp(props) {
@@ -49,6 +50,7 @@ function MainApp(props) {
                 <Route path="/donate-tokens" component={DonateTokens} />
                 <Route path="/select-continent" component={SelectContinent} />
                 <Route path="/select-initiative" component={SelectInitative} />
+                <Route path="/bonus-reward" component={BonusReward} />
                 <Route component={NotFound}/>
             </Switch>
         </div>
