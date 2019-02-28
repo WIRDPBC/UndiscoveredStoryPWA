@@ -20,7 +20,7 @@
 
      onBack = () => {
          console.log("On Close")
-        this.history.goBack()
+        this.props.history.goBack()
     }
 
 

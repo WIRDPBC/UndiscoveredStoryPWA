@@ -356,7 +356,7 @@ class Quiz extends PureComponent {
                     <Progress percent={percent} style={{ height: "3px", flex: "1 1 auto" }} />
                     <span className="quiz-header-progress-text-container">{count}/22</span>
                 </div>
-                {count === 22 && <Link to={'/quiz-result'}>
+                {/* {count === 22 && <Link to={'/quiz-result'}>
                 <div className="quiz-explaination-container">
                     <div className="quiz-explaination-text-container">Explanation Text:</div>
                     <div className="quiz-explaination-content-container">
@@ -369,13 +369,13 @@ class Quiz extends PureComponent {
                     <div className="quiz-explaination-content-container">
                     {explainationText}
                     </div>
-                </div>}
+                </div>} */}
                 
-                <Link to={'/quiz-result'}>
+                {/* <Link to={'/quiz-result'}> */}
                     <div className="quiz-question-header-container">
                         <QuestionCenterIcon className="quiz-question-center-icon-container" />
                     </div>
-                </Link>
+                {/* </Link> */}
                
                 <div className="quiz-question-text-container">
                    <div className="quiz-question-text">{question}</div>
@@ -385,44 +385,88 @@ class Quiz extends PureComponent {
                         <div className="quiz-initial-option-container">
                         {/* <CorrectOption style={{position: "relative",bottom: "7px",right: "10px"}}/> */}
                         {/* <IncorrectOption style={{position: "relative",bottom: "7px",right: "10px"}}/> */}
+                            {count === 22 &&  <Link to={'/quiz-result'}>
                             <div className="quiz-odd-option-container" onClick = {this.onFirstSelect}>
                                 <img src={OptionOne} className="quiz-option-image-container quiz-option-odd-image"/>
                                 {/* <OptionOne className="quiz-option-image-container quiz-option-odd-image" /> */}
                                 <div className="quiz-option-odd-text-container">{option1}</div>
                               
                             </div>
+                            </Link>
+                            }
+
+                            {count < 22 && 
+                             <div className="quiz-odd-option-container" onClick = {this.onFirstSelect}>
+                             <img src={OptionOne} className="quiz-option-image-container quiz-option-odd-image"/>
+                             {/* <OptionOne className="quiz-option-image-container quiz-option-odd-image" /> */}
+                             <div className="quiz-option-odd-text-container">{option1}</div>
+                           
+                            </div>
+                            }
+                           
                             {/* <CorrectOption style={{position: "relative",bottom: "7px",right: "10px", float:"right"}}/> */}
                             {/* <IncorrectOption  style={{position: "relative",bottom: "7px",right: "10px", float:"right"}}/> */}
+                            {count === 22 &&  <Link to={'/quiz-result'}>
                             <div className="quiz-even-option-container" onClick={this.onSecondSelect}>
                                 <img src={OptionTwo} className="quiz-option-image-container quiz-option-even-image"/>
                                 {/* <OptionTwo className="quiz-option-image-container quiz-option-even-image"/> */}
                                 <div className="quiz-option-even-text-container">{option2}</div>
                             </div>
+                            </Link>
+                            }
+                            {count < 22 && 
+                                 <div className="quiz-even-option-container" onClick={this.onSecondSelect}>
+                                 <img src={OptionTwo} className="quiz-option-image-container quiz-option-even-image"/>
+                                 {/* <OptionTwo className="quiz-option-image-container quiz-option-even-image"/> */}
+                                 <div className="quiz-option-even-text-container">{option2}</div>
+                             </div>
+                            }
+                            
                            
 
                         </div>
                         <div className="quiz-last-option-container">
                         {/* <CorrectOption style={{position: "relative",bottom: "7px",right: "10px"}}/> */}
                         {/* <IncorrectOption style={{position: "relative",bottom: "7px",right: "10px"}}/> */}
-                            <div className="quiz-odd-option-container" onClick={this.onThirdSelect}>
-                                <img src={OptionThree} className="quiz-option-image-container quiz-option-even-image"/>
-                                {/* <OptionThree className="quiz-option-image-container quiz-option-odd-image"/> */}
-                                <div className="quiz-option-odd-text-container">{option3}</div>
-                            </div>
+                            {count === 22 &&  <Link to={'/quiz-result'}>
+                                <div className="quiz-odd-option-container" onClick={this.onThirdSelect}>
+                                    <img src={OptionThree} className="quiz-option-image-container quiz-option-even-image"/>
+                                    {/* <OptionThree className="quiz-option-image-container quiz-option-odd-image"/> */}
+                                    <div className="quiz-option-odd-text-container">{option3}</div>
+                                </div>
+                            </Link>
+                            }
+
+                            {count < 22 && 
+                                <div className="quiz-odd-option-container" onClick={this.onThirdSelect}>
+                                    <img src={OptionThree} className="quiz-option-image-container quiz-option-even-image"/>
+                                    {/* <OptionThree className="quiz-option-image-container quiz-option-odd-image"/> */}
+                                    <div className="quiz-option-odd-text-container">{option3}</div>
+                                </div>
+                            }
+                          
                             {/* <CorrectOption style={{position: "relative",bottom: "7px",right: "10px", float:"right"}}/> */}
                             {/* <IncorrectOption  style={{position: "relative",bottom: "7px",right: "10px", float:"right"}}/> */}
+                            {count === 22  &&  <Link to={'/quiz-result'}>
                             <div className="quiz-even-option-container" onClick={this.onFourthSelect}>
                                 <img src={OptionFour} className="quiz-option-image-container quiz-option-even-image"/>
                                 {/* <OptionFour className="quiz-option-image-container quiz-option-even-image"/> */}
                                 <div className="quiz-option-even-text-container">{option4}</div>
                             </div>
+                            </Link>}
+                            {count < 22 &&   <div className="quiz-even-option-container" onClick={this.onFourthSelect}>
+                                <img src={OptionFour} className="quiz-option-image-container quiz-option-even-image"/>
+                                {/* <OptionFour className="quiz-option-image-container quiz-option-even-image"/> */}
+                                <div className="quiz-option-even-text-container">{option4}</div>
+                            </div>}
+                           
                         </div>
 
 
                     </div>
                 </div>
 
-                {count === 22 && <Link to={'/quiz-result'}>
+                {/* {count === 22 && <Link to={'/quiz-result'}>
                 <div className="quiz-explaination-mobile-container" >
                     <div className="quiz-explaination-mobile-text-container">Explanation Text:</div>
                     <div className="quiz-explaination-mobile-content-container">
@@ -438,7 +482,7 @@ class Quiz extends PureComponent {
                         {explainationText}
                     </div>
                 </div>
-               }
+               } */}
 
              
 
