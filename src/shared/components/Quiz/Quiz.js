@@ -121,7 +121,7 @@ class Quiz extends PureComponent {
             })
         } else if(nextCount === 7){
             this.setState({
-                question: "The only person to win a Nobel Prize in twodifferent sciences",
+                question: "The only person to win a Nobel Prize in two different sciences",
                 option1: "Linda B. Buck",
                 option2: "Jane Addams",
                 option3: "Alva Myrdal",
@@ -205,7 +205,7 @@ class Quiz extends PureComponent {
             })
         } else if(nextCount === 14){
             this.setState({
-                question: " The first woman to take home three coveted movies  directing trophies for after decades of being ignored .",
+                question: " The first woman to take home three coveted movies directing trophies for after decades of being ignored .",
                 option1: "Penny Marschall",
                 option2: "Samatha Holt",
                 option3: "Kathryn Bigelow",
@@ -441,7 +441,7 @@ class Quiz extends PureComponent {
                                 <div className="quiz-odd-option-container" onClick={this.onThirdSelect}>
                                     <img src={OptionThree} className="quiz-option-image-container quiz-option-even-image"/>
                                     {/* <OptionThree className="quiz-option-image-container quiz-option-odd-image"/> */}
-                                    <div className="quiz-option-odd-text-container">{option3}</div>
+                                    <div className="quiz-option-even-text-container">{option3}</div>
                                 </div>
                             }
                           

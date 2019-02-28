@@ -25,7 +25,7 @@ class WalletCard extends PureComponent{
         return (
             <div className="wallet-card-container">
             <Link to={'/purchase-tokens'}>
-                <Button content="Purcahse" basic primary style={{position:"relative", top: "42%"}}/>
+                <Button content="Purchase" basic primary style={{position:"relative", top: "42%"}}/>
             </Link>
             
 

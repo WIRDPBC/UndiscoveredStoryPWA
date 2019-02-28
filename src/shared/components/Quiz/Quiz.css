@@ -177,6 +177,14 @@
     max-width: 500px;
 }
 
+.quiz-odd-option-container:hover{
+    border: 1px solid #aaaaaa
+}
+
+.quiz-even-option-container:hover{
+    border: 1px solid #aaaaaa
+}
+
 
 
 

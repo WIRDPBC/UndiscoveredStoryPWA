@@ -16,7 +16,7 @@ class GetStarted extends PureComponent{
     constructor(props){
         super(props)
         this.state = {
-            isGetStarted : false
+            isGetStarted : true
         }
     }
 
@@ -34,7 +34,7 @@ class GetStarted extends PureComponent{
                     <GetStartedCarousel onGetStarted={this.onGetStarted}/>
                 </div>
                 <div className="get-started-login-container">
-                    {!isGetStarted && <Button content="Get Started" size="medium" style={{width: "200px", height: "40px"}} primary disabled/>}
+                    {/* {!isGetStarted && <Button content="Get Started" size="medium" style={{width: "200px", height: "40px"}} primary disabled/>} */}
                     {isGetStarted && <Link to={"/signup"}><Button content="Get Started" size="medium" style={{width: "200px", height: "40px"}} primary/></Link>}
                     <div className="get-started-already-account-container">
                         <span className="get-started-already-account-text">Already have an account?</span>

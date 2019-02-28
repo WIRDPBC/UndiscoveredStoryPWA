@@ -104,7 +104,7 @@ class QuizResult extends PureComponent {
                         </div>
 
                          <div className="quiz-result-leaderboard-container">
-                            <Button content="Submit Response" primary basic style={{width: "283px", height: "40px"}} onClick={this.onSubmitResponse}/>
+                            <Button content="Get Free Tokens" primary basic style={{width: "283px", height: "40px"}} onClick={this.onSubmitResponse}/>
                          </div>
                       
 
