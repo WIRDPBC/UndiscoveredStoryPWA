@@ -46,7 +46,7 @@ class GetStartedCarousel extends PureComponent{
 
     render(){
         return (
-            <Carousel style={{height: "inherit"}} showThumbs={false} showArrows={false} showThumbs={false} showStatus={false} onClickItem={this.onClick} onChange={this.onChangePosition} emulateTouch centerMode>
+            <Carousel style={{height: "inherit"}} showThumbs={false} showArrows={false} showThumbs={false} showStatus={false} onClickItem={this.onClick} onChange={this.onChangePosition} emulateTouch >
             <div style={{backgroundColor: "#f2f2f2"}} className="get-started-carousel-background-container">
                 <div className="get-started-carousal-heading-container">LEARN, EARN & SUPPORT</div>
                 <img src={learnEarnSupport} className="get-started-carousal-image"/>

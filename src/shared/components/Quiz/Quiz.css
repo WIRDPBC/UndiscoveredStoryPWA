@@ -89,12 +89,14 @@
     float: left;
     text-align: center;
     border: solid 0.5px rgba(112, 112, 112, 0.2);
+    cursor: pointer;
 }
 
 .quiz-even-option-container{
     float: right;
     text-align: center;
     border: solid 0.5px rgba(112, 112, 112, 0.2);
+    cursor: pointer;
 }
 
 .quiz-option-image-container{
@@ -117,7 +119,8 @@
     line-height: 30px;
     font-size: 14px;
     color: #707070;
-    font-family: HelveticaNeue
+    font-family: HelveticaNeue;
+    cursor: pointer;
 }
 
 .quiz-option-even-text-container{
@@ -126,7 +129,8 @@
     margin-top: 90px;
     font-size: 14px;
     color: #707070;
-    font-family: HelveticaNeue
+    font-family: HelveticaNeue;
+    cursor: pointer;
 }
 
 .quiz-explaination-container{
@@ -167,6 +171,10 @@
 
 .quiz-explaination-mobile-content-container{
     color: #707070
+}
+
+.quiz-question-text{
+    max-width: 500px;
 }
 
 

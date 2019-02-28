@@ -49,7 +49,7 @@ class StartGame extends PureComponent {
                     </Grid.Row>
                     <Grid.Row style={{ padding: 0 }} className="start-game-content-container">
                         <GridColumn style={{ padding: 0 }}>
-                            <div className="start-game-content-heading-container">Science & Technology</div>
+                            {/* <div className="start-game-content-heading-container">Science & Technology</div> */}
                             <div className="start-game-content-text-container">Number of Questions: 22</div>
                             <div className="start-game-content-text-container">Time/question: 10 seconds</div>
                             <div className="start-game-content-text-container">Correct Answer: 1 UDST</div>

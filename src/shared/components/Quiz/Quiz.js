@@ -14,13 +14,18 @@ import CloseIcon from '../../icons/CloseIcon';
 import HourGlass from '../../icons/HourGlass';
 import Bookmark from '../../icons/Bookmark';
 import QuestionCenterIcon from '../../icons/QuestionCenterIcon';
-import OptionOne from '../../icons/OptionOne';
-import OptionTwo from '../../icons/OptionTwo';
-import OptionThree from '../../icons/OptionThree';
-import OptionFour from '../../icons/OptionFour'
+// import OptionOne from '../../icons/OptionOne';
+// import OptionTwo from '../../icons/OptionTwo';
+// import OptionThree from '../../icons/OptionThree';
+// import OptionFour from '../../icons/OptionFour'
+import OptionOne from '../../icons/OptionOneIcon.png'
+import OptionTwo from '../../icons/OptionTwoIcon.png'
+import OptionThree from '../../icons/OptionThreeIcon.png'
+import OptionFour from '../../icons/OptionFourIcon.png'
 import CorrectOption from '../../icons/CorrectOption';
 import IncorrectOption from '../../icons/IncorrectOption';
-import { SIGFPE } from 'constants';
+
+
 
 class Quiz extends PureComponent {
     static propTypes = {
@@ -42,7 +47,8 @@ class Quiz extends PureComponent {
             count: 1,
             correctAnswer: "Leontyne Price",
             explainationText: "Among her many honors are the Presidential Medal of Freedom (1964), the Spingarn Medal (1965),[6] the Kennedy Center Honors (1980), the National Medal of Arts (1985), numerous honorary degrees, and 19 Grammy Awards.",
-            percent: 4.5
+            percent: 4.5,
+            optionSelect : ''
         }
     }
 
@@ -308,12 +314,38 @@ class Quiz extends PureComponent {
         }
     }
 
+
+    onFirstSelect = () => {
+        // this.setState({
+        //     optionSelect : 1
+        // })
+        this.nextQuestion()
+    }
+
+    onSecondSelect = () => {
+        // this.setState({
+        //     optionSelect : 2
+        // })
+        this.nextQuestion()
+    }
+
+    onThirdSelect = () => {
+        // this.setState({
+        //     optionSelect : 2
+        // })
+        this.nextQuestion()
+    }
+
+    onFourthSelect = () => {
+        this.nextQuestion()
+    }
+
     render() {
         const {question, option1, option2, option3, option4, count, correctAnswer, explainationText, percent} = this.state
         return (
             <div className="quiz-container">
                 <div className="quiz-header-container">
-                    <CloseIcon size="small" style={{ position: "relative", top: "17px" }} onClick={this.onBack}/>
+                    <CloseIcon size="small" style={{ position: "relative", top: "17px", cursor: "pointer" }} onClick={this.onBack}/>
                     <div className="quiz-header-time-container">
                         <HourGlass style={{ position: "relative", top: "17px", marginRight: "5px" }} />
                         <div className="quiz-header-time-text">8 secs</div>
@@ -346,23 +378,24 @@ class Quiz extends PureComponent {
                 </Link>
                
                 <div className="quiz-question-text-container">
-                   {question}
+                   <div className="quiz-question-text">{question}</div>
                 </div>
                 <div className="quiz-question-option-container">
                     <div className="quiz-question-option-data">
                         <div className="quiz-initial-option-container">
                         {/* <CorrectOption style={{position: "relative",bottom: "7px",right: "10px"}}/> */}
                         {/* <IncorrectOption style={{position: "relative",bottom: "7px",right: "10px"}}/> */}
-                            <div className="quiz-odd-option-container">
-                              
-                                <OptionOne className="quiz-option-image-container quiz-option-odd-image" />
+                            <div className="quiz-odd-option-container" onClick = {this.onFirstSelect}>
+                                <img src={OptionOne} className="quiz-option-image-container quiz-option-odd-image"/>
+                                {/* <OptionOne className="quiz-option-image-container quiz-option-odd-image" /> */}
                                 <div className="quiz-option-odd-text-container">{option1}</div>
                               
                             </div>
                             {/* <CorrectOption style={{position: "relative",bottom: "7px",right: "10px", float:"right"}}/> */}
                             {/* <IncorrectOption  style={{position: "relative",bottom: "7px",right: "10px", float:"right"}}/> */}
-                            <div className="quiz-even-option-container">
-                                <OptionTwo className="quiz-option-image-container quiz-option-even-image"/>
+                            <div className="quiz-even-option-container" onClick={this.onSecondSelect}>
+                                <img src={OptionTwo} className="quiz-option-image-container quiz-option-even-image"/>
+                                {/* <OptionTwo className="quiz-option-image-container quiz-option-even-image"/> */}
                                 <div className="quiz-option-even-text-container">{option2}</div>
                             </div>
                            
@@ -371,14 +404,16 @@ class Quiz extends PureComponent {
                         <div className="quiz-last-option-container">
                         {/* <CorrectOption style={{position: "relative",bottom: "7px",right: "10px"}}/> */}
                         {/* <IncorrectOption style={{position: "relative",bottom: "7px",right: "10px"}}/> */}
-                            <div className="quiz-odd-option-container">
-                                <OptionThree className="quiz-option-image-container quiz-option-odd-image"/>
+                            <div className="quiz-odd-option-container" onClick={this.onThirdSelect}>
+                                <img src={OptionThree} className="quiz-option-image-container quiz-option-even-image"/>
+                                {/* <OptionThree className="quiz-option-image-container quiz-option-odd-image"/> */}
                                 <div className="quiz-option-odd-text-container">{option3}</div>
                             </div>
                             {/* <CorrectOption style={{position: "relative",bottom: "7px",right: "10px", float:"right"}}/> */}
                             {/* <IncorrectOption  style={{position: "relative",bottom: "7px",right: "10px", float:"right"}}/> */}
-                            <div className="quiz-even-option-container">
-                                <OptionFour className="quiz-option-image-container quiz-option-even-image"/>
+                            <div className="quiz-even-option-container" onClick={this.onFourthSelect}>
+                                <img src={OptionFour} className="quiz-option-image-container quiz-option-even-image"/>
+                                {/* <OptionFour className="quiz-option-image-container quiz-option-even-image"/> */}
                                 <div className="quiz-option-even-text-container">{option4}</div>
                             </div>
                         </div>

@@ -31,7 +31,7 @@ class SignupForm extends PureComponent {
                         <Input fluid placeholder="Enter Email"/>
                     </div>
                     <div className="signup-form-passowrd-container">
-                        <Input fluid placeholder="Enter Password"/>
+                        <Input fluid type="password" placeholder="Enter Password"/>
                     </div>
                     <div className="signup-form-first-condition-container">
                         <Checkbox style={{float: "left"}}/>

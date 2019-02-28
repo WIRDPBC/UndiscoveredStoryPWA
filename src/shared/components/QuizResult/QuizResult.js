@@ -6,7 +6,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Grid, GridColumn, Button } from 'semantic-ui-react'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 
 //import css
 import './QuizResult.css'
@@ -25,11 +25,15 @@ class QuizResult extends PureComponent {
         super(props)
     }
 
+    onBack = () => {
+        this.props.history.goBack()
+    }
+
     render() {
         return (
             <div className="quiz-result-container">
                 <div className="quiz-result-header-container">
-                    <BackBtn />
+                    <BackBtn onClick={this.onBack}/>
                 </div>
                 <div className="quiz-result-data-container">
                     <div className="quiz-result-score-container">
@@ -99,4 +103,4 @@ class QuizResult extends PureComponent {
     }
 }
 
-export default QuizResult
+export default withRouter(QuizResult)
