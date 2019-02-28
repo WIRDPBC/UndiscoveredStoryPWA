@@ -59,7 +59,7 @@ module.exports = ({prod = false, sw = false, prefix = ''} = {}) => {
 			new HtmlWebpackPlugin({
 				inject: true,
 				template: './public/index.html',
-				favicon: './public/favicon.ico',
+				favicon: './public/favicon.png',
 				minify: {
 					removeComments: true,
 					collapseWhitespace: true,

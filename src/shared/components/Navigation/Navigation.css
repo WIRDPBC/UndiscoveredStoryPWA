@@ -42,8 +42,8 @@
 }
 
 .navigation-data-item-container{
-    height: 30px;
-    line-height: 30px;
+    height: 40px;
+    line-height: 40px;
     color: #707070;
     cursor: pointer;
 }
@@ -55,6 +55,7 @@
 .navigation-data-item-text-container{
     font-family: HelveticaNeue;
     font-size: 13px;
+    margin-left: 20px;
 }
 
 .navigation-data-sign-out-container{
@@ -69,6 +70,18 @@
     /* font-weight: bold; */
     font-family: HelveticaNeue;
     cursor: pointer;
+}
+
+.navigation-icon{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 10px;
+}
+
+.navigation-element-container{
+    display: flex;
+    display: -webkit-flex;
 }
 
 /********************************************** Responsive Designs ***********************************************/
