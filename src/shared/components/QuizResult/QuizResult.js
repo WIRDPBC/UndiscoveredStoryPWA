@@ -29,6 +29,14 @@ class QuizResult extends PureComponent {
         this.props.history.goBack()
     }
 
+    onOpenForm = () => {
+        window.open('https://wirdwrld.io/products/#undiscovered-story-game', '_blank');
+    }
+
+    onSubmitResponse = () => {
+        window.open('https://docs.google.com/forms/d/1ib3j7PRqdVfJtYdKWNXzc3EDaEmjFTrcqz8R7OYBUcI', '_blank')
+    }
+
     render() {
         return (
             <div className="quiz-result-container">
@@ -93,6 +101,20 @@ class QuizResult extends PureComponent {
                             <Link to={'/leaderboard'}>
                                 <Button content="Leaderboard" primary style={{width: "283px", height: "40px"}}/>
                             </Link>
+                        </div>
+
+                         <div className="quiz-result-leaderboard-container">
+                            <Button content="Submit Response" primary basic style={{width: "283px", height: "40px"}} onClick={this.onSubmitResponse}/>
+                         </div>
+                      
+
+
+                        <div style={{textAlign: "center", marginTop: "20px", color: "#707070"}}>
+                            <span>For more information, please visit </span>
+                            <span onClick={this.onOpenForm} style={{color: "#2185d0", cursor:"pointer"}}>
+                                here
+
+                            </span>
                         </div>
                         
                        
