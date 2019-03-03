@@ -68,7 +68,7 @@ class Settings extends PureComponent{
                             </div>
                         </div>
                         <div className="settings-advertising-container">
-                            <div className="settings-advertising-text-container">Advertising OPT IN</div>
+                            <div className="settings-advertising-text-container">Advertising OPT-IN</div>
                             <div>
                                 <Checkbox toggle onChange={this.onChangeAdvertising} checked={isAdvertisingActive}></Checkbox>
                             </div>

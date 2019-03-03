@@ -25,7 +25,7 @@ class AdvertisingOPT extends PureComponent {
     render() {
         return (
             <Fragment>
-                <TopHeaderBack title="Advertising OPT" />
+                <TopHeaderBack title="Advertising OPT-IN" />
                 <div className="advertising-opt-container">
                 <AdvertisingElement image={AdvertisingImage1} imageTitle="Pachas Pajamas" description="An internationally-acclaimed educational storybook that uses Augmented Reality (AR).  Featuring Yasiin “Mos Def” Bey, Cheech Marin, Talib Kweli, Genevieve Goings, Lester Chambers, and…more
 "/>
