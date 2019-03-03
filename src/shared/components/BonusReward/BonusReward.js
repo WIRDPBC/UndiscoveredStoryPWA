@@ -59,21 +59,21 @@ class BonusReward extends PureComponent {
             this.setState({
                 isDialogOpened: true,
                 dialogTitle: tag,
-                dialogText:"The computer program will select the worldwide highest scoring player.  In the event of a tie score the UDSG tokens will be divided equally among the winners.  "
+                dialogText:"The computer program will select the worldwide highest scoring player.  In the event of a tie score the UDGT tokens will be divided equally among the winners.  "
             })
 
         } else if(tag === "Weekly Random Bonus pool"){
             this.setState({
                 isDialogOpened: true,
                 dialogTitle: tag,
-                dialogText:"The computer program will randomly select one player player per week and award them with UDSG tokens. "
+                dialogText:"The computer program will randomly select one player player per week and award them with UDGT tokens. "
             })
 
         } else if(tag === "Weekly donation Bonus pool"){
             this.setState({
                 isDialogOpened: true,
                 dialogTitle: tag,
-                dialogText:"The computer program will randomly select one girls or women led intiative per week and award them with 20,000 UDSG tokens. "
+                dialogText:"The computer program will randomly select one girls or women led intiative per week and award them with 20,000 UDGT tokens. "
             })
         }
     }
