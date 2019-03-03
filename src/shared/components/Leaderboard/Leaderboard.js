@@ -50,7 +50,7 @@ class Leaderboard extends PureComponent{
                             <LeaderboardItem count="6." name="Ellie" points="72"/>
                             <LeaderboardItem count="7." name="Darius" points="71"/>
 
-                            <div className="leader-board-great-text-container">Great going! You are among top 30% of users who have played this game.</div>
+                            <div className="leader-board-great-text-container">Great going! You are among the top 30% of users who have played this game.</div>
                             <LeaderboardItem count="24." name="Marry Doe" points="60" isLoginUser={true}/>
                         </div>
                        

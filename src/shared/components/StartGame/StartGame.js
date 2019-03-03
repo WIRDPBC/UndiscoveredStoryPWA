@@ -51,9 +51,9 @@ class StartGame extends PureComponent {
                         <GridColumn style={{ padding: 0 }}>
                             {/* <div className="start-game-content-heading-container">Science & Technology</div> */}
                             <div className="start-game-content-text-container">Number of Questions: 22</div>
-                            <div className="start-game-content-text-container">Time/question: 10 seconds</div>
-                            <div className="start-game-content-text-container">Correct Answer: 1 UDST</div>
-                            <div className="start-game-content-text-container">Incorrect Answer: 1 UDST goes to donation</div>
+                            <div className="start-game-content-text-container">Time/question: 9 seconds</div>
+                            <div className="start-game-content-text-container">Correct Answer: 1 UDGT</div>
+                            <div className="start-game-content-text-container">Incorrect Answer: 1 UDGT goes to donation</div>
                             <Link to={'/questions'}>
                                 <Button content="Start Game" primary style={{ marginTop: "10px", height: "40px", width: "300px", fontFamily: "HelveticaNeue" }} />
                             </Link>

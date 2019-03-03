@@ -34,7 +34,7 @@ class SelectContinent extends PureComponent{
 
     render(){
         const {selectedContinent} = this.state
-        let isNorthAmericaSelected = false, isSouthAmericaSelected = false, isAfricaSelected = false, isAsiaSelected = false, isOceaniaSelected = false 
+        let isNorthAmericaSelected = false, isSouthAmericaSelected = false, isAfricaSelected = false, isAsiaSelected = false, isOceaniaSelected = false, isEuropeSelected = false 
         if(selectedContinent === "N. AMERICA"){
             isNorthAmericaSelected = true
         } else if(selectedContinent === "S. AMERICA"){
@@ -43,8 +43,10 @@ class SelectContinent extends PureComponent{
             isAfricaSelected = true
         } else if(selectedContinent === "ASIA"){
             isAsiaSelected = true
-        } else if(selectedContinent === "OCEANA"){
+        } else if(selectedContinent === "OCEANIA"){
             isOceaniaSelected = true
+        } else if(selectedContinent === "EUROPE"){
+            isEuropeSelected = true
         }
         let disabled = true
         if(selectedContinent){
@@ -74,7 +76,10 @@ class SelectContinent extends PureComponent{
                             </GridColumn>
 
                             <GridColumn>
-                                <ContinentElement color="#c04080" name="OCEANA" onSelect={this.onSelect} isSelected={isOceaniaSelected}/>
+                                <ContinentElement color="#c04080" name="OCEANIA" onSelect={this.onSelect} isSelected={isOceaniaSelected}/>
+                            </GridColumn>
+                            <GridColumn>
+                                <ContinentElement color="#f33e01" name="EUROPE" onSelect={this.onSelect} isSelected={isEuropeSelected}/>
                             </GridColumn>
                          
                            

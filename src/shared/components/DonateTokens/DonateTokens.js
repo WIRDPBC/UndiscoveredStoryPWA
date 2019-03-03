@@ -52,7 +52,7 @@ class DonateTokens extends PureComponent {
                         <img src={DonateIcon} alt="Donate Token" />
                     </div>
                     <div className="donate-token-text-container">
-                        Tokens from incorrect answers of the game and from purchase can be donated to vetted girl & women led initiatives
+                        All tokens from incorrect answers and $0.05 from each purchased $0.15 token will be donated to vetted girl & women led initiatives.
                     </div>
                     <div className="donate-token-data-container">
                         <DonationElement title="Total Donation:" amount="$1.50" tokens="10"/>

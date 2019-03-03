@@ -21,11 +21,11 @@ class NoAdvertisingOPT extends PureComponent{
     render(){
         return (
             <Fragment>
-                <TopHeaderBack title="Advertising OPT"/>
+                <TopHeaderBack title="Advertising OPT-IN"/>
                 <div className="no-advertising-opt-container">
                     <div>You Don't have any advertising messages now</div>
-                    <div>Turn on Advertising OPT to view and comment on partner ads to earn tokens</div>
-                    <div>Go to Settings to turn on the Advertising OPT</div>
+                    <div>Turn on Advertising OPT-IN to view and comment on partner ads to earn tokens</div>
+                    <div>Go to Settings to turn on the Advertising OPT-IN</div>
                 </div>
             </Fragment>
         )

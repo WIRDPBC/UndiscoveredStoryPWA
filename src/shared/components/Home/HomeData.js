@@ -50,7 +50,7 @@ class HomeData extends PureComponent{
                 <div className="home-image-user-data-container">
                     <div className="home-user-text-container">Mary Doe</div>
                     <div className="home-user-points-container">0/22</div>
-                    <div className="home-user-yet-to-text-container">You are yet to start a game</div>
+                    <div className="home-user-yet-to-text-container">You have yet to start a game.</div>
                     <Link to={'/start-game'}>
                         <Button size="medium" style={{ width: "200px", height: "40px", marginTop: "10px" }} primary>Play Now</Button>
                     </Link>
