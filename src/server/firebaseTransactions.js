@@ -1,11 +1,12 @@
-const firebase = require('firebase');
+const firebase = require('firebase')
+const bigchainDB = require('./bigchandbTransactionExample')
+const bcrypt = require('bcryptjs')
+const nodemailer = require('nodemailer')
 
-const bigchainDB = require('./bigchandbTransactionExample');
-const bcrypt = require('bcryptjs');
-const Firestore = require('@google-cloud/firestore');
+//#region Firebase Config
+const config = require('./config').config;
+//#endregion
 
-//mailer
-const nodemailer = require('nodemailer');
 
 
 //Token Creation
@@ -13,45 +14,40 @@ const jwt = require('jsonwebtoken');
 const secretKey = require('./secretKey');
 
 const saltRounds = 10;
-
 const bigchainDBTransaction = bigchainDB.Transactions.BigchainDBTransaction;
 
-// var config = {
-// 	apiKey: "AIzaSyAeNSO4Kh9cr4Gwhx0b9Vpsfv8Cwuh3YAs",
-// 	authDomain: "ecroom-6c0c6.firebaseapp.com",
-// 	databaseURL: "https://ecroom-6c0c6.firebaseio.com",
-// 	projectId: "ecroom-6c0c6",
-// 	storageBucket: "",
-// 	messagingSenderId: "358978607943"
-// };
-var config = {
-	apiKey: "AIzaSyCKfSefhgtukqGPZAslH3-GYovrXNTVtYY",
-	authDomain: "udgt-7790b.firebaseapp.com",
-	databaseURL: "https://udgt-7790b.firebaseio.com",
-	projectId: "udgt-7790b",
-	storageBucket: "udgt-7790b.appspot.com",
-	messagingSenderId: "386121684282"
-};
 
-
-const userid = 1;
 
 let _Firebase = {
 	firebaseAuth: function () {
 		return firebase.initializeApp(config);
 	},
-	updatePassword: function (params) {
+
+
+	testSession: function (req, res) {
+		req.session.testSessionValues = 'My Test Session Values'
+
+	},
+
+	updatePassword: function (params, req) {
 		firebase.initializeApp(config);
 		let db = firebase.firestore();
-
-
 
 		db.collection("users").where(`email`, `==`, params.email).get().then((querySnapshot) => {
 
 			//let lastLogin= firebase.firestore.Timestamp.fromMillis(doc.data().lastLogin.seconds).toDate();
-			let result = querySnapshot.docs.values().next();
+			let result = querySnapshot.docs.values().next()
 			let documentId = result.value.id;
-			db.collection("users").doc(documentId).update({ password: params.password });
+			var salt = bcrypt.genSaltSync(saltRounds);
+			var passwordHash = bcrypt.hashSync(params.password, salt);
+			db.collection("users").doc(documentId).update({ password: passwordHash })
+
+			req.session.passwordUpdated= {
+				email: params.email,
+				password: passwordHash,
+				authToken: 'GeneratedAuthtoken',
+				errorOccured: 'Error'
+			}
 
 		})
 	},
@@ -59,23 +55,36 @@ let _Firebase = {
 	login: function (params) {
 		firebase.initializeApp(config);
 		let db = firebase.firestore();
-		var _doc = null;
+
 		db.collection("users").where(`email`, `==`, params.email).get().then((querySnapshot) => {
-			
 			let result = querySnapshot.docs.values().next();
 			let documentId = result.value.id;
-			var token = jwt.sign({ id: 'aiman' }, secretKey.secretKey, {
-				expiresIn: 86400 // expires in 24 hours
-			});
+			var token = jwt.sign({ id: params.email }, secretKey.secretKey, { expiresIn: 86400 }); // expires in 24 hours
+			db.collection("users").doc(documentId).update({ lastLogin: firebase.firestore.Timestamp.now(), authenticationToken: token })
+		});
+		//return db.collection("users").where(`email`, `==`, params.email).get();
 
-			db.collection("users").doc(documentId).update({ lastLogin: firebase.firestore.Timestamp.now(),
-				authenticationToken: token })
+		db.collection("users").where(`email`, `==`, params.email).get().then((querySnapshot) => {
 
-		})
+			querySnapshot.docs.forEach((doc) => {
+				req.session.loginData = {
+					authenticationToken: doc.data().authenticationToken,
+					email: doc.data().email,
+					lastLogin: doc.data().lastLogin
+				}
+				// console.log(`authenticationToken: ${doc.data().authenticationToken}`);
+				// console.log(`email: ${doc.data().email}`);
+				// console.log(`lastLogin: ${doc.data().lastLogin}`);
+				console.log(`loginData: ${req.session.loginData}`);
+			})
+		});
+		console.log(`loginData: ${sess.data}`);
+
+
 	},
 
 	createNewUser: function (params) {
-
+		let newUserDocId = null;
 		firebase.initializeApp(config);
 		let db = firebase.firestore();
 
@@ -84,10 +93,13 @@ let _Firebase = {
 		//Bigchain DB
 		//Once stellar is configured then remove it
 		var transaction = bigchainDBTransaction.creatingTransaction();
-
+		var token = jwt.sign({ id: params.email }, secretKey.secretKey, { expiresIn: 86400 }); // expires in 24 hours
 		var userData = {
 			email: params.email,
-			password: passwordHash
+			password: passwordHash,
+			signupDateTime: firebase.firestore.Timestamp.now(),
+			authenticationToken: token,
+			lastLogin: firebase.firestore.Timestamp.now()
 		};
 
 		var assets = {
@@ -97,9 +109,13 @@ let _Firebase = {
 
 		};
 		db.collection("users").add(userData).then((docID) => {
-			console.log(`Record Added with Doc ID: ${docID.id}`);
-
+			//console.log(`Record Added with Doc ID: ${docID.id}`);
+			newUserDocId = docID.id;
 		});
+		if (newUserDocId !== null)
+			return db.collection("users").doc(newUserDocId).get();
+		else
+			return "Error occured while fetching info for newly created user";
 	},
 	SignupGoogle: function (params) {
 
@@ -115,6 +131,24 @@ let _Firebase = {
 
 	},
 	sendVerificationEmail: function (email, link) {
+
+		// var smtpConfig = {
+		// 	host: 'smtp.gmail.com',
+		// 	port: 465,
+		// 	secure: true, // use SSL
+		// 	auth: {
+		// 		user: 'udg@wirdwrld.com',
+		// 		pass: '!amstillstruggling'
+		// 	}
+		// };
+		// var smtpConfig = {
+		// 	service: 'gmail',
+		// 	auth: {
+		// 		user: 'aiman@wirdwrld.com',
+		// 		pass: '!amstillstruggling'
+		// 	}
+		// };
+
 
 		let transporter = nodemailer.createTransport({
 			host: 'smtp.gmail.com',
@@ -142,6 +176,7 @@ let _Firebase = {
 		});
 	}
 }
+
 
 
 module.exports.login = function login(params) {
