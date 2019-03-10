@@ -16,7 +16,7 @@ const bcrypt = require('bcryptjs');
 // Testing Login Method ends here
 
 const app = express();
-const port = process.env.PORT || 8082;
+const PORT = process.env.PORT || 8082;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -130,8 +130,11 @@ app.post('/udg/', (req, res) => {
 
 
 
-var server = http.createServer(app);
-server.listen(port, function () {
-	console.log('Web server listening on port ' + port)
-});
+// var server = http.createServer(app);
+// server.listen(port, function () {
+// 	console.log('Web server listening on port ' + port)
+// });
 
+
+
+app.listen(PORT, () => console.log(`Server started at port ${PORT}`));
