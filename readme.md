@@ -10,7 +10,7 @@
 
 <br />
 
-# Stellar Architecture
+# Our Undiscovered Story Game Token (UDGT) Architecture we designed for Stellar Blcockchain
 <img src="./images/UDGTStellarGamegenesis.png" height="auto"/>
 
 
