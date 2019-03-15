@@ -15,8 +15,8 @@
 The game is being built as a PWA utilizing React.JS and Node.JS.
 
 
-# The Undiscovered Story Game Token (UDGT) Hydrid Blockchchain
-Hybrid Blockchain Game Development for Secure and Scalable Mass Adoption. 
+# The Undiscovered Story Game Hybrid Blockchchain
+Hybrid Blockchain Game Development for Secure and Scalable Mass Adoption developed in house by WIRD. 
 
 A Hybrid blockchain game built for use by the masses, easy enough for a grandma to use and play with her daughters or grandchildren.  
 
