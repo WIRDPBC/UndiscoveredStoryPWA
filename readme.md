@@ -59,7 +59,7 @@ Configured Node.JS
 
 </p>
 
-# -------- On-Chain versus Off-Chain? ------------
+# -------------- On-Chain versus Off-Chain? 
 
 # On-Chain
 
