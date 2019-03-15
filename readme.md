@@ -32,18 +32,6 @@ This hydrid setup allows us to take advantage of the secure and lightning fast p
 
 All “off-chain” applications upgrades are instantly updated transparently for the users.
 
-# On-Chain versus Off-Chain
-
-# On-Chain
-
-1).  Miner or participant are required to validate all transactions.  Depending on the blockchain used, “On-chain” transactions can have a lengthy lag time depending upon the network load and number of transactions waiting in the queue to be confirmed.
-
-# Off-Chain
-
-1). Transactions can be executed instantly.
-2). Transactions usually don't have a transaction fee, as nothing occurs on the blockchain.
-3).  More security and anonymity to the participants because details are not publicly broadcast as is the case of on-chain transactions.
-
 # AWS
 
 Created an instance of EC2 on AWS
@@ -75,3 +63,15 @@ https://developers.google.com/web/progressive-web-apps/
 
 
 </p>
+
+# ------------------------------------ On-Chain versus Off-Chain? -------------------------
+
+# On-Chain
+
+1).  Miner or participant are required to validate all transactions.  Depending on the blockchain used, “On-chain” transactions can have a lengthy lag time depending upon the network load and number of transactions waiting in the queue to be confirmed.
+
+# Off-Chain
+
+1). Transactions can be executed instantly.
+2). Transactions usually don't have a transaction fee, as nothing occurs on the blockchain.
+3).  More security and anonymity to the participants because details are not publicly broadcast as is the case of on-chain transactions.
