@@ -12,8 +12,18 @@
 
 # PWA - Progressive web application
 
-The game is being built as a PWA utilizing React.JS and Node.JS.
+The game is being built as a PWA utilizing React.JS and Node.JS
 
+# FIREBASE (GOOGLE) PWA 
+
+Google Firebase and Firebase PWA Progressive Web App info
+https://developers.google.com/web/progressive-web-apps/
+ 
+We are using Firebase for real time from client to server or server to client data transfer, which allows us to create a database with real time communication, and scalability on the fly as Firebase utilizes JSON.
+
+Having a NoSQL allows us to create any field (assign value) at any point without destroying the structure or functionality. 
+
+Having a combination of a Progressive Web App (PWA) with Firebase allows non-breakable communication between server and client.
 
 # The Undiscovered Story Game Hybrid Blockchchain
 Hybrid Blockchain Game Development for Secure and Scalable Mass Adoption developed in house by WIRD. 
@@ -41,22 +51,6 @@ Installed Ubuntu 18.04
 Configured Mongo.db
 
 Configured Node.JS
-
-
-# FIREBASE (GOOGLE) https://firebase.google.com/
- 
-We are using Firebase for real time from client to server or server to client data transfer, which allows us to create a database with real time communication, and scalability on the fly as Firebase utilizes JSON.
-
-Having a NoSQL allows us to create any field (assign value) at any point without destroying the structure or functionality. 
-
-Having a combination of a Progressive Web App (PWA) with Firebase allows non-breakable communication between server and client.
-
-PWA - Progressive web application
-
-The game is being built as a PWA utilizing React.JS and Node.JS.
-
-Google Firebase and Firebase PWA Progressive Web App info
-https://developers.google.com/web/progressive-web-apps/
 
 # The Undiscovered Story Game Token (UDGT) Architecture we designed in house for Stellar Blockchain Gaming
 <img src="./images/UDGTStellarGamegenesis.png" height="auto"/>
