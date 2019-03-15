@@ -1,7 +1,7 @@
 
 # Undiscovered Story PWA "Learn and Earn" Cryptocurrency Game and Architecture utilizing Google FireBase, Amazon AWS and the Stellar Blockchain.
 
-A Hybrid blockchain game built for use by the masses, easy enough for a grandma to use and play with her daughters or grandchildren.  
+A Hybrid blockchain game built for mass adoption that is easy enough for a grandma or mom to use and play with her grandchildren or children or for an educator to introduce to their students.   
 
 <p align="center"><!-- <img src="https://cloud.githubusercontent.com/assets/124117/22330270/bb6b2728-e408-11e6-9488-d041b317e1e4.png" height="400px"/> -->
 
