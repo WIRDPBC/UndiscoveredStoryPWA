@@ -1,6 +1,8 @@
 
 # Undiscovered Story PWA "Learn and Earn" Cryptocurrency Game and Architecture utilizing Google FireBase, Amazon AWS and the Stellar Blockchain.
 
+A Hybrid blockchain game built for use by the masses, easy enough for a grandma to use and play with her daughters or grandchildren.  
+
 <p align="center"><!-- <img src="https://cloud.githubusercontent.com/assets/124117/22330270/bb6b2728-e408-11e6-9488-d041b317e1e4.png" height="400px"/> -->
 
 <!-- <img src="./images/img1.png" height="400px"/> -->
@@ -14,23 +16,22 @@
 
 The game is being built as a PWA utilizing React.JS and Node.JS
 
-# FIREBASE (GOOGLE) PWA 
+# Firebase (Google) PWA 
 
-Google Firebase and Firebase PWA Progressive Web App info
-https://developers.google.com/web/progressive-web-apps/
- 
 We are using Firebase for real time from client to server or server to client data transfer, which allows us to create a database with real time communication, and scalability on the fly as Firebase utilizes JSON.
 
 Having a NoSQL allows us to create any field (assign value) at any point without destroying the structure or functionality. 
 
 Having a combination of a Progressive Web App (PWA) with Firebase allows non-breakable communication between server and client.
 
-# The Undiscovered Story Game Hybrid Blockchchain
+Google Firebase and Firebase PWA Progressive Web App info
+https://developers.google.com/web/progressive-web-apps/
+
+
+
+# The technology stack (the platforms) the Hybrid Blockchchain game is built upon
+
 Hybrid Blockchain Game Development for Secure and Scalable Mass Adoption developed in house by WIRD. 
-
-A Hybrid blockchain game built for use by the masses, easy enough for a grandma to use and play with her daughters or grandchildren.  
-
-# The technology stack (the platforms) the game is built upon  
 
 Two (2) instantly scalable CDN cloud based servers running simultaneously.
 
