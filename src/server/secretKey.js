@@ -1,4 +1,4 @@
-module.exports.secretKey ='abcdefghijklmnopqrstuvwxyz';
+module.exports = 'abcdefghijklmnopqrstuvwxyz';
 
 
 

@@ -28,11 +28,6 @@ function updatePasswordCatch(rejected) {
 	console.log(`Rejected ${rejected}`);
 
 }
-
-
-
-
-
 let _Firebase = {
 	firebaseAuth: function () {
 		return firebase.initializeApp(config);
@@ -200,6 +195,34 @@ let _Firebase = {
 
 
 
+module.exports.login = function login(params) {
+
+	firebase.initializeApp(config);
+	let db = firebase.firestore();
+	var _doc = null;
+
+	// db.collection("users").where(`email`, `==`, params.email).get().then((querySnapshot) => {
+	// 	// querySnapshot.forEach((doc) => {
+	// 	// 	let isPassword = bcrypt.compareSync(params.password, doc.data().password);
+	// 	// 	let isEmail = (doc.data().email === params.email ? true : false);
+	// 	// 	if (isPassword && isEmail) {
+	// 	// 		return doc;
+	// 	// 	}
+	// 	// })
+	// 	//let result = querySnapshot.docs.values().next();
+	// 	//return result.value;
+	// })
+
+	var token = jwt.sign({ id: 'aiman' }, secretKey.secretKey, {
+		expiresIn: 86400 // expires in 24 hours
+	});
+
+
+
+	console.log(token);
+	return db.collection("users").where(`email`, `==`, params.email).get();
+
+}
 
 
 module.exports.firebase = { _Firebase };
