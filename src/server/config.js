@@ -1,4 +1,4 @@
-module.exports= {
+module.exports.config = {
 	apiKey: "AIzaSyCKfSefhgtukqGPZAslH3-GYovrXNTVtYY",
 	authDomain: "udgt-7790b.firebaseapp.com",
 	databaseURL: "https://udgt-7790b.firebaseio.com",
