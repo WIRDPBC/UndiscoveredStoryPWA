@@ -1,7 +1,7 @@
 /**
  * The code has been rewritten to make it more clear
  * and understandable with comments added
- * Utilizing bases methodology to add methods
+ * Utilizing object methodology to add methods
  */
 
 const config = require('.././config').config;
@@ -84,7 +84,7 @@ CreateUser.prototype.hashPassword = function (Password) {
 CreateUser.prototype.checkPassword = function (hashedPassword, simplePassword) {
     return bcrypt.compare(simplePassword, hashedPassword);
 }
-// Returns the authentication tokne using  JWT
+// Returns the authentication token using  JWT
 CreateUser.prototype.getAuthenticationToken = function () {
     // expires in 24 hours
     this.AuthenticationToken = jwt.sign({ id: this.getEmail() }, secretKey, { expiresIn: 86400 });
