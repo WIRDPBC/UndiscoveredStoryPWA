@@ -1,8 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter} from 'react-router-dom'
+import {Provider} from 'react-redux'
 import MainApp from '../shared/components/MainApp'
 import '../index.css';
+import configureStore from '../shared/redux/configureStore'
 
 //FIXME: Deprecated No need for the current browsers..
 // Needed for onTouchTap
@@ -10,10 +12,14 @@ import '../index.css';
 //injectTapEventPlugin();
 //const history = createHashHistory();
 
+const store = configureStore()
 const app = (
-    <BrowserRouter>
-        <MainApp/>
-    </BrowserRouter>
+    <Provider store={store}>
+        <BrowserRouter>
+            <MainApp/>
+        </BrowserRouter>
+    </Provider>
+   
 )
 
 
