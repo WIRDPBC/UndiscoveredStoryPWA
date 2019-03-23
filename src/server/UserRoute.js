@@ -10,10 +10,10 @@ UserRouter
     .post(function (req, res) {
         let email = req.body.Email;
         let password = req.body.Password;
-        CreateUser = new CreateUser(email, password);
-
-        res.send(JSON.stringify(CreateUser.signup()));
-        // res.sendStatus('Data: ' + CreateUser.getBalance());
+        if (CreateUser) {
+            let obj = new CreateUser(email, password);
+            obj.signup(res);
+        }
 
     });
 
@@ -23,8 +23,11 @@ UserRouter
     .post(function (req, res) {
         let email = req.body.Email;
         let password = req.body.Password;
-        CreateUser = new CreateUser(email, password);
-        res.send(JSON.stringify(CreateUser.login()));
+
+        if (CreateUser) {
+            let obj = new CreateUser(email, password);
+            obj.login(res);
+        }
     });
 
 
@@ -57,14 +60,8 @@ UserRouter.route('/updateUserData').post(function (req, res) {
     let lastName = req.body.lastName;
     let email = req.body.email;
     let paypalEmail = req.body.paypalEmail;
-    updateUserInformation = new updateUserInformation(firstName, lastName, email, paypalEmail);
-
-
-
-
-  updateUserInformation.update(res);
-
-
+    let obj = new updateUserInformation(firstName, lastName, email, paypalEmail);
+    obj.update(res);
 
 });
 

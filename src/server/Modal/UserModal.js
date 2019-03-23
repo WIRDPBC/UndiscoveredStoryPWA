@@ -13,6 +13,7 @@ let secretKey = require('../secretKey');
 let walletAPIurl = require('../walletAPI/walletAPIurl');
 const axios = require('axios');
 let jwt = require('jsonwebtoken');
+let utilities = require('./utilities');
 
 //Contructor requiring two params to utilize
 //them in the methods defined
@@ -52,7 +53,7 @@ CreateUser.prototype.getBalance = function (publicKey) {
 
 // Creating wallet based on the email address set
 // using the contructor and it is fetched using the getEmail method
-CreateUser.prototype.createWallet = async function () {
+CreateUser.prototype.createWallet = function () {
     return axios.post(walletAPIurl.createKeyPair, { "emailId": this.getEmail() })
         .then(response => {
             // returning the data here allows the caller to get it through another .then(...)
@@ -91,36 +92,59 @@ CreateUser.prototype.getAuthenticationToken = function () {
     return this.AuthenticationToken;
 }
 
-CreateUser.prototype.signup = function () {
+CreateUser.prototype.signup = function (res) {
     //this.getBalance().then(data => { this.setBalance(data); });
-    this.userSignupData = {
-        AuthenticationToken: this.getAuthenticationToken(),
-        email: this.getEmail(),
-        password: this.getPassword(),
-        signupDateTime: _firebase.firestore.Timestamp.now(),
-        lastLogin: _firebase.firestore.Timestamp.now(),
-        walletData: '',
-        balance: this.initialSignupBalance
-    }
-    let dt = _firebase.firestore();
-    // db.collection("users").add(userSignupData);
-    this.createWallet().then(data => this.setWallet(data));
-    return this.userSignupData;
+
+    let _utilities = new utilities();
+    _utilities.getDocumentIDbyEmail(this.getEmail()).then((resolved) => {
+        if (resolved) {
+            console.log(resolved);
+            res.send({ Message: "User already registered!" });
+        }
+        else {
+
+            // this.userSignupData = {
+            //     AuthenticationToken: this.getAuthenticationToken(),
+            //     email: this.getEmail(),
+            //     password: this.getPassword(),
+            //     signupDateTime: _firebase.firestore.Timestamp.now(),
+            //     lastLogin: _firebase.firestore.Timestamp.now(),
+            //     walletData: '',
+            //     balance: this.initialSignupBalance
+            // }
+            // let dt = _firebase.firestore();
+            // //db.collection("users").add(userSignupData);
+            // this.createWallet();
+            // return this.userSignupData;
+
+
+        }
+    });
 }
 
 
-CreateUser.prototype.login = function () {
-    this.userSignupData = {
+CreateUser.prototype.login = function (res) {
+    this.userLoginData = {
         AuthenticationToken: this.getAuthenticationToken(),
-        email: this.getEmail(),
-        password: this.getPassword(),
         lastLogin: _firebase.firestore.Timestamp.now(),
         walletData: ''
     }
     let dt = _firebase.firestore();
-    // db.collection("users").add(userSignupData);
-    this.createWallet().then(data => this.setWallet(data));
-    return this.userSignupData;
+    let _utilities = new utilities();
+    _utilities.getDocumentIDbyEmail(this.getEmail()).then((resolved) => {
+        dt.collection('users').doc(resolved.documentID).update(this.userLoginData).then(() => {
+            res.send({
+
+                AuthenticationToken: this.getAuthenticationToken(),
+                lastLogin: _firebase.firestore.Timestamp.now(),
+                walletData: ''
+
+            })
+        })
+    });
+
+
+
 }
 
 
