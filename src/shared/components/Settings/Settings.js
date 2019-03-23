@@ -5,7 +5,7 @@
 
  import React, { PureComponent, Fragment } from 'react'
  import PropTypes from 'prop-types'
- import {Checkbox} from 'semantic-ui-react'
+ import {Checkbox, Icon} from 'semantic-ui-react'
  import { withRouter } from "react-router-dom";
 
  //import css
@@ -15,6 +15,7 @@ import './Settings.css'
 import TopHeader from '../TopHeader'
 import Navigator from '../Navigator'
 import NavUser from '../../icons/NavUser';
+import Profile from '../Profile';
 
 class Settings extends PureComponent{
     static propTypes = {
@@ -25,7 +26,8 @@ class Settings extends PureComponent{
         super(props)
         this.state = {
             visible: false,
-            isAdvertisingActive : false
+            isAdvertisingActive : false,
+            isProfileDialogOpened : false
         }
     }
 
@@ -51,9 +53,21 @@ class Settings extends PureComponent{
         }
     }
 
+    onOpenProfileDialog = () => {
+        this.setState({
+            isProfileDialogOpened : true
+        })
+    }
+
+    onCloseProfileDialog = () => {
+        this.setState({
+            isProfileDialogOpened : false
+        })
+    }
+
 
     render(){
-        const {visible, isAdvertisingActive} = this.state
+        const {visible, isAdvertisingActive, isProfileDialogOpened} = this.state
         return (
             <Navigator visible={visible} onCloseSidebar={this.onCloseSidebar}>
                 <Fragment>
@@ -66,6 +80,17 @@ class Settings extends PureComponent{
                                 <div>marrydoe@gmail.com</div>
                                 <div>(Level)</div>
                             </div>
+                            <Icon name="edit" size="large" onClick={this.onOpenProfileDialog} style={{marginRight: "20px", color: "#fff", fontSize: "16px", cursor: "pointer"}}/>
+                            {/* <Popup
+                            trigger={ <Icon name="edit" size="large" style={{marginRight: "20px", color: "#fff", fontSize: "16px", cursor: "pointer"}}/>}
+                            on="click"
+                            open={isProfileDialogOpened}
+                            onOpen = {this.onOpenProfileDialog}
+                            onCLose={this.onCloseProfileDialog}
+                            >
+                               
+                            </Popup> */}
+                           
                         </div>
                         <div className="settings-advertising-container">
                             <div className="settings-advertising-text-container">Advertising OPT-IN</div>
@@ -75,6 +100,7 @@ class Settings extends PureComponent{
                             
                         </div>
                     </div>
+                    <Profile onClose={this.onCloseProfileDialog} isProfileDialogOpened={isProfileDialogOpened}/>
                 </Fragment>
             </Navigator>
         )

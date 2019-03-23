@@ -7,7 +7,12 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Input, Button, Checkbox } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import {Field, reduxForm} from 'redux-form'
+
+
+//import components..
+import WirdForm from '../ReduxForm/WirdForm'
+
 
 class SignupForm extends PureComponent {
     static propTypes = {
@@ -98,45 +103,72 @@ class SignupForm extends PureComponent {
     }
 
     render() {
+        const {handleSubmit} = this.props
         return (
-            <div className="signup-form-container">
-                <div className="signup-form-heading-container">Sign Up</div>
-                <div className="signup-form-main-container">
-                    <div>
-                        <Input fluid placeholder="Enter Email" onChange={this.onChangeEmail} />
-                    </div>
-                    <div className="signup-form-passowrd-container">
-                        <Input fluid type="password" placeholder="Enter Password" onChange={this.onChangePassword} />
-                    </div>
-                    <div className="signup-form-first-condition-container">
-                        <Checkbox style={{ float: "left" }} onChange={this.onCheckedTermsConditions} />
-                        <span className="signup-form-condition-text-container">I agree to the Terms & services and Privacy Policy of <br />undiscovered story</span>
-                    </div>
-                    <div className="signup-form-second-condition-container">
-                        <Checkbox style={{ float: "left" }} onChange={this.onCheckedEligibility} />
-                        <span className="signup-form-condition-text-container">I have read the above eligibility guidelines and certify <br />
-                            that I am at least 16 years old and I am not a citizen of <br />
-                            a restricted or banned country.
-                        </span>
-                    </div>
+            <WirdForm onSubmit={handleSubmit}>
+                <div className="signup-form-container">
+                    <div className="signup-form-heading-container">Sign Up</div>
+                    <div className="signup-form-main-container">
+                        <div>
+                            <Input fluid placeholder="Enter Email" onChange={this.onChangeEmail} />
+                        </div>
+                        <div className="signup-form-passowrd-container">
+                            <Input fluid type="password" placeholder="Enter Password" onChange={this.onChangePassword} />
+                        </div>
+                        <div className="signup-form-first-condition-container">
+                            <Checkbox style={{ float: "left" }} onChange={this.onCheckedTermsConditions} />
+                            <span className="signup-form-condition-text-container">I agree to the Terms & services and Privacy Policy of <br />undiscovered story</span>
+                        </div>
+                        <div className="signup-form-second-condition-container">
+                            <Checkbox style={{ float: "left" }} onChange={this.onCheckedEligibility} />
+                            <span className="signup-form-condition-text-container">I have read the above eligibility guidelines and certify <br />
+                                that I am at least 16 years old and I am not a citizen of <br />
+                                a restricted or banned country.
+                            </span>
+                        </div>
 
-                    <div className="signup-form-button-container">
+                        <div className="signup-form-button-container">
 
-                        <Button size="medium" style={{ width: "200px", height: "40px" }} primary
-                            onClick={this.onSignupClicked}
-                        >Sign Up</Button>
-
-                        <Link to={'/home'}>
                             <Button size="medium" style={{ width: "200px", height: "40px" }} primary
                                 onClick={this.onSignupClicked}
                             >Sign Up</Button>
-                        </Link>
+
+                            <Link to={'/home'}>
+                                <Button size="medium" style={{ width: "200px", height: "40px" }} primary
+                                    onClick={this.onSignupClicked}
+                                >Sign Up</Button>
+                            </Link>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </WirdForm>
+            
         )
     }
 }
 
+const validate = values => {
+    const errors = {}
+    if (!values.email) {
+        errors.email = 'Required'
+    }
+    if (!values.password) {
+        errors.password = 'Required'
+    }
+    if(!values.termsandconditions){
+        errors.termsandconditions = 'Required'
+    }
+    if(!values.eligiblity){
+        errors.eligiblity = 'Required'
+    }
+    return errors
+} 
 
-export default SignupForm;
+const SignupFormRedux = reduxForm({
+    form: 'signupForm',
+    enableReinitialize: true,
+    validate
+})(SignupForm)
+
+
+export default SignupFormRedux;

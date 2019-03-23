@@ -9,24 +9,26 @@
     display: flex;
     display: -webkit-flex;
     padding-left: 123px;
+    align-items: center
 
 }
 
 .settings-user-container{
     width: 60px !important;
     height: 60px !important;
-    position: relative;
-    top: 15px;
+    /* position: relative;
+    top: 15px; */
 }
 
 
 .settings-user-profile-container{
-    position: relative;
-    top: 15px;
+    /* position: relative;
+    top: 15px; */
     margin-left: 30px;
     font-family: HelveticaNeue;
     font-size: 14px;
     color: #ffffff;
+    flex: 1 1 auto;
 }
 
 .settings-advertising-container{
@@ -170,8 +172,8 @@
 @media only screen and (min-width: 992px) {
 
 .settings-user-profile-container{
-    position: relative;
-    top: 15px;
+    /* position: relative;
+    top: 15px; */
     margin-left: 30px;
     font-family: HelveticaNeue;
     font-size: 14px;
@@ -202,8 +204,8 @@
 @media only screen and (min-width: 1200px) {
 
 .settings-user-profile-container{
-    position: relative;
-    top: 15px;
+    /* position: relative;
+    top: 15px; */
     margin-left: 30px;
     font-family: HelveticaNeue;
     font-size: 14px;

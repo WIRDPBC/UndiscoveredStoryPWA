@@ -1,0 +1,52 @@
+.profile-form-header{
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #eee;
+}
+
+.profile-form-header-text{
+    float: left;
+    margin-left: 20px;
+}
+
+.profile-form-close-container{
+    float: right;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.profile-form-name-container{
+    display: flex;
+    display: -webkit-flex;
+}
+
+
+.profile-form-first-name-container{
+    flex: 1 1 auto;
+}
+
+
+.profile-form-last-name-container{
+    flex: 1 1 auto;
+}
+
+.profile-form-title-container{
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.profile-form-user-pic-container{
+    display: flex !important;
+    display: -webkit-flex !important;
+    justify-content: center;
+}
+
+.profile-form-pic-container{
+    width: 103px;
+    height: 103px;
+    border-radius: 103px;
+    display: inline-block;
+    background-color: #d9d9d9;
+    margin-top: 20px;
+    cursor: pointer;
+}
