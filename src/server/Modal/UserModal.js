@@ -132,16 +132,19 @@ CreateUser.prototype.login = function (res) {
     let dt = _firebase.firestore();
     let _utilities = new utilities();
     _utilities.getDocumentIDbyEmail(this.getEmail()).then((resolved) => {
-        dt.collection('users').doc(resolved.documentID).update(this.userLoginData).then(() => {
+        dt.collection('users').doc(resolved.documentID).update(this.userLoginData).then(() => { });
+        dt.collection('users').doc(resolved.documentID).get().then((doc) => {
             res.send({
-
                 AuthenticationToken: this.getAuthenticationToken(),
                 lastLogin: _firebase.firestore.Timestamp.now(),
+                firstName: doc.data().firstName,
+                lastName: doc.data().lastName,
+                paypalEmail: doc.data().paypalEmail,
+                email: doc.data().email,
                 walletData: ''
-
             })
         })
-    });
+    })
 
 
 
