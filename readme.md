@@ -14,7 +14,7 @@ A Hybrid blockchain game built for mass adoption that is easy enough for a grand
 
 # PWA - Progressive web application
 
-The game is being built as a PWA utilizing React.JS and Node.JS
+The PWA utilizes React.JS and Node.JS
 
 # Firebase (Google) PWA 
 
