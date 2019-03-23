@@ -83,7 +83,8 @@ CreateUser.prototype.hashPassword = function (Password) {
 }
 // Checks if the password hashed is valid or not
 CreateUser.prototype.checkPassword = function (hashedPassword, simplePassword) {
-    return bcrypt.compare(simplePassword, hashedPassword);
+    return bcrypt.compareSync(simplePassword, hashedPassword);
+
 }
 // Returns the authentication token using  JWT
 CreateUser.prototype.getAuthenticationToken = function () {
@@ -103,25 +104,22 @@ CreateUser.prototype.signup = function (res) {
         }
         else {
 
-            // this.userSignupData = {
-            //     AuthenticationToken: this.getAuthenticationToken(),
-            //     email: this.getEmail(),
-            //     password: this.getPassword(),
-            //     signupDateTime: _firebase.firestore.Timestamp.now(),
-            //     lastLogin: _firebase.firestore.Timestamp.now(),
-            //     walletData: '',
-            //     balance: this.initialSignupBalance
-            // }
-            // let dt = _firebase.firestore();
-            // //db.collection("users").add(userSignupData);
-            // this.createWallet();
-            // return this.userSignupData;
-
-
+            this.userSignupData = {
+                authenticationToken: this.getAuthenticationToken(),
+                email: this.getEmail(),
+                password: this.getPassword(),
+                signupDateTime: _firebase.firestore.Timestamp.now(),
+                lastLogin: _firebase.firestore.Timestamp.now(),
+                walletData: '',
+                balance: this.initialSignupBalance
+            }
+            let db = _firebase.firestore();
+            db.collection("users").add(userSignupData).then(() => {
+                res.send(this.userLoginData)
+            })
         }
-    });
+    })
 }
-
 
 CreateUser.prototype.login = function (res) {
     this.userLoginData = {
@@ -132,22 +130,42 @@ CreateUser.prototype.login = function (res) {
     let dt = _firebase.firestore();
     let _utilities = new utilities();
     _utilities.getDocumentIDbyEmail(this.getEmail()).then((resolved) => {
-        dt.collection('users').doc(resolved.documentID).update(this.userLoginData).then(() => { });
-        dt.collection('users').doc(resolved.documentID).get().then((doc) => {
+        if (resolved.documentID === undefined) {
             res.send({
-                AuthenticationToken: this.getAuthenticationToken(),
-                lastLogin: _firebase.firestore.Timestamp.now(),
-                firstName: doc.data().firstName,
-                lastName: doc.data().lastName,
-                paypalEmail: doc.data().paypalEmail,
-                email: doc.data().email,
-                walletData: ''
+                Message: 'Unregistered user'
             })
-        })
+        } else {
+            _utilities.getEmailAndPasswordByDocumentID(resolved.documentID)
+                .then((resolved) => {
+                    let fetchedPassword = resolved.documentID.password;
+                    // console.log(`Email:  ${this.getEmail()}`);
+                    // console.log(`fetchedEmail:  ${fetchedEmail}`);
+                    // console.log(`Password:  ${this.getPassword()}`);
+                    // console.log(`fetchedPassword:  ${fetchedPassword}`);
+                    // console.log(`password matched:  ${this.checkPassword(fetchedPassword,this.getPassword())}`);
+                    let password_ISValid = this.checkPassword(fetchedPassword, this.getPassword());
+                    if (!password_ISValid) {
+                        res.send({
+                            Message: 'Invalid Password'
+                        })
+                    } else {
+                        // updating data and letting user to get in
+                        dt.collection('users').doc(resolved.documentID).update(this.userLoginData).then(() => { });
+                        dt.collection('users').doc(resolved.documentID).get().then((doc) => {
+                            res.send({
+                                AuthenticationToken: this.getAuthenticationToken(),
+                                lastLogin: _firebase.firestore.Timestamp.now(),
+                                firstName: doc.data().firstName,
+                                lastName: doc.data().lastName,
+                                paypalEmail: doc.data().paypalEmail,
+                                email: doc.data().email,
+                                walletData: ''
+                            })
+                        })
+                    }
+                })
+        }
     })
-
-
-
 }
 
 

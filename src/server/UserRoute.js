@@ -3,6 +3,7 @@ const UserRouter = express.Router();
 let CreateUser = require('./Modal/UserModal');
 let UserAuthentication = require('./Modal/UserAuthentication');
 let updateUserInformation = require('./Modal/updateUserInformation');
+let questions = require('./Modal/questions');
 // This file is used for routing to the required method
 
 UserRouter
@@ -64,5 +65,23 @@ UserRouter.route('/updateUserData').post(function (req, res) {
     obj.update(res);
 
 });
+
+UserRouter.route('/updateUserData').post(function (req, res) {
+
+    let firstName = req.body.firstName;
+    let lastName = req.body.lastName;
+    let email = req.body.email;
+    let paypalEmail = req.body.paypalEmail;
+    let obj = new updateUserInformation(firstName, lastName, email, paypalEmail);
+    obj.update(res);
+
+});
+
+UserRouter.route('/viewQuestions').post(function (req, res) {
+    let obj = new questions();
+    obj.loadPredefinedQuestions(res);
+});
+
+
 
 module.exports = UserRouter;

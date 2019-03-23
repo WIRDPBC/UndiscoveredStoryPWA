@@ -28,13 +28,9 @@ utilities.prototype.getEmailAndPasswordByDocumentID = function (docID) {
     let db = _firebase.firestore();
     let documentID = db.collection('users').doc(docID).get().then(function (querySnapshot) {
         var id = {
-            email: '',
-            password: ''
+            email: querySnapshot.data().email,
+            password: querySnapshot.data().password
         }
-        querySnapshot.forEach(function (doc) {
-            id.email = doc.data().email;
-            id.password = doc.data().password;
-        });
         return id;
     }).then(function (data) {
         return { documentID: data };
