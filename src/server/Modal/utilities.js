@@ -1,4 +1,5 @@
 const config = require('.././config').config;
+const uuidv1 = require('uuid/v1');
 const _firebase = require('firebase');
 if (!_firebase.apps.length)
     _firebase.initializeApp(config)
@@ -59,6 +60,30 @@ utilities.prototype.getDocumentIDbyAuthenticationToken = function (authenticatio
     return documentID;
 }
 
+
+/**
+ * Will return referralLink based on authenticationToken provided.
+ * If the Authentication Token exists in any document
+ * it will return the referralLink
+ * @argument authenticationToken
+ * @argument res
+ * @returns referralLink
+ */
+utilities.prototype.getReferralLinkByAuthenticationToken = function (authenticationToken, res) {
+    let db = _firebase.firestore();
+    let documentID = db.collection('users').where("authenticationToken", "==", authenticationToken).get().then(function (querySnapshot) {
+        var id;
+        querySnapshot.forEach(function (doc) {
+            id = doc.data().ReferralLink;
+        });
+        return id;
+    }).then(function (data) {
+        res.send({referralLink: data})
+    }).catch(function (error) {
+        console.log(error);
+    });
+    return documentID;
+}
 
 /**
  * Returns email and password of user based on the document ID
@@ -153,9 +178,13 @@ utilities.prototype.destroyAuthenticationTokenByAuthenticationToken =
                     .doc(resolved.documentID)
                     .update({ authenticationToken: '' })
                     .then(() => {
-                        res.send({Message: `authentication token against ${authenticationToken} has been destroyed`})
+                        res.send({ Message: `authentication token against ${authenticationToken} has been destroyed` })
                     })
             })
     }
 
+utilities.prototype.generateUUIDv1 = function () {
+    // generate Invitee Code using UUID
+    return JSON.stringify(uuidv1());
+}
 module.exports = utilities;

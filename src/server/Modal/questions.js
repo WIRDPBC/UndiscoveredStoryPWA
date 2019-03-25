@@ -247,7 +247,6 @@ questions.prototype.loadPredefinedQuestions = function (res) {
     questionsArray.push(questions.question20)
 
     var shuffledQuestionArray = this.shuffle(questionsArray);
-    //var shuffledTopicArray = this.shuffle(yourTopicArray);
     res.send(JSON.stringify(shuffledQuestionArray))
 }
 

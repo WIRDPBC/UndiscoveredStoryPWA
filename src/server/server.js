@@ -3,7 +3,6 @@ const session = require('express-session')
 var parseurl = require('parseurl')
 const bodyParser = require('body-parser');
 let config = require('./config');
-let middleware = require('./middleware');
 const router = express.Router();
 
 
@@ -17,13 +16,12 @@ const bcrypt = require('bcryptjs');
 
 
 const app = express();
-const PORT = process.env.PORT || 8082;
+const PORT = process.env.PORT || 8083;
 
-const UserRoute =require('./UserRoute');
+const UserRoute =require('./Routes/UserRoute');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use('/user',UserRoute);
 
 
@@ -31,12 +29,8 @@ app.use('/user',UserRoute);
 
 
 
-
-
 // app.post('/udg/', (req, res) => {
-
 // 	Firebase_CreateNewUser.testSession(req, res)
-
 // 	return;
 // });
 

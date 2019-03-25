@@ -15,11 +15,12 @@ UserRouter
     .post(function (req, res) {
         let email = req.body.Email;
         let password = req.body.Password;
+        let eligiblityCertified = req.body.eligiblityCertified;
+        let termsPolicy = req.body.termsPolicy;
         if (CreateUser) {
-            let obj = new CreateUser(email, password);
+            let obj = new CreateUser(email, password, eligiblityCertified, termsPolicy);
             obj.signup(res);
         }
-
     });
 
 
@@ -136,10 +137,8 @@ UserRouter.route('/getTotalNumberofRegisteredUsers').post(function (req, res) {
 UserRouter.route('/destroyAuthenticationTokenByAuthenticationToken').post(function (req, res) {
     let authenticationToken = req.body.authenticationToken;
     let obj = new utilities();
-    obj.destroyAuthenticationTokenByAuthenticationToken(authenticationToken,res);
+    obj.destroyAuthenticationTokenByAuthenticationToken(authenticationToken, res);
 });
-
-
 
 
 /**
@@ -153,7 +152,41 @@ UserRouter.route('/destroyAuthenticationTokenByAuthenticationToken').post(functi
 UserRouter.route('/destroyAuthenticationTokenByEmail').post(function (req, res) {
     let email = req.body.email;
     let obj = new utilities();
-    obj.destroyAuthenticationTokenByEmail(res,email);
+    obj.destroyAuthenticationTokenByEmail(res, email);
 });
+
+
+
+
+
+/**
+ * Usage:
+ * {
+ *  authenticationToken: ""
+ * }
+ * Response:
+ * {referralLink: ''}
+ */
+UserRouter.route('/getReferralLink').post(function (req, res) {
+    let authenticationToken = req.body.authenticationToken;
+    let obj = new utilities();
+    obj.getReferralLinkByAuthenticationToken( authenticationToken, res);
+});
+
+
+
+
+UserRouter.route('/answer').post(function (req, res) {
+    let email = req.body.email;
+    let obj = new utilities();
+    obj.destroyAuthenticationTokenByEmail(res, email);
+});
+
+
+// UserRouter.route('/uuid').post(function (req, res) {
+//     let obj = new utilities();
+//     obj.generateUUIDv1();
+// });
+
 
 module.exports = UserRouter;
