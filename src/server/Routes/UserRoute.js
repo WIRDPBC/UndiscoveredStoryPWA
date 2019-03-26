@@ -242,6 +242,14 @@ UserRouter.route('/checkAuthTokenValidity').post(function (req, res) {
 
 
 
+UserRouter.route('/getAllRegisteredUsersEmailAddress').post(function (req, res) {
+    let obj = new utilities();
+    obj.getAllRegisteredUsersEmailAddress(res);
+});
 
+UserRouter.route('/deleteUserByDocumentID').post(function(req, res){
+    let obj = new utilities();
+    obj.deleteUserByDocumentID(req,res);
+});
 
 module.exports = UserRouter;

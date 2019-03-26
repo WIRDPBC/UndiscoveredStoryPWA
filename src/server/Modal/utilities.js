@@ -127,6 +127,25 @@ utilities.prototype.getAllRegisteredUsers = function () {
 }
 
 
+
+utilities.prototype.getAllRegisteredUsersEmail = function () {
+    let db = _firebase.firestore();
+    let documentID = db.collection('users').get().then(function (querySnapshot) {
+        var array = [];
+        querySnapshot.forEach(function (doc) {
+            array.push(doc.data().email);
+        });
+        return array;
+    }).then(function (data) {
+        return { users: data };
+    }).catch(function (error) {
+        console.log(error);
+    });
+    return documentID;
+}
+
+
+
 /**
  * Destroys the Authentication Token based on the email provided
  * @requires response object
@@ -210,9 +229,30 @@ utilities.prototype.getDocumentID = function (res, email) {
 /**
  * gets an entire list of available auth Token against users
  */
-utilities.prototype.getAllRegisteredUsersAuthToken = function (res){
-    this.getAllRegisteredUsers().then((users)=>{
-        res.send({users});
+utilities.prototype.getAllRegisteredUsersAuthToken = function (res) {
+    this.getAllRegisteredUsers().then((users) => {
+        res.send({ users });
     })
 }
+
+
+/**
+ * gets an entire list of available email addresses against users
+ */
+utilities.prototype.getAllRegisteredUsersEmailAddress = function (res) {
+    this.getAllRegisteredUsersEmail().then((users) => {
+        res.send({ users });
+    })
+}
+
+
+utilities.prototype.deleteUserByDocumentID = function (req, res) {
+    let db = _firebase.firestore();
+    db.collection('users').doc("MlxJcgVm9MRmuIfKDHTA").delete().then(()=>{
+        console.log('deleted');
+    })
+}
+
+
+
 module.exports = utilities;
