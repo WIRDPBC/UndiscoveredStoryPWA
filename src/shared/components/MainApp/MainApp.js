@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Switch, Route} from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 //import css
 import './MainApp.css'
 
 //import compoenents..
+import Auth from '../Auth'
 import GetStarted from '../GetStarted'
 import Login from '../Login'
 import Signup from '../Signup'
@@ -30,35 +31,153 @@ import PurchaseTokens from '../PurchaseTokens'
 import MiniBytes from '../MiniBytes'
 
 
+//import Routes
+import {
+    loginRoute,
+    signUpRoute,
+    homeRoute,
+    startGameRoute,
+    questionRoute,
+    quizResultRoute,
+    leaderBoardRoute,
+    walletRoute,
+    earnTokenRoute,
+    inviteFriendsRoute,
+    inviteContactsRoute,
+    advertisingOptRoute,
+    noAdvertisingRoute,
+    settingsRoute,
+    donateTokensRoute,
+    selectContinentRoute,
+    selectInitiativeRoute,
+    bonusRewardRoute,
+    purchaseTokensRoute,
+    miniBytesRoutes
+} from '../CustomRoutes/CustomRoutes'
+
+
 function MainApp(props) {
     return (
         <div className="app-container">
             <Switch>
-                <Route exact path="/" component={GetStarted} />
-                <Route path="/login" component={Login} />
-                <Route path="/signup" component={Signup} />
-                <Route path="/home" component={Home} />
-                <Route path="/start-game" component={StartGame} />
-                <Route path="/questions" component={Quiz}/>
-                <Route path="/quiz-result" component={QuizResult}/>
-                <Route path="/leaderboard" component={Leaderboard} />
-                <Route path="/wallet" component={MyWallet} />
-                <Route path="/earn-token" component={EarnToken} />
-                <Route path="/invite-friends" component={InviteFriends}/>
-                <Route path="/invite-contacts" component={InviteContacts} />
-                <Route path="/advertising-opt" component={AdvertisingOPT} />
-                <Route path="/no-advertising-opt" component={NoAdvertisingOPT} />
-                <Route path="/settings" component={Settings} />
-                <Route path="/donate-tokens" component={DonateTokens} />
-                <Route path="/select-continent" component={SelectContinent} />
-                <Route path="/select-initiative" component={SelectInitative} />
-                <Route path="/bonus-reward" component={BonusReward} />
-                <Route path="/purchase-tokens" component={PurchaseTokens} />
-                <Route path="/mini-bytes" component={MiniBytes} />
-                <Route component={NotFound}/>
+                <Route exact path="/" render={routerProps => (
+                    <Auth accept={'$unauthenticated'} reject={'$authenticated'} redirectTo={homeRoute}>
+                        <GetStarted {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={loginRoute} render={routerProps => (
+                    <Auth accept={'$unauthenticated'} reject={'$authenticated'} redirectTo={homeRoute}>
+                        <Login {...routerProps} />
+                    </Auth>
+                )
+
+                } />
+
+                <Route path={signUpRoute} render={routerProps => (
+                    <Auth accept={'$unauthenticated'} reject={'$authenticated'} redirectTo={homeRoute}>
+                        <Signup {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={homeRoute} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <Home {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={startGameRoute} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <StartGame {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={questionRoute} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <Quiz {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={quizResultRoute} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <QuizResult {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={leaderBoardRoute} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <Leaderboard {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={walletRoute} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <MyWallet {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={earnTokenRoute} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <EarnToken {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={inviteFriendsRoute} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <InviteFriends {...routerProps} />
+                    </Auth>
+                )} />
+
+                <Route path={inviteFriendsRoute} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <InviteFriends {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={inviteContactsRoute} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <InviteContacts {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={advertisingOptRoute} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <AdvertisingOPT {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={noAdvertisingRoute} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <NoAdvertisingOPT {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={settingsRoute} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <Settings {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={donateTokensRoute} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <DonateTokens {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={selectContinentRoute} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <SelectContinent {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={selectInitiativeRoute} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <SelectInitative {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={bonusRewardRoute} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <BonusReward {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={purchaseTokensRoute} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <PurchaseTokens {...routerProps} />
+                    </Auth>
+                )} />
+                <Route path={miniBytesRoutes} render={routerProps => (
+                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                        <MiniBytes {...routerProps} />
+                    </Auth>
+                )} />
+                <Route component={NotFound} />
             </Switch>
         </div>
-        )
+    )
 }
 
 

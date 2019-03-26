@@ -4,17 +4,7 @@
  */
 
 import { reducer as formReducer } from 'redux-form';
-
-const initialState = {
-
-}
-
-
-const GameReducer = (state = initialState, action) => {
-    
-    return state
-}
-
+import GameReducer from './reducer'
 export default {
     GameReducer,
     form: formReducer

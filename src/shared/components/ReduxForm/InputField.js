@@ -81,7 +81,7 @@ const InputField = (props) => {
       if(onChange){
         onChange(data.value);
       }
-      console.log("On Change value", data)
+      //console.log("On Change value", data)
     }
 
     //console.log("Input Props", input)

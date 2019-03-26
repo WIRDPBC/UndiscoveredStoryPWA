@@ -134,6 +134,7 @@ CreateUser.prototype.login = function (res) {
     _utilities.getDocumentIDbyEmail(this.getEmail()).then((resolved) => {
         dt.collection('users').doc(resolved.documentID).update(this.userLoginData).then(() => { });
         dt.collection('users').doc(resolved.documentID).get().then((doc) => {
+            //Store the auth token to the cookie..
             res.send({
                 AuthenticationToken: this.getAuthenticationToken(),
                 lastLogin: _firebase.firestore.Timestamp.now(),
