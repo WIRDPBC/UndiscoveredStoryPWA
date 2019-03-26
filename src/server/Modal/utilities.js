@@ -78,7 +78,7 @@ utilities.prototype.getReferralLinkByAuthenticationToken = function (authenticat
         });
         return id;
     }).then(function (data) {
-        res.send({referralLink: data})
+        res.send({ referralLink: data })
     }).catch(function (error) {
         console.log(error);
     });
@@ -182,9 +182,37 @@ utilities.prototype.destroyAuthenticationTokenByAuthenticationToken =
                     })
             })
     }
-
+/**
+ * Returns UUID for User unique identification
+ * which can be used in user's referral link
+ * @returns string
+ */
 utilities.prototype.generateUUIDv1 = function () {
     // generate Invitee Code using UUID
     return JSON.stringify(uuidv1());
+}
+
+
+
+/**
+ * Fetches the documentID for a specific email address
+ * @requires response object
+ * @readonly email
+ * @returns documentID in response
+ */
+utilities.prototype.getDocumentID = function (res, email) {
+    this.getDocumentIDbyEmail(email).then((resolved) => {
+        let dt = _firebase.firestore();
+        res.send(JSON.stringify(resolved.documentID))
+    })
+}
+
+/**
+ * gets an entire list of available auth Token against users
+ */
+utilities.prototype.getAllRegisteredUsersAuthToken = function (res){
+    this.getAllRegisteredUsers().then((users)=>{
+        res.send({users});
+    })
 }
 module.exports = utilities;

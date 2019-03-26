@@ -5,7 +5,7 @@ let UserAuthentication = require('../Modal/UserAuthentication');
 let updateUserInformation = require('../Modal/updateUserInformation');
 let questions = require('../Modal/questions');
 let utilities = require('../Modal/utilities');
-
+let authToken = require('../Modal/authToken');
 /**
  *This file is used for routing to the required method
  */
@@ -173,20 +173,75 @@ UserRouter.route('/getReferralLink').post(function (req, res) {
     obj.getReferralLinkByAuthenticationToken( authenticationToken, res);
 });
 
-
-
+/**
+ * Usage:
+ * {
+ *  authenticationToken: ''
+ * }
+ */
 
 UserRouter.route('/answer').post(function (req, res) {
-    let email = req.body.email;
-    let obj = new utilities();
-    obj.destroyAuthenticationTokenByEmail(res, email);
+    let authenticationToken = req.body.authenticationToken;
+    let obj = new CreateUser();
+    obj.updateAnswerUsingAuthToken(res, authenticationToken);
 });
 
 
-// UserRouter.route('/uuid').post(function (req, res) {
-//     let obj = new utilities();
-//     obj.generateUUIDv1();
-// });
+
+/**
+ * Usage:
+ * {
+ *  email: ""
+ * }
+ * Response:
+ * {documentID: 'Z9909KrAMtCVDxLckCHO'}
+ */
+UserRouter.route('/getDocumentID').post(function (req, res) {
+    let email = req.body.email;
+    let obj = new utilities();
+    obj.getDocumentID(res, email);
+});
+
+
+/*
+Usage:
+{
+}
+as body
+
+Response:
+{
+    users: ['eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImF5bWFuLmFmemFsQGdtYWlsLmNvbSIsImlhdCI6MTU1MDU4Njc4NiwiZXhwIjoxNTUwNjczMTg2fQ.rUwzE_-14wvfTbLizGkZo4Jl_njJBKZAkZYeTw5s3gs']
+}
+ */
+UserRouter.route('/getAllRegisteredUsersAuthToken').post(function (req, res) {
+    let obj = new utilities();
+    obj.getAllRegisteredUsersAuthToken(res);
+});
+
+
+/*
+Usage:
+{
+    "authenticationToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImF5bWFuLmFmemFsQGdtYWlsLmNvbSIsImlhdCI6MTU1MDU4Njc4NiwiZXhwIjoxNTUwNjczMTg2fQ.rUwzE_-14wvfTbLizGkZo4Jl_njJBKZAkZYeTw5s3gs"
+}
+as body
+
+Response:
+{
+    "error": "jwt expired",
+    "expiredAt": "2019-02-20T14:33:06.000Z"
+}
+ */
+
+UserRouter.route('/checkAuthTokenValidity').post(function (req, res) {
+    let authenticationToken = req.body.authenticationToken;
+    let obj = new authToken();
+    obj.checkValidity(res,authenticationToken);
+});
+
+
+
 
 
 module.exports = UserRouter;
