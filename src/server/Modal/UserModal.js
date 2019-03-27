@@ -169,7 +169,11 @@ CreateUser.prototype.signup = function (res) {
                 invitedBy: '',
                 ReferralLink: `https://undiscoveredstory.com?email=${this.getEmail()}&inviteeCode=${inviteeCode}`,
                 termsPolicy: true,
-                eligiblityCertified: true
+                eligiblityCertified: true,
+                incorrectAnswers: 0,
+                totalAnswered: 0,
+                correctAnswers: 0,
+                totalQuestionsAnsweredLastLogin: 0
             }
             this.addRecord(this.userSignupData).then((documentID) => {
                 res.send({
@@ -224,10 +228,10 @@ CreateUser.prototype.login = function (res) {
                         })
                     } else {
                         // updating data and letting user to get in
-                       dt.collection('users').doc(docID).update(this.userLoginData);
+                        dt.collection('users').doc(docID).update(this.userLoginData);
                         dt.collection('users').doc(docID).get().then((doc) => {
                             res.send({
-                                AuthenticationToken: this.getAuthenticationToken(),
+                                authenticationToken: this.getAuthenticationToken(),
                                 lastLogin: _firebase.firestore.Timestamp.now(),
                                 firstName: doc.data().firstName,
                                 lastName: doc.data().lastName,
@@ -240,7 +244,9 @@ CreateUser.prototype.login = function (res) {
                                 totalQuestionsAnsweredLastLogin: doc.data().totalQuestionsAnsweredLastLogin,
                                 invitedBy: doc.data().invitedBy,
                                 inviteeCode: doc.data().inviteeCode,
-                                walletData: ''
+                                walletData: '',
+                                termsPolicy: true,
+                                eligiblityCertified: true
                             })
                         })
                     }

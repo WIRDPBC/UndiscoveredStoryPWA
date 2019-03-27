@@ -1,3 +1,10 @@
+const config = require('.././config').config;
+const _firebase = require('firebase');
+const utilities = require('./utilities');
+const collectionName = require('./collectionName');
+if (!_firebase.apps.length)
+    _firebase.initializeApp(config)
+
 function questions() {
 }
 
@@ -260,4 +267,57 @@ questions.prototype.shuffle = function (sourceArray) {
     return sourceArray;
 }
 
+questions.prototype.answer = function (authenticationToken, correctAnswer, res) {
+    let db = _firebase.firestore();
+    let _utilities = new utilities();
+    let documentIDReturned =
+        _utilities.getDocumentIDbyAuthenticationToken(authenticationToken).then((resolved) => {
+            // console.log(JSON.stringify (resolved.documentID));
+
+            resolved.documentID = JSON.stringify(resolved.documentID)
+            let docID = resolved.documentID;
+            _utilities.getLastAnswers(docID).then((data) => {
+                let answers = data;
+                if (correctAnswer) {
+                    answers.correctAnswers += 1
+                }
+                else {
+                    answers.incorrectAnswers += 1
+                }
+                answers.totalAnswered += 1;
+                answers.totalQuestionsAnsweredLastLogin += 1;
+
+                db.collection(collectionName.users).doc(docID).update(data);
+                return docID;
+            }).catch(() => {
+                //res.send({ Message: `error occured while fetching last answers by the documentID: ${docID}` });
+            })
+        })
+
+    documentIDReturned.then(() => {
+        _utilities.getDocumentIDbyAuthenticationToken(authenticationToken).then((resolved) => {
+            db.collection(collectionName.users).doc(resolved.documentID).get().then((doc) => {
+                res.send({
+                    authenticationToken: doc.data().authenticationToken,
+                    lastLogin: _firebase.firestore.Timestamp.now(),
+                    firstName: doc.data().firstName,
+                    lastName: doc.data().lastName,
+                    paypalEmail: doc.data().paypalEmail,
+                    email: doc.data().email,
+                    ReferralLink: doc.data().ReferralLink,
+                    incorrectAnswers: doc.data().incorrectAnswers,
+                    totalAnswered: doc.data().totalAnswered,
+                    correctAnswers: doc.data().correctAnswers,
+                    totalQuestionsAnsweredLastLogin: doc.data().totalQuestionsAnsweredLastLogin,
+                    invitedBy: doc.data().invitedBy,
+                    inviteeCode: doc.data().inviteeCode,
+                    walletData: '',
+                    termsPolicy: true,
+                    eligiblityCertified: true
+                })
+            })
+
+        })
+    })
+}
 module.exports = questions;

@@ -246,12 +246,55 @@ utilities.prototype.getAllRegisteredUsersEmailAddress = function (res) {
 }
 
 
+/**
+ * A generic method to add any record based on the collection name with the meta data
+ * @requires collectionName
+ * @requires metadata (the object of data which needs be inserted)
+ * @returns promise
+ */
+utilities.prototype.addRecord = function (collectionName, metadata) {
+    let db = _firebase.firestore();
+    return db.collection(collectionName).add(metadata).then((documentReference) => {
+        return documentReference.id;
+    }).then((id) => {
+        return id;
+    });
+}
+
+
+
 utilities.prototype.deleteUserByDocumentID = function (req, res) {
     let db = _firebase.firestore();
-    db.collection('users').doc("MlxJcgVm9MRmuIfKDHTA").delete().then(()=>{
+    //51t5rrZp0Ew71H7nwrZV
+    //K4FqQiCaHjmZcfmLdfbT
+    db.collection('users').doc("K4FqQiCaHjmZcfmLdfbT").delete().then(() => {
         console.log('deleted');
     })
 }
+
+
+
+utilities.prototype.getLastAnswers = function (documentID) {
+    let db = _firebase.firestore();
+    //51t5rrZp0Ew71H7nwrZV
+    //K4FqQiCaHjmZcfmLdfb
+let  userData =     db.collection("users").doc(documentID).get().then((documentSnapshot) => {
+        let data =
+        {
+            incorrectAnswers: documentSnapshot.data().incorrectAnswers,
+            totalAnswered: documentSnapshot.data().totalAnswered,
+            correctAnswers: documentSnapshot.data().correctAnswers,
+            totalQuestionsAnsweredLastLogin: documentSnapshot.data().totalQuestionsAnsweredLastLogin
+        }
+        return data
+    }).then((data) => {
+        return data;
+    })
+return userData
+
+}
+
+
 
 
 
