@@ -140,7 +140,7 @@ function MainApp(props) {
                     </Auth>
                 )} />
                 <Route path={settingsRoute} render={routerProps => (
-                    <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                    <Auth accept={'$unauthenticated'} reject={'$authenticated'} redirectTo={loginRoute}>
                         <Settings {...routerProps} />
                     </Auth>
                 )} />
