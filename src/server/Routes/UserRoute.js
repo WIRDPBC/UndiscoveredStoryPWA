@@ -6,6 +6,7 @@ let updateUserInformation = require('../Modal/updateUserInformation');
 let questions = require('../Modal/questions');
 let utilities = require('../Modal/utilities');
 let authToken = require('../Modal/authToken');
+let advertisement = require('../Modal/advertisement');
 /**
  *This file is used for routing to the required method
  */
@@ -170,20 +171,7 @@ UserRouter.route('/destroyAuthenticationTokenByEmail').post(function (req, res) 
 UserRouter.route('/getReferralLink').post(function (req, res) {
     let authenticationToken = req.body.authenticationToken;
     let obj = new utilities();
-    obj.getReferralLinkByAuthenticationToken( authenticationToken, res);
-});
-
-/**
- * Usage:
- * {
- *  authenticationToken: ''
- * }
- */
-
-UserRouter.route('/answer').post(function (req, res) {
-    let authenticationToken = req.body.authenticationToken;
-    let obj = new CreateUser();
-    obj.updateAnswerUsingAuthToken(res, authenticationToken);
+    obj.getReferralLinkByAuthenticationToken(authenticationToken, res);
 });
 
 
@@ -237,9 +225,63 @@ Response:
 UserRouter.route('/checkAuthTokenValidity').post(function (req, res) {
     let authenticationToken = req.body.authenticationToken;
     let obj = new authToken();
-    obj.checkValidity(res,authenticationToken);
+    obj.checkValidity(res, authenticationToken);
 });
 
+UserRouter.route('/getAllRegisteredUsersEmailAddress').post(function (req, res) {
+    let obj = new utilities();
+    obj.getAllRegisteredUsersEmailAddress(res);
+});
+
+UserRouter.route('/deleteUserByDocumentID').post(function (req, res) {
+    let obj = new utilities();
+    obj.deleteUserByDocumentID(req, res);
+});
+
+
+/// Advertisement  ////
+UserRouter.route('/loadAdvertismentDescription').post(function (req, res) {
+    let _advertisement = new advertisement();
+    let pachasPajamas = `An internationally-acclaimed educational storybook`
+    pachasPajamas += `that uses Augmented Reality (AR).`
+    pachasPajamas += `Featuring Yasin "Mod Def" Bey, Cheech Marin, Talib Kweli, Genevieve Goings, `
+    pachasPajamas += `Lester Chambers`;
+
+    let ToolsForGrassrootsActivists = `For almost 40 years, Patagonia has supported grassroots `
+    ToolsForGrassrootsActivists += ` activists working to find solutions to the environmental crisis. `
+    ToolsForGrassrootsActivists += `Tools for Grassroots Activists. Edited by Nora Gallagher. `
+
+    _advertisement.loadAdvertismentDescription("advertisement",0);
+    _advertisement.loadAdvertismentDescription("advertisement",1);
+});
+
+
+UserRouter.route('/addCommentAdvertisement').post(function (req, res) {
+    let _advertisement = new advertisement();
+    let authenticationToken = req.body.authenticationToken;
+    let advertisementType= req.body.advertisementType;
+    let comment = req.body.comment;
+    _advertisement.addComment(authenticationToken,advertisementType, comment, res);
+});
+
+
+
+
+/**
+ * Usage:
+ * {
+ *  authenticationToken: '',
+ *  correctAnswer: true
+ * }
+ */
+
+
+UserRouter.route('/answer').post(function (req, res) {
+    let _questions = new questions();
+    let authenticationToken = req.body.authenticationToken;
+    let correctAnswer= req.body.correctAnswer;
+    _questions.answer(authenticationToken,correctAnswer, res);
+});
 
 
 

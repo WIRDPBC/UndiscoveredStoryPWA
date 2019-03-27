@@ -41,12 +41,12 @@ CreateUser.prototype.getPassword = function () {
  * returns the eligiblityCertified
  * @returns boolean
  */
-CreateUser.prototype.eligiblityCertified = function(){ return this.eligiblityCertified;}
+CreateUser.prototype.eligiblityCertified = function () { return this.eligiblityCertified; }
 /**
  * returns the termsPolicy
  * @returns boolean
  */
-CreateUser.prototype.termsPolicy = function(){ return this.termsPolicy;}
+CreateUser.prototype.termsPolicy = function () { return this.termsPolicy; }
 /**
  * Salt settings for hashing the password
  */
@@ -127,7 +127,6 @@ CreateUser.prototype.hashPassword = function (Password) {
  */
 CreateUser.prototype.checkPassword = function (hashedPassword, simplePassword) {
     return bcrypt.compareSync(simplePassword, hashedPassword);
-
 }
 /**
  * Returns the authentication token using  JWT
@@ -139,6 +138,15 @@ CreateUser.prototype.getAuthenticationToken = function () {
     return this.AuthenticationToken;
 }
 
+CreateUser.prototype.addRecord = function (userSignupData) {
+    let db = _firebase.firestore();
+    return db.collection("users").add(userSignupData).then((documentReference) => {
+        return documentReference.id;
+    }).then((id) => {
+        return id;
+    })
+}
+
 /**
  * Signs up the user
  * @requires result object
@@ -146,13 +154,9 @@ CreateUser.prototype.getAuthenticationToken = function () {
 CreateUser.prototype.signup = function (res) {
     let _utilities = new utilities();
     _utilities.getDocumentIDbyEmail(this.getEmail()).then((resolved) => {
-        if (resolved) {
-            console.log(resolved);
-            res.send({ Message: "User already registered!" });
-        }
-        else {
-            let inviteeCode = _utilities.generateUUIDv1();
 
+        if (resolved.documentID == undefined) {
+            let inviteeCode = _utilities.generateUUIDv1();
             this.userSignupData = {
                 authenticationToken: this.getAuthenticationToken(),
                 email: this.getEmail(),
@@ -165,12 +169,23 @@ CreateUser.prototype.signup = function (res) {
                 invitedBy: '',
                 ReferralLink: `https://undiscoveredstory.com?email=${this.getEmail()}&inviteeCode=${inviteeCode}`,
                 termsPolicy: true,
-                eligiblityCertified: true
+                eligiblityCertified: true,
+                incorrectAnswers: 0,
+                totalAnswered: 0,
+                correctAnswers: 0,
+                totalQuestionsAnsweredLastLogin: 0
             }
-            let db = _firebase.firestore();
-            db.collection("users").add(userSignupData).then(() => {
-                res.send(this.userLoginData)
-            })
+            this.addRecord(this.userSignupData).then((documentID) => {
+                res.send({
+                    userSignupData: this.userSignupData,
+                    Message: `successfully registered`
+                })
+            });
+
+        }
+        else {
+            console.log(resolved);
+            res.send({ Message: "User already registered!" });
         }
     })
 }
@@ -190,30 +205,33 @@ CreateUser.prototype.login = function (res) {
     let dt = _firebase.firestore();
     let _utilities = new utilities();
     _utilities.getDocumentIDbyEmail(this.getEmail()).then((resolved) => {
-        if (resolved.documentID === undefined) {
+        if (resolved.documentID == undefined) {
             res.send({
                 Message: 'Unregistered user'
             })
         } else {
             _utilities.getEmailAndPasswordByDocumentID(resolved.documentID)
-                .then((resolved) => {
-                    let fetchedPassword = resolved.documentID.password;
+                .then((result) => {
+                    let fetchedEmail = result.documentID.email;
+                    let fetchedPassword = result.documentID.password;
+                    let docID = resolved.documentID;
+                    // console.log(`fetched password: ${fetchedPassword}`);
                     // console.log(`Email:  ${this.getEmail()}`);
                     // console.log(`fetchedEmail:  ${fetchedEmail}`);
                     // console.log(`Password:  ${this.getPassword()}`);
                     // console.log(`fetchedPassword:  ${fetchedPassword}`);
                     // console.log(`password matched:  ${this.checkPassword(fetchedPassword,this.getPassword())}`);
-                    let password_ISValid = this.checkPassword(fetchedPassword, this.getPassword());
+                    let password_ISValid = this.checkPassword(fetchedPassword, this.Password);
                     if (!password_ISValid) {
                         res.send({
                             Message: 'Invalid Password'
                         })
                     } else {
                         // updating data and letting user to get in
-                        dt.collection('users').doc(resolved.documentID).update(this.userLoginData).then(() => { });
-                        dt.collection('users').doc(resolved.documentID).get().then((doc) => {
+                        dt.collection('users').doc(docID).update(this.userLoginData);
+                        dt.collection('users').doc(docID).get().then((doc) => {
                             res.send({
-                                AuthenticationToken: this.getAuthenticationToken(),
+                                authenticationToken: this.getAuthenticationToken(),
                                 lastLogin: _firebase.firestore.Timestamp.now(),
                                 firstName: doc.data().firstName,
                                 lastName: doc.data().lastName,
@@ -226,7 +244,9 @@ CreateUser.prototype.login = function (res) {
                                 totalQuestionsAnsweredLastLogin: doc.data().totalQuestionsAnsweredLastLogin,
                                 invitedBy: doc.data().invitedBy,
                                 inviteeCode: doc.data().inviteeCode,
-                                walletData: ''
+                                walletData: '',
+                                termsPolicy: true,
+                                eligiblityCertified: true
                             })
                         })
                     }

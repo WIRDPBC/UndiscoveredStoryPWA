@@ -127,6 +127,25 @@ utilities.prototype.getAllRegisteredUsers = function () {
 }
 
 
+
+utilities.prototype.getAllRegisteredUsersEmail = function () {
+    let db = _firebase.firestore();
+    let documentID = db.collection('users').get().then(function (querySnapshot) {
+        var array = [];
+        querySnapshot.forEach(function (doc) {
+            array.push(doc.data().email);
+        });
+        return array;
+    }).then(function (data) {
+        return { users: data };
+    }).catch(function (error) {
+        console.log(error);
+    });
+    return documentID;
+}
+
+
+
 /**
  * Destroys the Authentication Token based on the email provided
  * @requires response object
@@ -210,9 +229,73 @@ utilities.prototype.getDocumentID = function (res, email) {
 /**
  * gets an entire list of available auth Token against users
  */
-utilities.prototype.getAllRegisteredUsersAuthToken = function (res){
-    this.getAllRegisteredUsers().then((users)=>{
-        res.send({users});
+utilities.prototype.getAllRegisteredUsersAuthToken = function (res) {
+    this.getAllRegisteredUsers().then((users) => {
+        res.send({ users });
     })
 }
+
+
+/**
+ * gets an entire list of available email addresses against users
+ */
+utilities.prototype.getAllRegisteredUsersEmailAddress = function (res) {
+    this.getAllRegisteredUsersEmail().then((users) => {
+        res.send({ users });
+    })
+}
+
+
+/**
+ * A generic method to add any record based on the collection name with the meta data
+ * @requires collectionName
+ * @requires metadata (the object of data which needs be inserted)
+ * @returns promise
+ */
+utilities.prototype.addRecord = function (collectionName, metadata) {
+    let db = _firebase.firestore();
+    return db.collection(collectionName).add(metadata).then((documentReference) => {
+        return documentReference.id;
+    }).then((id) => {
+        return id;
+    });
+}
+
+
+
+utilities.prototype.deleteUserByDocumentID = function (req, res) {
+    let db = _firebase.firestore();
+    //51t5rrZp0Ew71H7nwrZV
+    //K4FqQiCaHjmZcfmLdfbT
+    db.collection('users').doc("K4FqQiCaHjmZcfmLdfbT").delete().then(() => {
+        console.log('deleted');
+    })
+}
+
+
+
+utilities.prototype.getLastAnswers = function (documentID) {
+    let db = _firebase.firestore();
+    //51t5rrZp0Ew71H7nwrZV
+    //K4FqQiCaHjmZcfmLdfb
+let  userData =     db.collection("users").doc(documentID).get().then((documentSnapshot) => {
+        let data =
+        {
+            incorrectAnswers: documentSnapshot.data().incorrectAnswers,
+            totalAnswered: documentSnapshot.data().totalAnswered,
+            correctAnswers: documentSnapshot.data().correctAnswers,
+            totalQuestionsAnsweredLastLogin: documentSnapshot.data().totalQuestionsAnsweredLastLogin
+        }
+        return data
+    }).then((data) => {
+        return data;
+    })
+return userData
+
+}
+
+
+
+
+
 module.exports = utilities;
