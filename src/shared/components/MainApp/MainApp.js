@@ -69,9 +69,7 @@ function MainApp(props) {
                     <Auth accept={'$unauthenticated'} reject={'$authenticated'} redirectTo={homeRoute}>
                         <Login {...routerProps} />
                     </Auth>
-                )
-
-                } />
+                )} />
 
                 <Route path={signUpRoute} render={routerProps => (
                     <Auth accept={'$unauthenticated'} reject={'$authenticated'} redirectTo={homeRoute}>

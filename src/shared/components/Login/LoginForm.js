@@ -36,14 +36,14 @@ class LoginForm extends PureComponent {
     }
 
     render() {
-        const {handleSubmit} = this.props
+        const {handleSubmit, invalid, submitting, pristine} = this.props
         return (
             <div className="login-form-container">
                 <div className="login-form-heading-container">Undiscovered Story</div>
                 <div className="login-form-main-container">
                     <WirdForm onSubmit={handleSubmit}>
                         <div>
-                            <Field component={InputFieldUI} placeholder="Enter Email" type="text" name="email"/>
+                            <Field component={InputFieldUI} placeholder="Enter Email" type="email" name="email"/>
                             {/* <Input fluid placeholder="Enter Email" /> */}
                         </div>
                         <div className="login-form-passowrd-container">
@@ -59,10 +59,8 @@ class LoginForm extends PureComponent {
                         </div>
 
                         <div className="login-form-button-container">
-                            {/* <Link to={'/home'}> */}
-                                <SubmitButton content="Login"  size="medium" style={{ width: "150px", height: "40px" }} primary/>
-                                {/* <Button size="medium" style={{ width: "150px", height: "40px" }} primary>Login</Button> */}
-                            {/* </Link> */}
+ 
+                                <SubmitButton content="Login"  size="medium" style={{ width: "150px", height: "40px" }} primary disabled={invalid || pristine || submitting}/>
                         </div>
                         <div className="login-form-login-with-container">Or login with</div>
 
