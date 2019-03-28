@@ -18,8 +18,15 @@ UserRouter
         let password = req.body.Password;
         let eligiblityCertified = req.body.eligiblityCertified;
         let termsPolicy = req.body.termsPolicy;
+
+        let firstName = req.body.firstName;
+        let lastName = req.body.lastName;
+
         if (CreateUser) {
-            let obj = new CreateUser(email, password, eligiblityCertified, termsPolicy);
+            let obj = new CreateUser(
+                email, password,
+                eligiblityCertified, termsPolicy,
+                firstName, lastName);
             obj.signup(res);
         }
     });
@@ -251,17 +258,17 @@ UserRouter.route('/loadAdvertismentDescription').post(function (req, res) {
     ToolsForGrassrootsActivists += ` activists working to find solutions to the environmental crisis. `
     ToolsForGrassrootsActivists += `Tools for Grassroots Activists. Edited by Nora Gallagher. `
 
-    _advertisement.loadAdvertismentDescription("advertisement",0);
-    _advertisement.loadAdvertismentDescription("advertisement",1);
+    _advertisement.loadAdvertismentDescription("advertisement", 0);
+    _advertisement.loadAdvertismentDescription("advertisement", 1);
 });
 
 
 UserRouter.route('/addCommentAdvertisement').post(function (req, res) {
     let _advertisement = new advertisement();
     let authenticationToken = req.body.authenticationToken;
-    let advertisementType= req.body.advertisementType;
+    let advertisementType = req.body.advertisementType;
     let comment = req.body.comment;
-    _advertisement.addComment(authenticationToken,advertisementType, comment, res);
+    _advertisement.addComment(authenticationToken, advertisementType, comment, res);
 });
 
 
@@ -279,8 +286,8 @@ UserRouter.route('/addCommentAdvertisement').post(function (req, res) {
 UserRouter.route('/answer').post(function (req, res) {
     let _questions = new questions();
     let authenticationToken = req.body.authenticationToken;
-    let correctAnswer= req.body.correctAnswer;
-    _questions.answer(authenticationToken,correctAnswer, res);
+    let correctAnswer = req.body.correctAnswer;
+    _questions.answer(authenticationToken, correctAnswer, res);
 });
 
 

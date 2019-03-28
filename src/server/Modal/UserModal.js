@@ -18,12 +18,15 @@ let utilities = require('./utilities');
 
 //Contructor requiring two params to utilize
 //them in the methods defined
-function CreateUser(Email, Password, eligiblityCertified, termsPolicy) {
+function CreateUser(Email, Password, eligiblityCertified, termsPolicy, firstName, lastName) {
     this.Email = Email || null;
     this.Password = Password || null;
     this.initialSignupBalance = 88;
     this.eligiblityCertified = eligiblityCertified;
     this.termsPolicy = termsPolicy;
+
+    this.firstName = firstName;
+    this.lastName = lastName;
 }
 /**
  * Returns the email
@@ -53,6 +56,21 @@ CreateUser.prototype.termsPolicy = function () { return this.termsPolicy; }
 CreateUser.prototype.setSaltRounds = function (saltRounds) {
     this.saltRounds = saltRounds;
 }
+
+/**
+ * returns FirstName
+ */
+CreateUser.prototype.getFirstName = function () {
+    return this.firstName;
+}
+
+/**
+ * return LastName
+ */
+CreateUser.prototype.getLastName = function () {
+    return this.lastName;
+}
+
 /**
  * Returns the number of Salts set for the hashing
  */
@@ -158,6 +176,8 @@ CreateUser.prototype.signup = function (res) {
         if (resolved.documentID == undefined) {
             let inviteeCode = _utilities.generateUUIDv1();
             this.userSignupData = {
+                firstName: this.getFirstName(),
+                lastName: this.getLastName(),
                 authenticationToken: this.getAuthenticationToken(),
                 email: this.getEmail(),
                 password: this.getPassword(),
