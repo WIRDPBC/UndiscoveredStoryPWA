@@ -19,7 +19,8 @@
 	"theme_color": "#0A0A0A",
 	"orientation": "portrait",
 	"permissions": [
-		"http://www.google.com/",
-  		"https://www.google.com/"
+		"https://udgt-7790b.firebaseapp.com",
+		  "https://undiscoveredstory.com"
+		  
 	  ]
 }
