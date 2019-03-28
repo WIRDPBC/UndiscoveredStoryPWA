@@ -24,7 +24,8 @@ class Login extends PureComponent{
         const {onUpdateLoginAction} = this.props
         console.log("On login getting called", values)
         if(values.email && values.password){
-            let url = 'http://localhost:8083/user/login'
+           // let url = 'http://localhost:8083/user/login'
+           let url = 'https://udgt-7790b.firebaseapp.com/user/login'
             let formData = {
                     Email : values.email,
                     Password : values.password
