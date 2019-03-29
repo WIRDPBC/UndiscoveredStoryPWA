@@ -7,7 +7,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Input, Button, Checkbox } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+//import axios from 'axios'
 
 class SignupForm extends PureComponent {
     static propTypes = {

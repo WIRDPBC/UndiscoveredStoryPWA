@@ -4,8 +4,6 @@ var parseurl = require('parseurl')
 const bodyParser = require('body-parser');
 let config = require('./config');
 const router = express.Router();
-
-
 const FirebaseTransactions = require('./firebaseTransactions');
 const Firebase_CreateNewUser = FirebaseTransactions.firebase._Firebase;
 
@@ -14,30 +12,20 @@ const login = require('./firebaseTransactions').login;
 const bcrypt = require('bcryptjs');
 // Testing Login Method ends here
 
-
 const app = express();
-const PORT = process.env.PORT || 8083;
-
-const UserRoute =require('./Routes/UserRoute');
-
+const PORT = process.env.PORT || 8083
+const UserRoute = require('./Routes/UserRoute');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/user',UserRoute);
 
+app.use(function (req, res, next) {
+	res.header('Access-Control-Allow-Origin', '*')
+	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+	res.header('Access-Control-Allow-Headers', 'Content-Type');
+	next();
+})
 
-
-
-
-
-// app.post('/udg/', (req, res) => {
-// 	Firebase_CreateNewUser.testSession(req, res)
-// 	return;
-// });
-
-
-
-
-
+app.use('/user', UserRoute);
 
 app.post('/udg/', (req, res) => {
 	console.log(req.body);
@@ -45,14 +33,6 @@ app.post('/udg/', (req, res) => {
 	res.send('I received your POST request. This is what you sent me: ${req.body.post}');
 });
 
-
-
-
-
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
 	console.log(`Server is running on PORT: ${PORT}`);
 })
-
-
-
-
