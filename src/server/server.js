@@ -1,15 +1,15 @@
 const express = require('express');
-const session = require('express-session')
-var parseurl = require('parseurl')
+// const session = require('express-session')
+// var parseurl = require('parseurl')
 const bodyParser = require('body-parser');
-let config = require('./config');
-const router = express.Router();
-const FirebaseTransactions = require('./firebaseTransactions');
-const Firebase_CreateNewUser = FirebaseTransactions.firebase._Firebase;
+// let config = require('./config');
+// const router = express.Router();
+// const FirebaseTransactions = require('./firebaseTransactions');
+// const Firebase_CreateNewUser = FirebaseTransactions.firebase._Firebase;
 
 // Testing Login Method Separately
-const login = require('./firebaseTransactions').login;
-const bcrypt = require('bcryptjs');
+// const login = require('./firebaseTransactions').login;
+// const bcrypt = require('bcryptjs');
 // Testing Login Method ends here
 
 const app = express();
