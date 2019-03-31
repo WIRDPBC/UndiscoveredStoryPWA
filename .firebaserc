@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "udgt-7790b"
+    "default": "udgt-7790b",
+    "udgt-server-firebase": "udgt-server-firebase"
   }
 }

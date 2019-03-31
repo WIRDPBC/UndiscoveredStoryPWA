@@ -10,10 +10,20 @@ let advertisement = require('../Modal/advertisement');
 /**
  *This file is used for routing to the required method
  */
+// UserRouter.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', "*");
+//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//     next();
+//   });
+
 
 UserRouter
     .route('/create')
     .post(function (req, res) {
+
+
+
+
         let email = req.body.Email;
         let password = req.body.Password;
         let eligiblityCertified = req.body.eligiblityCertified;
@@ -35,6 +45,7 @@ UserRouter
 UserRouter
     .route('/login')
     .post(function (req, res) {
+
         let email = req.body.Email;
         let password = req.body.Password;
 
