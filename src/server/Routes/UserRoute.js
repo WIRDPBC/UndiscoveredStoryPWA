@@ -22,8 +22,6 @@ UserRouter
     .post(function (req, res) {
 
 
-
-
         let email = req.body.Email;
         let password = req.body.Password;
         let eligiblityCertified = req.body.eligiblityCertified;
