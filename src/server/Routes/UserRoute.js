@@ -7,6 +7,7 @@ let questions = require('../Modal/questions');
 let utilities = require('../Modal/utilities');
 let authToken = require('../Modal/authToken');
 let advertisement = require('../Modal/advertisement');
+let mailer = require('../Modal/mailer')
 /**
  *This file is used for routing to the required method
  */
@@ -20,8 +21,6 @@ let advertisement = require('../Modal/advertisement');
 UserRouter
     .route('/create')
     .post(function (req, res) {
-
-
         let email = req.body.Email;
         let password = req.body.Password;
         let eligiblityCertified = req.body.eligiblityCertified;
@@ -297,6 +296,16 @@ UserRouter.route('/answer').post(function (req, res) {
     let authenticationToken = req.body.authenticationToken;
     let correctAnswer = req.body.correctAnswer;
     _questions.answer(authenticationToken, correctAnswer, res);
+});
+
+
+
+UserRouter.route('/sendEmail').post(function (req, res) {
+    let to = req.body.to;
+    let subject = req.body.subject;
+    let text = req.body.text;
+    let _mailer = new mailer();
+    _mailer.sendEmail(to, subject, text);
 });
 
 

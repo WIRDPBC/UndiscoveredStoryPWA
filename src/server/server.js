@@ -25,13 +25,13 @@ app.use(function (req, res, next) {
 	next();
 })
 
-app.use('/user', UserRoute);
+app.use('/udgtapi/user', UserRoute);
 
-app.post('/udg/', (req, res) => {
-	console.log(req.body);
-	console.log('POST');
-	res.send('I received your POST request. This is what you sent me: ${req.body.post}');
-});
+// app.post('/udg/', (req, res) => {
+// 	console.log(req.body);
+// 	console.log('POST');
+// 	res.send('I received your POST request. This is what you sent me: ${req.body.post}');
+// });
 
 app.listen(PORT, () => {
 	console.log(`Server is running on PORT: ${PORT}`);
