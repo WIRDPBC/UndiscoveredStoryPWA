@@ -1,6 +1,7 @@
 {
   "projects": {
     "default": "udgt-7790b",
-    "udgt-server-firebase": "udgt-server-firebase"
+    "udgt-server-firebase": "udgt-server-firebase",
+    "undiscoveredStory": "udgt-7790b"
   }
 }

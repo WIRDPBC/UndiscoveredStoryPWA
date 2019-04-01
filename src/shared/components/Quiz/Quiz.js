@@ -13,15 +13,16 @@ import './Quiz.css'
 import CloseIcon from '../../icons/CloseIcon';
 import HourGlass from '../../icons/HourGlass';
 import Bookmark from '../../icons/Bookmark';
-import QuestionCenterIcon from '../../icons/QuestionCenterIcon';
+import QuestionCenterIcon from '../../icons/QuestionIcon.png';
 // import OptionOne from '../../icons/OptionOne';
 // import OptionTwo from '../../icons/OptionTwo';
 // import OptionThree from '../../icons/OptionThree';
 // import OptionFour from '../../icons/OptionFour'
-import OptionOne from '../../icons/OptionOneIcon.png'
-import OptionTwo from '../../icons/OptionTwoIcon.png'
-import OptionThree from '../../icons/OptionThreeIcon.png'
-import OptionFour from '../../icons/OptionFourIcon.png'
+import OptionOne from '../../icons/QuestionOption1.png'
+import OptionTwo from '../../icons/QuestionOption2.png'
+import OptionThree from '../../icons/QuestionOption3.png'
+import OptionFour from '../../icons/QuestionOption4.png'
+
 import CorrectOption from '../../icons/CorrectOption';
 import IncorrectOption from '../../icons/IncorrectOption';
 
@@ -373,7 +374,8 @@ class Quiz extends PureComponent {
                 
                 {/* <Link to={'/quiz-result'}> */}
                     <div className="quiz-question-header-container">
-                        <QuestionCenterIcon className="quiz-question-center-icon-container" />
+                        <img src={QuestionCenterIcon} className="quiz-question-center-icon-container"/>
+                        {/* <QuestionCenterIcon className="quiz-question-center-icon-container" /> */}
                     </div>
                 {/* </Link> */}
                
