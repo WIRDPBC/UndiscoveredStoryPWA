@@ -7,12 +7,21 @@ import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
+import axios from 'axios'
+import {hostUrl} from '../helper'
 
 
 class Auth extends PureComponent{
     constructor(props){
         super(props)
         this.roles = '$unauthenticated'
+    }
+    componentWillMount(){
+        //call api..
+
+        let url = `${hostUrl}/create`
+        
+
     }
     render(){
         const {loginUserEmail, accept, reject, redirectTo} = this.props

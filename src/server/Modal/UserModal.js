@@ -169,7 +169,7 @@ CreateUser.prototype.addRecord = function (userSignupData) {
  * Signs up the user
  * @requires result object
  */
-CreateUser.prototype.signup = function (res) {
+CreateUser.prototype.signup = function (res, req) {
     let _utilities = new utilities();
     _utilities.getDocumentIDbyEmail(this.getEmail()).then((resolved) => {
 
@@ -196,6 +196,9 @@ CreateUser.prototype.signup = function (res) {
                 totalQuestionsAnsweredLastLogin: 0
             }
             this.addRecord(this.userSignupData).then((documentID) => {
+                res.cookie('access_token', this.getAuthenticationToken());
+                req.accessToken = this.getAuthenticationToken()
+
                 res.send({
                     userSignupData: this.userSignupData,
                     Message: `successfully registered`
@@ -216,7 +219,7 @@ CreateUser.prototype.signup = function (res) {
  * Validates the user to provide access to gameplay
  * @requires result object
  */
-CreateUser.prototype.login = function (res) {
+CreateUser.prototype.login = function (res, req) {
     this.userLoginData = {
         AuthenticationToken: this.getAuthenticationToken(),
         lastLogin: _firebase.firestore.Timestamp.now(),
@@ -250,6 +253,9 @@ CreateUser.prototype.login = function (res) {
                         // updating data and letting user to get in
                         dt.collection('users').doc(docID).update(this.userLoginData);
                         dt.collection('users').doc(docID).get().then((doc) => {
+                            res.cookie('access_token', this.getAuthenticationToken());
+                            req.accessToken = this.getAuthenticationToken()
+            
                             res.send({
                                 authenticationToken: this.getAuthenticationToken(),
                                 lastLogin: _firebase.firestore.Timestamp.now(),

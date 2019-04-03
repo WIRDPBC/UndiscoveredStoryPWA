@@ -24,9 +24,9 @@ class Login extends PureComponent{
         const {onUpdateLoginAction} = this.props
         console.log("On login getting called", values)
         if(values.email && values.password){
-          // let url = 'http://localhost:8083/user/login'
+           let url = 'http://localhost:8083/udgtapi/user/login'
           // let url = 'https://udgt-7790b.firebaseapp.com/user/login'
-          let url = 'http://ec2-18-219-36-248.us-east-2.compute.amazonaws.com/udgtapi/user/login'
+         // let url = 'http://ec2-18-219-36-248.us-east-2.compute.amazonaws.com/udgtapi/user/login'
           console.log("Login Url", url)
             let formData = {
                     Email : values.email,

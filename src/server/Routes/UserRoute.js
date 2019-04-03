@@ -34,7 +34,7 @@ UserRouter
                 email, password,
                 eligiblityCertified, termsPolicy,
                 firstName, lastName);
-            obj.signup(res);
+            obj.signup(res, req);
         }
     });
 
@@ -48,7 +48,7 @@ UserRouter
 
         if (CreateUser) {
             let obj = new CreateUser(email, password);
-            obj.login(res);
+            obj.login(res, req);
         }
     });
 
@@ -240,6 +240,7 @@ Response:
 UserRouter.route('/checkAuthTokenValidity').post(function (req, res) {
     let authenticationToken = req.body.authenticationToken;
     let obj = new authToken();
+    console.log("User validity", req, res)
     obj.checkValidity(res, authenticationToken);
 });
 

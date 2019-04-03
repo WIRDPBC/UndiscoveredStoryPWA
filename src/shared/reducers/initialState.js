@@ -9,5 +9,6 @@ export default {
         lastName: '',
         email: '',
         profilePic: ''
-    }
+    },
+    questionData : []
 }

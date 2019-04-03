@@ -4,14 +4,19 @@
  */
 
 import initialState from './initialState'
-import {USER} from './model'
+import {USER,QUESTION} from './model'
 
 import UserReducer from './User/reducer'
+import QuestionReducer from './Questions/reducer'
 
 const GameReducer  = (state = initialState, action) => {
     switch(action.model){
         case USER:{
             state = UserReducer(state, action)
+            break
+        }
+        case QUESTION:{
+            state = QuestionReducer(state, action)
             break
         }
     }

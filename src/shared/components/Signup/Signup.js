@@ -21,7 +21,7 @@ class Signup extends PureComponent{
         const {onUpdateLoginAction} = this.props
         console.log("On Sign Up Values", values)
         if(values.email && values.password && values.firstName && values.termsandconditions && values.eligiblity){
-            let url = 'http://localhost:8083/user/create'
+            let url = 'http://localhost:8083/udgtapi/user/create'
             let formData = {
                     Email : values.email,
                     Password : values.password,

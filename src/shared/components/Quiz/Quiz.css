@@ -115,12 +115,13 @@
 }
 
 .quiz-option-odd-text-container{
-    height: 30px;
-    line-height: 30px;
-    font-size: 14px;
-    color: #707070;
-    font-family: HelveticaNeue;
-    cursor: pointer;
+        /* height: 30px; */
+        width: 134px;
+        /* line-height: 30px; */
+        font-size: 14px;
+        color: #707070;
+        font-family: HelveticaNeue;
+        cursor: pointer;
 }
 
 .quiz-option-even-text-container{
