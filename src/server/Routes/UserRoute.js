@@ -11,12 +11,6 @@ let mailer = require('../Modal/mailer')
 /**
  *This file is used for routing to the required method
  */
-// UserRouter.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', "*");
-//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-//     next();
-//   });
-
 
 UserRouter
     .route('/create')
@@ -34,7 +28,7 @@ UserRouter
                 email, password,
                 eligiblityCertified, termsPolicy,
                 firstName, lastName);
-            obj.signup(res, req);
+            obj.signup(res);
         }
     });
 
@@ -42,7 +36,6 @@ UserRouter
 UserRouter
     .route('/login')
     .post(function (req, res) {
-
         let email = req.body.Email;
         let password = req.body.Password;
 
@@ -57,6 +50,7 @@ UserRouter
     .route('/authenticate')
     .post(function (req, res) {
         let email = req.body.Email;
+        console.log("Response", req, res)
         // let authenticationToken = req.body.AuthenticationToken;
         let authenticate = req.body.Authenticate;
         UserAuthentication = new UserAuthentication(email, authenticate);
@@ -240,7 +234,6 @@ Response:
 UserRouter.route('/checkAuthTokenValidity').post(function (req, res) {
     let authenticationToken = req.body.authenticationToken;
     let obj = new authToken();
-    console.log("User validity", req, res)
     obj.checkValidity(res, authenticationToken);
 });
 

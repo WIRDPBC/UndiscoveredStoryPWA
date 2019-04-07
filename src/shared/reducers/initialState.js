@@ -10,5 +10,6 @@ export default {
         email: '',
         profilePic: ''
     },
-    questionData : []
+    questionData : [],
+    advertisingOptData: []
 }

@@ -11,6 +11,7 @@ import axios from 'axios'
 import {hostUrl} from '../helper'
 
 
+
 class Auth extends PureComponent{
     constructor(props){
         super(props)
@@ -18,8 +19,21 @@ class Auth extends PureComponent{
     }
     componentWillMount(){
         //call api..
+        const config = {
+            headers: { 
+                'content-type': 'application/json',
+             },
+          }
+        let url = `${hostUrl}/authenticate`
+        let formData = {}
+        axios.post(url, formData, config)
+        .then((data) => {
+            console.log("Auth Data", data)
+        })
+        .catch(error => {
+            console.error("Auth Error", error)
+        })
 
-        let url = `${hostUrl}/create`
         
 
     }
@@ -28,8 +42,8 @@ class Auth extends PureComponent{
         if(loginUserEmail){
             this.roles = '$authenticated'
         }
-        console.log("Auth Data role", this.roles)
-        console.log("Auth aceept", accept, )
+       // console.log("Auth Data role", this.roles)
+       // console.log("Auth aceept", accept, )
         if(this.roles === accept){
             return (
                 <Fragment>

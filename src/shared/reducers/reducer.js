@@ -4,10 +4,15 @@
  */
 
 import initialState from './initialState'
-import {USER,QUESTION} from './model'
+import {
+    USER,
+    QUESTION,
+    ADVERTISINGOPT
+} from './model'
 
 import UserReducer from './User/reducer'
 import QuestionReducer from './Questions/reducer'
+import AdvertisingOptReducer from './AdvertisingOpt/reducer'
 
 const GameReducer  = (state = initialState, action) => {
     switch(action.model){
@@ -17,6 +22,11 @@ const GameReducer  = (state = initialState, action) => {
         }
         case QUESTION:{
             state = QuestionReducer(state, action)
+            break
+        }
+
+        case ADVERTISINGOPT:{
+            state = AdvertisingOptReducer(state, action)
             break
         }
     }

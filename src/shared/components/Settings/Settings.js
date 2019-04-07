@@ -67,6 +67,7 @@ class Settings extends PureComponent{
 
 
     render(){
+        console.log("Setting getting rendered")
         const {visible, isAdvertisingActive, isProfileDialogOpened} = this.state
         return (
             <Navigator visible={visible} onCloseSidebar={this.onCloseSidebar}>

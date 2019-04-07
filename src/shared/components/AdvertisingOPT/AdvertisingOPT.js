@@ -5,9 +5,15 @@
 
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
+import axios from 'axios'
+import {hostUrl} from '../helper'
+import {connect} from 'react-redux'
 
 //import css
 import './AdvertisingOPT.css'
+
+//import actions
+import {storeLoadAdvertisingList} from '../../reducers/AdvertisingOpt/action'
 
 //import components
 import TopHeaderBack from '../TopHeaderBack'
@@ -22,14 +28,43 @@ class AdvertisingOPT extends PureComponent {
         super(props)
     }
 
+    componentWillMount(){
+        const {storeLoadAdvertisingList} = this.props
+        let url = `${hostUrl}/loadAdvertismentDescription`
+        const formData = {}
+        const config = {
+            headers: { 
+                'content-type': 'application/json',
+             },
+        }
+        axios.post(url, formData, config)
+        .then(data => {
+            console.log("Advertising Data", data.data)
+            storeLoadAdvertisingList(data.data)
+        })
+        .catch(error => {
+            console.error("Advertising Opt Error", error)
+        })
+    }
+
+    // getAdvertisingElement = () => {
+    //     const {advertisingOptData} = this.props
+    //     if(advertisingOptData && advertisingOptData.length){
+    //       return   advertisingOptData.map((advertisingData, index) => {
+
+    //             return  <AdvertisingElement image={AdvertisingImage1} imageTitle="Pachas Pajamas" description="An internationally-acclaimed educational storybook that uses Augmented Reality (AR).  Featuring Yasiin “Mos Def” Bey, Cheech Marin, Talib Kweli, Genevieve Goings, Lester Chambers, and…more"/>
+    //         })
+    //     }
+    // }
+
     render() {
+        const {advertisingOptData} = this.props
         return (
             <Fragment>
                 <TopHeaderBack title="Advertising OPT-IN" />
                 <div className="advertising-opt-container">
-                <AdvertisingElement image={AdvertisingImage1} imageTitle="Pachas Pajamas" description="An internationally-acclaimed educational storybook that uses Augmented Reality (AR).  Featuring Yasiin “Mos Def” Bey, Cheech Marin, Talib Kweli, Genevieve Goings, Lester Chambers, and…more
-"/>
-                <AdvertisingElement image={AdvertisingImage2} imageTitle="Tools for grassroots activists" description="For almost 40 years, Patagonia has supported grassroots activists working to find solutions to the environmental crisis. Tools for Grassroots Activists, Edited by Nora Gallagher and…more"/>
+                {advertisingOptData && advertisingOptData.length && <AdvertisingElement image={AdvertisingImage1} imageTitle="Pachas Pajamas" description={advertisingOptData[0].advertisementDescription}/>}
+                {advertisingOptData && advertisingOptData.length &&  <AdvertisingElement image={AdvertisingImage2} imageTitle="Tools for grassroots activists" description={advertisingOptData[1].advertisementDescription}/>}
 
 
                 </div>
@@ -40,4 +75,17 @@ class AdvertisingOPT extends PureComponent {
 
 }
 
-export default AdvertisingOPT
+const mapStateToProps = (state, props) => {
+    let gameData = state.GameReducer
+    let advertisingOptData = gameData.advertisingOptData
+    return {
+        advertisingOptData
+    }
+}
+
+const mapActionsToProps = {
+    storeLoadAdvertisingList
+}
+
+
+export default connect(mapStateToProps, mapActionsToProps)(AdvertisingOPT)
