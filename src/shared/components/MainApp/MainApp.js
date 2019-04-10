@@ -29,6 +29,7 @@ import SelectInitative from '../SelectInitiative'
 import BonusReward from '../BonusReward'
 import PurchaseTokens from '../PurchaseTokens'
 import MiniBytes from '../MiniBytes'
+import AdvertisingComment from '../AdvertisingComment'
 
 
 //import Routes
@@ -52,7 +53,8 @@ import {
     selectInitiativeRoute,
     bonusRewardRoute,
     purchaseTokensRoute,
-    miniBytesRoutes
+    miniBytesRoutes,
+    advertisingOptRoutes
 } from '../CustomRoutes/CustomRoutes'
 
 
@@ -172,6 +174,11 @@ function MainApp(props) {
                         <MiniBytes {...routerProps} />
                     </Auth>
                 )} />
+                <Route path={advertisingOptRoutes} render={routerProps => (
+                     <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
+                     <AdvertisingComment {...routerProps} />
+                 </Auth>
+                )}/>
                 <Route component={NotFound} />
             </Switch>
         </div>

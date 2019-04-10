@@ -47,24 +47,14 @@ class AdvertisingOPT extends PureComponent {
         })
     }
 
-    // getAdvertisingElement = () => {
-    //     const {advertisingOptData} = this.props
-    //     if(advertisingOptData && advertisingOptData.length){
-    //       return   advertisingOptData.map((advertisingData, index) => {
-
-    //             return  <AdvertisingElement image={AdvertisingImage1} imageTitle="Pachas Pajamas" description="An internationally-acclaimed educational storybook that uses Augmented Reality (AR).  Featuring Yasiin “Mos Def” Bey, Cheech Marin, Talib Kweli, Genevieve Goings, Lester Chambers, and…more"/>
-    //         })
-    //     }
-    // }
-
     render() {
         const {advertisingOptData} = this.props
         return (
             <Fragment>
                 <TopHeaderBack title="Advertising OPT-IN" />
                 <div className="advertising-opt-container">
-                {advertisingOptData && advertisingOptData.length && <AdvertisingElement image={AdvertisingImage1} imageTitle="Pachas Pajamas" description={advertisingOptData[0].advertisementDescription}/>}
-                {advertisingOptData && advertisingOptData.length &&  <AdvertisingElement image={AdvertisingImage2} imageTitle="Tools for grassroots activists" description={advertisingOptData[1].advertisementDescription}/>}
+                {advertisingOptData && advertisingOptData.length && <AdvertisingElement type={advertisingOptData[0].advertisementType} image={AdvertisingImage1} imageTitle="Pachas Pajamas" description={advertisingOptData[0].advertisementDescription} advertisingId={advertisingOptData[0].advertisementType}/>}
+                {advertisingOptData && advertisingOptData.length &&  <AdvertisingElement type={advertisingOptData[1].advertisementType} image={AdvertisingImage2} imageTitle="Tools for grassroots activists" description={advertisingOptData[1].advertisementDescription} advertisingId={advertisingOptData[1].advertisementType}/>}
 
 
                 </div>

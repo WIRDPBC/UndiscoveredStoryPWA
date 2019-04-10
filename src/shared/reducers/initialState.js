@@ -11,5 +11,8 @@ export default {
         profilePic: ''
     },
     questionData : [],
-    advertisingOptData: []
+    advertisingOptData: [],
+    advertisingOpt:{
+        
+    }
 }

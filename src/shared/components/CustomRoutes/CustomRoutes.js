@@ -23,4 +23,5 @@ export const selectInitiativeRoute = "/select-initiative"
 export const bonusRewardRoute = "/bonus-reward"
 export const purchaseTokensRoute = "/purchase-tokens"
 export const miniBytesRoutes = "/mini-bytes"
+export const advertisingOptRoutes = "/advertising-opt-comment"
 
