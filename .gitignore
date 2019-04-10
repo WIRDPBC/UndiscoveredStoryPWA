@@ -65,7 +65,7 @@ node_modules/
 .env
 
 #ignore node_modules
-node_modules
+.node_modules
 
 
 #ignore build
