@@ -9,6 +9,9 @@ import { Field } from 'redux-form'
 import { GridColumn, Grid, Input } from 'semantic-ui-react';
 import { reduxForm } from 'redux-form'
 
+//import images
+import AvatarImage from '../../icons/AvatarProfile.png'
+
 //import components..
 import WirdForm from '../ReduxForm/WirdForm'
 import CloseIcon from '../../icons/CloseIcon';
@@ -29,7 +32,7 @@ const ProfileForm = (props) => {
                 </div>
             </div>
             
-                <Grid>
+                <Grid style={{padding: "10px"}}>
 
                     <Grid.Column width={10} style={{padding:"15px"}}>
                     <WirdForm onSubmit={handleSubmit}>
@@ -53,7 +56,8 @@ const ProfileForm = (props) => {
                     </Grid.Column>
                     <Grid.Column width={6} className="profile-form-user-pic-container">
                         <div className="profile-form-pic-container">
-                        <NavUser style={{ width: "103px", height: "103px" }} />
+                        <img src={AvatarImage} style={{ width: "103px", height: "103px" }} />
+                        {/* <NavUser style={{ width: "103px", height: "103px" }} /> */}
                         </div>
                     </Grid.Column>
 

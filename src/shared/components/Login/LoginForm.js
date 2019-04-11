@@ -64,13 +64,13 @@ class LoginForm extends PureComponent {
  
                                 <SubmitButton content="Login"  size="medium" style={{ width: "150px", height: "40px" }} primary disabled={invalid || pristine || submitting}/>
                         </div>
-                        <div className="login-form-login-with-container">Or login with</div>
+                        {/* <div className="login-form-login-with-container">Or login with</div>
 
                         <div className="login-form-other-login-container">
                             <img src={FacebookLogin} />
                             <img style={{ marginLeft: "10px" }} src={TwitterLogin} />
                             <img style={{ marginLeft: "10px" }} src={GoogleLogin} />
-                        </div>
+                        </div> */}
                     </WirdForm>
                 </div>
             </div>

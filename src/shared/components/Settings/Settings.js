@@ -7,6 +7,7 @@
  import PropTypes from 'prop-types'
  import {Checkbox, Icon} from 'semantic-ui-react'
  import { withRouter } from "react-router-dom";
+ import {connect} from 'react-redux'
 
  //import css
 import './Settings.css'
@@ -65,10 +66,16 @@ class Settings extends PureComponent{
         })
     }
 
+    getName = () => {
+        const {firstName, lastName} = this.props
+        let name = `${firstName} ${lastName}`
+        return name
+    }
+
 
     render(){
-        console.log("Setting getting rendered")
         const {visible, isAdvertisingActive, isProfileDialogOpened} = this.state
+        const {firstName, lastName, email} = this.props
         return (
             <Navigator visible={visible} onCloseSidebar={this.onCloseSidebar}>
                 <Fragment>
@@ -77,9 +84,9 @@ class Settings extends PureComponent{
                         <div className="settings-user-data-container">
                             <NavUser fill="#ffffff" style={{height: "60px", width: "60px"}} className="settings-user-container"/>
                             <div className="settings-user-profile-container">
-                                <div>Mary Doe</div>
-                                <div>marrydoe@gmail.com</div>
-                                <div>(Level)</div>
+                                <div>{this.getName()}</div>
+                                <div>{email}</div>
+                                {/* <div>(Level)</div> */}
                             </div>
                             <Icon name="edit" size="large" onClick={this.onOpenProfileDialog} style={{marginRight: "20px", color: "#fff", fontSize: "16px", cursor: "pointer"}}/>
                             {/* <Popup
@@ -108,5 +115,28 @@ class Settings extends PureComponent{
     }
 }
 
+const mapStateToProps = (state, props) => {
+    let gameData = state.GameReducer
+    let login = gameData.login
+    let firstName = "", lastName = "", email = ""
 
-export default withRouter(Settings)
+    if(login){
+        firstName = login.firstName
+        lastName = login.lastName
+        email = login.email
+       
+    }
+    return {
+        firstName,
+        lastName,
+        email
+       
+    }
+}
+
+const mapActionsToProps = {
+
+}
+
+
+export default withRouter(connect(mapStateToProps, mapActionsToProps)(Settings))
