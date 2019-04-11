@@ -6,6 +6,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import {connect} from 'react-redux'
 
 
 //import css
@@ -13,6 +14,10 @@ import './Navigation.css'
 
 //import components..
 import NavUser from '../../icons/NavUser';
+
+//import images
+import NavImage from '../../icons/NavImage.png'
+import AvatarProfile from '../../icons/AvatarProfile.png'
 
 import HomeNavIcon from '../../icons/HomeNavIcon.png'
 import MiniBytesNavIcon from '../../icons/MiniByteNavIcon.png'
@@ -36,15 +41,23 @@ class Navigation extends PureComponent {
         super(props)
     }
 
+    getName = () => {
+        const {firstName, lastName} = this.props
+        let name = `${firstName} ${lastName}`
+        return name
+    }
+
+
     render() {
         return (
             <div className="navigation-container">
-                <div className="navigation-header-container">
+                <div className="navigation-header-container" style={{backgroundImage: `url(${NavImage})`}}>
                     <div className="navigation-header-data-container">
-                        <NavUser style={{ width: "60px", height: "60px" }} />
+                        <img src={AvatarProfile} style={{ width: "60px", height: "60px" }}/> 
+                        {/* <NavUser style={{ width: "60px", height: "60px" }} /> */}
                         <div className="navigation-header-user-data-container">
-                            <div className="navigation-header-user-name-container">Mary Doe</div>
-                            <div className="navigation-header-user-level-container">(Level)</div>
+                            <div className="navigation-header-user-name-container">{this.getName()}</div>
+                            {/* <div className="navigation-header-user-level-container">(Level)</div> */}
                         </div>
                     </div>
 
@@ -144,4 +157,25 @@ class Navigation extends PureComponent {
     }
 }
 
-export default Navigation
+const mapStateToProps = (state, props) => {
+    let gameData = state.GameReducer
+    let login = gameData.login
+    let firstName = "", lastName = ""
+
+    if(login){
+        firstName = login.firstName
+        lastName = login.lastName
+       
+    }
+    return {
+        firstName,
+        lastName,
+       
+    }
+}
+
+const mapActiontoProps = {
+
+}
+
+export default connect(mapStateToProps, mapActiontoProps)(Navigation)

@@ -11,7 +11,7 @@ import {Grid} from 'semantic-ui-react'
 import './AuthContainer.css'
 
 //import component
-import AuthIcon from '../../icons/AuthIcon.jpg'
+import AuthIcon from '../../icons/AuthIcon.png'
 
 
 class AuthContainer extends PureComponent{
@@ -33,7 +33,7 @@ class AuthContainer extends PureComponent{
                 <Grid.Column width={10} style={{padding: 0}} className="auth-container-image-grid-container">
                     <div className="auth-container-image-container">
                         <div className="auth-container-image-placeholder">
-                            <img src={AuthIcon} style={{position:"relative", top:"15%"}} className="auth-container-image"/>
+                            <img src={AuthIcon} className="auth-container-image"/>
                         </div>
                     </div>
                 </Grid.Column>

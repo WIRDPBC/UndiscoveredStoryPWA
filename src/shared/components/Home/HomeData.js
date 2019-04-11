@@ -6,7 +6,12 @@
 import React, {PureComponent, Fragment} from 'react'
 import PropTypes from 'prop-types';
 import {Button} from 'semantic-ui-react'
+import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+
+//import image
+import HomeImage from '../../icons/HomeImage.png'
+import AvatarProfile from '../../icons/AvatarProfile.png'
 
 //import components..
 import HomeTab from './HomeTab'
@@ -33,26 +38,33 @@ class HomeData extends PureComponent{
         onOpenSidebar()
     }
 
+    getName = () => {
+        const {firstName, lastName} = this.props
+        let name = `${firstName} ${lastName}`
+        return name
+    }
+
     render(){
+        const {allowedToPlay} = this.props
         return (
             <Fragment>
-                 <div className="home-basic-data-container">
+                 <div className="home-basic-data-container" style={{backgroundImage: `url(${HomeImage})`,   backgroundRepeat: 'no-repeat',  backgroundSize: 'cover'}}>
                 <div className="home-header-container">
                     <NavIcon style={{ cursor: "pointer" }} onClick={this.onOpen}/>
                     <div className="home-header-text-container">Home</div>
                 </div>
                 <div className="home-image-container">
                     <div className="home-image-circle-container">
-                        <img src={UserProfileIcon} style={{height: "103.7px", width: "103.7px"}}/>
+                        <img src={AvatarProfile} style={{height: "103.7px", width: "103.7px"}}/>
                     </div>
 
                 </div>
                 <div className="home-image-user-data-container">
-                    <div className="home-user-text-container">Mary Doe</div>
+                    <div className="home-user-text-container">{this.getName()}</div>
                     <div className="home-user-points-container">0/22</div>
                     <div className="home-user-yet-to-text-container">You have yet to start a game.</div>
                     <Link to={'/start-game'}>
-                        <Button size="medium" style={{ width: "200px", height: "40px", marginTop: "10px" }} primary>Play Now</Button>
+                        <Button size="medium" style={{ width: "200px", height: "40px", marginTop: "10px" }} primary disabled={!allowedToPlay}>Play Now</Button>
                     </Link>
                    
                 </div>
@@ -83,4 +95,25 @@ class HomeData extends PureComponent{
     }
 }
 
-export default HomeData
+const mapStateToProps = (state, props) => {
+    let gameData = state.GameReducer
+    let login = gameData.login
+    let firstName = "", lastName = "", allowedToPlay = false
+
+    if(login){
+        firstName = login.firstName
+        lastName = login.lastName
+        allowedToPlay = login.allowedToPlay
+    }
+    return {
+        firstName,
+        lastName,
+        allowedToPlay
+    }
+}
+
+const mapActiontoProps = {
+
+}
+
+export default connect(mapStateToProps, mapActiontoProps)(HomeData)

@@ -16,6 +16,7 @@ import BackBtn from '../BackBtn/BackBtn';
 
 // Importing Image
 import ScienceandTechnology from '../../icons/18_ScienceandTechnology.jpg';
+import GameImage from '../../icons/GameImage.png'
 
 class StartGame extends PureComponent {
     static propTypes = {
@@ -43,8 +44,8 @@ class StartGame extends PureComponent {
                 </div>
                 <Grid className="start-game-data-container" style={{ padding: "0 0 0 55px" }}>
                     <Grid.Row style={{ padding: 0 }} className="start-game-image-container">
-                        <div className="start-game-image-placeholder">
-                            <img src={ScienceandTechnology} style={{ height: "300px", width: "300px" }} />
+                        <div className="start-game-image-placeholder" style={{backgroundImage: `url(${GameImage})`,   backgroundRepeat: 'no-repeat',  backgroundSize: 'cover'}}>
+                            {/* <img src={GameImage} style={{ height: "300px", width: "300px" }} /> */}
                         </div>
                     </Grid.Row>
                     <Grid.Row style={{ padding: 0 }} className="start-game-content-container">

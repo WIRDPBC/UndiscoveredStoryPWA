@@ -21,7 +21,8 @@
 .navigation-header-user-data-container{
     margin-left: 25px;
     position: relative;
-    top: 10px;
+    /* top: 10px; */
+    line-height: 62px;
 }
 
 .navigation-header-user-name-container{

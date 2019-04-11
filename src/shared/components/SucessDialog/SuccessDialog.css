@@ -10,6 +10,7 @@
     display: -webkit-flex;
     border-bottom: 2px solid #dddddd;
     padding-left: 20px;
+    background: #ebb0d0;
 }
 
 .success-dialog-header-text-container{

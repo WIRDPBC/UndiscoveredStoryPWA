@@ -7,6 +7,7 @@ import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'; 
 import axios from 'axios'
 import {connect} from 'react-redux'
+import { hostUrl } from '../helper'
 
 //import css
 import './Login.css'
@@ -24,7 +25,8 @@ class Login extends PureComponent{
         const {onUpdateLoginAction} = this.props
         console.log("On login getting called", values)
         if(values.email && values.password){
-           let url = 'http://localhost:8083/udgtapi/user/login'
+            let url = `${hostUrl}/login`
+          // let url = 'http://localhost:8083/udgtapi/user/login'
           // let url = 'https://udgt-7790b.firebaseapp.com/user/login'
          // let url = 'http://ec2-18-219-36-248.us-east-2.compute.amazonaws.com/udgtapi/user/login'
           console.log("Login Url", url)

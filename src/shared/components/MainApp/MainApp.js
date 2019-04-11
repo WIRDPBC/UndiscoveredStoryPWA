@@ -30,6 +30,8 @@ import BonusReward from '../BonusReward'
 import PurchaseTokens from '../PurchaseTokens'
 import MiniBytes from '../MiniBytes'
 import AdvertisingComment from '../AdvertisingComment'
+import ForgotPassword from '../ForgotPassword'
+import ResetPassword from '../ResetPassword'
 
 
 //import Routes
@@ -54,7 +56,9 @@ import {
     bonusRewardRoute,
     purchaseTokensRoute,
     miniBytesRoutes,
-    advertisingOptRoutes
+    advertisingOptRoutes,
+    forgotPasswordRoutes,
+    resetPassswordRoutes
 } from '../CustomRoutes/CustomRoutes'
 
 
@@ -176,8 +180,18 @@ function MainApp(props) {
                 )} />
                 <Route path={advertisingOptRoutes} render={routerProps => (
                      <Auth accept={'$authenticated'} reject={'$unauthenticated'} redirectTo={loginRoute}>
-                     <AdvertisingComment {...routerProps} />
-                 </Auth>
+                        <AdvertisingComment {...routerProps} />
+                    </Auth>
+                )}/>
+                <Route path={forgotPasswordRoutes} render={routerProps => (
+                    <Auth accept={'$unauthenticated'} reject={'$authenticated'} redirectTo={homeRoute}>
+                        <ForgotPassword {...routerProps} />
+                    </Auth>
+                )}/>
+                <Route path={resetPassswordRoutes} render={routerProps => (
+                    <Auth accept={'$unauthenticated'} reject={'$authenticated'} redirectTo={homeRoute}>
+                      <ResetPassword {...routerProps} />
+                    </Auth>
                 )}/>
                 <Route component={NotFound} />
             </Switch>

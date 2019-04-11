@@ -55,7 +55,9 @@ class LoginForm extends PureComponent {
                             <Link to={'/signup'}>
                                 <div className="login-form-create-new-account-container">Create new account</div>
                             </Link>
-                            <div className="login-form-forgot-password-container">Forgot password?</div>
+                            <Link to={'/forgotPassword'}>
+                                <div className="login-form-forgot-password-container">Forgot password?</div>
+                            </Link>
                         </div>
 
                         <div className="login-form-button-container">
