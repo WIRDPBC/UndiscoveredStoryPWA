@@ -16,6 +16,7 @@ import TopHeader from '../TopHeader'
 import Navigator from '../Navigator'
 import DonateIcon from '../../icons/DonateIcon.png'
 import DonationElement from './DonationElement';
+import ComingSoon from '../ComingSoon';
 
 
 
@@ -47,7 +48,8 @@ class DonateTokens extends PureComponent {
             <Navigator visible={visible} onCloseSidebar={this.onCloseSidebar}>
             <Fragment>
                 <TopHeader onOpenSidebar={this.onOpenSidebar} title="Donate Tokens"/>
-                <div className="donate-tokens-container">
+                <ComingSoon/>
+                {/* <div className="donate-tokens-container">
                     <div className="donate-tokens-icon-container">
                         <img src={DonateIcon} alt="Donate Token" />
                     </div>
@@ -64,7 +66,7 @@ class DonateTokens extends PureComponent {
                             <Button content="Donate Tokens" primary className="donate-token-button"/>
                         </Link>
                     </div>
-                </div>
+                </div> */}
             </Fragment>
             </Navigator>
         )

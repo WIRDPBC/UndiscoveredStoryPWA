@@ -1,0 +1,5 @@
+.coming-soon-image-container{
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+}
