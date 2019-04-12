@@ -57,7 +57,7 @@ class MyWallet extends PureComponent {
                         <div className="my-wallet-card-container">
                             <WalletCard />
                         </div>
-                        <div className="my-wallet-transactions-container">
+                        {/* <div className="my-wallet-transactions-container">
                             <div className="my-wallet-recent-transactions-text">Recent Transactions</div>
                             <div className="my-wallet-recent-transaction-list-container">
                                 <TransactionItem status="Sent" group="Vetted Girls" container="odd"/>
@@ -66,7 +66,7 @@ class MyWallet extends PureComponent {
                                 <TransactionItem status="Sent" group="P18ak65marry29chelsea" container="even"/>
                                 <TransactionItem status="Purchased" group="Q23hh04john27elite" container="odd"/>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </Fragment>
             </Navigator>
