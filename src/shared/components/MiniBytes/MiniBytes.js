@@ -79,10 +79,13 @@ class MiniBytes extends PureComponent{
                         </div>
                         <div className="mini-bytes-data-container">
                             <div className="mini-bytes-quote-container"> {title} <br/>
-                            {author} 
+                                {author} 
+                            </div>
                         </div>
-                        {id !== miniByteList.length && <Button content="Next" style={{marginTop:"50px", float:"right", cursor:"pointer", backgroundColor: "#ebb0d0", color: "#fff"}}  onClick={this.onNext}></Button>}
+                        <div className="mini-bytes-next-button-container">
+                        {id !== miniByteList.length && <Button content="Next" style={{float:"right", cursor:"pointer", backgroundColor: "#ebb0d0", color: "#fff" }}  onClick={this.onNext}></Button>}
                         </div>
+                    
                        
                     </div>
                 </Fragment>
