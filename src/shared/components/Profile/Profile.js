@@ -7,10 +7,15 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import {Modal} from 'semantic-ui-react'
 import {connect} from 'react-redux'
+import {hostUrl} from '../helper'
+import axios from 'axios'
 
 
 //import css
 import './Profile.css'
+
+//import actions
+import {onUpdateLoginAction} from '../../reducers/User/actions'
 
 //import components
 import ProfileForm from './ProfileForm'
@@ -31,7 +36,31 @@ class Profile extends PureComponent{
     }
 
     onProfileSave = (values) => {
+        const {onUpdateLoginAction} = this.props
         console.log("On Profile Save getting called", values)
+        if(values.firstName && values.lastName && values.email){
+            let url = `${hostUrl}/updateUserData`
+            let formData = {
+                firstName : values.firstName,
+                lastName : values.lastName,
+                paypalEmail : values.paypalEmail || "",
+                email : values.email
+            }
+            const config = {
+                headers: { 'content-type': 'application/json' },
+            }
+            onUpdateLoginAction(values)
+            setTimeout(() => {
+                axios.post(url, formData, config)
+                .then(data => {
+                    console.log("Profile Updated Successfully", data)
+                })
+                .catch(error => {
+                    console.error("Error in Profile Updating", error)
+                })
+            })
+           
+        }
     }
 
     render(){
@@ -64,7 +93,7 @@ const mapStateToProps = (state, props) => {
 }
 
 const mapActionsToProps = {
-
+    onUpdateLoginAction
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(Profile)

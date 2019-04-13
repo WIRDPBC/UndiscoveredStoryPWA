@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form'
 import { GridColumn, Grid, Input } from 'semantic-ui-react';
 import { reduxForm } from 'redux-form'
+import {CopyToClipboard} from 'react-copy-to-clipboard'
 
 //import images
 import AvatarImage from '../../icons/AvatarProfile.png'
@@ -22,7 +23,9 @@ import NavUser from '../../icons/NavUser'
 
 
 const ProfileForm = (props) => {
-    const {onClose, handleSubmit, disabled, invalid, pristine, submitting} = props
+    const {onClose, handleSubmit, disabled, invalid, pristine, submitting, initialValues} = props
+    const {ReferralLink} = initialValues
+    console.log("Profile Obj", props)
     return (
         <Fragment>
             <div className="profile-form-header">
@@ -51,7 +54,18 @@ const ProfileForm = (props) => {
                         </div>
                         <div className="profile-form-title-container" style={{marginTop: "20px"}}>Email</div>
                         <Field component={InputFieldUI} name="email" type="email" size="small" placeholder="Email" disabled={true} />
-                        <SubmitButton content="Save" style={{float:"right", marginTop:"10px"}} disabled = {invalid|| submitting || pristine}/>
+                        <div className="profile-form-title-container" style={{marginTop: "20px"}}>Paypal Email</div>
+                        <Field component={InputFieldUI} name="paypalEmail" type="email" size="small" placeholder="Paypal Email" required={false}/>
+                        <div className="profile-form-title-container" style={{marginTop: "20px"}}>Referral Link</div>
+                        <div className="profile-form-referral-link-container">
+                            <div className="profile-form-referral-link">{ReferralLink}</div>
+                            <CopyToClipboard text={ReferralLink}>
+                                <div style={{cursor:"pointer", color: "#3787d6", fontWeight: "bold"}}>Copy</div>
+                            </CopyToClipboard>
+                           
+                        </div>
+                        {/* <Field component={InputFieldUI} name="referralLink" type="string" size="small" placeholder="Referral Link" /> */}
+                        <SubmitButton content="Save" style={{float:"right", marginTop:"20px"}} disabled = {invalid|| submitting || pristine}/>
                         </WirdForm>
                     </Grid.Column>
                     <Grid.Column width={6} className="profile-form-user-pic-container">
