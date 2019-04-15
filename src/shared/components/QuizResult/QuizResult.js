@@ -58,6 +58,9 @@ class QuizResult extends PureComponent {
 
     render() {
         const {visible} = this.state
+        const {location} = this.props
+        const {totalCorrectAnswers, totalIncorrectAnswers, totalUnanswered} = location 
+        console.log("Quiz Result Props", this.props)
         return (
 
             <Navigator visible={visible} onCloseSidebar={this.onCloseSidebar}>
@@ -66,12 +69,12 @@ class QuizResult extends PureComponent {
                     <div className="quiz-result-data-container">
                         <div className="quiz-result-score-container">
                             <div className="quiz-result-score-text-container">Score</div>
-                            <div className="quiz-result-score-point-text">19</div>
+                            <div className="quiz-result-score-point-text">{totalCorrectAnswers}</div>
                             <Grid style={{ padding: 0 }}>
                                 <GridColumn width={8} className="quiz-result-earned-grid-container">
                                     <div className="quiz-token-earned-container">
                                         <div className="quiz-token-text-container">Tokens Earned</div>
-                                        <div className="quiz-token-amount-container">19</div>
+                                        <div className="quiz-token-amount-container">{totalCorrectAnswers}</div>
                                     </div>
 
 
@@ -79,7 +82,7 @@ class QuizResult extends PureComponent {
                                 <GridColumn width={8} className="quiz-result-lost-grid-container">
                                     <div className="quiz-token-lost-container">
                                         <div className="quiz-token-text-container">Tokens Lost</div>
-                                        <div className="quiz-token-amount-container">3</div>
+                                        <div className="quiz-token-amount-container">{totalIncorrectAnswers + totalUnanswered}</div>
                                     </div>
 
                                 </GridColumn>
@@ -98,10 +101,10 @@ class QuizResult extends PureComponent {
                                     </GridColumn>
                                     <GridColumn width={8} className="quiz-stats-game-data-grid-container">
                                         <div className="quiz-stats-game-data-container">
-                                            <div className="quiz-stats-data-text-container">19</div>
-                                            <div className="quiz-stats-data-text-container">3</div>
-                                            <div className="quiz-stats-data-text-container">21</div>
-                                            <div className="quiz-stats-data-text-container">22</div>
+                                            <div className="quiz-stats-data-text-container">{totalCorrectAnswers}</div>
+                                            <div className="quiz-stats-data-text-container">{totalIncorrectAnswers}</div>
+                                            <div className="quiz-stats-data-text-container">0</div>
+                                            <div className="quiz-stats-data-text-container">0</div>
                                         </div>
 
                                     </GridColumn>

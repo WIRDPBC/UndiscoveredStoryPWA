@@ -27,6 +27,8 @@ import QuestionCenterIcon from '../../icons/QuestionIcon.png'
 
 import CorrectOption from '../../icons/CorrectOption';
 import IncorrectOption from '../../icons/IncorrectOption';
+import CorrectIcon from '../../icons/CorrectIcon.png'
+import IncorrectIcon from '../../icons/IncorrectIcon.png'
 
 
 
@@ -52,7 +54,11 @@ class Quiz extends PureComponent {
             explainationText: "",
             percent: 0,
             optionSelect: '',
-            timer: 0
+            timer: 0,
+            totalCorrectAnswers : 0,
+            totalIncorrectAnswers : 0,
+            totalUnanswered : 0
+
         }
     }
 
@@ -95,12 +101,13 @@ class Quiz extends PureComponent {
 
     tick = () => {
         const { timer, optionSelect } = this.state
-        console.log("Tick getting called")
+       // console.log("Tick getting called")
         if (timer < 60 && !optionSelect) {
             if(timer+1 === 60){
                 this.setState({
                     timer: "Time Up!"
                 })
+                this.saveAnswer(0)
             } else{
                 this.setState({
                     timer : timer + 1
@@ -235,11 +242,12 @@ class Quiz extends PureComponent {
 
 
     onFirstSelect = () => {
-        const {optionSelect} = this.state
-        if(!optionSelect){
+        const {optionSelect, timer} = this.state
+        if(!optionSelect && timer !== "Time Up!"){
             this.setState({
                 optionSelect: 1
             })
+            this.saveAnswer(1)
         }
        
     }
@@ -250,6 +258,7 @@ class Quiz extends PureComponent {
             this.setState({
                 optionSelect: 2
             })
+           this.saveAnswer(2)
         }
        
 
@@ -261,17 +270,61 @@ class Quiz extends PureComponent {
         this.setState({
             optionSelect: 3
         })
+        this.saveAnswer(3)
     }
 
     }
 
     onFourthSelect = () => {
-        const {optionSelect} = this.state
+        const {optionSelect, timer} = this.state
         if(!optionSelect && timer !== "Time Up!"){
         this.setState({
             optionSelect: 4
         })
+        this.saveAnswer(4)
     }
+
+    }
+
+    saveAnswer = (option) => {
+        const {correctAnswer, totalCorrectAnswers, totalIncorrectAnswers, totalUnanswered} = this.state
+        const {email} = this.props
+        let url = `${hostUrl}/answer`
+        let correctAnswerData, unanswered ;
+        if(option !== 0 && option === correctAnswer){
+            correctAnswerData = correctAnswer
+            this.setState({
+                totalCorrectAnswers : totalCorrectAnswers + 1
+            })
+        }  else if(option === 0){
+            unanswered = "unanswered"
+            this.setState({
+                totalUnanswered : totalUnanswered + 1
+            })
+        } else if(option !== 0 && option !== correctAnswer){
+            this.setState({
+                totalIncorrectAnswers : totalIncorrectAnswers + 1
+            })
+        }
+    
+        let formData = {
+            email : email,
+            correctAnswer : correctAnswerData,
+            unanswered : unanswered
+        }
+    
+        console.log("Answer option", option)
+        console.log("Correct Answer", correctAnswer)
+        const config = {
+            headers: { 'content-type': 'application/json' },
+        }
+        axios.post(url, formData, config)
+        .then(data => {
+            console.log("Answer Saved Successfully", error)
+        })
+        .catch(error => {
+            console.error("Error in saving answer", error)
+        })
 
     }
 
@@ -287,7 +340,7 @@ class Quiz extends PureComponent {
     }
 
     render() {
-        const { question, option1, option2, option3, option4, count, correctAnswer, explainationText, percent, timer, optionSelect } = this.state
+        const { question, option1, option2, option3, option4, count, correctAnswer, explainationText, percent, timer, optionSelect, totalCorrectAnswers, totalIncorrectAnswers, totalUnanswered } = this.state
         return (
             <div className="quiz-container">
                 <div className="quiz-header-container">
@@ -309,7 +362,14 @@ class Quiz extends PureComponent {
                     <div className="quiz-explaination-content-container">
                     {explainationText}
                     </div>
-                    <Link to={'/quiz-result'}>
+                    <Link 
+                    to={{
+                        pathname: '/quiz-result',
+                        totalCorrectAnswers : totalCorrectAnswers,
+                        totalIncorrectAnswers : totalIncorrectAnswers,
+                        totalUnanswered : totalUnanswered
+                    }}
+                    >
                     <Button content="End Game" style={{float: "right", marginTop: "10px"}}/>
                     </Link>
                 </div>
@@ -338,9 +398,13 @@ class Quiz extends PureComponent {
                         
                             <div className="quiz-odd-option-container" onClick={this.onFirstSelect}>
                             {optionSelect && correctAnswer === 1 && 
-                            <CorrectOption style={{ position: "relative", bottom: "7px", right: "10px" }} />}
+                            <CorrectOption style={{ position: "relative", left: "142px", bottom: "78px", right: "10px" }} />
+                             }
                             {optionSelect === 1 && optionSelect !== correctAnswer && <IncorrectOption style={{ position: "relative", bottom: "7px", right: "10px" }} />}
-                                <img src={OptionOne} className="quiz-option-image-container quiz-option-odd-image" />
+                                <div className="quiz-option-image-container quiz-option-odd-image">
+                                    <img src={OptionOne}  />
+                                </div>
+                                
                                 <div className="quiz-option-odd-text-container">{option1}</div>
                             </div>
 
@@ -351,7 +415,10 @@ class Quiz extends PureComponent {
 
 
                             <div className="quiz-even-option-container" onClick={this.onSecondSelect}>
-                            {optionSelect && correctAnswer === 2 && <CorrectOption style={{ position: "relative", bottom: "7px", right: "10px" }} />}
+                            {optionSelect && correctAnswer === 2 && 
+                            <CorrectOption style={{ position: "relative", bottom: "7px", right: "10px" }} />
+                          
+                            }
                             {optionSelect === 2 && optionSelect !== correctAnswer && <IncorrectOption style={{ position: "relative", bottom: "7px", right: "10px" }} />}
                                 <img src={OptionTwo} className="quiz-option-image-container quiz-option-even-image" />
                                 <div className="quiz-option-even-text-container">{option2}</div>
@@ -369,7 +436,10 @@ class Quiz extends PureComponent {
 
                  
                                 <div className="quiz-odd-option-container" onClick={this.onThirdSelect}>
-                                {optionSelect && correctAnswer === 3 && <CorrectOption style={{ position: "relative", bottom: "7px", right: "10px" }} />}
+                                {optionSelect && correctAnswer === 3 && 
+                                <CorrectOption style={{ position: "relative", bottom: "7px", right: "10px" }} />
+                               
+                                }
                             {optionSelect === 3 && optionSelect !== correctAnswer && <IncorrectOption style={{ position: "relative", bottom: "7px", right: "10px" }} />}
                                     <img src={OptionThree} className="quiz-option-image-container quiz-option-even-image" />
                                   
@@ -382,7 +452,10 @@ class Quiz extends PureComponent {
 
                           
                           <div className="quiz-even-option-container" onClick={this.onFourthSelect}>
-                          {optionSelect && correctAnswer === 4 && <CorrectOption style={{ position: "relative", bottom: "7px", right: "10px" }} />}
+                          {optionSelect && correctAnswer === 4 && 
+                        <CorrectOption style={{ position: "relative", bottom: "7px", right: "10px" }} /> 
+                    
+                         }
                             {optionSelect === 4 && optionSelect !== correctAnswer && <IncorrectOption style={{ position: "relative", bottom: "7px", right: "10px" }} />}
                                 <img src={OptionFour} className="quiz-option-image-container quiz-option-even-image" />
                           
@@ -427,8 +500,14 @@ class Quiz extends PureComponent {
 const mapStateToProps = (state, props) => {
     const gameData = state.GameReducer
     const questionData = gameData.questionData
+    const login = gameData.login
+    let email
+    if(login){
+        email = login.email
+    }
     return {
-        questionData
+        questionData,
+        email
     }
 }
 
