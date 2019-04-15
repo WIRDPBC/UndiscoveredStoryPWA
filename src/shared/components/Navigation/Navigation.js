@@ -15,6 +15,9 @@ import './Navigation.css'
 //import components..
 import NavUser from '../../icons/NavUser';
 
+//import actions
+import {onLogout} from '../../reducers/User/actions'
+
 //import images
 import NavImage from '../../icons/NavImage.png'
 import AvatarProfile from '../../icons/AvatarProfile.png'
@@ -45,6 +48,13 @@ class Navigation extends PureComponent {
         const {firstName, lastName} = this.props
         let name = `${firstName} ${lastName}`
         return name
+    }
+
+    logout = () => {
+        console.log("I am getting called")
+        const {onLogout} = this.props
+        onLogout()
+        window.location = "/login"
     }
 
 
@@ -147,11 +157,11 @@ class Navigation extends PureComponent {
 
                 </div>
 
-                <Link to={'/login'}>
-                    <div className="navigation-data-sign-out-container">
+                {/* <Link to={'/login'}> */}
+                    <div className="navigation-data-sign-out-container" onClick = {this.logout}>
                         Sign Out
                     </div>
-                </Link>
+                {/* </Link> */}
             </div>
         )
     }
@@ -175,7 +185,7 @@ const mapStateToProps = (state, props) => {
 }
 
 const mapActiontoProps = {
-
+    onLogout
 }
 
 export default connect(mapStateToProps, mapActiontoProps)(Navigation)

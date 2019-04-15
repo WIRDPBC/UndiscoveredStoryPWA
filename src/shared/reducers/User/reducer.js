@@ -4,7 +4,8 @@
  */
 
 import{
-    UPDATE_LOGIN
+    UPDATE_LOGIN,
+    CLEAR_LOGIN
 } from './actions'
 
 const UserReducer = (state, action) => {
@@ -18,6 +19,13 @@ const UserReducer = (state, action) => {
                 }
             }
             break
+        }
+        case CLEAR_LOGIN:{
+            state = {
+                ...state,
+                login: null
+            }
+            break;
         }
     }
 

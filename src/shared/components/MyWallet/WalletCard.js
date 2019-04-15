@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import {Button, Icon} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 import {CopyToClipboard} from 'react-copy-to-clipboard'
+import {connect} from 'react-redux'
 
 
 //import images 
@@ -29,6 +30,7 @@ class WalletCard extends PureComponent{
     }
 
     render(){
+        const {noOfTokens, tokenWorth, walletAddress} = this.props
         return (
             <div className="wallet-card-container">
                 <div className="wallet-card-data-container">
@@ -36,8 +38,8 @@ class WalletCard extends PureComponent{
                     <img src={WalletIcon} style={{float: "left"}}/>
                     <div className="wallet-card-amount-data-container">
                         <div className="wallet-card-total-amount-text-container">Total Wallet</div>
-                        <div className="wallet-card-total-worth-data-container">$1000</div>
-                        <div className="wallet-card-total-token-container">6666.67</div>
+                        <div className="wallet-card-total-worth-data-container">${tokenWorth}</div>
+                        <div className="wallet-card-total-token-container">{noOfTokens}</div>
                     </div>
                     </div>
                     
@@ -55,9 +57,9 @@ class WalletCard extends PureComponent{
                     <div className="wallet-card-address-data-container">
                         <div className="wallet-card-content-container">
                             <div style={{fontSize:"12px", fontWeight:"bold"}}>Wallet Address</div>
-                            <div className="wallet-card-address">GAYXX5B3HP6SDPSI4532JIZ7FHULBTIXP5OBU55MDVORBF7XT2H2PCWZ</div>
+                            <div className="wallet-card-address">{walletAddress}</div>
                         </div>
-                        <CopyToClipboard text="GAYXX5B3HP6SDPSI4532JIZ7FHULBTIXP5OBU55MDVORBF7XT2H2PCWZ">
+                        <CopyToClipboard text={{walletAddress}}>
                             <div className="wallet-card-copy-text-container">Copy</div>
                         </CopyToClipboard>
                     </div>
@@ -72,4 +74,23 @@ class WalletCard extends PureComponent{
     }
 }
 
-export default WalletCard
+const mapStateToProps = (state, ownProps) => {
+    const gameData = state.GameReducer
+    const login = gameData.login
+    let walletAddress
+    if(login && login.walletData && login.walletData.publicKey){
+        walletAddress = login.walletData.publicKey
+    }
+
+    return {
+      noOfTokens : 88,
+      tokenWorth : 88*0.15,
+      walletAddress
+    }
+}
+
+const mapActionToProps = {
+
+}
+
+export default connect(mapStateToProps, mapActionToProps)(WalletCard)

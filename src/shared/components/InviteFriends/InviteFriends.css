@@ -61,12 +61,14 @@
 }
 
 .invite-friends-referral-text-container{
-    height: 40px;
+    /* height: 40px;
     line-height: 40px;
-    margin-top: 20px;
+    margin-top: 20px; */
     /* width: 400px; */
     display: flex;
+    display: -webkit-flex;
     justify-content: center;
+    margin-top: 20px;
     /* text-align: center; */
 }
 
@@ -89,6 +91,26 @@
 
 .invite-contacts-button{
     width: 400px !important;
+}
+
+.invite-friends-referral-link-container{
+    height: 35px;
+    /* width: 395px; */
+    border: 1px solid #eeeeee;
+    line-height: 35px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.invite-friends-referral-link{
+    width: 335px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    float: left;
 }
 
 

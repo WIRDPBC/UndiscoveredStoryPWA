@@ -305,8 +305,9 @@ CreateUser.prototype.signup = function (res) {
 CreateUser.prototype.login = function (res) {
     this.userLoginData = {
         AuthenticationToken: this.getAuthenticationToken(),
-        lastLogin: _firebase.firestore.Timestamp.now(),
-        walletData: ''
+        lastLogin: _firebase.firestore.Timestamp.now()
+        // ,
+        // walletData: ''
     }
     let dt = _firebase.firestore();
     let _utilities = new utilities();
@@ -355,7 +356,7 @@ CreateUser.prototype.login = function (res) {
                                 totalQuestionsAnsweredLastLogin: doc.data().totalQuestionsAnsweredLastLogin,
                                 invitedBy: doc.data().invitedBy,
                                 inviteeCode: doc.data().inviteeCode,
-                                walletData: '',
+                                walletData: doc.data().walletData,
                                 termsPolicy: true,
                                 eligiblityCertified: true,
                                 allowedToPlay: true

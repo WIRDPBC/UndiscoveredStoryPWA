@@ -6,7 +6,9 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Grid, GridRow, Button } from 'semantic-ui-react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import {CopyToClipboard} from 'react-copy-to-clipboard'
 
 //import css
 import './InviteFriends.css'
@@ -22,6 +24,7 @@ class InviteFriends extends PureComponent {
     }
 
     render() {
+        const { referralLink } = this.props
         return (
             <Fragment>
                 <TopHeaderBack title="Invite Friends" />
@@ -33,27 +36,34 @@ class InviteFriends extends PureComponent {
                                 <img src={InviteFriendsIcon} alt="Invite Friends Icon" />
                                 <div className="invite-friends-text-one-container">Get 3 USDG tokens for every friend who signs up and plays the game</div>
                                 <div className="invite-friends-terms-and-conditions-container">Terms & conditions</div>
-                                <div className="invite-friends-button-container">
+                                {/* <div className="invite-friends-button-container">
                                     <Link to={'/invite-contacts'}>
                                         <Button primary content="Invite Contacts" className="invite-contacts-button" style={{ height: "40px" }} />
                                     </Link>
-                                </div>
+                                </div> */}
 
                             </div>
                         </div>
                         <div className="invite-friends-invite-text-container" style={{ padding: 0 }}>
                             <div className="invite-friends-referral-container">
-                                <div className="invite-friends-or-text-container">
+                                {/* <div className="invite-friends-or-text-container">
                                     Or
-                            </div>
+                            </div> */}
                                 <div className="invite-friends-share-your-text-container">Share your link</div>
                                 <div className="invite-friends-referral-text-container">
-                                    <div className="invite-friends-referral-text">
-                                    <span>BBLOCKCHAINN001</span>
+                                <div className="invite-friends-referral-link-container">
+                                    <div className="invite-friends-referral-link">{referralLink}</div>
+                                    <CopyToClipboard text={referralLink}>
+                                        <div style={{ cursor: "pointer", color: "#3787d6", fontWeight: "bold" }}>Copy</div>
+                                    </CopyToClipboard>
+                                    {/* <div className="invite-friends-referral-text">
+                                    <span>{referralLink}</span>
                                     <span className="invite-friends-referral-copy-text">Copy</span>
-                                    </div>
-                                   
+                                    </div> */}
+
                                 </div>
+                                </div>
+                               
                             </div>
 
                         </div>
@@ -65,4 +75,20 @@ class InviteFriends extends PureComponent {
     }
 }
 
-export default InviteFriends
+const mapStateToProps = (state, ownProps) => {
+    let gameData = state.GameReducer
+    let login = gameData.login
+    let referralLink = login.ReferralLink
+    if (login) {
+        referralLink = login.ReferralLink
+    }
+    return {
+        referralLink
+    }
+}
+
+const mapActionToProps = {
+
+}
+
+export default connect(mapStateToProps, null)(InviteFriends)

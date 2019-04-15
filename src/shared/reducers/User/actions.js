@@ -5,6 +5,7 @@
  */
 
 export const UPDATE_LOGIN = "onUpdateLogin"
+export const CLEAR_LOGIN = "clearLogin"
 
 import {USER} from '../model'
 const model = USER
@@ -17,6 +18,16 @@ export const onUpdateLoginAction = (login) => {
             payload:{
                 login
             }
+        })
+    }
+}
+
+export const onLogout = () => {
+    return (dispatch, getState) => {
+        dispatch({
+            type : CLEAR_LOGIN,
+            model,
+            payload: null
         })
     }
 }

@@ -46,6 +46,7 @@ class HomeData extends PureComponent{
 
     render(){
         const {allowedToPlay} = this.props
+        let earnedTokensAmount = 88*0.15
         return (
             <Fragment>
                  <div className="home-basic-data-container" style={{backgroundImage: `url(${HomeImage})`,   backgroundRepeat: 'no-repeat',  backgroundSize: 'cover'}}>
@@ -61,7 +62,7 @@ class HomeData extends PureComponent{
                 </div>
                 <div className="home-image-user-data-container">
                     <div className="home-user-text-container">{this.getName()}</div>
-                    <div className="home-user-points-container">0/22</div>
+                    <div className="home-user-points-container">0/20</div>
                     <div className="home-user-yet-to-text-container">You have yet to start a game.</div>
                     <Link to={'/start-game'}>
                         <Button size="medium" style={{ width: "200px", height: "40px", marginTop: "10px" }} primary disabled={!allowedToPlay}>Play Now</Button>
@@ -76,7 +77,7 @@ class HomeData extends PureComponent{
                             <img src={HomeIcon} className="home-card-image"/>
                             <div className="home-card-tokens-text">88 Tokens</div>
                         </div>
-                        <div className="home-card-amount-text">$13.20</div>
+                        <div className="home-card-amount-text">${earnedTokensAmount}</div>
                     </div>
                     <div className="home-donated-card-container">
                     <div className="home-card-text">Donated</div>

@@ -290,18 +290,19 @@ class Quiz extends PureComponent {
         const {correctAnswer, totalCorrectAnswers, totalIncorrectAnswers, totalUnanswered} = this.state
         const {email} = this.props
         let url = `${hostUrl}/answer`
-        let correctAnswerData, unanswered ;
+        let correctAnswerData = false, unanswered = false ;
         if(option !== 0 && option === correctAnswer){
-            correctAnswerData = correctAnswer
+            correctAnswerData = true
             this.setState({
                 totalCorrectAnswers : totalCorrectAnswers + 1
             })
         }  else if(option === 0){
-            unanswered = "unanswered"
+            unanswered = true
             this.setState({
                 totalUnanswered : totalUnanswered + 1
             })
         } else if(option !== 0 && option !== correctAnswer){
+            correctAnswerData = false
             this.setState({
                 totalIncorrectAnswers : totalIncorrectAnswers + 1
             })
@@ -320,7 +321,7 @@ class Quiz extends PureComponent {
         }
         axios.post(url, formData, config)
         .then(data => {
-            console.log("Answer Saved Successfully", error)
+            console.log("Answer Saved Successfully", data)
         })
         .catch(error => {
             console.error("Error in saving answer", error)
