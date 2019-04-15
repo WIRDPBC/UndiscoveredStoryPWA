@@ -41,7 +41,7 @@ bower_components
 .lock-wscript
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
+#build/Release
 
 # Dependency directories
 # Optional npm cache directory
@@ -67,6 +67,6 @@ node_modules
 
 
 #ignore build
-build
+
 
 yarn.lock
