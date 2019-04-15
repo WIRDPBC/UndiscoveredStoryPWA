@@ -1,3 +1,6 @@
-module.exports.createKeyPair = "http://ec2-18-219-36-248.us-east-2.compute.amazonaws.com/udgt/api/createKeyPair";
-module.exports.getBalances = "http://ec2-18-219-36-248.us-east-2.compute.amazonaws.com/udgt/api/getBalances";
-module.exports.buildTransaction = "http://ec2-18-219-36-248.us-east-2.compute.amazonaws.com/udgt/api/buildTransaction";
+//module.exports.createKeyPair = `http://undiscoveredstory.com/udgt/api/createKeyPair`
+// module.exports.getBalances = "http://undiscoveredstory.com/udgt/api/getBalances";
+//module.exports.buildTransaction = "http://undiscoveredstory.com/udgt/api/buildTransaction";
+module.exports.createKeyPair = `http://52.15.199.214/udgt/api/createKeyPair`
+module.exports.getBalances = "http://52.15.199.214/udgt/api/getBalances";
+module.exports.buildTransaction = `http://52.15.199.214/udgt/api/buildTransaction`;

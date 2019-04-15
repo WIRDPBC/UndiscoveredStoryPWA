@@ -1,3 +1,7 @@
 module.exports = {
-    users: "users"
+    users: "users",
+    earnedDonatedTokens: "earnedDonatedTokens",
+    advertisementComment: "advertisementComment",
+    advertisement: "advertisement",
+    transactions: "transactions"
 }

@@ -15,6 +15,11 @@ let walletAPIurl = require('../walletAPI/walletAPIurl');
 const axios = require('axios');
 let jwt = require('jsonwebtoken');
 let utilities = require('./utilities');
+let walletAPI = require('../walletAPI/walletAPIurl')
+
+const collectionName = require('./collectionName');
+
+const numberOfTokenToTransfer = "88"
 
 //Contructor requiring two params to utilize
 //them in the methods defined
@@ -153,6 +158,7 @@ CreateUser.prototype.checkPassword = function (hashedPassword, simplePassword) {
 CreateUser.prototype.getAuthenticationToken = function () {
     // expires in 24 hours
     this.AuthenticationToken = jwt.sign({ id: this.getEmail() }, secretKey, { expiresIn: 86400 });
+
     return this.AuthenticationToken;
 }
 
@@ -171,43 +177,123 @@ CreateUser.prototype.addRecord = function (userSignupData) {
  */
 CreateUser.prototype.signup = function (res) {
     let _utilities = new utilities();
-    _utilities.getDocumentIDbyEmail(this.getEmail()).then((resolved) => {
-
-        if (resolved.documentID == undefined) {
-            let inviteeCode = _utilities.generateUUIDv1();
-            this.userSignupData = {
-                firstName: this.getFirstName(),
-                lastName: this.getLastName(),
-                authenticationToken: this.getAuthenticationToken(),
-                email: this.getEmail(),
-                password: this.getPassword(),
-                signupDateTime: _firebase.firestore.Timestamp.now(),
-                lastLogin: _firebase.firestore.Timestamp.now(),
-                walletData: '',
-                balance: this.initialSignupBalance,
-                inviteeCode: inviteeCode,
-                invitedBy: '',
-                ReferralLink: `https://undiscoveredstory.com?email=${this.getEmail()}&inviteeCode=${inviteeCode}`,
-                termsPolicy: true,
-                eligiblityCertified: true,
-                incorrectAnswers: 0,
-                totalAnswered: 0,
-                correctAnswers: 0,
-                totalQuestionsAnsweredLastLogin: 0
+    let url = walletAPI.createKeyPair
+    const metaData = {
+        "emailId": this.getEmail()
+    }
+    axios.post(url, metaData)
+        .then(data => {
+            let wallet = data.data;
+            if (wallet.status === 400) {
+                console.log(data)
+                //res.send({ data: data })
             }
-            this.addRecord(this.userSignupData).then((documentID) => {
-                res.send({
-                    userSignupData: this.userSignupData,
-                    Message: `successfully registered`
-                })
-            });
+            if (wallet.status === 200) {
+                /**
+                 * Wallet Information
+                 */
+                let publicKey = wallet.data.publicKey
+                let walletInformation = {
+                    publicKey: publicKey,
+                    emailId: this.getEmail(),
+                    walletMessage: 'Wallet Created!'
+                }
 
-        }
-        else {
-            console.log(resolved);
-            res.send({ Message: "User already registered!" });
-        }
-    })
+                /**
+                 * Preparing User Information
+                 * for Inserting data in database
+                 */
+
+                _utilities.getDocumentIDbyEmail(this.getEmail()).then((resolved) => {
+                    if (resolved.documentID == undefined) {
+
+                        /**
+                         * Generating Invitee Code
+                         */
+                        let inviteeCode = _utilities.generateUUIDv1();
+                        let referralLink = `https://undiscoveredstory.com?email=${this.getEmail()}&inviteeCode=${inviteeCode}`
+                        /**
+                         * Generaing Auth Token
+                         */
+                        let authToken = this.getAuthenticationToken();
+
+                        /**
+                         * Storing Auth Token in Cookie
+                         */
+                        res.cookie("auth", authToken)
+
+                        /**
+                         * Creating Metadata for data to be inserted in Database
+                         */
+                        this.userSignupData = {
+                            firstName: this.getFirstName(),
+                            lastName: this.getLastName(),
+                            authenticationToken: authToken,
+                            email: this.getEmail(),
+                            password: this.getPassword(),
+                            signupDateTime: _firebase.firestore.Timestamp.now(),
+                            lastLogin: _firebase.firestore.Timestamp.now(),
+                            walletData: walletInformation,
+                            balance: this.initialSignupBalance,
+                            inviteeCode: inviteeCode,
+                            invitedBy: '',
+                            ReferralLink: referralLink,
+                            termsPolicy: true,
+                            eligiblityCertified: true,
+                            incorrectAnswers: 0,
+                            totalAnswered: 0,
+                            correctAnswers: 0,
+                            totalQuestionsAnsweredLastLogin: 0,
+                            allowedToPlay: true
+                        }
+
+                        /**
+                         * Adding record in databse
+                         */
+                        this.addRecord(this.userSignupData).then((documentID) => {
+
+                            /**
+                             * Smart contract activation
+                             */
+                            let userEmail = this.getEmail()
+                            _utilities.getDocumentIDbyEmail(userEmail).then((resolved) => {
+                                let db = _firebase.firestore();
+                                db.collection(collectionName.users).doc(resolved.documentID).get().then(querySnapshot => {
+                                    var walletPublicKey = querySnapshot.data().walletData.publicKey
+                                    let url = walletAPI.buildTransaction
+                                    let METADATA = {
+                                        emailId: userEmail,
+                                        destinationId: walletPublicKey,
+                                        amount: numberOfTokenToTransfer
+                                    }
+                                    _axios.post(url, METADATA)
+                                        .then(walletTransaction => {
+                                            //console.log(walletTransaction.data)
+
+                                            _utilities.addRecord(collectionName.transactions, walletTransaction.data).then((transactionRecordAdded) => {
+                                                // console.log(`record added in ${collectionName.earnedDonatedTokens}`)
+                                            })
+                                        }).catch(error => {
+                                            //console.log(error)
+                                        })
+                                })
+                            })
+
+                            res.send({
+                                userSignupData: this.userSignupData,
+                                Message: `successfully registered`
+                            })
+                        })
+                    }
+                    else {
+                        res.send({ Message: "User already registered!" });
+                    }
+                })
+            }
+        })
+        .catch(error => {
+            console.error(error)
+        })
 }
 
 
@@ -216,7 +302,7 @@ CreateUser.prototype.signup = function (res) {
  * Validates the user to provide access to gameplay
  * @requires result object
  */
-CreateUser.prototype.login = function (res, req) {
+CreateUser.prototype.login = function (res) {
     this.userLoginData = {
         AuthenticationToken: this.getAuthenticationToken(),
         lastLogin: _firebase.firestore.Timestamp.now(),
@@ -247,13 +333,16 @@ CreateUser.prototype.login = function (res, req) {
                             Message: 'Invalid Password'
                         })
                     } else {
-                        // updating data and letting user to get in
+                        /**
+                         * updating data and letting user to get in
+                        */
+                        let authToken = this.getAuthenticationToken();
+                        res.cookie("auth", authToken)
+
                         dt.collection('users').doc(docID).update(this.userLoginData);
-                        res.cookie('access_token', this.getAuthenticationToken())
-                        req.accessToken = this.getAuthenticationToken()
                         dt.collection('users').doc(docID).get().then((doc) => {
                             res.send({
-                                authenticationToken: this.getAuthenticationToken(),
+                                authenticationToken: authToken,
                                 lastLogin: _firebase.firestore.Timestamp.now(),
                                 firstName: doc.data().firstName,
                                 lastName: doc.data().lastName,
@@ -268,7 +357,8 @@ CreateUser.prototype.login = function (res, req) {
                                 inviteeCode: doc.data().inviteeCode,
                                 walletData: '',
                                 termsPolicy: true,
-                                eligiblityCertified: true
+                                eligiblityCertified: true,
+                                allowedToPlay: true
                             })
                         })
                     }

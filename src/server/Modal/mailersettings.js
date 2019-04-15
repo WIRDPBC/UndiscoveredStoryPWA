@@ -8,8 +8,7 @@ module.exports = {
     },
     mailOptions: {
         from: 'udgstory@wirdwrld.com',
-        to: '',
-        subject: '',
-        text: ''
+        subject: 'Password reset WirdWrld',
+        text: 'Please click on the link given below to reset your password'
     }
 }

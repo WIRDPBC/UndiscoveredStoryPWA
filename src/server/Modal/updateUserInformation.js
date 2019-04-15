@@ -1,5 +1,6 @@
 const config = require('../config').config;
 const _firebase = require('firebase');
+const collectionNames = require('./collectionName')
 
 if (!_firebase.apps.length)
     _firebase.initializeApp(config)
@@ -26,7 +27,7 @@ updateUserInformation.prototype.getPaypalEmail = function () {
 
 updateUserInformation.prototype.update = function (res) {
     let db = _firebase.firestore();
-    let documentID = db.collection('users').where("email", "==", this.getEmail()).get().then(function (querySnapshot) {
+    let documentID = db.collection(collectionNames.users).where("email", "==", this.getEmail()).get().then(function (querySnapshot) {
         var id;
         querySnapshot.forEach(function (doc) {
             id = doc.id;
@@ -45,7 +46,7 @@ updateUserInformation.prototype.update = function (res) {
             email: this.email,
             paypalEmail: this.paypalEmail
         }
-        db.collection('users').doc(resolved).update(data).then(function () {
+        db.collection(collectionNames.users).doc(resolved).update(data).then(function () {
             res.send({
                 message: 'Information Updated'
             });

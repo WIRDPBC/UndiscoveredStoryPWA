@@ -8,6 +8,10 @@ let utilities = require('../Modal/utilities');
 let authToken = require('../Modal/authToken');
 let advertisement = require('../Modal/advertisement');
 let mailer = require('../Modal/mailer')
+let updatePassword = require('../Modal/updatePassword')
+let stats = require('../Modal/stats')
+let finalScore = require('../Modal/finalScore')
+let leaderboard = require('../Modal/leaderboard')
 /**
  *This file is used for routing to the required method
  */
@@ -41,7 +45,7 @@ UserRouter
 
         if (CreateUser) {
             let obj = new CreateUser(email, password);
-            obj.login(res, req);
+            obj.login(res);
         }
     });
 
@@ -49,14 +53,16 @@ UserRouter
 UserRouter
     .route('/authenticate')
     .post(function (req, res) {
-        let email = req.body.Email;
-        console.log("Response", req, res)
-        // let authenticationToken = req.body.AuthenticationToken;
-        let authenticate = req.body.Authenticate;
-        UserAuthentication = new UserAuthentication(email, authenticate);
-        UserAuthentication.getAuthenticationToken();
-        setTimeout(function () { }, 3000);
-        res.send({ token: UserAuthentication.getAuthToken() });
+        // let email = req.body.Email;
+        // let authenticate = req.body.Authenticate;
+        // UserAuthentication = new UserAuthentication(email, authenticate);
+        // UserAuthentication.getAuthenticationToken();
+        // setTimeout(function () { }, 3000);
+        // res.send({ token: UserAuthentication.getAuthToken() });
+
+        let _userAuthentication = new UserAuthentication();
+        _userAuthentication.checkAuthToken(req, res);
+
     });
 
 /**
@@ -251,58 +257,155 @@ UserRouter.route('/deleteUserByDocumentID').post(function (req, res) {
 /// Advertisement  ////
 UserRouter.route('/loadAdvertismentDescription').post(function (req, res) {
     let _advertisement = new advertisement();
-    let pachasPajamas = `An internationally-acclaimed educational storybook`
-    pachasPajamas += `that uses Augmented Reality (AR).`
-    pachasPajamas += `Featuring Yasin "Mod Def" Bey, Cheech Marin, Talib Kweli, Genevieve Goings, `
-    pachasPajamas += `Lester Chambers`;
-
-    let ToolsForGrassrootsActivists = `For almost 40 years, Patagonia has supported grassroots `
-    ToolsForGrassrootsActivists += ` activists working to find solutions to the environmental crisis. `
-    ToolsForGrassrootsActivists += `Tools for Grassroots Activists. Edited by Nora Gallagher. `
-
-    _advertisement.loadAdvertismentDescription("advertisement", 0);
-    _advertisement.loadAdvertismentDescription("advertisement", 1);
+    _advertisement.loadAdvertismentDescription(res)
 });
 
 
+
+/**
+ * Usage: {
+ * email: "ayman.afzal@msn.com",
+ * advertisementType: 1,
+ * comment: "comment"
+ * }
+ * Response:
+ * {Message: messages.Advertisement.DESCRIPTION_ADDED}
+ */
 UserRouter.route('/addCommentAdvertisement').post(function (req, res) {
     let _advertisement = new advertisement();
-    let authenticationToken = req.body.authenticationToken;
+    let email = req.body.email;
     let advertisementType = req.body.advertisementType;
     let comment = req.body.comment;
-    _advertisement.addComment(authenticationToken, advertisementType, comment, res);
+    _advertisement.addComment(comment, email, advertisementType, res);
 });
 
+/**
+ * Usage: {
+ * advertisementType: 1,
+ * }
+ * Response:
+ * {data: }
+ */
+UserRouter.route('/getAllComments').post(function (req, res) {
+    let _advertisement = new advertisement();
+    let advertisementType = req.body.advertisementType;
+    _advertisement.getAllComments(advertisementType, res);
+});
+
+
+/**
+ * Usage:
+ * {
+ *  email: '',
+ *  correctAnswer: true,
+ *  unanswered: false
+ * }
+ */
+UserRouter.route('/answer').post(function (req, res) {
+    let _questions = new questions();
+    let email = req.body.email;
+    let correctAnswer = req.body.correctAnswer;
+    let unanswered = req.body.unanswered;
+    _questions.answer(email, correctAnswer, unanswered, res);
+});
 
 
 
 /**
  * Usage:
  * {
- *  authenticationToken: '',
- *  correctAnswer: true
+ *  email: '',
+ *  year: 2019,
+ *  month: 8
  * }
  */
-
-
-UserRouter.route('/answer').post(function (req, res) {
-    let _questions = new questions();
-    let authenticationToken = req.body.authenticationToken;
-    let correctAnswer = req.body.correctAnswer;
-    _questions.answer(authenticationToken, correctAnswer, res);
+UserRouter.route('/stats').post(function (req, res) {
+    let _stats = new stats();
+    let email = req.body.email;
+    let year = req.body.year;
+    let month = req.body.month;
+    _stats.getStats(email, year, month, res);
 });
 
 
 
+/**
+ * Usage:
+ * {
+ *  email: '',
+ *	date: "3-11-2019"
+ * }
+ */
+UserRouter.route('/finalScore').post(function (req, res) {
+    let _finalScore = new finalScore();
+    let email = req.body.email;
+    let date = req.body.date;
+    _finalScore.getScore(email, date, res);
+});
+
+
+
+/**
+ * Usage:
+ * {
+ *  email: ''
+ * }
+ */
+UserRouter.route('/leaderboard').post(function (req, res) {
+    let _leaderboard = new leaderboard();
+    let email = req.body.email;
+    _leaderboard.getLeaderboard(email, res);
+});
+
+
+
+/**
+ * usage:
+ * {
+ * "to": "email@email.com"
+ * }
+ * Send email API
+ * @requires receiver's Email address
+ */
 UserRouter.route('/sendEmail').post(function (req, res) {
     let to = req.body.to;
-    let subject = req.body.subject;
-    let text = req.body.text;
     let _mailer = new mailer();
-    _mailer.sendEmail(to, subject, text);
+    _mailer.sendEmail(to, res);
+});
+
+
+/**
+ * usage:
+ * {
+ * "email": "email@email.com",
+ * "password": "enteredpassword",
+ * "id" : "ab-quyret"
+ * }
+ * Response:
+{
+    Message: 'Password Updated'
+}
+ * Send email API
+ * @requires receiver's Email address
+ */
+UserRouter.route('/updatePassword').post(function (req, res) {
+    let email = req.body.email;
+    let password = req.body.password;
+    let id = req.body.id;
+    let _updatePassword = new updatePassword();
+
+    _updatePassword.updatePassword(email, password, id, res);
 });
 
 
 
+
+
+UserRouter.route('/walletAddress').post(function (req, res) {
+    // let email = req.body.email;
+    let email = "an@msn.com"
+    let _utilities = new utilities()
+    _utilities.getWalletAddressByEmail(email)
+});
 
 module.exports = UserRouter;

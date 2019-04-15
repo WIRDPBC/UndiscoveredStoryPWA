@@ -2,6 +2,9 @@ const config = require('.././config').config;
 const _firebase = require('firebase');
 const utilities = require('./utilities');
 const collectionName = require('./collectionName');
+const _axios = require('axios')
+let walletAPI = require('../walletAPI/walletAPIurl')
+const numberOfTokenToTransfer = "1"
 if (!_firebase.apps.length)
     _firebase.initializeApp(config)
 
@@ -267,16 +270,49 @@ questions.prototype.shuffle = function (sourceArray) {
     return sourceArray;
 }
 
-questions.prototype.answer = function (authenticationToken, correctAnswer, res) {
+questions.prototype.getEmail = function (docID) {
+    let _utilities = new utilities();
+
+    // console.log(docID)
+
+    _utilities.getEmailAndPasswordByDocumentID(docID).then((result) => {
+        console.log(result)
+    })
+}
+
+questions.prototype.getDataForEarnedDonatedTokens = function (collectionName, email) {
+    let _utilities = new utilities();
+    return _utilities.getDocumentIDbyEmailWithCollectionName(email, collectionName)
+        .then((returnedData) => {
+            return returnedData
+        })
+}
+
+questions.prototype.insertIntoEarnedDonatedTokens = function (collectionName, email, date, earnedToken, donatedToken) {
+    let _utilities = new utilities();
+    let metaData = {
+        date: date,
+        donated: donatedToken,
+        earned: earnedToken,
+        email: email
+    }
+    return _utilities.addRecord(collectionName, metaData).then((id) => {
+        return id
+    })
+}
+
+questions.prototype.answer = function (email, correctAnswer, unanswered, res) {
     let db = _firebase.firestore();
     let _utilities = new utilities();
-    let documentIDReturned =
-        _utilities.getDocumentIDbyAuthenticationToken(authenticationToken).then((resolved) => {
-            // console.log(JSON.stringify (resolved.documentID));
 
-            resolved.documentID = JSON.stringify(resolved.documentID)
-            let docID = resolved.documentID;
-            _utilities.getLastAnswers(docID).then((data) => {
+    _utilities.getDocumentIDbyEmail(email).then((resolved) => {
+        var docID = resolved.documentID
+        db.collection(collectionName.users).doc(docID).get().then((querySnapshot) => {
+
+            // /**
+            //  * Always get the latest data for the last score
+            //  */
+            var lastAnswers = _utilities.getLastAnswers(docID).then((data) => {
                 let answers = data;
                 if (correctAnswer) {
                     answers.correctAnswers += 1
@@ -286,38 +322,86 @@ questions.prototype.answer = function (authenticationToken, correctAnswer, res) 
                 }
                 answers.totalAnswered += 1;
                 answers.totalQuestionsAnsweredLastLogin += 1;
+                return answers;
+            }).catch((error) => { })
 
-                db.collection(collectionName.users).doc(docID).update(data);
-                return docID;
-            }).catch(() => {
-                //res.send({ Message: `error occured while fetching last answers by the documentID: ${docID}` });
-            })
-        })
 
-    documentIDReturned.then(() => {
-        _utilities.getDocumentIDbyAuthenticationToken(authenticationToken).then((resolved) => {
-            db.collection(collectionName.users).doc(resolved.documentID).get().then((doc) => {
-                res.send({
-                    authenticationToken: doc.data().authenticationToken,
-                    lastLogin: _firebase.firestore.Timestamp.now(),
-                    firstName: doc.data().firstName,
-                    lastName: doc.data().lastName,
-                    paypalEmail: doc.data().paypalEmail,
-                    email: doc.data().email,
-                    ReferralLink: doc.data().ReferralLink,
-                    incorrectAnswers: doc.data().incorrectAnswers,
-                    totalAnswered: doc.data().totalAnswered,
-                    correctAnswers: doc.data().correctAnswers,
-                    totalQuestionsAnsweredLastLogin: doc.data().totalQuestionsAnsweredLastLogin,
-                    invitedBy: doc.data().invitedBy,
-                    inviteeCode: doc.data().inviteeCode,
-                    walletData: '',
-                    termsPolicy: true,
-                    eligiblityCertified: true
-                })
+            let date = new Date()
+            let currentLoginDate = date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear()
+            let donatedToken = (correctAnswer === true) ? 0 : 1
+            let earnedToken = (correctAnswer === true) ? 1 : 0
+            let metaData = {
+                date: currentLoginDate,
+                donated: donatedToken,
+                earned: earnedToken,
+                email: email
+            }
+
+            _utilities.addRecord(collectionName.earnedDonatedTokens, metaData).then((answeredRecordAdded) => {
+                // console.log(`record added in ${collectionName.earnedDonatedTokens}`)
             })
 
+
+            // let offChainTransactionMetaData ={}
+            // axios.post(collectionName.transactions, metaData)
+            // .then(data => {})
+
+            // let returnedWalletAddredss = _utilities.getWalletAddressByEmail(email)
+            // console.log(returnedWalletAddredss)
         })
     })
+
+    if (correctAnswer) {
+        _utilities.getDocumentIDbyEmail(email).then((resolved) => {
+            let db = _firebase.firestore();
+            db.collection(collectionName.users).doc(resolved.documentID).get().then(querySnapshot => {
+                var walletPublicKey = querySnapshot.data().walletData.publicKey
+                // console.log(`wallet address: ${walletPublicKey}`)
+                // console.log(`wallet email: ${email}`)
+                let url = walletAPI.buildTransaction
+                let METADATA = {
+                    emailId: email,
+                    destinationId: walletPublicKey,
+                    amount: numberOfTokenToTransfer
+                }
+                _axios.post(url, METADATA)
+                    .then(walletTransaction => {
+                        //console.log(walletTransaction.data)
+
+                        _utilities.addRecord(collectionName.transactions, walletTransaction.data).then((transactionRecordAdded) => {
+                            // console.log(`record added in ${collectionName.earnedDonatedTokens}`)
+                        })
+                    }).catch(error => {
+                        //console.log(error)
+                    })
+            })
+        })
+
+    }
+    // documentIDReturned.then(() => {
+    _utilities.getDocumentIDbyEmail(email).then((resolved) => {
+        db.collection(collectionName.users).doc(resolved.documentID).get().then((doc) => {
+            res.send({
+                authenticationToken: doc.data().authenticationToken,
+                lastLogin: _firebase.firestore.Timestamp.now(),
+                firstName: doc.data().firstName,
+                lastName: doc.data().lastName,
+                paypalEmail: doc.data().paypalEmail,
+                email: doc.data().email,
+                ReferralLink: doc.data().ReferralLink,
+                incorrectAnswers: doc.data().incorrectAnswers,
+                totalAnswered: doc.data().totalAnswered,
+                correctAnswers: doc.data().correctAnswers,
+                totalQuestionsAnsweredLastLogin: doc.data().totalQuestionsAnsweredLastLogin,
+                invitedBy: doc.data().invitedBy,
+                inviteeCode: doc.data().inviteeCode,
+                walletData: doc.data().walletData,
+                termsPolicy: true,
+                eligiblityCertified: true
+            })
+        })
+
+    })
+    // })
 }
 module.exports = questions;

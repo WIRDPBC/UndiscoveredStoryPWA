@@ -1,6 +1,12 @@
-const config = require('.././config').config;
-const uuidv1 = require('uuid/v1');
-const _firebase = require('firebase');
+const config = require('.././config').config
+const uuidv1 = require('uuid/v1')
+const _firebase = require('firebase')
+const collectionName = require('./collectionName')
+let jwt = require('jsonwebtoken')
+let bcrypt = require('bcryptjs')
+let shortid = require('shortid')
+let axios = require('axios')
+let walletAPI = require('../walletAPI/walletAPIurl')
 if (!_firebase.apps.length)
     _firebase.initializeApp(config)
 /**
@@ -23,7 +29,7 @@ function utilities() {
  */
 utilities.prototype.getDocumentIDbyEmail = function (email) {
     let db = _firebase.firestore();
-    let documentID = db.collection('users').where("email", "==", email).get().then(function (querySnapshot) {
+    let documentID = db.collection(collectionName.users).where("email", "==", email).get().then(function (querySnapshot) {
         var id;
         querySnapshot.forEach(function (doc) {
             id = doc.id;
@@ -36,6 +42,26 @@ utilities.prototype.getDocumentIDbyEmail = function (email) {
     });
     return documentID;
 }
+
+
+
+
+utilities.prototype.getDocumentIDbyEmailWithCollectionName = function (email, collectionName) {
+    let db = _firebase.firestore();
+    let documentID = db.collection(collectionName).where("email", "==", email).get().then(function (querySnapshot) {
+        var id;
+        querySnapshot.forEach(function (doc) {
+            id = doc.id;
+        });
+        return id;
+    }).then(function (data) {
+        return { documentID: data };
+    }).catch(function (error) {
+        console.log(error);
+    });
+    return documentID;
+}
+
 
 /**
  * Will return documentID based on authenticationToken provided.
@@ -59,6 +85,7 @@ utilities.prototype.getDocumentIDbyAuthenticationToken = function (authenticatio
     });
     return documentID;
 }
+
 
 
 /**
@@ -92,7 +119,7 @@ utilities.prototype.getReferralLinkByAuthenticationToken = function (authenticat
  */
 utilities.prototype.getEmailAndPasswordByDocumentID = function (docID) {
     let db = _firebase.firestore();
-    let documentID = db.collection('users').doc(docID).get().then(function (querySnapshot) {
+    let documentID = db.collection(collectionName.users).doc(docID).get().then(function (querySnapshot) {
         var id = {
             email: querySnapshot.data().email,
             password: querySnapshot.data().password
@@ -278,24 +305,74 @@ utilities.prototype.getLastAnswers = function (documentID) {
     let db = _firebase.firestore();
     //51t5rrZp0Ew71H7nwrZV
     //K4FqQiCaHjmZcfmLdfb
-let  userData =     db.collection("users").doc(documentID).get().then((documentSnapshot) => {
+    let userData = db.collection("users").doc(documentID).get().then((documentSnapshot) => {
         let data =
         {
             incorrectAnswers: documentSnapshot.data().incorrectAnswers,
             totalAnswered: documentSnapshot.data().totalAnswered,
             correctAnswers: documentSnapshot.data().correctAnswers,
-            totalQuestionsAnsweredLastLogin: documentSnapshot.data().totalQuestionsAnsweredLastLogin
+            totalQuestionsAnsweredLastLogin: documentSnapshot.data().totalQuestionsAnsweredLastLogin,
+            lastLogin: documentSnapshot.data().lastLogin,
+            email: documentSnapshot.data().email
         }
         return data
     }).then((data) => {
         return data;
     })
-return userData
+    return userData
 
 }
 
 
+/**
+ * Generates an Auth token
+ * which can be used for generating
+ * Auth Token for Signup or Forget Password
+ */
+utilities.prototype.generateAuthToken = function (id) {
+    let AuthenticationToken = jwt.sign({ id: id }, secretKey, { expiresIn: 86400 });
+    return AuthenticationToken;
+}
 
+
+/**
+ * Returns a hashed password to be stored in the database
+ * @requires password
+ * @returns passwordHash
+ */
+utilities.prototype.hashPassword = function (password) {
+    let saltRounds = 10;
+    let salt = bcrypt.genSaltSync(saltRounds);
+    let passwordHash = bcrypt.hashSync(Password, salt);
+    return passwordHash;
+}
+
+
+/**
+ * Generates a random code which can be used
+ * for password update / Forgot password mechanism
+ */
+utilities.prototype.generateShortID = function () {
+    return shortid.generate()
+}
+
+
+utilities.prototype.getWalletAddressByEmail = function (email) {
+
+    //51t5rrZp0Ew71H7nwrZV
+    //K4FqQiCaHjmZcfmLdfb
+    this.getDocumentIDbyEmail(email).then((resolved) => {
+        let db = _firebase.firestore();
+        db.collection(collectionName.users)
+            .doc(resolved.documentID)
+            .get().then(querySnapshot => {
+
+                    return querySnapshot.data().walletData.publicKey
+
+            })
+    })
+
+}
 
 
 module.exports = utilities;
