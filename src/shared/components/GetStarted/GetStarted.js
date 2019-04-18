@@ -30,7 +30,7 @@ class GetStarted extends PureComponent{
         const {isGetStarted} = this.state
         return(
             <div className="get-started-container">
-                <div className="get-started-heading-container">Undiscovered Story</div>
+                {/* <div className="get-started-heading-container">Undiscovered Story</div> */}
                 <div className="get-started-carousel-container">
                     <img src={LandingImage} className="get-started-landing-image"/>
                     {/* <GetStartedCarousel onGetStarted={this.onGetStarted}/> */}

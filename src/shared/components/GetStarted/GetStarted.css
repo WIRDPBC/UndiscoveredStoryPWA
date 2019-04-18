@@ -57,7 +57,7 @@
 }
 
 .get-started-landing-image{
-    height: 515px;
+    height:400px !important;
 }
 /******************************************* Carousel ********************************************/
 .carousel .control-dots{
@@ -119,8 +119,7 @@
     }
 
     .get-started-landing-image{
-        min-height: 350px;
-        max-height: 400px;
+        height:235px !important;
     }
     
 } 
@@ -154,8 +153,7 @@
     }
 
     .get-started-landing-image{
-        min-height: 400px;
-        max-height: 500px;
+        height:285px !important;
     }
     
     
@@ -188,7 +186,7 @@
     }
 
     .get-started-landing-image{
-        height: 450px;
+        height:335px !important;
     }
 } 
 
@@ -218,7 +216,7 @@
     }
 
     .get-started-landing-image{
-        height: 515px;
+        height:400px !important;
     }
     
 } 
@@ -249,7 +247,7 @@
     }
 
     .get-started-landing-image{
-        height: 515px;
+        height:400px !important;
     }
     
 }
