@@ -17,9 +17,12 @@
 
 .get-started-carousel-container{
     height: 515px;
-    background-color: #f2f2f2;
+    /* background-color: #f2f2f2; */
     margin-left: 40px;
     margin-right: 40px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
 
     /* display: table-row; */
 }
@@ -53,6 +56,9 @@
     color: #5F9FDE
 }
 
+.get-started-landing-image{
+    height: 515px;
+}
 /******************************************* Carousel ********************************************/
 .carousel .control-dots{
     position: absolute;
@@ -92,7 +98,7 @@
     .get-started-carousel-container{
         min-height: 350px;
         max-height: 400px;
-        background-color: #f2f2f2;
+        /* background-color: #f2f2f2; */
         margin-left: 40px;
         margin-right: 40px;
     
@@ -111,6 +117,11 @@
         height:235px !important;
         /* width: 400px !important; */
     }
+
+    .get-started-landing-image{
+        min-height: 350px;
+        max-height: 400px;
+    }
     
 } 
 
@@ -119,7 +130,7 @@
     .get-started-carousel-container{
         min-height: 400px;
         max-height: 500px;
-        background-color: #f2f2f2;
+        /* background-color: #f2f2f2; */
         margin-left: 40px;
         margin-right: 40px;
     
@@ -141,6 +152,12 @@
         height:285px !important;
         /* width: 400px !important; */
     }
+
+    .get-started-landing-image{
+        min-height: 400px;
+        max-height: 500px;
+    }
+    
     
 } 
 
@@ -148,7 +165,7 @@
 @media only screen and (min-width: 768px) {
     .get-started-carousel-container{
         height: 450px;
-        background-color: #f2f2f2;
+        /* background-color: #f2f2f2; */
         margin-left: 40px;
         margin-right: 40px;
     
@@ -169,13 +186,17 @@
         height:335px !important;
         /* width: 400px !important; */
     }
+
+    .get-started-landing-image{
+        height: 450px;
+    }
 } 
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     .get-started-carousel-container{
         height: 515px;
-        background-color: #f2f2f2;
+        /* background-color: #f2f2f2; */
         margin-left: 40px;
         margin-right: 40px;
     
@@ -194,6 +215,10 @@
     .get-started-carousal-image{
         height:400px !important;
         /* width: 400px !important; */
+    }
+
+    .get-started-landing-image{
+        height: 515px;
     }
     
 } 
@@ -202,7 +227,7 @@
 @media only screen and (min-width: 1200px) {
     .get-started-carousel-container{
         height: 515px;
-        background-color: #f2f2f2;
+        /* background-color: #f2f2f2; */
         margin-left: 40px;
         margin-right: 40px;
     
@@ -221,6 +246,10 @@
     .get-started-carousal-image{
         height:400px !important;
         /* width: 400px !important; */
+    }
+
+    .get-started-landing-image{
+        height: 515px;
     }
     
 }

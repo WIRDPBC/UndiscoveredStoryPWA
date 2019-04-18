@@ -11,6 +11,7 @@ import './GetStarted.css'
 
 //import components..
 import GetStartedCarousel from './GetStartedCarousel'
+import LandingImage from '../../icons/landing_image.jpg'
 
 class GetStarted extends PureComponent{
     constructor(props){
@@ -31,7 +32,8 @@ class GetStarted extends PureComponent{
             <div className="get-started-container">
                 <div className="get-started-heading-container">Undiscovered Story</div>
                 <div className="get-started-carousel-container">
-                    <GetStartedCarousel onGetStarted={this.onGetStarted}/>
+                    <img src={LandingImage} className="get-started-landing-image"/>
+                    {/* <GetStartedCarousel onGetStarted={this.onGetStarted}/> */}
                 </div>
                 <div className="get-started-login-container">
                     {/* {!isGetStarted && <Button content="Get Started" size="medium" style={{width: "200px", height: "40px"}} primary disabled/>} */}
