@@ -37,12 +37,12 @@ class GetStarted extends PureComponent{
                 </div>
                 <div className="get-started-login-container">
                     {/* {!isGetStarted && <Button content="Get Started" size="medium" style={{width: "200px", height: "40px"}} primary disabled/>} */}
-                    {isGetStarted && <Link to={"/signup"}><Button content="Get Started" size="medium" style={{width: "200px", height: "40px"}} primary/></Link>}
-                    <div className="get-started-already-account-container">
+                    {/* {isGetStarted && <Link to={"/signup"}><Button content="Get Started" size="medium" style={{width: "200px", height: "40px"}} primary/></Link>} */}
+                    {/* <div className="get-started-already-account-container">
                         <span className="get-started-already-account-text">Already have an account?</span>
                         <Link to={"/login"}><span className="get-started-login-text"> Login</span></Link>
 
-                        </div>
+                        </div> */}
                 </div>
             </div>
         )
