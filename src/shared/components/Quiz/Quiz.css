@@ -111,27 +111,36 @@
 .quiz-option-even-image{
     width: 134px !important; 
     height: 90px !important;
-    float: right !important;
 }
 
 .quiz-option-odd-text-container{
-        /* height: 30px; */
-        width: 134px;
-        /* line-height: 30px; */
-        font-size: 14px;
-        color: #707070;
-        font-family: HelveticaNeue;
-        cursor: pointer;
-}
-
-.quiz-option-even-text-container{
-    height: 30px;
-    line-height: 30px;
-    margin-top: 90px;
+    height: 60px;
+    display: -webkit-flex;
+    display: flex;
+    max-width: 134px;
+    align-items: center;
+    justify-content: center;
     font-size: 14px;
     color: #707070;
     font-family: HelveticaNeue;
     cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.quiz-option-even-text-container{
+    height: 60px;
+    display: -webkit-flex;
+    display: flex;
+    max-width: 134px;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #707070;
+    font-family: HelveticaNeue;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .quiz-explaination-container{
@@ -156,12 +165,6 @@
     color: #707070
 }
 
-.quiz-explaination-mobile-container{
-    /* background-color: #f0f0f0; */
-    padding: 20px;
-    margin-top: 20px;
-
-}
 
 .quiz-explaination-mobile-text-container{
     color: #707070;
@@ -184,6 +187,12 @@
 
 .quiz-even-option-container:hover{
     border: 1px solid #aaaaaa
+}
+
+.option-style{
+    position: absolute;
+    margin-left: 125px;
+    margin-top: -9px;
 }
 
 
@@ -224,19 +233,18 @@
     }
 
     .quiz-option-odd-text-container{
-        height: 20px;
-        line-height: 20px;
+        height: 40px;
         font-size: 12px;
         color: #707070;
+        max-width: 100px;
         font-family: HelveticaNeue
     }
     
     .quiz-option-even-text-container{
-        height: 20px;
-        line-height: 20px;
-        margin-top: 74px;
+        height: 40px;
         font-size: 12px;
         color: #707070;
+        max-width: 100px;
         font-family: HelveticaNeue
     }
 
@@ -248,11 +256,27 @@
     .quiz-option-even-image{
         width: 100px !important; 
         height: 70px !important;
-        float: right !important;
     }
 
     .quiz-explaination-container{
         visibility: hidden;
+    }
+    .quiz-explaination-mobile-container{
+        visibility: visible;
+        position: absolute;
+        /* bottom: -181px; */
+    }
+
+    .quiz-explaination-mobile-container{
+        background-color: #f0f0f0;
+        padding: 20px;
+        margin-top: 184px;
+        max-width: 300px;
+    
+    }
+
+    .option-style{
+        margin-left: 94px;
     }
     
 } 
@@ -267,11 +291,18 @@
 } 
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 1024px){
     .quiz-explaination-mobile-container{
         visibility: visible;
         position: absolute;
-        bottom: 0;
+        /* bottom: -181px; */
+    }
+    .quiz-explaination-mobile-container{
+        background-color: #f0f0f0;
+        padding: 20px;
+        margin-top: 184px;
+        max-width: 626px;
+    
     }
     .quiz-explaination-container{
         visibility: hidden;
@@ -279,11 +310,19 @@
 } 
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 992px) and (max-width: 1199px){
     .quiz-explaination-mobile-container{
         visibility: visible;
         position: absolute;
-        bottom: 0;
+        /* bottom: -181px; */
+    }
+
+    .quiz-explaination-mobile-container{
+        background-color: #f0f0f0;
+        padding: 20px;
+        margin-top: 184px;
+        max-width: 626px;
+    
     }
     .quiz-explaination-container{
         visibility: hidden;
@@ -294,6 +333,7 @@
 @media only screen and (min-width: 1200px) {
     .quiz-explaination-mobile-container{
         visibility: hidden;
+        display: none;
     }
     .quiz-explaination-container{
         visibility: visible;

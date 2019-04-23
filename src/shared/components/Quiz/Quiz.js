@@ -55,9 +55,9 @@ class Quiz extends PureComponent {
             percent: 0,
             optionSelect: '',
             timer: 0,
-            totalCorrectAnswers : 0,
-            totalIncorrectAnswers : 0,
-            totalUnanswered : 0
+            totalCorrectAnswers: 0,
+            totalIncorrectAnswers: 0,
+            totalUnanswered: 0
 
         }
     }
@@ -101,19 +101,19 @@ class Quiz extends PureComponent {
 
     tick = () => {
         const { timer, optionSelect } = this.state
-       // console.log("Tick getting called")
+        // console.log("Tick getting called")
         if (timer < 60 && !optionSelect) {
-            if(timer+1 === 60){
+            if (timer + 1 === 60) {
                 this.setState({
                     timer: "Time Up!"
                 })
                 this.saveAnswer(0)
-            } else{
+            } else {
                 this.setState({
-                    timer : timer + 1
+                    timer: timer + 1
                 })
             }
-           
+
             setTimeout(() => {
                 this.startTimer()
             }, 1000)
@@ -156,186 +156,186 @@ class Quiz extends PureComponent {
         this.clearTimer()
         setTimeout(() => {
             this.startTimer()
-    
+
             let nextCount = count + 1
             if (nextCount === 2) {
                 let question = questionData[1]
                 this.changeState(question, 2)
-    
+
             } else if (nextCount === 3) {
                 let question = questionData[2]
                 this.changeState(question, 3)
-    
+
             } else if (nextCount === 4) {
                 let question = questionData[3]
                 this.changeState(question, 4)
-    
+
             } else if (nextCount === 5) {
                 let question = questionData[4]
                 this.changeState(question, 5)
-    
+
             } else if (nextCount === 6) {
                 let question = questionData[5]
                 this.changeState(question, 6)
-    
+
             } else if (nextCount === 7) {
                 let question = questionData[6]
                 this.changeState(question, 7)
-    
+
             } else if (nextCount === 8) {
                 let question = questionData[7]
                 this.changeState(question, 8)
-    
+
             } else if (nextCount === 9) {
                 let question = questionData[8]
                 this.changeState(question, 9)
-    
+
             } else if (nextCount === 10) {
                 let question = questionData[9]
                 this.changeState(question, 10)
-    
+
             } else if (nextCount === 11) {
                 let question = questionData[10]
                 this.changeState(question, 11)
-    
+
             } else if (nextCount === 12) {
                 let question = questionData[11]
                 this.changeState(question, 12)
-    
+
             } else if (nextCount === 13) {
                 let question = questionData[12]
                 this.changeState(question, 13)
-    
+
             } else if (nextCount === 14) {
                 let question = questionData[13]
                 this.changeState(question, 14)
-    
+
             } else if (nextCount === 15) {
                 let question = questionData[14]
                 this.changeState(question, 15)
-    
+
             } else if (nextCount === 16) {
                 let question = questionData[15]
                 this.changeState(question, 16)
-    
+
             } else if (nextCount === 17) {
                 let question = questionData[16]
                 this.changeState(question, 17)
-    
+
             } else if (nextCount === 18) {
                 let question = questionData[17]
                 this.changeState(question, 18)
-    
+
             } else if (nextCount === 19) {
                 let question = questionData[18]
                 this.changeState(question, 19)
-    
+
             } else if (nextCount === 20) {
                 let question = questionData[19]
                 this.changeState(question, 20)
-    
+
             }
         })
-      
+
 
     }
 
 
     onFirstSelect = () => {
-        const {optionSelect, timer} = this.state
-        if(!optionSelect && timer !== "Time Up!"){
+        const { optionSelect, timer } = this.state
+        if (!optionSelect && timer !== "Time Up!") {
             this.setState({
                 optionSelect: 1
             })
             this.saveAnswer(1)
         }
-       
+
     }
 
     onSecondSelect = () => {
-        const {optionSelect, timer} = this.state
-        if(!optionSelect && timer !== "Time Up!"){
+        const { optionSelect, timer } = this.state
+        if (!optionSelect && timer !== "Time Up!") {
             this.setState({
                 optionSelect: 2
             })
-           this.saveAnswer(2)
+            this.saveAnswer(2)
         }
-       
+
 
     }
 
     onThirdSelect = () => {
-        const {optionSelect, timer} = this.state
-        if(!optionSelect && timer !== "Time Up!"){
-        this.setState({
-            optionSelect: 3
-        })
-        this.saveAnswer(3)
-    }
+        const { optionSelect, timer } = this.state
+        if (!optionSelect && timer !== "Time Up!") {
+            this.setState({
+                optionSelect: 3
+            })
+            this.saveAnswer(3)
+        }
 
     }
 
     onFourthSelect = () => {
-        const {optionSelect, timer} = this.state
-        if(!optionSelect && timer !== "Time Up!"){
-        this.setState({
-            optionSelect: 4
-        })
-        this.saveAnswer(4)
-    }
+        const { optionSelect, timer } = this.state
+        if (!optionSelect && timer !== "Time Up!") {
+            this.setState({
+                optionSelect: 4
+            })
+            this.saveAnswer(4)
+        }
 
     }
 
     saveAnswer = (option) => {
-        const {correctAnswer, totalCorrectAnswers, totalIncorrectAnswers, totalUnanswered} = this.state
-        const {email} = this.props
+        const { correctAnswer, totalCorrectAnswers, totalIncorrectAnswers, totalUnanswered } = this.state
+        const { email } = this.props
         let url = `${hostUrl}/answer`
-        let correctAnswerData = false, unanswered = false ;
-        if(option !== 0 && option === correctAnswer){
+        let correctAnswerData = false, unanswered = false;
+        if (option !== 0 && option === correctAnswer) {
             correctAnswerData = true
             this.setState({
-                totalCorrectAnswers : totalCorrectAnswers + 1
+                totalCorrectAnswers: totalCorrectAnswers + 1
             })
-        }  else if(option === 0){
+        } else if (option === 0) {
             unanswered = true
             this.setState({
-                totalUnanswered : totalUnanswered + 1
+                totalUnanswered: totalUnanswered + 1
             })
-        } else if(option !== 0 && option !== correctAnswer){
+        } else if (option !== 0 && option !== correctAnswer) {
             correctAnswerData = false
             this.setState({
-                totalIncorrectAnswers : totalIncorrectAnswers + 1
+                totalIncorrectAnswers: totalIncorrectAnswers + 1
             })
         }
-    
+
         let formData = {
-            email : email,
-            correctAnswer : correctAnswerData,
-            unanswered : unanswered
+            email: email,
+            correctAnswer: correctAnswerData,
+            unanswered: unanswered
         }
-    
+
         console.log("Answer option", option)
         console.log("Correct Answer", correctAnswer)
         const config = {
             headers: { 'content-type': 'application/json' },
         }
         axios.post(url, formData, config)
-        .then(data => {
-            console.log("Answer Saved Successfully", data)
-        })
-        .catch(error => {
-            console.error("Error in saving answer", error)
-        })
+            .then(data => {
+                console.log("Answer Saved Successfully", data)
+            })
+            .catch(error => {
+                console.error("Error in saving answer", error)
+            })
 
     }
 
     getTime = () => {
-        const {timer} = this.state
-        if(timer === "Time Up!"){
+        const { timer } = this.state
+        if (timer === "Time Up!") {
             return "Time Up!"
-        } else if(timer < 10){
+        } else if (timer < 10) {
             return `${timer} sec`
-        } else{
+        } else {
             return `${timer} secs`
         }
     }
@@ -349,7 +349,7 @@ class Quiz extends PureComponent {
                     <div className="quiz-header-time-container">
                         <HourGlass style={{ position: "relative", top: "17px", marginRight: "5px" }} />
                         <div className="quiz-header-time-text">{this.getTime()}</div>
-                
+
                     </div>
                     <Bookmark style={{ position: "relative", top: "17px" }} />
                 </div>
@@ -357,30 +357,30 @@ class Quiz extends PureComponent {
                     <Progress percent={percent} style={{ height: "3px", flex: "1 1 auto" }} />
                     <span className="quiz-header-progress-text-container">{count}/20</span>
                 </div>
-                {(optionSelect || timer === "Time Up!")  && count === 20 &&
-                <div className="quiz-explaination-container">
-                    <div className="quiz-explaination-text-container">Explanation Text:</div>
-                    <div className="quiz-explaination-content-container">
-                    {explainationText}
+                {(optionSelect || timer === "Time Up!") && count === 20 &&
+                    <div className="quiz-explaination-container">
+                        <div className="quiz-explaination-text-container">Explanation Text:</div>
+                        <div className="quiz-explaination-content-container">
+                            {explainationText}
+                        </div>
+                        <Link
+                            to={{
+                                pathname: '/quiz-result',
+                                totalCorrectAnswers: totalCorrectAnswers,
+                                totalIncorrectAnswers: totalIncorrectAnswers,
+                                totalUnanswered: totalUnanswered
+                            }}
+                        >
+                            <Button content="End Game" style={{ float: "right", marginTop: "10px" }} />
+                        </Link>
                     </div>
-                    <Link 
-                    to={{
-                        pathname: '/quiz-result',
-                        totalCorrectAnswers : totalCorrectAnswers,
-                        totalIncorrectAnswers : totalIncorrectAnswers,
-                        totalUnanswered : totalUnanswered
-                    }}
-                    >
-                    <Button content="End Game" style={{float: "right", marginTop: "10px"}}/>
-                    </Link>
-                </div>
                 }
-                {(optionSelect || timer === "Time Up!") && count < 20 &&  <div className="quiz-explaination-container">
+                {(optionSelect || timer === "Time Up!") && count < 20 && <div className="quiz-explaination-container">
                     <div className="quiz-explaination-text-container">Explanation Text:</div>
                     <div className="quiz-explaination-content-container">
-                    {explainationText}
+                        {explainationText}
                     </div>
-                    <Button content="Next Question"  onClick={this.nextQuestion} style={{float: "right", marginTop: "10px"}}/>
+                    <Button content="Next Question" onClick={this.nextQuestion} style={{ float: "right", marginTop: "10px" }} />
                 </div>}
 
 
@@ -396,31 +396,42 @@ class Quiz extends PureComponent {
                     <div className="quiz-question-option-data">
                         <div className="quiz-initial-option-container">
 
-                        
+
                             <div className="quiz-odd-option-container" onClick={this.onFirstSelect}>
-                            {optionSelect && correctAnswer === 1 && 
-                            <CorrectOption style={{ position: "relative", left: "142px", bottom: "78px", right: "10px" }} />
-                             }
-                            {optionSelect === 1 && optionSelect !== correctAnswer && <IncorrectOption style={{ position: "relative", bottom: "7px", right: "10px" }} />}
-                                <div className="quiz-option-image-container quiz-option-odd-image">
-                                    <img src={OptionOne}  />
-                                </div>
-                                
+                                {optionSelect && correctAnswer === 1 &&
+                                    <div className="option-style">
+                                        <CorrectOption />
+                                    </div>
+
+                                }
+                                {optionSelect === 1 && optionSelect !== correctAnswer &&
+                                    <div className="option-style">
+                                        <IncorrectOption />
+                                    </div>
+                                }
+                                    <img src={OptionOne} className="quiz-option-image-container quiz-option-odd-image"/>
+
                                 <div className="quiz-option-odd-text-container">{option1}</div>
                             </div>
 
 
 
-                        
+
 
 
 
                             <div className="quiz-even-option-container" onClick={this.onSecondSelect}>
-                            {optionSelect && correctAnswer === 2 && 
-                            <CorrectOption style={{ position: "relative", bottom: "7px", right: "10px" }} />
-                          
-                            }
-                            {optionSelect === 2 && optionSelect !== correctAnswer && <IncorrectOption style={{ position: "relative", bottom: "7px", right: "10px" }} />}
+                                {optionSelect && correctAnswer === 2 &&
+                                    <div className="option-style">
+                                        <CorrectOption />
+                                    </div>
+
+                                }
+                                {optionSelect === 2 && optionSelect !== correctAnswer &&
+                                    <div className="option-style">
+                                        <IncorrectOption />
+                                    </div>
+                                }
                                 <img src={OptionTwo} className="quiz-option-image-container quiz-option-even-image" />
                                 <div className="quiz-option-even-text-container">{option2}</div>
                             </div>
@@ -431,43 +442,85 @@ class Quiz extends PureComponent {
                         </div>
                         <div className="quiz-last-option-container">
 
-                     
 
-                          
 
-                 
-                                <div className="quiz-odd-option-container" onClick={this.onThirdSelect}>
-                                {optionSelect && correctAnswer === 3 && 
-                                <CorrectOption style={{ position: "relative", bottom: "7px", right: "10px" }} />
-                               
+
+
+
+                            <div className="quiz-odd-option-container" onClick={this.onThirdSelect}>
+                                {optionSelect && correctAnswer === 3 &&
+                                    <div className="option-style">
+                                        <CorrectOption />
+                                    </div>
+
                                 }
-                            {optionSelect === 3 && optionSelect !== correctAnswer && <IncorrectOption style={{ position: "relative", bottom: "7px", right: "10px" }} />}
-                                    <img src={OptionThree} className="quiz-option-image-container quiz-option-even-image" />
-                                  
-                                    <div className="quiz-option-even-text-container">{option3}</div>
-                                </div>
-                     
+                                {optionSelect === 3 && optionSelect !== correctAnswer &&
+                                    <div className="option-style">
+                                        <IncorrectOption />
+                                    </div>
+                                }
+                                <img src={OptionThree} className="quiz-option-image-container quiz-option-even-image" />
+
+                                <div className="quiz-option-even-text-container">{option3}</div>
+                            </div>
 
 
-                          
 
-                          
-                          <div className="quiz-even-option-container" onClick={this.onFourthSelect}>
-                          {optionSelect && correctAnswer === 4 && 
-                        <CorrectOption style={{ position: "relative", bottom: "7px", right: "10px" }} /> 
-                    
-                         }
-                            {optionSelect === 4 && optionSelect !== correctAnswer && <IncorrectOption style={{ position: "relative", bottom: "7px", right: "10px" }} />}
+
+
+
+                            <div className="quiz-even-option-container" onClick={this.onFourthSelect}>
+                                {optionSelect && correctAnswer === 4 &&
+                                    <div className="option-style">
+                                        <CorrectOption />
+                                    </div>
+
+                                }
+                                {optionSelect === 4 && optionSelect !== correctAnswer &&
+                                    <div className="option-style">
+                                        <IncorrectOption />
+                                    </div>
+                                }
                                 <img src={OptionFour} className="quiz-option-image-container quiz-option-even-image" />
-                          
+
                                 <div className="quiz-option-even-text-container">{option4}</div>
                             </div>
+
+
+                        {(optionSelect || timer === "Time Up!") && count === 20 &&
+                            <div className="quiz-explaination-mobile-container">
+                                <div className="quiz-explaination-mobile-text-container">Explanation Text:</div>
+                                <div className="quiz-explaination-mobile-content-container">
+                                    {explainationText}
+                                </div>
+                                <Link
+                                    to={{
+                                        pathname: '/quiz-result',
+                                        totalCorrectAnswers: totalCorrectAnswers,
+                                        totalIncorrectAnswers: totalIncorrectAnswers,
+                                        totalUnanswered: totalUnanswered
+                                    }}
+                                >
+                                    <Button content="End Game" style={{ float: "right", marginTop: "10px" }} />
+                                </Link>
+                            </div>
+                        }
+                        {(optionSelect || timer === "Time Up!") && count < 20 && <div className="quiz-explaination-mobile-container">
+                            <div className="quiz-explaination-mobile-text-container">Explanation Text:</div>
+                            <div className="quiz-explaination-mobile-content-container">
+                                {explainationText}
+                            </div>
+                            <Button content="Next Question" onClick={this.nextQuestion} style={{ float: "right", marginTop: "10px" }} />
+                        </div>}
 
                         </div>
 
 
+
                     </div>
                 </div>
+
+
 
                 {/* {count === 22 && <Link to={'/quiz-result'}>
                 <div className="quiz-explaination-mobile-container" >
@@ -503,7 +556,7 @@ const mapStateToProps = (state, props) => {
     const questionData = gameData.questionData
     const login = gameData.login
     let email
-    if(login){
+    if (login) {
         email = login.email
     }
     return {
