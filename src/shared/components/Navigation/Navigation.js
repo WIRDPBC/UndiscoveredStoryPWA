@@ -54,6 +54,7 @@ class Navigation extends PureComponent {
         console.log("I am getting called")
         const {onLogout} = this.props
         onLogout()
+        localStorage.clear()
         window.location = "/login"
     }
 

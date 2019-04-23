@@ -18,28 +18,35 @@ class Auth extends PureComponent{
         this.roles = '$unauthenticated'
     }
     componentWillMount(){
+        let retrievedAccessToken = localStorage.getItem('access_token')
+        console.log("Retrive Item", retrievedAccessToken)
+        if(retrievedAccessToken){
+            this.roles = '$authenticated'
+        }
+        //TODO: to be fixed...
         //call api..
-        const config = {
-            headers: { 
-                'content-type': 'application/json',
-             },
-          }
-        let url = `${hostUrl}/authenticate`
-        let formData = {}
-        axios.post(url, formData, config)
-        .then((data) => {
-            console.log("Auth Data", data)
-        })
-        .catch(error => {
-            console.error("Auth Error", error)
-        })
+        // const config = {
+        //     headers: { 
+        //         'content-type': 'application/json',
+        //      },
+        //   }
+        // let url = `${hostUrl}/authenticate`
+        // let formData = {}
+        // axios.post(url, formData, config)
+        // .then((data) => {
+        //     console.log("Auth Data", data)
+        // })
+        // .catch(error => {
+        //     console.error("Auth Error", error)
+        // })
 
         
 
     }
     render(){
         const {loginUserEmail, accept, reject, redirectTo} = this.props
-        if(loginUserEmail){
+        let retrievedAccessToken = localStorage.getItem('access_token')
+        if(retrievedAccessToken){
             this.roles = '$authenticated'
         }
        // console.log("Auth Data role", this.roles)

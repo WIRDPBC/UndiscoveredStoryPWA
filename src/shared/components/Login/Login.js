@@ -47,6 +47,9 @@ class Login extends PureComponent{
             .then(res => {
                 console.log("Logged in successfully!",JSON.stringify(res.data))
                 if(res && res.data){
+                    let authenticationToken = res.data.authenticationToken
+                    localStorage.setItem("access_token", authenticationToken)
+                    
                     onUpdateLoginAction(res.data)
                 }
 
