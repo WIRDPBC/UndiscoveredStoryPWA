@@ -340,6 +340,19 @@ class Quiz extends PureComponent {
         }
     }
 
+    onEndGame = () => {
+        console.log("On End Game getting clicked")
+        const {email} = this.props
+        const {totalCorrectAnswers} = this.state
+        let correctAnswerObj = {
+            email : email,
+            totalCorrectAnswers : totalCorrectAnswers
+        }
+
+        localStorage.setItem(email, totalCorrectAnswers)
+
+    }
+
     render() {
         const { question, option1, option2, option3, option4, count, correctAnswer, explainationText, percent, timer, optionSelect, totalCorrectAnswers, totalIncorrectAnswers, totalUnanswered } = this.state
         return (
@@ -371,7 +384,7 @@ class Quiz extends PureComponent {
                                 totalUnanswered: totalUnanswered
                             }}
                         >
-                            <Button content="End Game" style={{ float: "right", marginTop: "10px" }} />
+                            <Button content="End Game" style={{ float: "right", marginTop: "10px" }} onClick={this.onEndGame}/>
                         </Link>
                     </div>
                 }

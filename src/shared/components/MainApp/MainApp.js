@@ -68,7 +68,7 @@ function MainApp(props) {
             <Switch>
                 <Route exact path="/" render={routerProps => (
                     <Auth accept={'$unauthenticated'} reject={'$authenticated'} redirectTo={homeRoute}>
-                        <GetStarted {...routerProps} />
+                        <Login {...routerProps} />
                     </Auth>
                 )} />
                 <Route path={loginRoute} render={routerProps => (

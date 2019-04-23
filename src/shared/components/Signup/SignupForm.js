@@ -62,14 +62,16 @@ class SignupForm extends PureComponent {
                         <div className="signup-form-first-condition-container">
                             <Field value={false} component="input" id="termsandconditions" type="checkbox" name="termsandconditions" style={{float:"left"}}/>
                             {/* <Checkbox style={{ float: "left" }} onChange={this.onCheckedTermsConditions} /> */}
-                            <span className="signup-form-condition-text-container">I agree to the Terms & services and Privacy Policy of <br />undiscovered story</span>
+                            <span className="signup-form-condition-text-container">
+                            I agree to play the game and provide feedback to the <br/>game developers.
+                            </span>
                         </div>
                         <div className="signup-form-second-condition-container">
                             <Field value={false} component="input" id="eligiblity" type="checkbox" name="eligiblity" style={{float:"left"}}/>
                             {/* <Checkbox style={{ float: "left" }} onChange={this.onCheckedEligibility} /> */}
-                            <span className="signup-form-condition-text-container">I have read the above eligibility guidelines and certify <br />
-                                that I am at least 16 years old and I am not a citizen of <br />
-                                a restricted or banned country.
+                            <span className="signup-form-condition-text-container">
+                            I certify that I am over 16 years old and I am not a citizen of <br/>
+                            a restricted or banned country.
                             </span>
                         </div>
 

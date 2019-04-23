@@ -10,6 +10,9 @@ import {Redirect} from 'react-router-dom'
 import axios from 'axios'
 import {hostUrl} from '../helper'
 
+//import actions
+import {onUpdateLoginAction} from '../../reducers/User/actions'
+
 
 
 class Auth extends PureComponent{
@@ -18,6 +21,7 @@ class Auth extends PureComponent{
         this.roles = '$unauthenticated'
     }
     componentWillMount(){
+        const {onUpdateLoginAction} = this.props
         let retrievedAccessToken = localStorage.getItem('access_token')
         console.log("Retrive Item", retrievedAccessToken)
         if(retrievedAccessToken){
@@ -25,20 +29,25 @@ class Auth extends PureComponent{
         }
         //TODO: to be fixed...
         //call api..
-        // const config = {
-        //     headers: { 
-        //         'content-type': 'application/json',
-        //      },
-        //   }
-        // let url = `${hostUrl}/authenticate`
-        // let formData = {}
-        // axios.post(url, formData, config)
-        // .then((data) => {
-        //     console.log("Auth Data", data)
-        // })
-        // .catch(error => {
-        //     console.error("Auth Error", error)
-        // })
+        const config = {
+            headers: { 
+                'content-type': 'application/json',
+             },
+          }
+        let url = `${hostUrl}/authenticate`
+        let formData = {
+            authenticationToken: retrievedAccessToken
+        }
+        axios.post(url, formData, config)
+        .then((data) => {
+            if(data.data){
+                onUpdateLoginAction(data.data)
+            }
+            //console.log("Auth Data", data)
+        })
+        .catch(error => {
+            console.error("Auth Error", error)
+        })
 
         
 
@@ -78,5 +87,9 @@ const mapStateToProps = (state, props) => {
     }
 }
 
+const mapActionToProps = {
+    onUpdateLoginAction
+}
 
-export default connect(mapStateToProps, null)(Auth)
+
+export default connect(mapStateToProps, mapActionToProps)(Auth)

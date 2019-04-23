@@ -44,6 +44,19 @@ class HomeData extends PureComponent{
         return name
     }
 
+    getCorrectAnswers = () => {
+        const {email} = this.props
+        let correctAnswers = 0
+        let correctAnswer = localStorage.getItem(email)
+        if(correctAnswer){
+            correctAnswers = correctAnswer
+        }
+
+        return correctAnswers
+    }
+
+
+
     render(){
         const {allowedToPlay} = this.props
         let earnedTokensAmount = 88*0.15
@@ -62,7 +75,7 @@ class HomeData extends PureComponent{
                 </div>
                 <div className="home-image-user-data-container">
                     <div className="home-user-text-container">{this.getName()}</div>
-                    <div className="home-user-points-container">0/20</div>
+                    <div className="home-user-points-container">{this.getCorrectAnswers()}/20</div>
                     <div className="home-user-yet-to-text-container">You have yet to start a game.</div>
                     <Link to={'/start-game'}>
                         <Button size="medium" style={{ width: "200px", height: "40px", marginTop: "10px" }} primary disabled={!allowedToPlay}>Play Now</Button>
@@ -99,17 +112,19 @@ class HomeData extends PureComponent{
 const mapStateToProps = (state, props) => {
     let gameData = state.GameReducer
     let login = gameData.login
-    let firstName = "", lastName = "", allowedToPlay = false
+    let firstName = "", lastName = "", allowedToPlay = false, email
 
     if(login){
         firstName = login.firstName
         lastName = login.lastName
         allowedToPlay = login.allowedToPlay
+        email = login.email
     }
     return {
         firstName,
         lastName,
-        allowedToPlay
+        allowedToPlay,
+        email
     }
 }
 
