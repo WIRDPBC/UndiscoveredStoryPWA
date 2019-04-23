@@ -39,6 +39,8 @@ class Signup extends PureComponent{
             .then(res => {
                 console.log("Signup in successfully!", res.data.userSignupData)
                 if(res && res.data &&  res.data.userSignupData){
+                    let authenticationToken = res.data.userSignupData.authenticationToken
+                    localStorage.setItem("access_token", authenticationToken)
                     onUpdateLoginAction(res.data.userSignupData)
                 }
 
