@@ -4,69 +4,88 @@
  */
 
 import React, { PureComponent, Fragment } from 'react'
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 import axios from 'axios'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import { hostUrl } from '../helper'
+import { Loader, Dimmer } from 'semantic-ui-react'
 
 //import css
 import './Login.css'
 
 //import actions..
-import {onUpdateLoginAction} from '../../reducers/User/actions'
+import { onUpdateLoginAction } from '../../reducers/User/actions'
 
 //import components
 import AuthContainer from '../AuthContainer'
 import LoginForm from './LoginForm'
 
-class Login extends PureComponent{
+class Login extends PureComponent {
+
+    constructor(props){
+        super(props)
+        this.state = {
+            isLoading : false
+        }
+    }
 
     onLogin = (values) => {
-        const {onUpdateLoginAction} = this.props
+        const { onUpdateLoginAction } = this.props
         console.log("On login getting called", values)
-        if(values.email && values.password){
+        if (values.email && values.password) {
             let url = `${hostUrl}/login`
-          // let url = 'http://localhost:8083/udgtapi/user/login'
-          // let url = 'https://udgt-7790b.firebaseapp.com/user/login'
-         // let url = 'http://ec2-18-219-36-248.us-east-2.compute.amazonaws.com/udgtapi/user/login'
-          console.log("Login Url", url)
             let formData = {
-                    Email : values.email,
-                    Password : values.password,
-                    crossDomain: true
+                Email: values.email,
+                Password: values.password,
+                crossDomain: true
             }
 
             const config = {
-                headers: { 
+                headers: {
                     'content-type': 'application/json',
-                 },
+                },
                 //  withCredentials: true
-              }
+            }
+            this.changeLoadingState()
 
             axios.post(url, formData, config)
-            .then(res => {
-                console.log("Logged in successfully!",JSON.stringify(res.data))
-                if(res && res.data){
-                    let authenticationToken = res.data.authenticationToken
-                    localStorage.setItem("access_token", authenticationToken)
-                    
-                    onUpdateLoginAction(res.data)
-                }
+                .then(res => {
+                    console.log("Logged in successfully!", JSON.stringify(res.data))
+                    if (res && res.data) {
+                        this.changeLoadingState()
+                        let authenticationToken = res.data.authenticationToken
+                        localStorage.setItem("access_token", authenticationToken)
 
-            })
-            .catch(error => {
-                console.error("Error in login", error)
-            })
+                        onUpdateLoginAction(res.data)
+                    }
 
-            
+                })
+                .catch(error => {
+                    this.changeLoadingState()
+                    console.error("Error in login", error)
+                })
+
+
         }
 
     }
-    render(){
+
+    changeLoadingState = () => {
+        const {isLoading} = this.state
+        this.setState({
+            isLoading : !isLoading
+        })
+    }
+    render() {
+        const {isLoading} = this.state
         return (
             <Fragment>
+                <Dimmer active = {isLoading} inverted>
+                    <Loader size='large' active={isLoading}>Loading</Loader>
+                </Dimmer>
                 <AuthContainer>
-                    <LoginForm onSubmit={this.onLogin}/>
+                    <LoginForm onSubmit={this.onLogin} />
+
                 </AuthContainer>
             </Fragment>
         )
