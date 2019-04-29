@@ -86,8 +86,12 @@ class Quiz extends PureComponent {
                     explainationText: firstQuestion.explanation,
                     count: 1,
                     percent: 5,
+                    timer: 9
                 })
-                this.startTimer()
+                setTimeout(() => {
+                    this.startTimer()
+                }, 1000)
+              
 
             })
             .catch(error => {
@@ -124,7 +128,7 @@ class Quiz extends PureComponent {
     clearTimer = () => {
 
         this.setState({
-            timer: 9,
+            timer: 10,
             optionSelect: ''
         })
     }
