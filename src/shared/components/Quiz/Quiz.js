@@ -54,7 +54,7 @@ class Quiz extends PureComponent {
             explainationText: "",
             percent: 0,
             optionSelect: '',
-            timer: 0,
+            timer: 9,
             totalCorrectAnswers: 0,
             totalIncorrectAnswers: 0,
             totalUnanswered: 0
@@ -102,15 +102,15 @@ class Quiz extends PureComponent {
     tick = () => {
         const { timer, optionSelect } = this.state
         // console.log("Tick getting called")
-        if (timer < 60 && !optionSelect) {
-            if (timer + 1 === 60) {
+        if (timer > 0 && !optionSelect) {
+            if (timer - 1 === 0) {
                 this.setState({
                     timer: "Time Up!"
                 })
                 this.saveAnswer(0)
             } else {
                 this.setState({
-                    timer: timer + 1
+                    timer: timer - 1
                 })
             }
 
@@ -124,7 +124,7 @@ class Quiz extends PureComponent {
     clearTimer = () => {
 
         this.setState({
-            timer: 0,
+            timer: 9,
             optionSelect: ''
         })
     }
