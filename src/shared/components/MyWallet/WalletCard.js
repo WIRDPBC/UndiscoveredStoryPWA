@@ -80,6 +80,8 @@ const mapStateToProps = (state, ownProps) => {
     let walletAddress
     if(login && login.walletData && login.walletData.publicKey){
         walletAddress = login.walletData.publicKey
+    } else{
+        walletAddress = "publicKey"
     }
 
     return {
