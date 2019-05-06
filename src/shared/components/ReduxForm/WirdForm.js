@@ -47,6 +47,7 @@ class WirdForm extends React.PureComponent{
         return (
             <Form noValidate={novalidate}
             onSubmit={this.props.onSubmit}
+            onKeyDown ={ this.props.onKeyDown}
             error={this.props.error}
             style={this.props.style}
             className={this.props.className} >

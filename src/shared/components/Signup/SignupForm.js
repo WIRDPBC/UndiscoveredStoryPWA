@@ -31,11 +31,18 @@ class SignupForm extends PureComponent {
         super(props)
     }
 
+    handleKeyDown = (e, cb) => {
+        if (e.key === 'Enter' && e.shiftKey === false) {
+          e.preventDefault();
+          cb();
+        }
+      };
+
 
     render() {
         const {handleSubmit, pristine, submitting, invalid} = this.props
         return (
-            <WirdForm onSubmit={handleSubmit}>
+            <WirdForm onSubmit={handleSubmit} onKeyDown={(e) => { this.handleKeyDown(e, handleSubmit); }}>
                 <div className="signup-form-container">
                     <div className="signup-form-heading-container">Sign Up</div>
                     <div className="signup-form-main-container">

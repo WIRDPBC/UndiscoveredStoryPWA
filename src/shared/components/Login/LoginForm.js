@@ -35,13 +35,20 @@ class LoginForm extends PureComponent {
         super(props)
     }
 
+    handleKeyDown = (e, cb) => {
+        if (e.key === 'Enter' && e.shiftKey === false) {
+          e.preventDefault();
+          cb();
+        }
+      };
+
     render() {
         const {handleSubmit, invalid, submitting, pristine} = this.props
         return (
             <div className="login-form-container">
                 <div className="login-form-heading-container">Undiscovered Story</div>
                 <div className="login-form-main-container">
-                    <WirdForm onSubmit={handleSubmit}>
+                    <WirdForm onSubmit={handleSubmit} onKeyDown={(e) => { this.handleKeyDown(e, handleSubmit); }}>
                         <div>
                             <Field component={InputFieldUI} placeholder="Enter Email" type="email" name="email"/>
                             {/* <Input fluid placeholder="Enter Email" /> */}
