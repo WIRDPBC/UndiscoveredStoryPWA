@@ -19,13 +19,16 @@ import { onUpdateLoginAction } from '../../reducers/User/actions'
 //import components
 import AuthContainer from '../AuthContainer'
 import LoginForm from './LoginForm'
+import ErrorDialog from '../ErrorDialog'
 
 class Login extends PureComponent {
 
     constructor(props){
         super(props)
         this.state = {
-            isLoading : false
+            isLoading : false,
+            isDialogOpened : false,
+            errorText: ''
         }
     }
 
@@ -52,22 +55,37 @@ class Login extends PureComponent {
                 .then(res => {
                     console.log("Logged in successfully!", JSON.stringify(res.data))
                     if (res && res.data) {
-                        this.changeLoadingState()
-                        let authenticationToken = res.data.authenticationToken
-                        localStorage.setItem("access_token", authenticationToken)
-
-                        onUpdateLoginAction(res.data)
+                        if(res.data.authenticationToken){
+                            this.changeLoadingState()
+                            let authenticationToken = res.data.authenticationToken
+                            localStorage.setItem("access_token", authenticationToken)
+    
+                            onUpdateLoginAction(res.data)
+                        } else if(res.data.Message){
+                            this.changeLoadingState()
+                            this.setErrorText(res.data.Message)
+                        }
+                       
                     }
 
                 })
                 .catch(error => {
                     this.changeLoadingState()
                     console.error("Error in login", error)
+                    this.setErrorText("Invalid")
+
                 })
 
 
         }
 
+    }
+
+    setErrorText = (message) => {
+        this.setState({
+            isDialogOpened: true,
+            errorText: message
+        })
     }
 
     changeLoadingState = () => {
@@ -76,8 +94,14 @@ class Login extends PureComponent {
             isLoading : !isLoading
         })
     }
+
+    onClose = () => {
+        this.setState({
+            isDialogOpened: false
+        })
+    }
     render() {
-        const {isLoading} = this.state
+        const {isLoading, isDialogOpened, errorText} = this.state
         return (
             <Fragment>
                 <Dimmer active = {isLoading} inverted>
@@ -85,7 +109,7 @@ class Login extends PureComponent {
                 </Dimmer>
                 <AuthContainer>
                     <LoginForm onSubmit={this.onLogin} />
-
+                    <ErrorDialog isDialogOpened={isDialogOpened} onClose={this.onClose} errorText={errorText}/>
                 </AuthContainer>
             </Fragment>
         )

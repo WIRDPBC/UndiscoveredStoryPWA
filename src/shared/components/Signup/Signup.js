@@ -14,6 +14,7 @@ import {onUpdateLoginAction} from '../../reducers/User/actions'
 import AuthContainer from '../AuthContainer'
 import SignupForm from './SignupForm'
 import { hostUrl } from '../helper'
+import ErrorDialog from '../ErrorDialog'
 
 
 class Signup extends PureComponent{
@@ -21,7 +22,9 @@ class Signup extends PureComponent{
     constructor(props){
         super(props)
         this.state = {
-            isLoading : false
+            isLoading : false,
+            isDialogOpened : false,
+            errorText: ''
         }
     }
 
@@ -47,12 +50,18 @@ class Signup extends PureComponent{
 
             axios.post(url, formData, config)
             .then(res => {
-                console.log("Signup in successfully!", res.data.userSignupData)
-                if(res && res.data &&  res.data.userSignupData){
-                    this.changeLoadingState()
-                    let authenticationToken = res.data.userSignupData.authenticationToken
-                    localStorage.setItem("access_token", authenticationToken)
-                    onUpdateLoginAction(res.data.userSignupData)
+                console.log("Signup in successfully!", res)
+                if(res && res.data){
+                    if(res.data.userSignupData){
+                        this.changeLoadingState()
+                        let authenticationToken = res.data.userSignupData.authenticationToken
+                        localStorage.setItem("access_token", authenticationToken)
+                        onUpdateLoginAction(res.data.userSignupData)
+                    } else if(res.data.Message){
+                        this.changeLoadingState()
+                        this.setErrorText(res.data.Message)
+                    }
+                  
                 }
 
             })
@@ -65,14 +74,27 @@ class Signup extends PureComponent{
         }
     }
 
+    setErrorText = (message) => {
+        this.setState({
+            isDialogOpened: true,
+            errorText: message
+        })
+    }
+
     changeLoadingState = () => {
         const {isLoading} = this.state
         this.setState({
             isLoading : !isLoading
         })
     }
+
+    onClose = () => {
+        this.setState({
+            isDialogOpened: false
+        })
+    }
     render(){
-        const {isLoading} = this.state
+        const {isLoading, isDialogOpened, errorText} = this.state
         return (
             <Fragment>
                  <Dimmer active = {isLoading} inverted>
@@ -80,6 +102,7 @@ class Signup extends PureComponent{
                 </Dimmer>
                 <AuthContainer>
                     <SignupForm onSubmit={this.onSignup}/>
+                    <ErrorDialog isDialogOpened={isDialogOpened} onClose={this.onClose} errorText={errorText}/>
                 </AuthContainer>
             </Fragment>
             

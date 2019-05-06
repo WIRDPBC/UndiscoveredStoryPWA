@@ -1,0 +1,98 @@
+.error-dialog-container{
+    height: 342.3px;
+    width: 514.5px !important;
+}
+
+.error-dialog-header-container{
+    height: 70px;
+    line-height: 70px;
+    display: flex;
+    display: -webkit-flex;
+    border-bottom: 2px solid #dddddd;
+    padding-left: 20px;
+    background: #ebb0d0;
+}
+
+.error-dialog-header-text-container{
+    flex: 1 1 auto;
+    text-align: center;
+    font-family: HelveticaNeue;
+    font-size: 16px;
+    font-weight: 500;
+    color: #707070;
+    margin-right: 30px;
+}
+
+.error-dialog-data-container{
+    text-align: center;
+}
+
+.error-dialog-success-text{
+    margin-top: 50px;
+    line-height: 20px;
+    font-family: HelveticaNeue;
+    font-size: 14px;
+    color:#707070
+}
+
+.error-dialog-footer-container{
+    height: 70px;
+    line-height: 70px;
+    position: absolute;
+    bottom: 0;
+    border-top: 2px solid #dddddd;
+    width: 100%;
+    text-align: center;
+}
+
+
+/********************************************** Responsive Designs ***********************************************/
+
+
+@media only screen and (max-width: 600px) {
+    .error-dialog-container{
+        height: 300px;
+        width: 300px !important;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .error-dialog-container{
+        height: 300px;
+        width: 300px !important;
+    }
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .error-dialog-container{
+        height: 300px;
+        width: 300px !important;
+    }
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .error-dialog-container{
+        height: 300px;
+        width: 350px !important;
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .error-dialog-container{
+        height: 300px;
+        width: 350px !important;
+    }
+
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .error-dialog-container{
+        height: 300px;
+        width: 350px !important;
+    }
+}
+
