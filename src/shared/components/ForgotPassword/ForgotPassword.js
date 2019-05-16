@@ -13,6 +13,7 @@ import './ForgotPassword.css'
 //import components..
 import AuthContainer from '../AuthContainer'
 import ForgotPasswordForm from './ForgotPasswordForm'
+import InfoDialog from '../InfoDialog'
 import {hostUrl} from '../helper'
 
 
@@ -27,6 +28,9 @@ class ForgotPassword extends PureComponent{
 
     constructor(props){
         super(props)
+        this.state = {
+            isDialogOpened : false
+        }
     }
 
     onForgotPassword = (values) => {
@@ -45,6 +49,9 @@ class ForgotPassword extends PureComponent{
 
           axios.post(url, formData, config)
           .then(data => {
+              this.setState({
+                  isDialogOpened : true
+              })
               console.log("Forgot Request send successfully", data)
           })
           .catch(error => {
@@ -53,12 +60,20 @@ class ForgotPassword extends PureComponent{
         }
     }
 
+    onClose = () => {
+        this.setState({
+            isDialogOpened: false
+        })
+    }
+
     render(){
+        const {isDialogOpened} = this.props
         return (
             <Fragment>
                 <AuthContainer>
                     <ForgotPasswordForm onSubmit={this.onForgotPassword}/>
                 </AuthContainer>
+                <InfoDialog isDialogOpened={isDialogOpened} infoText={"Reset Password Link has been sent to your email address. Please Check your inbox to proceed."} onClose={this.closeDialog} title="Forget Password"/>
             </Fragment>
         )
     }

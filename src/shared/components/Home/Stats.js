@@ -10,6 +10,7 @@ import { Dropdown } from 'semantic-ui-react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {hostUrl} from '../helper'
+import {getStatsData} from './StatsHelper'
 
 
 class Stats extends PureComponent {
@@ -23,6 +24,11 @@ class Stats extends PureComponent {
 
     constructor(props) {
         super(props)
+        this.state = {
+            statsData : [
+                [[0,0]]
+            ]
+        }
     }
 
     onSelectMonth = (e, data) => {
@@ -41,8 +47,18 @@ class Stats extends PureComponent {
         }
 
         axios.post(url, formData, config)
-        .then(data => {
-            console.log("Stats Data", data)
+        .then(result => {
+            console.log("Stats Data", result.data.data)
+            if(result.data.data && result.data.data.length){
+                this.setState({
+                    statsData:  [getStatsData(result.data.data, data.value)]
+                })
+               
+            } else{
+                this.setState({
+                    statsData:  [[[0,0]]]
+                })
+            }
         })
         .catch(error => {
             console.error("Stats Error", error)
@@ -53,6 +69,7 @@ class Stats extends PureComponent {
 
 
     render() {
+        const {statsData} = this.state
         const data = [
             [[1, 10], [2, 0], [3, 500]],
         ];
@@ -60,12 +77,12 @@ class Stats extends PureComponent {
             {
               key: 'january',
               text: 'January',
-              value: 0,
+              value: 0
             },
             {
               key: 'february',
               text: 'February',
-              value: 1
+              value: 1,
             },
             {
               key: 'march',
@@ -136,7 +153,7 @@ class Stats extends PureComponent {
                     }}
                 >
                     <Chart
-                        data={data}
+                        data={statsData}
                         series={{ type: 'area' }}
                         axes={[
                             { primary: true, position: 'bottom', type: 'linear' },

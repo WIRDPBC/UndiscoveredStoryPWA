@@ -20,6 +20,7 @@ class InfoDialog extends PureComponent{
 
     render() {
         const { isDialogOpened, onClose, title, infoText } = this.props
+        //console.log("I am getting called")
         return (
             <Modal size="mini" open={isDialogOpened} className="info-dialog-container">
                 <div className="info-dialog-header-container">
