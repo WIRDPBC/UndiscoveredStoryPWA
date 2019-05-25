@@ -57,6 +57,9 @@ Is a data scientist who specializes in complex systems modeling, topological dat
 
 He founded the Community Intelligence Lab @ WSU, an experimental public think tank to facilitate informed citizen engagement in local governance, and he currently serves on the Board of Directors at the Public Sphere Project, a non-profit focused on research and developing technologies that support civic intelligence. Justin completed his PhD in 2013 at WSU. His doctoral research focused on the influence of ethical value in driving consumer decision making. Upon completing his dissertation, Justin was awarded a postdoctoral fellowship at Cornell University funded by the EPA. Prior to completing his doctoral work, Justin worked as a data scientist in computer vision, an organic farmer,  and web developer. He holds a Masters degree in International Development Economics from St. Marys University, and completed a self-designed BA in community informatics at The Evergreen State College in Olympia, WA.
 
+# Uday Seethamsetty, Senior Blockchain Solution Architect
+Uday Kumar Seethamsetty is Adroit & Certified IOT Blockchain Solution Architect with over 12+ years of experience including R&D Wing Setups. He is a frequent contributor, speaker and advisor on blockchain and cryptocurrencies and leads teams in work on decentralized blockchain projects. Uday also has a Robotic Process Automation (RPA) certification and has served as a technical subject matter expert in the insurance and banking industries. He has also made contributions in various other fields, including robotics and process automation
+
 # Nikita Mittal, Senior Lead Clientside Developer
 Nikita is a software engineer who obtained her computer science degree at JSSATE in Noida, India. She is an expert at delevoping architectures and algorithms, IoT, AI, and Blockchain, she enjoys experimenting with new technologies and optimizing algorithms so technology can better meet humanity’s growing needs
 
@@ -66,10 +69,8 @@ Ayman has developed custom-built, complex ERP (enterprise resource planning) sys
 # Ayshwarya Shyam, Senior Lead UI/UX Developer
 Ayshwarya is a UX and UI designer with a deep empathy for people and a natural affinity for human behavior. A believer in design as relational–beyond aesthetic–she is committed to providing solutions that connect to the “hearts” of users. She is motivated by meeting user needs and is always passionate to learn how new technologies can meet those needs.
 
-# Kiran Paturi is an expert software engineer and product manager and has an extensive track record of devising unique solutions for large blockchain projects. He is naturally drawn to, cutting-edge technologies and implementation methodologies, which lead to his work developing DAPPs, Wallets, ICO’s and Exchanges. He is a passionate and enthusiastic contributor to the field of Blockchain and has worked with Stellar, Ethereum, Bitcoin, Hyperledger, R3-corda and Holochain.
-
-# Uday Seethamsetty, Senior Blockchain Solution Architect
-Uday Kumar Seethamsetty is Adroit & Certified IOT Blockchain Solution Architect with over 12+ years of experience including R&D Wing Setups. He is a frequent contributor, speaker and advisor on blockchain and cryptocurrencies and leads teams in work on decentralized blockchain projects. Uday also has a Robotic Process Automation (RPA) certification and has served as a technical subject matter expert in the insurance and banking industries. He has also made contributions in various other fields, including robotics and process automation
+# Kiran Paturi , Senior SmartContract Developer
+Kiran is an expert software engineer and product manager and has an extensive track record of devising unique solutions for large blockchain projects. He is naturally drawn to, cutting-edge technologies and implementation methodologies, which lead to his work developing DAPPs, Wallets, ICO’s and Exchanges. He is a passionate and enthusiastic contributor to the field of Blockchain and has worked with Stellar, Ethereum, Bitcoin, Hyperledger, R3-corda and Holochain.
 
 # The Undiscovered Story Game Token (UDGT) Architecture we designed in house for Stellar Blockchain Gaming
 <img src="./images/UDGTStellarGamegenesis.png" height="auto"/>
