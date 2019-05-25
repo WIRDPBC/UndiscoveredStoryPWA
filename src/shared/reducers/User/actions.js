@@ -6,6 +6,7 @@
 
 export const UPDATE_LOGIN = "onUpdateLogin"
 export const CLEAR_LOGIN = "clearLogin"
+export const IS_ACCESS_TOKEN_VALID = "isAccessTokenValid"
 
 import {USER} from '../model'
 const model = USER
@@ -28,6 +29,17 @@ export const onLogout = () => {
             type : CLEAR_LOGIN,
             model,
             payload: null
+        })
+    }
+}
+
+
+export const isAccessTokenValidAction = (isValid) => {
+    return (dispatch, getState) => {
+        dispatch({
+            type: IS_ACCESS_TOKEN_VALID,
+            model,
+            payload: isValid
         })
     }
 }

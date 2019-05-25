@@ -5,7 +5,8 @@
 
 import{
     UPDATE_LOGIN,
-    CLEAR_LOGIN
+    CLEAR_LOGIN,
+    IS_ACCESS_TOKEN_VALID
 } from './actions'
 
 const UserReducer = (state, action) => {
@@ -16,7 +17,8 @@ const UserReducer = (state, action) => {
                 ...state,
                 login:{
                     ...login
-                }
+                },
+                isAccessTokenValid: true,
             }
             break
         }
@@ -24,6 +26,14 @@ const UserReducer = (state, action) => {
             state = {
                 ...state,
                 login: null
+            }
+            break;
+        }
+        case IS_ACCESS_TOKEN_VALID:{
+            const {isValid} = action.payload
+            state = {
+                ...state,
+                isAccessTokenValid: isValid
             }
             break;
         }

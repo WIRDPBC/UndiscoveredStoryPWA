@@ -29,6 +29,44 @@ class Stats extends PureComponent {
                 [[0,0]]
             ]
         }
+      
+    }
+
+
+    componentDidMount = () => {
+        const {email} = this.props
+        let url = `${hostUrl}/stats`
+        let currentDate = new Date()
+        let currentMonth = currentDate.getMonth()
+        let formData = {
+            email : email,
+            year: 2019,
+            month: currentMonth
+        }
+        const config = {
+            headers: { 
+                'content-type': 'application/json',
+             },
+        }
+
+        axios.post(url, formData, config)
+        .then(result => {
+            console.log("Stats Data Did Mount", result.data.data)
+            if(result.data.data && result.data.data.length){
+                this.setState({
+                    statsData:  [getStatsData(result.data.data, currentMonth)]
+                })
+               
+            } else{
+                this.setState({
+                    statsData:  [[[0,0]]]
+                })
+            }
+        })
+        .catch(error => {
+            console.error("Stats Error", error)
+        })
+
     }
 
     onSelectMonth = (e, data) => {
@@ -135,6 +173,8 @@ class Stats extends PureComponent {
                 value: 11
             }
           ]
+          let currentDate = new Date()
+          let currentMonth = currentDate.getMonth()
         return (
             <Fragment>
                 <div style={{marginTop:"10px"}}>
@@ -143,6 +183,7 @@ class Stats extends PureComponent {
                         selection
                         options={monthOptions}
                         onChange={this.onSelectMonth}
+                        defaultValue={currentMonth}
                     />
                 </div>
                 <div

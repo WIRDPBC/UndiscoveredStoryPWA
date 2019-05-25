@@ -12,6 +12,7 @@ export default {
     },
     questionData : [],
     advertisingOptData: [],
+    isAccessTokenValid : null,
     advertisingOpt:{
         
     }
