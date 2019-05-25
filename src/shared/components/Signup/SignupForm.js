@@ -45,7 +45,9 @@ class SignupForm extends PureComponent {
             <WirdForm onSubmit={handleSubmit} onKeyDown={(e) => { this.handleKeyDown(e, handleSubmit); }}>
                 <div className="signup-form-container">
                     <div className="signup-form-heading-container">Sign Up</div>
+                    <div className="signup-form-celebrating-text">Celebrating Girls and Women!</div>
                     <div className="signup-form-main-container">
+                  
                     <Grid columns="equal" style={{padding:0}}>
                         <Grid.Column style={{padding:0, marginRight:"10px"}}>
                             <Field component={InputFieldUI} placeholder="First Name" type="text" name="firstName"/>

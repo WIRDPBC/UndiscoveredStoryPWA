@@ -71,3 +71,100 @@
     color: #707070;
 }
 
+
+
+/************************************************** Responsive Designs **********************************************/
+
+/*** Mobile ***/
+
+@media only screen and (max-width: 379px){
+    .advertising-comment-data-container{
+        height: 200px;
+    }
+
+    .advertising-comment-input-container{
+        width: 300px;
+    }
+}
+
+@media only screen and (min-width: 380px) and (max-width: 549px){
+    .advertising-comment-data-container{
+        height: 350px;
+    }
+
+    .advertising-comment-input-container{
+        width: 380px;
+    }
+}
+
+
+@media only screen and (min-width: 550px) and (max-width: 700px){
+    .advertising-comment-data-container{
+        height: 350px;
+    }
+
+    .advertising-comment-input-container{
+        width: 550px;
+    }
+}
+
+/*** Tablet ***/
+@media only screen and (min-width: 701px) and (max-width: 767px){
+    .advertising-comment-data-container{
+        height: 400px;
+    }
+
+    /* .advertising-comment-input-container{
+        width: 700px;
+    } */
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+    .advertising-comment-data-container{
+        height: 400px;
+    }
+
+    /* .advertising-comment-input-container{
+        width: 768px;
+    } */
+}
+
+
+/*** Desktop ***/
+@media only screen and (min-width: 1025px) and (max-width: 1199px){
+    .advertising-comment-data-container{
+        height: 500px;
+    }
+
+    /* .advertising-comment-input-container{
+        width: 1000px;
+    } */
+}
+
+/* Default */
+@media only screen and (min-width: 1200px) and (max-width: 1918px){
+    .advertising-comment-data-container{
+        height: 500px;
+    }
+
+    /* .advertising-comment-input-container{
+        width: 1150px;
+    } */
+}
+
+/*** BigScreen ***/
+@media only screen and (min-width: 1919px){
+
+    .advertising-comment-data-container{
+        height: 600px;
+    }
+    /* .advertising-comment-input-container{
+        width: 1800px;
+    } */
+}
+
+
+
+
+

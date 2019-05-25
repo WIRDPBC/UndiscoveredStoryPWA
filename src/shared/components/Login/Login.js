@@ -16,6 +16,9 @@ import './Login.css'
 //import actions..
 import { onUpdateLoginAction } from '../../reducers/User/actions'
 
+//import images
+import LoginImage from '../../icons/login-image.png'
+
 //import components
 import AuthContainer from '../AuthContainer'
 import LoginForm from './LoginForm'
@@ -107,7 +110,7 @@ class Login extends PureComponent {
                 <Dimmer active = {isLoading} inverted>
                     <Loader size='large' active={isLoading}>Loading</Loader>
                 </Dimmer>
-                <AuthContainer>
+                <AuthContainer placeholderImage={LoginImage}>
                     <LoginForm onSubmit={this.onLogin} />
                     <ErrorDialog isDialogOpened={isDialogOpened} onClose={this.onClose} errorText={errorText}/>
                 </AuthContainer>

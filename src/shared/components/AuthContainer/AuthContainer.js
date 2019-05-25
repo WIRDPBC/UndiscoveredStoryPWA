@@ -28,12 +28,13 @@ class AuthContainer extends PureComponent{
     }
 
     render(){
+        const {placeholderImage} = this.props
         return (
             <Grid columns={2} style={{padding: 0}} className="auth-container">
                 <Grid.Column width={10} style={{padding: 0}} className="auth-container-image-grid-container">
                     <div className="auth-container-image-container">
                         <div className="auth-container-image-placeholder">
-                            <img src={AuthIcon} className="auth-container-image"/>
+                            <img src={placeholderImage} className="auth-container-image"/>
                         </div>
                     </div>
                 </Grid.Column>

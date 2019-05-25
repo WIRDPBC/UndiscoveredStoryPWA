@@ -12,10 +12,18 @@
     line-height: 30px;
 }
 
+.login-form-celebrating-text{
+    padding-left: 40px;
+    margin-top: 70px;
+    font-weight: bold;
+    color: #707070;
+    letter-spacing: 0.5px;
+}
+
 .login-form-main-container{
-    margin-top: 100px;
-    padding-left: 20px;
-    padding-right: 20px;
+    margin-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 

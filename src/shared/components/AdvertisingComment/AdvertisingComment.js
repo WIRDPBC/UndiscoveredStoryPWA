@@ -21,6 +21,7 @@ import './AdvertisingComment.css'
 //import components
 import TopHeaderBack from '../TopHeaderBack'
 import AdvertisingCommentData from './AdvertisingCommentData'
+import CustomScrollbar from '../CustomScrollbar';
 
 class AdvertisingComment extends PureComponent {
     static propTypes = {
@@ -136,8 +137,13 @@ class AdvertisingComment extends PureComponent {
                             <div className="advertsing-comment-text-container">{title}</div>
                         </div>
                         <div className="advertising-comment-data-container">
-                            {this.getCommentList()}
+                            <CustomScrollbar>
+                        
+                                {this.getCommentList()}
+                        
+                            </CustomScrollbar>
                         </div>
+                      
                         
                         <div className="advertising-comment-input-container">
                             <Input fluid icon={<Icon name="send" onClick={this.onSendComment}/>} placeholder="Type your comment here" onChange={this.onChangeInputValue} onKeyPress={this.onSendComment} value={commentText}/>

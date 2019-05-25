@@ -10,6 +10,9 @@ import './Signup.css'
 //import actions
 import {onUpdateLoginAction} from '../../reducers/User/actions'
 
+//import image
+import SignupImage from '../../icons/signup-image.png'
+
 //import components..
 import AuthContainer from '../AuthContainer'
 import SignupForm from './SignupForm'
@@ -100,7 +103,7 @@ class Signup extends PureComponent{
                  <Dimmer active = {isLoading} inverted>
                     <Loader size='large' active={isLoading}>Loading</Loader>
                 </Dimmer>
-                <AuthContainer>
+                <AuthContainer placeholderImage={SignupImage}>
                     <SignupForm onSubmit={this.onSignup}/>
                     <ErrorDialog isDialogOpened={isDialogOpened} onClose={this.onClose} errorText={errorText}/>
                 </AuthContainer>
