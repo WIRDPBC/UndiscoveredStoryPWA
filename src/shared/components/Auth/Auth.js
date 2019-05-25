@@ -19,19 +19,12 @@ class Auth extends PureComponent {
     constructor(props) {
         super(props)
         this.roles = '$authenticated'
-        this.state = {
-            isAcceessTokenValid: false
-        }
     }
     componentWillMount() {
         const { onUpdateLoginAction, isAccessTokenValidAction, isAccessTokenValid } = this.props
         let retrievedAccessToken = localStorage.getItem('access_token')
-        // if(retrievedAccessToken){
-        //     this.roles = '$authenticated'
-        // }
         //TODO: to be fixed...
         if (isAccessTokenValid === null || isAccessTokenValid === undefined) {
-            console.log("Retrive Item", retrievedAccessToken, isAccessTokenValid)
             //call api..
             const config = {
                 headers: {
@@ -46,19 +39,12 @@ class Auth extends PureComponent {
                 .then((data) => {
                     if (data.data) {
                         onUpdateLoginAction(data.data)
-                       // isAccessTokenValidAction(true)
                     }
-                    //console.log("Auth Data", data)
                 })
                 .catch(error => {
                     console.error("Auth Error", error)
                     this.roles = '$unauthenticated'
                     isAccessTokenValidAction(false)
-                    // window.location = "/login"
-                    // this.setState({
-                    //     isAcceessTokenValid : false
-                    // })
-                    //window.location = "/login"
                 })
 
         }
@@ -68,12 +54,8 @@ class Auth extends PureComponent {
     }
     render() {
         const { loginUserEmail, accept, reject, redirectTo, isAccessTokenValid } = this.props
-        const { isAcceessTokenValid } = this.state
-
-
         let retrievedAccessToken = localStorage.getItem('access_token')
-        console.log("iaAccessTokenValid", isAcceessTokenValid)
-        if(isAcceessTokenValid){
+        if(isAccessTokenValid){
             this.roles = '$authenticated'
         } else if(retrievedAccessToken) {
             this.roles = '$authenticated'
@@ -81,8 +63,6 @@ class Auth extends PureComponent {
         } else {
             this.roles = '$unauthenticated'
         }
-        // console.log("Auth Data role", this.roles)
-        // console.log("Auth aceept", accept, )
         if (this.roles === accept) {
             return (
                 <Fragment>
