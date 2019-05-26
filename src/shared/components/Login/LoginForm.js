@@ -46,8 +46,8 @@ class LoginForm extends PureComponent {
         const {handleSubmit, invalid, submitting, pristine} = this.props
         return (
             <div className="login-form-container">
-                <div className="login-form-heading-container">Undiscovered Story</div>
-                <div className="login-form-celebrating-text">Celebrating Girls and Women!</div>
+                <div className="login-form-heading-container">Celebrating <br/>Girls and Women!</div>
+                {/* <div className="login-form-celebrating-text">Celebrating Girls and Women!</div> */}
                 <div className="login-form-main-container">
                     <WirdForm onSubmit={handleSubmit} onKeyDown={(e) => { this.handleKeyDown(e, handleSubmit); }}>
                         <div>

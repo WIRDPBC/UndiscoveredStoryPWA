@@ -44,8 +44,9 @@ class SignupForm extends PureComponent {
         return (
             <WirdForm onSubmit={handleSubmit} onKeyDown={(e) => { this.handleKeyDown(e, handleSubmit); }}>
                 <div className="signup-form-container">
+                 <div className="signup-form-celebrating-text">Celebrating <br/> Girls and Women!</div>
                     <div className="signup-form-heading-container">Sign Up</div>
-                    <div className="signup-form-celebrating-text">Celebrating Girls and Women!</div>
+                   
                     <div className="signup-form-main-container">
                   
                     <Grid columns="equal" style={{padding:0}}>
