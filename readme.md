@@ -10,8 +10,9 @@
 
 
 <br />
+
 # Undiscovered Story 
-<br />
+
 Undiscovered Story, is a “learn & Earn” Blockchain Progressive Web Application based Trivia game that celebrates the acheivments of Girls & Women throughout history.  The game rewards players with cryptocurrency, is intended for mass adoption and is easy, fun and engaging to play. 
 
 Undiscovered Story, is a “learn & Earn” Blockchain Progressive Web Application based Trivia game that celebrates the acheivments of Girls & Women throughout history.  The game rewards players with cryptocurrency, is intended for mass adoption and is easy, fun and engaging to play.  The game has been designed to support and empower players to be global agents of social change.  
