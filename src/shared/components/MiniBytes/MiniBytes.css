@@ -12,18 +12,7 @@
     border: 1px solid #dddddd;
 }
 
-/* .mini-bytes-data-container{
-    margin-left: 350px;
-    margin-right: 350px;
-    padding-top: 30px;
-    min-height: 400px;
 
-    padding-left: 20px;
-    border-left: 1px solid #dddddd;
-    border-right: 1px solid #dddddd;
-    border-bottom: 1px solid #dddddd;
-    background: #dddddd;
-} */
 
 
 .mini-bytes-quote-container{
@@ -33,6 +22,22 @@
 .mini-bytes-image{
     
 }
+
+.mini-bytes-next-button-container{
+    text-align: center;
+}
+
+.introduction-heading-text-container{
+    font-weight: bold;
+    text-align: center;
+}
+
+.introduction-content-container{
+    margin-top: 20px;
+}
+
+
+/*******************
 
 
 
@@ -55,6 +60,7 @@
         margin-left: 50px;
         margin-right: 43px;
         padding-top: 30px;
+        padding-bottom: 30px;
         min-height: 300px;
         /* border: 1px solid; */
         padding-left: 20px;
@@ -87,6 +93,7 @@
         margin-left: 50px;
         margin-right: 43px;
         padding-top: 30px;
+        padding-bottom: 30px;
         min-height: 300px;
         /* border: 1px solid; */
         padding-left: 20px;
@@ -118,6 +125,7 @@
         margin-left: 50px;
         margin-right: 43px;
         padding-top: 30px;
+        padding-bottom: 30px;
         min-height: 300px;
         /* border: 1px solid; */
         padding-left: 20px;
@@ -149,6 +157,7 @@
         margin-left: 50px;
         margin-right: 43px;
         padding-top: 30px;
+        padding-bottom: 30px;
         min-height: 300px;
         /* border: 1px solid; */
         padding-left: 20px;
@@ -178,6 +187,7 @@
         margin-left: 350px;
         margin-right: 350px;
         padding-top: 30px;
+        padding-bottom: 30px;
         min-height: 300px;
         /* border: 1px solid; */
         padding-left: 20px;
@@ -210,6 +220,7 @@
         margin-left: 350px;
         margin-right: 350px;
         padding-top: 30px;
+        padding-bottom: 30px;
         min-height: 300px;
         /* border: 1px solid; */
         padding-left: 20px;
@@ -223,6 +234,7 @@
         margin-left: 350px;
         margin-right: 350px;
         margin-top: 20px;
+        text-align: center;
     }
     
 }
