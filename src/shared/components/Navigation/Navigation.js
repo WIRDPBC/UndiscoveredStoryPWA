@@ -83,7 +83,7 @@ class Navigation extends PureComponent {
                            
                         </div>
                     </Link>
-                    <Link to={"/mini-bytes"}>
+                    <Link to={"/introduction"}>
                         <div className="navigation-data-item-container">
                             <div className="navigation-element-container">
                                 <img src={MiniBytesNavIcon} className="navigation-icon"/>
