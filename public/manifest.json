@@ -1,6 +1,6 @@
 {
-	"name": "pwa-react-boilerplate",
-	"short_name": "pwa-react-boilerplate",
+	"name": "Undiscovered Story",
+	"short_name": "Undiscovered Story",
 	"icons": [
 		{
 			"src": "chrome-touch-icon-192x192.png",

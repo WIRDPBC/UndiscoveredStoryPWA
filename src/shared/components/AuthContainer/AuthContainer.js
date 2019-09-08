@@ -40,6 +40,9 @@ class AuthContainer extends PureComponent{
                 </Grid.Column>
                 <Grid.Column width={6} style={{padding: 0}} className="auth-container-form-grid-container">
                     <div className="auth-container-form-container">
+                    {/* <div style={{position: "absolute"}}>
+                        <img src={placeholderImage} className="auth-container-form-image"/>
+                    </div> */}
                         {this.props.children}
                     </div>
                 </Grid.Column>

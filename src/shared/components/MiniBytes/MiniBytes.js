@@ -82,14 +82,9 @@ class MiniBytes extends PureComponent{
                     <TopHeader onOpenSidebar={this.onOpenSidebar} title="Introduction"/>
                     <div className="mini-bytes-container">
                         <div className="mini-bytes-image-container" style={{backgroundImage: `url(${MiniByteImage})`,   backgroundRepeat: 'no-repeat',  backgroundSize: 'cover', height: "175.5px"}}>
-                            {/* <img src={MinibyteIcon}   className="mini-bytes-image"/> */}
                         </div>
                         <div className="mini-bytes-data-container">
-                            {/* <div>{title}</div> */}
                             {content}
-                            {/* <div className="mini-bytes-quote-container"> {title} <br/>
-                                
-                            </div> */}
                         </div>
                         <div className="mini-bytes-next-button-container">
                         {id !== miniByteList.length && <Button content="Next" style={{cursor:"pointer", backgroundColor: "#ebb0d0", color: "#fff" }}  onClick={this.onNext}></Button>}
