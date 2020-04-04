@@ -44,7 +44,7 @@
     "file-loader": "0.9.0",
     "gh-pages": "^0.12.0",
     "html-webpack-plugin": "^2.26.0",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.3",
     "react-addons-test-utils": "^15.4.2",
     "style-loader": "0.13.1",
     "sw-precache": "^4.3.0",
