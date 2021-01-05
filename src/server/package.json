@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "@google-cloud/firestore": "^1.0.1",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "bigchaindb-driver": "^4.1.0",
     "bip39": "^2.5.0",
